@@ -1,8 +1,8 @@
 // import React from "react"; 
 import "./Styles.css";
-import imagenes from '../../../public/assets/img'
+import imagenes from '../../../../../public/assets/img'
 import Image from "next/image";
-console.log(imagenes.logo)
+
 
 
 const Footer = () => {

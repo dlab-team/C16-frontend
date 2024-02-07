@@ -1,8 +1,10 @@
 .footer{
     display: flex;
-   background-image: url("../../../public/assets/img/Onda\ Rosada.svg");
+   background-image: url("../../../../../public/assets/img/Onda\ Rosada.svg");
     height:23.25rem;
     align-items: center;
+    font-family: var( --font);
+    color: var( --titulos);
 }
 .footer__title{
     width: 100%;
@@ -15,9 +17,10 @@
 }
 .footer__body__contact{
     display: flex;
-    gap: 0% 5%;
-    width: 17%;
+    gap: 0% 2%;
+    width: 20%;
     align-items: center;
+    font-size: 16px;
 
 }
 .footer__logo{
@@ -32,7 +35,7 @@
 
 }
 hr{
-    background-color: #D6006E;
+    background-color: var(--principal);
     width: 50%;
     height: 1px;
 }
