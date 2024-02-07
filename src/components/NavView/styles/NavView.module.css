@@ -1,0 +1,44 @@
+/*desktop styles */
+/* class for header tag*/
+.navContainer {
+  position: absolute;
+  display: block;
+  min-width: 100vw;
+  top: 0;
+  left: 0;
+}
+
+/* class for nav tag */
+.nav {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  gap: 2rem;
+  padding: 1rem 0 1rem 0;
+}
+
+/* class for Link (a) tag */
+.link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  color: var(--titulos);
+  font-size: medium;
+  font-weight: 600;
+  font-family: var(--font);
+}
+
+.link:hover {
+  color: var(--principal);
+  transition-duration: 300ms;
+}
+
+.active {
+  color: var(--principal);
+}
