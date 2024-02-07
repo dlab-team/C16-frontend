@@ -1,6 +1,6 @@
 .footer{
     display: flex;
-   background-image: url("../../../../../public/assets/img/Onda\ Rosada.svg");
+   background-image: url("../../../public/assets/img/Onda\ Rosada.svg");
     height:23.25rem;
     align-items: center;
     font-family: var( --font);
