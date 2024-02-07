@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
   align-self: center;
-  gap: 2rem;
+  gap: 1.5rem;
   padding: 1rem 0 1rem 0;
 }
 
@@ -41,4 +41,10 @@
 
 .active {
   color: var(--principal);
+}
+
+/* class for img tag */
+.profileImage {
+  object-fit: cover;
+  border-radius: 50%;
 }
