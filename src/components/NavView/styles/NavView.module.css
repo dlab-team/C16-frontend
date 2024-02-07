@@ -29,9 +29,10 @@
   justify-content: center;
   gap: 0.7rem;
   color: var(--titulos);
-  font-size: medium;
+  font-size: var(--h3);
   font-weight: 600;
   font-family: var(--font);
+  line-height: var(--lh-h3);
 }
 
 .link:hover {
