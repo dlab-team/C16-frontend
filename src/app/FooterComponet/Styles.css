@@ -1,0 +1,38 @@
+.footer{
+    display: flex;
+   background-image: url("../../../public/assets/img/Onda\ Rosada.svg");
+    height:23.25rem;
+    align-items: center;
+}
+.footer__title{
+    width: 100%;
+}
+.footer__body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0% 5%;
+}
+.footer__body__contact{
+    display: flex;
+    gap: 0% 5%;
+    width: 17%;
+    align-items: center;
+
+}
+.footer__logo{
+    display: flex;
+    justify-content: center;
+    gap: 0% 3%;
+}
+
+.footer__footer{
+    display: flex;
+    justify-content: center;
+
+}
+hr{
+    background-color: #D6006E;
+    width: 50%;
+    height: 1px;
+}
