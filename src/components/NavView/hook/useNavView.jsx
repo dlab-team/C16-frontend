@@ -5,19 +5,15 @@ const useNavView = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    //function to change the nav style based on the isMenuOpen state
-    const changeNavStyle = () => {
-      const navContainer = document.getElementById('navContainer');
-      if (isMenuOpen) {
-        navContainer.style.display = 'flex';
-      } else {
-        navContainer.style.display = 'none';
-      }
-    };
-
-    changeNavStyle();
-  }, [isMenuOpen]);
+  //function to change the nav style based on the isMenuOpen state
+  const changeNavStyle = () => {
+    const navContainer = document.getElementById('navContainer');
+    if (!isMenuOpen && window.innerWidth <= 768) {
+      navContainer.style.display = 'none';
+    } else {
+      navContainer.style.display = 'flex';
+    }
+  };
 
   useEffect(() => {
     /*function to reset the nav styles to default when the window is resized to a width greater than 768px. 
@@ -41,7 +37,8 @@ const useNavView = () => {
   }, []);
 
   const toggleMenu = () => {
-    setIsMenuOpen((prevState) => !prevState);
+    setIsMenuOpen(!isMenuOpen);
+    changeNavStyle();
   };
 
   return {
