@@ -9,11 +9,17 @@
 .footer__background{
     display: flex;
     align-items: center;
+    width: 100%;
+    position: absolute;
+    z-index: -1
+    ;
 }
 .footer__background svg{
     position: absolute;
     width: 100%;
     z-index: -1;
+
+
     
 }
 path{
@@ -28,7 +34,7 @@ path{
     justify-content: center;
     align-items: center;
     gap: 0% 5%;
-    margin-top: 3%;
+    margin-top: 4%;
 }
 .footer__body__contact{
     display: flex;
