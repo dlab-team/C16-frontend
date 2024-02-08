@@ -1,10 +1,24 @@
 .footer{
     display: flex;
-   background-image: url("../../../public/assets/img/Onda\ Rosada.svg");
+
     height:23.25rem;
     align-items: center;
     font-family: var( --font);
     color: var( --titulos);
+}
+.footer__background{
+    display: flex;
+    align-items: center;
+}
+.footer__background svg{
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    
+}
+path{
+    stroke: none; 
+    fill: var(--secundario);
 }
 .footer__title{
     width: 100%;
@@ -14,6 +28,7 @@
     justify-content: center;
     align-items: center;
     gap: 0% 5%;
+    margin-top: 3%;
 }
 .footer__body__contact{
     display: flex;
@@ -22,6 +37,17 @@
     align-items: center;
     font-size: 16px;
 
+}
+.footer__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
+.footer__text *{
+    height: 1%;
+    margin: 0%;
+    padding: 0%;
 }
 .footer__logo{
     display: flex;
@@ -32,10 +58,11 @@
 .footer__footer{
     display: flex;
     justify-content: center;
+    gap: 0% 2%;
 
 }
 hr{
     background-color: var(--principal);
-    width: 50%;
+    width: 80%;
     height: 1px;
 }
