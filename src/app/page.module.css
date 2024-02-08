@@ -1,0 +1,93 @@
+.main{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 5px;
+
+    font-family: var(--font);
+    box-sizing: border-box;
+}
+.section{
+    grid-column: 1/-1;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.085);
+    padding: 20px;
+    text-align: center;
+}
+.home_cards{
+    grid-column: 2/-2;
+
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap:5px;
+}
+.academia{
+    padding: 15px 23px;
+    background-color: var(--secundario);
+    border-radius: 30px;
+    grid-column: 1/5;
+}
+.foro{
+    padding: 15px 23px;
+    background-color: var(--secundario);
+    border-radius: 30px;
+    grid-column: 7/-1;
+}
+.cards_p{
+    text-align: center;
+    margin: 0;
+    font-size: clamp(0.4rem, 1.5vw, 1.3rem);
+}
+.link{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    text-decoration: none;
+}
+.arrow_btn{
+    
+    width: 30px;
+    height: 30px;
+    background-image: url("/assets/arrow-left.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+
+    border: inherit;
+}
+.text_link{
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: clamp(0.7rem, 1.7vw, 1.5rem);
+    color: black;
+}
+
+@media (min-width: 900px) {
+    .academia{
+        padding: 25px 40px;
+    }
+    .foro{
+        padding: 25px 40px;
+    }
+    .link{
+        margin-top: 27px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .main{
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    .academia{
+        padding: 30px 47px;
+    }
+    .foro{
+        padding: 30px 47px;
+    }
+    .link{
+        margin-top: 30px;
+    }
+}
