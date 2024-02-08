@@ -9,36 +9,36 @@ export const ROUTES_INFO = [
     id: 1,
     pathname: '/',
     title: 'Inicio',
-    icon: <HomeIcon />,
+    icon: <HomeIcon />, //ToDo: It has an icon?
   },
   {
     id: 2,
-    pathname: '/about',
+    pathname: '/quienessomos',
     title: 'Quienes Somos',
-    icon: <HomeIcon />,
+    icon: <HomeIcon />, //ToDo: It has an icon?
   },
   {
     id: 3,
-    pathname: '/program',
+    pathname: '/programa',
     title: 'Programa',
-    icon: <HomeIcon />,
+    icon: <HomeIcon />, //ToDo: It has an icon?
   },
   {
     id: 4,
-    pathname: '/academy',
+    pathname: '/academia',
     title: 'Academia',
-    icon: <HomeIcon />,
+    icon: <HomeIcon />, //ToDo: It has an icon?
   },
   {
     id: 5,
-    pathname: '/resources',
+    pathname: '/recursosdeapoyo',
     title: 'Recursos de apoyo',
-    icon: <HomeIcon />,
+    icon: <HomeIcon />, //ToDo: It has an icon?
   },
   {
     id: 6,
-    pathname: '/forum',
+    pathname: '/foro',
     title: 'Foro',
-    icon: <HomeIcon />,
+    icon: <HomeIcon />, //ToDo: It has an icon?
   },
 ];
