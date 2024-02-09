@@ -1,0 +1,145 @@
+/* mobile styles */
+
+/* class for header tag*/
+.navContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100%;
+  height: 4rem;
+  font-family: var(--font);
+  font-weight: 600;
+}
+
+/* class for logo img */
+.logo {
+  display: flex;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
+/* class for nav tag */
+.nav {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 99vh;
+  z-index: 10;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: var(--secundario);
+}
+
+/* class for Link (a) tag */
+.link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  color: var(--titulos);
+  font-size: var(--h2);
+  line-height: var(--lh-h2);
+}
+
+.link:hover {
+  color: var(--principal);
+  transition-duration: 300ms;
+}
+
+.active {
+  color: var(--principal);
+}
+
+/* class for img tag */
+.profileImage {
+  display: none;
+}
+
+/* class for div */
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+  margin-right: 1rem;
+}
+
+/* class for login button */
+.loginButton {
+  width: 7rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background-color: var(--principal);
+  border: none;
+  color: #fff;
+  font-size: var(--p);
+  line-height: var(--lh-p);
+}
+
+/* class for hamburger button */
+.menuButton {
+  display: flex;
+  width: 2.5rem;
+  height: 3;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  z-index: 20;
+}
+
+/*desktop styles */
+@media (width > 768px) {
+  /* class for header tag*/
+  .navContainer {
+    display: block;
+    height: 3rem;
+    padding: 0;
+  }
+  /* class for logo img */
+  .logo {
+    display: none;
+  }
+
+  /* class for nav tag */
+  .nav {
+    display: flex;
+    height: 2rem;
+    flex-direction: row;
+    align-self: center;
+    gap: 1.5rem;
+    padding: 1rem 0 1rem 0;
+    background-color: transparent;
+  }
+
+  /* class for Link (a) tag */
+  .link {
+    font-size: var(--h3);
+    line-height: var(--lh-h3);
+  }
+
+  /* class for img tag */
+  .profileImage {
+    display: flex;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  /* class for div */
+  .buttonsContainer {
+    display: none;
+  }
+}
