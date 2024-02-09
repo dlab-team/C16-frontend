@@ -6,12 +6,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="footer__background">
-      <svg width="1920" height="380" viewBox="0 0 1920 374" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M114.493 17.0361C20.9597 38.1908 0 59.1298 0 59.1298V366L1919.99 373.077L1920 77.3343C1920 77.3343 1592.06 128.076 1384.94 113.281C1085.95 91.924 998.471 87.4168 768.508 48.0292C590.795 17.5908 294.735 -23.7293 114.493 17.0361Z" fill="#FFC5E4"/>
-</svg>
 
-      </div>
 
       <div className="footer__title">
         <div className="footer__body">
@@ -54,7 +49,9 @@ const Footer = () => {
             <Image src={imagenes.youtube} />
           </a>
         </div>
-        <hr className="footer__line" />
+        <div className="footer__line"> 
+          <hr  /></div>
+       
         <div className="footer__footer">
           <div>
             <p> Sitio creado por el equipo de desarrollo</p>

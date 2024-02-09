@@ -1,31 +1,13 @@
 .footer{
     display: flex;
-
+background-image: url(../../../public/assets/img/background.png);
     height:23.25rem;
     align-items: center;
     font-family: var( --font);
     color: var( --titulos);
+  
 }
-.footer__background{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    position: absolute;
-    z-index: -1
-    ;
-}
-.footer__background svg{
-    position: absolute;
-    width: 100%;
-    z-index: -1;
 
-
-    
-}
-path{
-    stroke: none; 
-    fill: var(--secundario);
-}
 .footer__title{
     width: 100%;
 }
@@ -69,6 +51,6 @@ path{
 }
 hr{
     background-color: var(--principal);
-    width: 80%;
+    width: 65%;
     height: 1px;
 }
