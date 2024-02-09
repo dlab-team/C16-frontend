@@ -6,8 +6,6 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <div className="footer">
-
-
       <div className="footer__title">
         <div className="footer__body">
           <Image src={imagenes.logo} />
@@ -49,9 +47,10 @@ const Footer = () => {
             <Image src={imagenes.youtube} />
           </a>
         </div>
-        <div className="footer__line"> 
-          <hr  /></div>
-       
+        <div className="footer__line">
+          <hr />
+        </div>
+
         <div className="footer__footer">
           <div>
             <p> Sitio creado por el equipo de desarrollo</p>
