@@ -1,10 +1,22 @@
 import styles from "./page.module.css"
 import Link from "next/link";
+
 export default function Home() {
     return (
         <main className={styles.main}>
             <section className={styles.section}>Seccion 1 - Home</section>
-            <section className={styles.section}>Seccion 2 - Home</section>
+            
+            {/* Seccion Carrousel y Modal */}
+
+            <section className={styles.section}>
+                <div className={styles.card_modal}>
+                    <div className={styles.card_modal_text}>
+                        <h3 className={styles.card_title}>Dysgen retåse</h3>
+                        <p className={styles.card_text}>Lörem ipsum parasat ponerade, vabåligt järad. Kroling eus benöna. Terakadade postsocial, synösamma, ossa, agnostilog. Bingen äspevis.</p>
+                        <button id={styles.modal_button}> Quiero ser parte </button>
+                    </div>
+                </div>
+            </section>
 
             <section className={styles.home_cards}>
                 <div className={styles.academia}>

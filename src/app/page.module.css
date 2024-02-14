@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 5px;
-
     font-family: var(--font);
     box-sizing: border-box;
 }
@@ -15,7 +14,6 @@
 }
 .home_cards{
     grid-column: 2/-2;
-
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap:5px;
@@ -34,7 +32,7 @@
 }
 .cards_p{
     text-align: center;
-    margin: 0;
+    margin: 0px;
     font-size: clamp(0.4rem, 1.5vw, 1.3rem);
 }
 .link{
@@ -54,7 +52,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-color: transparent;
-
     border: inherit;
 }
 .text_link{
@@ -62,6 +59,56 @@
     text-transform: capitalize;
     font-size: clamp(0.7rem, 1.7vw, 1.5rem);
     color: black;
+}
+.card_modal{
+    text-align: center;
+    padding: 20px 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    height: 341px;
+    width: 887px;
+}
+.card_modal_text{
+    height: 301px;
+    width: 549px;
+}
+.card_text{
+    text-align: left;
+    height: 128px;
+    width: 549px;
+    font-weight: 400;
+    font-size: clamp(0.7rem, 1.7vw, 1.5rem);
+    color: black;
+}
+.card_title{
+    text-align: left;
+    height: 67px;
+    width: 549px;
+    font-weight: 600;
+    font-size: clamp(0.7rem, 1.7vw, 1.5rem);
+    color: black;
+}
+#modal_button{
+    height: 42px;
+    width: 549px;
+    font-weight: 500;
+    font-size: 20px;
+    color: black;
+    background-color: rgba(255, 255, 255, 1);
+    border-color: var(--secundario);
+    border-radius: 10px;
+    border-width: 2px;
+}
+#modal_button:hover {
+    height: 42px;
+    width: 549px;
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+    background-color: var(--principal);
+    border-color: var(--principal);
+    border-radius: 10px;
+    border-width: 2px;
 }
 
 @media (min-width: 900px) {
@@ -73,6 +120,13 @@
     }
     .link{
         margin-top: 27px;
+    }
+    .card_modal{
+        padding: 25px 40px;
+        margin: 0 auto;
+    }
+    .card_modal_text{
+        margin: 0 auto;
     }
 }
 
@@ -89,5 +143,12 @@
     }
     .link{
         margin-top: 30px;
+    }
+    .card_modal{
+        padding: 30px 47px;
+        margin: 0 auto;
+    }
+    .card_modal_text{
+        margin: 0 auto;
     }
 }
