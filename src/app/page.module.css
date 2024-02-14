@@ -1,41 +1,47 @@
-.main{
+.main {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 5px;
     font-family: var(--font);
     box-sizing: border-box;
 }
-.section{
+
+.section {
     grid-column: 1/-1;
     margin: 10px;
     background-color: rgba(0, 0, 0, 0.085);
     padding: 20px;
     text-align: center;
 }
-.home_cards{
+
+.home_cards {
     grid-column: 2/-2;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    gap:5px;
+    gap: 5px;
 }
-.academia{
+
+.academia {
     padding: 15px 23px;
     background-color: var(--secundario);
     border-radius: 30px;
     grid-column: 1/5;
 }
-.foro{
+
+.foro {
     padding: 15px 23px;
     background-color: var(--secundario);
     border-radius: 30px;
     grid-column: 7/-1;
 }
-.cards_p{
+
+.cards_p {
     text-align: center;
     margin: 0px;
     font-size: clamp(0.4rem, 1.5vw, 1.3rem);
 }
-.link{
+
+.link {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,8 +49,9 @@
     margin-top: 10px;
     text-decoration: none;
 }
-.arrow_btn{
-    
+
+.arrow_btn {
+
     width: 30px;
     height: 30px;
     background-image: url("/assets/arrow-left.svg");
@@ -54,13 +61,15 @@
     background-color: transparent;
     border: inherit;
 }
-.text_link{
+
+.text_link {
     font-weight: 600;
     text-transform: capitalize;
     font-size: clamp(0.7rem, 1.7vw, 1.5rem);
     color: black;
 }
-.card_modal{
+
+.card_modal {
     text-align: center;
     padding: 20px 50px;
     background-color: rgba(255, 255, 255, 0.8);
@@ -68,11 +77,13 @@
     height: 341px;
     width: 887px;
 }
-.card_modal_text{
+
+.card_modal_text {
     height: 301px;
     width: 549px;
 }
-.card_text{
+
+.card_text {
     text-align: left;
     height: 128px;
     width: 549px;
@@ -80,7 +91,8 @@
     font-size: clamp(0.7rem, 1.7vw, 1.5rem);
     color: black;
 }
-.card_title{
+
+.card_title {
     text-align: left;
     height: 67px;
     width: 549px;
@@ -88,7 +100,8 @@
     font-size: clamp(0.7rem, 1.7vw, 1.5rem);
     color: black;
 }
-#modal_button{
+
+#modal_button {
     height: 42px;
     width: 549px;
     font-weight: 500;
@@ -99,6 +112,7 @@
     border-radius: 10px;
     border-width: 2px;
 }
+
 #modal_button:hover {
     height: 42px;
     width: 549px;
@@ -111,79 +125,53 @@
     border-width: 2px;
 }
 
-.modal-wrapper {
-    width: 500px;
-    height: 600px;
-  }
-  
-  .modal {
-    background: white;
-    height:100%;
-    width:100%;
-    border-radius: 15px;
-    padding: 15px;
-  }
-  
-  .modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-body {
-    padding-top: 10px;
-  }
-  
-  .modal-header {
-    display: flex;
-    justify-content: flex-end;
-    font-size: 25px;
-  }
-
 @media (min-width: 900px) {
-    .academia{
+    .academia {
         padding: 25px 40px;
     }
-    .foro{
+
+    .foro {
         padding: 25px 40px;
     }
-    .link{
+
+    .link {
         margin-top: 27px;
     }
-    .card_modal{
+
+    .card_modal {
         padding: 25px 40px;
         margin: 0 auto;
     }
-    .card_modal_text{
+
+    .card_modal_text {
         margin: 0 auto;
     }
 }
 
 @media (min-width: 1280px) {
-    .main{
+    .main {
         max-width: 1280px;
         margin: 0 auto;
     }
-    .academia{
+
+    .academia {
         padding: 30px 47px;
     }
-    .foro{
+
+    .foro {
         padding: 30px 47px;
     }
-    .link{
+
+    .link {
         margin-top: 30px;
     }
-    .card_modal{
+
+    .card_modal {
         padding: 30px 47px;
         margin: 0 auto;
     }
-    .card_modal_text{
+
+    .card_modal_text {
         margin: 0 auto;
     }
 }
