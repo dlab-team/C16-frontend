@@ -14,7 +14,7 @@ export default function Home() {
     return (
         <main className={styles.main}>
             <section className={styles.section}>Seccion 1 - Home</section>
-            
+
             {/* Seccion Carrousel y Modal */}
 
             <section className={styles.section}>
@@ -24,7 +24,7 @@ export default function Home() {
                         <p className={styles.card_text}>Lörem ipsum parasat ponerade, vabåligt järad. Kroling eus benöna. Terakadade postsocial, synösamma, ossa, agnostilog. Bingen äspevis.</p>
                         <button onClick={() => setIsOpen(true)} id={styles.modal_button}> Quieres ser parte </button>
                         <Modal isOpen={isOpen} onClose={closeModal}>
-                            <h2>Contenido del Modal</h2>
+                            <h2>Modal Registro</h2>
                             <p>¡Este es el contenido del modal!</p>
                         </Modal>
                     </div>
