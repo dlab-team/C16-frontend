@@ -1,7 +1,16 @@
+"use client"
+
+import React, { useState } from 'react';
 import styles from "./page.module.css"
 import Link from "next/link";
+import Modal from '@/components/ModalRegistro/ModalRegistro';
 
 export default function Home() {
+
+    const [isOpen, setIsOpen] = useState(false);
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
+
     return (
         <main className={styles.main}>
             <section className={styles.section}>Seccion 1 - Home</section>
@@ -13,7 +22,11 @@ export default function Home() {
                     <div className={styles.card_modal_text}>
                         <h3 className={styles.card_title}>Dysgen retåse</h3>
                         <p className={styles.card_text}>Lörem ipsum parasat ponerade, vabåligt järad. Kroling eus benöna. Terakadade postsocial, synösamma, ossa, agnostilog. Bingen äspevis.</p>
-                        <button id={styles.modal_button}> Quiero ser parte </button>
+                        <button onClick={() => setIsOpen(true)} id={styles.modal_button}> Quieres ser parte </button>
+                        <Modal isOpen={isOpen} onClose={closeModal}>
+                            <h2>Contenido del Modal</h2>
+                            <p>¡Este es el contenido del modal!</p>
+                        </Modal>
                     </div>
                 </div>
             </section>
@@ -34,10 +47,7 @@ export default function Home() {
                         <button className={styles.arrow_btn}></button>
                     </Link>
                 </div>
-
             </section>
-
-
         </main>
     );
 }
