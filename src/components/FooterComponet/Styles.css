@@ -1,19 +1,25 @@
+    
 .footer {
   display: flex;
   background-image: url(../../../public/assets/img/back-phone.png);
-  height: 23.25rem;
+  height: 450px;
   align-items: center;
   font-family: var(--font);
   color: var(--titulos);
   flex-direction: column;
   align-content: center;
+  padding: 0%;
+  margin: 0%;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
 }
+
 .footer__title {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  gap: 2% 0%;
+  height: 90%;
 }
 
 .footer__body {
@@ -32,6 +38,7 @@
   height: 100%;
   margin: 1% 0%;
 }
+
 .footer__body__contact__icon {
   height: 48px;
   display: flex;
@@ -39,16 +46,19 @@
   justify-content: center;
   align-items: center;
 }
+
 .footer__text {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   flex-wrap: nowrap;
 }
+
 .footer__text * {
   margin: 0%;
   padding: 0%;
 }
+
 .footer__line {
   display: none;
 }
@@ -66,23 +76,30 @@
   justify-content: center;
   align-items: center;
 }
-
-
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 775px) {
   .footer {
     background-image: url(../../../public/assets/img/back-tabla.png);
   }
 }
 @media only screen and (min-width: 992px) {
+  .footer__title {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
   .footer {
     background-image: url(../../../public/assets/img/background.png);
     height: 23.25rem;
     align-items: center;
+    width: 100%;
   }
 
-  .footer__title {
-    width: 100%;
-    justify-content: space-evenly;
+  .footer__body {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0% 5%;
+    padding-top: 10%
+
   }
 
   .footer__body__contact {
@@ -91,14 +108,6 @@
     width: 22%;
     align-items: center;
     font-size: 16px;
-  }
-  .footer__body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0% 5%;
-    margin-top: 4%;
-    flex-direction: row;
   }
 
   .footer__text {
@@ -120,17 +129,20 @@
 
   .footer__footer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 0% 2%n;
+
+    align-items: center;
   }
+
   hr {
-    background-color: var(--principal);
+    background-color: #ffc5e4;
     width: 65%;
     height: 1px;
   }
-  .footer__line{
-    display: contents;
-    }
-
-
+  .footer__line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
