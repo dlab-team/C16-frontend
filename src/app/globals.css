@@ -31,3 +31,8 @@
   --lh-label: '22px';
   --lh-tiny: '20px';
 }
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
