@@ -3,8 +3,15 @@ import Link from "next/link";
 export default function Home() {
     return (
         <main className={styles.main}>
-            <section className={styles.section}>Seccion 1 - Home</section>
-            <section className={styles.section}>Seccion 2 - Home</section>
+            <div className={styles.section_switch} >
+                <section className={styles.section}>Seccion carrusel - Home</section>
+                <section className={styles.welcome_section}>
+                    <h1 className={styles.welcome_title}>Bienvenid@s</h1>
+                    <p className={styles.welcome_p}>
+                        Lörem ipsum ösegarade agnostistat, myviras om än mydat pängen. Aspludd trir. Ire astropod den lalig presaning: i vigisk. Exoktigt his senän.
+                    </p>
+                </section>
+            </div>
 
             <section className={styles.home_cards}>
                 <div className={styles.academia}>
