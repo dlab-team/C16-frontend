@@ -1,0 +1,21 @@
+/* .register__backgound{
+    background-image: url(../../../public/assets/img/backarriba.png);
+    background-repeat: no-repeat; */
+
+.register{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 30rem;
+
+
+}
+.register__inputgroup{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+}
