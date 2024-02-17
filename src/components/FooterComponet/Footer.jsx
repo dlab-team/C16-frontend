@@ -11,7 +11,9 @@ const Footer = () => {
           <Image src={imagenes.logo} />
 
           <div className="footer__body__contact">
-            <Image src={imagenes.map} />
+            <div className="footer__body__contact__icon">
+              <Image src={imagenes.map} />
+            </div>
 
             <div className="footer__text">
               <h5> Direccion</h5> <p>Bustamante 26, Providencia.</p>
@@ -19,14 +21,19 @@ const Footer = () => {
           </div>
 
           <div className="footer__body__contact">
-            <Image src={imagenes.enviar} />
+            <div className="footer__body__contact__icon">
+              <Image src={imagenes.enviar} />
+            </div>
+
             <div className="footer__text">
               <h5>Email</h5> <p>hola@rondachile.cl</p>
             </div>
           </div>
 
           <div className="footer__body__contact">
-            <Image src={imagenes.phone} />
+            <div className="footer__body__contact__icon">
+              <Image src={imagenes.phone} />
+            </div>
 
             <div className="footer__text">
               <h5> Teléfono</h5> <p> +56 9 3261 7984</p>
@@ -55,12 +62,14 @@ const Footer = () => {
           <div>
             <p> Sitio creado por el equipo de desarrollo</p>
           </div>
-          <a href="">
-            <Image src={imagenes.dllogo} />
-          </a>
 
-          <div>
-            <p>2024</p>
+          <div className="footer__footer__logo">
+            <a href="">
+              <Image src={imagenes.dllogo} />
+            </a>
+            <div>
+              <p>2024</p>
+            </div>
           </div>
         </div>
       </div>
