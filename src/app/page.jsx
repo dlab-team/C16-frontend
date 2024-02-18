@@ -22,7 +22,7 @@ export default function Home() {
                     <div className={styles.card_modal_text}>
                         <h3 className={styles.card_title}>Dysgen retåse</h3>
                         <p className={styles.card_text}>Lörem ipsum parasat ponerade, vabåligt järad. Kroling eus benöna. Terakadade postsocial, synösamma, ossa, agnostilog. Bingen äspevis.</p>
-                        <button onClick={() => setIsOpen(true)} id={styles.modal_button}> Quieres ser parte </button>
+                        <button onClick={() => setIsOpen(true)} id={styles.modal_button}> Quiero ser parte </button>
                         <Modal isOpen={isOpen} onClose={closeModal}>
                             <h2>Modal Registro</h2>
                             <p>¡Este es el contenido del modal!</p>

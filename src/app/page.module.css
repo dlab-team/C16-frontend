@@ -74,13 +74,13 @@
     padding: 20px 50px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 30px;
-    height: 341px;
-    width: 887px;
+    height: 85%;
+    width: 73%;
 }
 
 .card_modal_text {
     height: 301px;
-    width: 549px;
+    width: 62%;
 }
 
 .card_text {
@@ -103,26 +103,26 @@
 
 #modal_button {
     height: 42px;
-    width: 549px;
-    font-weight: 500;
-    font-size: 20px;
+    width: 323px;
+    font-weight: 600;
+    font-size: 16px;
     color: black;
     background-color: rgba(255, 255, 255, 1);
-    border-color: var(--secundario);
     border-radius: 10px;
-    border-width: 2px;
+    border: 2px solid var(--principal);
+    cursor: pointer;
 }
 
 #modal_button:hover {
     height: 42px;
-    width: 549px;
-    font-weight: 500;
-    font-size: 20px;
+    width: 323px;
+    font-weight: 600;
+    font-size: 16px;
     color: white;
     background-color: var(--principal);
-    border-color: var(--principal);
+    border: 2px solid var(--principal);
     border-radius: 10px;
-    border-width: 2px;
+    cursor: pointer;
 }
 
 @media (min-width: 900px) {
