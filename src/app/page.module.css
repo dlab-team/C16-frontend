@@ -2,23 +2,175 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 5px;
+
     font-family: var(--font);
     box-sizing: border-box;
 }
 
 .section {
-    grid-column: 1/-1;
     margin: 10px;
     background-color: rgba(0, 0, 0, 0.085);
     padding: 20px;
     text-align: center;
 }
 
+.section_switch {
+    grid-column: 1/-1;
+
+}
+
+.welcome_title {
+    text-align: center;
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.welcome_p {
+    text-align: center;
+    font-size: 18px;
+}
+
+.section_card_modal {
+    margin: 5px;
+    background-color: rgba(0, 0, 0, 0.085);
+    padding: 20px;
+    text-align: center;
+    aspect-ratio: 16/9;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.card_modal {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    width: 73%;
+}
+
+.card_modal_text {
+    width: 62%;
+    gap: 30px;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card_title {
+    text-align: left;
+    width: 100%;
+    font-weight: 600;
+    font-size: clamp(0.7rem, 1.7vw, 1.5rem);
+    color: black;
+}
+
+.card_text {
+    text-align: left;
+    width: 100%;
+    font-weight: 400;
+    font-size: clamp(0.7rem, 1.7vw, 1.5rem);
+    color: black;
+}
+
+#modal_button {
+    height: 42px;
+    width: 61%;
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: clamp(0.7rem, 1.7vw, 1.0rem);
+    color: black;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    border: 2px solid var(--principal);
+    cursor: pointer;
+}
+
+#modal_button:hover {
+    height: 42px;
+    width: 61%;
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: clamp(0.7rem, 1.7vw, 1.0rem);
+    color: white;
+    background-color: var(--principal);
+    border: 2px solid var(--principal);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media (min-width: 601px) {
+    .section_switch {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .welcome_section {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 5px;
+
+        margin-top: 50px;
+
+    }
+
+    .welcome_title {
+        grid-column: 2/-2;
+
+        text-align: left;
+        font-weight: 400;
+        font-size: clamp(35px, 4vw, 64px);
+        color: var(--principal);
+    }
+
+    .welcome_p {
+        grid-column: 2/-2;
+
+        font-size: clamp(11.5px, 2vw, 26px);
+        font-weight: 400;
+        text-align: left;
+    }
+
+    .section_card_modal {
+        display: grid;
+        gap: 5px;
+        margin-top: 50px;
+        text-align: center;
+        aspect-ratio: 16/9;
+        width: 100%;
+        display: grid;
+        place-items: center;
+    }
+
+    .card_modal_text {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+
+    #modal_button {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1290px) {
+    .welcome_section {
+        margin-top: 90px;
+    }
+}
+
+
+
+/* ------------------------- Home card Section start */
+
 .home_cards {
     grid-column: 2/-2;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 5px;
+    padding: 50px 0px;
 }
 
 .academia {
@@ -69,76 +221,18 @@
     color: black;
 }
 
-.card_modal {
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 30px;
-    height: 86%;
-    width: 73%;
-    gap: 50px;
-}
 
-.card_modal_text {
-    height: 70%;
-    width: 62%;
-    gap: 30px;
-    padding: 1%;
-}
-
-.card_text {
-    text-align: left;
-    height: 55%;
-    width: 100%;
-    font-weight: 400;
-    font-size: clamp(0.7rem, 1.7vw, 1.5rem);
-    color: black;
-}
-
-.card_title {
-    text-align: left;
-    width: 100%;
-    font-weight: 600;
-    font-size: clamp(0.7rem, 1.7vw, 1.5rem);
-    color: black;
-    margin-bottom: 0 auto;
-}
-
-.card_button{
-    padding: 20px;
-    width: 60%;
-    gap: 30px; 
-}
-
-#modal_button {
-    height: 42px;
-    width: 61%;
-    font-family: 'Montserrat';
-    font-weight: 600;
-    font-size: 16px;
-    color: black;
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: 10px;
-    border: 2px solid var(--principal);
-    cursor: pointer;
-    margin-bottom: 0 auto;
-}
-
-#modal_button:hover {
-    height: 42px;
-    width: 61%;
-    font-family: 'Montserrat';
-    font-weight: 600;
-    font-size: 16px;
-    color: white;
-    background-color: var(--principal);
-    border: 2px solid var(--principal);
-    border-radius: 10px;
-    cursor: pointer;
-    margin-bottom: 0 auto;
-}
 
 @media (min-width: 900px) {
+    .home_cards {
+        grid-column: 2/-2;
+
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 5px;
+        padding: 70px 0px;
+    }
+
     .academia {
         padding: 25px 40px;
     }
@@ -152,15 +246,16 @@
     }
 
     .card_modal {
-        padding: 25px 40px;
-        margin: 0 auto;
+        padding: 50px 20px;
     }
 
     .card_modal_text {
+        padding: 5px 5px;
         margin: 0 auto;
     }
 
-    .card_button {
+    #modal_button {
+        padding: 5px 5px;
         margin: 0 auto;
     }
 }
@@ -184,14 +279,128 @@
     }
 
     .card_modal {
-        padding: 30px 47px;
-        margin: 0 auto;
+        padding: 50px 20px;
     }
 
     .card_modal_text {
+        padding: 5px 5px;
         margin: 0 auto;
     }
-    .card_button {
+
+    #modal_button {
+        padding: 5px 5px;
         margin: 0 auto;
     }
 }
+
+@media (max-width: 600px) {
+    .academia {
+        display: flex;
+        flex-direction: column-reverse;
+        color: var(--principal);
+        border: 2px solid var(--principal);
+        padding: 10px 17px;
+    }
+
+    .foro {
+        display: flex;
+        flex-direction: column-reverse;
+        color: var(--principal);
+        background-color: transparent;
+        border: 2px solid var(--secundario);
+        padding: 10px 17px;
+    }
+
+    .arrow_btn {
+        width: 20px;
+        height: 20px;
+        background-image: url("/assets/homeSVG/angle-right.svg");
+    }
+
+    .text_link {
+        color: var(--principal);
+    }
+
+    .section_card_modal {
+        flex-direction: column-reverse;
+        padding: 20px 0px;
+    }
+
+    .card_modal {
+        padding: 20px 25px;
+    }
+
+    .card_modal_text {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+
+    #modal_button {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .main {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+
+        font-family: var(--font);
+        padding: 30px;
+    }
+
+    .home_cards {
+        grid-column: 1/-1;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .academia {
+        padding: 30px 37px;
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+
+    .foro {
+        padding: 30px 37px;
+        border-radius: 30px;
+    }
+
+    .arrow_btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .link {
+        margin: 0 0 10px 0;
+    }
+
+    .text_link {
+        font-size: 23px;
+    }
+
+    .cards_p {
+        text-align: left;
+        font-size: 16px;
+    }
+
+    .card_modal {
+        padding: 20px 25px;
+    }
+
+    .card_modal_text {
+        width: 100%;
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+
+    #modal_button {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+}
+
+/* ------------------------- Home card Section End */

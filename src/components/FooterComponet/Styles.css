@@ -1,53 +1,155 @@
-.footer {
-  display: flex;
-  background-image: url(../../../public/assets/img/background.png);
-  height: 23.25rem;
-  align-items: center;
-  font-family: var(--font);
-  color: var(--titulos);
-}
+    .footer {
+      display: flex;
+      background-image: url(../../../public/assets/img/back-phone.png);
+      height: 450px;
+      align-items: center;
+      font-family: var(--font);
+      color: var(--titulos);
+      flex-direction: column;
+      align-content: center;
+      padding: 0%;
+      margin: 0%;
+      background-repeat: no-repeat;
+      background-position: top;
+      background-size: cover;
+    }
 
-.footer__title {
-  width: 100%;
-}
-.footer__body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0% 5%;
-  margin-top: 4%;
-}
-.footer__body__contact {
-  display: flex;
-  gap: 0% 2%;
-  width: 20%;
-  align-items: center;
-  font-size: 16px;
-}
-.footer__text {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  flex-wrap: nowrap;
-}
-.footer__text * {
-  height: 1%;
-  margin: 0%;
-  padding: 0%;
-}
-.footer__logo {
-  display: flex;
-  justify-content: center;
-  gap: 0% 3%;
-}
+    .footer__title {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 90%;
+    }
 
-.footer__footer {
-  display: flex;
-  justify-content: center;
-  gap: 0% 2%n;
-}
-hr {
-  background-color: var(--principal);
-  width: 65%;
-  height: 1px;
-}
+    .footer__body {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-content: center;
+      align-items: center;
+    }
+
+    .footer__body__contact {
+      display: flex;
+      gap: 0% 2%;
+      width: 100%;
+      align-items: center;
+      font-size: 16px;
+      height: 100%;
+      margin: 1% 0%;
+    }
+
+    .footer__body__contact__icon {
+      height: 48px;
+      display: flex;
+      width: 48px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      flex-wrap: nowrap;
+    }
+
+    .footer__text * {
+      margin: 0%;
+      padding: 0%;
+    }
+
+    .footer__line {
+      display: none;
+    }
+
+    .footer__logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0% 5%;
+    }
+
+    .footer__footer * {
+      margin: 0%;
+    }
+
+    .footer__footer__logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media only screen and (min-width: 775px) {
+      .footer {
+        background-image: url(../../../public/assets/img/back-tabla.png);
+      }
+    }
+
+    @media only screen and (min-width: 992px) {
+      .footer__title {
+        width: 100%;
+        justify-content: space-evenly;
+      }
+
+      .footer {
+        background-image: url(../../../public/assets/img/background.png);
+        height: 23.25rem;
+        align-items: center;
+        width: 100%;
+      }
+
+      .footer__body {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0% 5%;
+        padding-top: 10%
+      }
+
+      .footer__body__contact {
+        display: flex;
+        gap: 0% 2%;
+        width: 22%;
+        align-items: center;
+        font-size: 16px;
+      }
+
+      .footer__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        flex-wrap: nowrap;
+      }
+
+      .footer__text * {
+        height: 1%;
+        margin: 0%;
+        padding: 0%;
+      }
+
+      .footer__logo {
+        display: flex;
+        justify-content: center;
+        gap: 0% 3%;
+      }
+
+      .footer__footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        align-items: center;
+      }
+
+      hr {
+        background-color: #ffc5e4;
+        width: 65%;
+        height: 1px;
+      }
+
+      .footer__line {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
