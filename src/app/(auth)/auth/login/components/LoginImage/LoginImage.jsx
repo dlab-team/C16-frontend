@@ -1,12 +1,13 @@
 import Image from 'next/image';
+import styles from '../../styles/LoginImage.module.css';
 
 function LoginImage() {
   return (
-    <article>
+    <article className={styles.img}>
       <Image
         src="/assets/img/login-image.webp"
-        width={400}
-        height={375}
+        width={510}
+        height={510}
         alt="pintura de corazón"
         loading="lazy"
       />
