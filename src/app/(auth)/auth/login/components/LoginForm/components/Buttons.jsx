@@ -5,6 +5,9 @@ import { GoogleIcon } from '../icons';
 function Buttons() {
   return (
     <>
+      <div className={styles.hrContainer}>
+        <hr className={styles.hr} />
+      </div>
       <input
         type="button"
         value="Ingresar"
@@ -18,6 +21,12 @@ function Buttons() {
       <Link href="#" className={styles.forgotMyPassword}>
         Olvidé mi contraseña
       </Link>
+      <p className={styles.p}>
+        ¿No tienes cuenta?{' '}
+        <Link href="#" className={styles.link}>
+          Regístrate
+        </Link>
+      </p>
     </>
   );
 }
