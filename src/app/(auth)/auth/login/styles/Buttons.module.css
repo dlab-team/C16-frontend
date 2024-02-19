@@ -1,4 +1,8 @@
 /* mobile styles */
+.hrContainer {
+  display: none;
+}
+
 .loginButton {
   width: 100%;
   height: 2.5rem;
@@ -41,6 +45,10 @@
   margin-top: 3rem;
 }
 
+.p {
+  display: none;
+}
+
 /* tablet styles */
 @media (width >= 768px) {
   .loginButton {
@@ -49,5 +57,55 @@
 
   .socialNetworkButton {
     width: 60%;
+  }
+}
+
+/* desktop styles */
+@media (width > 920px) {
+  .hrContainer {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+  }
+
+  .hr {
+    width: 50%;
+    margin: 0.9rem 0 0.9rem 0;
+    background-color: var(--principal);
+    border: 0.002rem solid var(--principal);
+  }
+
+  .loginButton {
+    align-self: flex-start;
+    height: 3rem;
+    margin-top: 0.5rem;
+  }
+
+  .socialNetworkButton {
+    height: 3rem;
+    margin-top: 1.5rem;
+  }
+
+  .forgotMyPassword {
+    width: 60%;
+    align-self: flex-start;
+    text-align: center;
+    margin-top: 0.9rem;
+  }
+
+  .p {
+    display: block;
+    font-size: var(--p);
+    font-weight: 500;
+    color: #787575;
+    margin-top: 1rem;
+  }
+
+  .link {
+    font-weight: 600;
+    color: var(--principal);
+    text-decoration: none;
   }
 }
