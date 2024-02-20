@@ -37,6 +37,14 @@
   cursor: pointer;
 }
 
+.googleIconForMobile {
+  display: flex;
+}
+
+.googleIconForDesktop {
+  display: none;
+}
+
 .forgotMyPassword {
   font-size: var(--label);
   font-weight: 500;
@@ -65,13 +73,15 @@
   .hrContainer {
     width: 60%;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     align-self: flex-start;
+    color: var(--principal);
   }
 
   .hr {
-    width: 50%;
+    width: 41%;
     margin: 0.9rem 0 0.9rem 0;
     background-color: var(--principal);
     border: 0.002rem solid var(--principal);
@@ -86,21 +96,33 @@
   .socialNetworkButton {
     height: 3rem;
     margin-top: 1.5rem;
+    font-size: var(--label);
+    font-weight: 700;
+    color: var(--principal);
+  }
+
+  .googleIconForMobile {
+    display: none;
+  }
+
+  .googleIconForDesktop {
+    display: flex;
   }
 
   .forgotMyPassword {
     width: 60%;
     align-self: flex-start;
-    text-align: center;
     margin-top: 0.9rem;
   }
 
   .p {
+    width: 60%;
     display: block;
     font-size: var(--p);
     font-weight: 500;
     color: #787575;
     margin-top: 1rem;
+    text-align: center;
   }
 
   .link {
