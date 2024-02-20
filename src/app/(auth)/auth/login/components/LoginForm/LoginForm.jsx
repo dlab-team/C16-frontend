@@ -21,7 +21,7 @@ function LoginForm() {
         cuidadores
       </p>
       <label htmlFor="email" className={styles.inputWrapper}>
-        Ingresa tu correo
+        Correo electrónico
         <div className={styles.wrapper}>
           <input
             id="email"
