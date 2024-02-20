@@ -1,37 +1,113 @@
-.main{
+.main {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 5px;
-    
+
     font-family: var(--font);
     box-sizing: border-box;
 }
-.section{
+
+.section {
     margin: 10px;
     background-color: rgba(0, 0, 0, 0.085);
     padding: 20px;
     text-align: center;
 }
-.section_switch{
+
+.section_switch {
     grid-column: 1/-1;
-    
+
 }
-.welcome_title{
+
+.welcome_title {
     text-align: center;
     font-size: 23px;
     font-weight: 600;
     margin-bottom: 14px;
 }
-.welcome_p{
+
+.welcome_p {
     text-align: center;
     font-size: 18px;
 }
+
+.section_card_modal {
+    margin: 5px;
+    background-color: rgba(0, 0, 0, 0.085);
+    padding: 20px;
+    text-align: center;
+    aspect-ratio: 16/9;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.card_modal {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    width: 73%;
+}
+
+.card_modal_text {
+    width: 62%;
+    gap: 30px;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card_title {
+    text-align: left;
+    width: 100%;
+    font-weight: 600;
+    font-size: clamp(0.7rem, 1.7vw, 1.5rem);
+    color: black;
+}
+
+.card_text {
+    text-align: left;
+    width: 100%;
+    font-weight: 400;
+    font-size: clamp(0.7rem, 1.7vw, 1.5rem);
+    color: black;
+}
+
+#modal_button {
+    height: 42px;
+    width: 61%;
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: clamp(0.7rem, 1.7vw, 1.0rem);
+    color: black;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    border: 2px solid var(--principal);
+    cursor: pointer;
+}
+
+#modal_button:hover {
+    height: 42px;
+    width: 61%;
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: clamp(0.7rem, 1.7vw, 1.0rem);
+    color: white;
+    background-color: var(--principal);
+    border: 2px solid var(--principal);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 @media (min-width: 601px) {
-    .section_switch{
-        display: flex ;
+    .section_switch {
+        display: flex;
         flex-direction: column-reverse;
     }
-    .welcome_section{
+
+    .welcome_section {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         gap: 5px;
@@ -39,24 +115,48 @@
         margin-top: 50px;
 
     }
-    .welcome_title{
+
+    .welcome_title {
         grid-column: 2/-2;
-        
+
         text-align: left;
         font-weight: 400;
         font-size: clamp(35px, 4vw, 64px);
         color: var(--principal);
     }
-    .welcome_p{
+
+    .welcome_p {
         grid-column: 2/-2;
-        
+
         font-size: clamp(11.5px, 2vw, 26px);
         font-weight: 400;
         text-align: left;
     }
+
+    .section_card_modal {
+        display: grid;
+        gap: 5px;
+        margin-top: 50px;
+        text-align: center;
+        aspect-ratio: 16/9;
+        width: 100%;
+        display: grid;
+        place-items: center;
+    }
+
+    .card_modal_text {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+
+    #modal_button {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
 }
+
 @media (min-width: 1290px) {
-    .welcome_section{
+    .welcome_section {
         margin-top: 90px;
     }
 }
@@ -64,32 +164,36 @@
 
 
 /* ------------------------- Home card Section start */
-.home_cards{
-    grid-column: 2/-2;
 
+.home_cards {
+    grid-column: 2/-2;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    gap:5px;
+    gap: 5px;
     padding: 50px 0px;
 }
-.academia{
+
+.academia {
     padding: 15px 23px;
     background-color: var(--secundario);
     border-radius: 30px;
     grid-column: 1/5;
 }
-.foro{
+
+.foro {
     padding: 15px 23px;
     background-color: var(--secundario);
     border-radius: 30px;
     grid-column: 7/-1;
 }
-.cards_p{
+
+.cards_p {
     text-align: center;
-    margin: 0;
+    margin: 0px;
     font-size: clamp(0.4rem, 1.5vw, 1.3rem);
 }
-.link{
+
+.link {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -97,8 +201,9 @@
     margin-top: 10px;
     text-decoration: none;
 }
-.arrow_btn{
-    
+
+.arrow_btn {
+
     width: 30px;
     height: 30px;
     background-image: url("/assets/arrow-left.svg");
@@ -106,61 +211,98 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-color: transparent;
-
     border: inherit;
 }
-.text_link{
+
+.text_link {
     font-weight: 600;
     text-transform: capitalize;
     font-size: clamp(0.7rem, 1.7vw, 1.5rem);
     color: black;
 }
 
+
+
 @media (min-width: 900px) {
-    .home_cards{
+    .home_cards {
         grid-column: 2/-2;
-    
+
         display: grid;
         grid-template-columns: repeat(10, 1fr);
-        gap:5px;
+        gap: 5px;
         padding: 70px 0px;
     }
-    .academia{
+
+    .academia {
         padding: 25px 40px;
     }
-    .foro{
+
+    .foro {
         padding: 25px 40px;
     }
-    .link{
+
+    .link {
         margin-top: 27px;
+    }
+
+    .card_modal {
+        padding: 50px 20px;
+    }
+
+    .card_modal_text {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+
+    #modal_button {
+        padding: 5px 5px;
+        margin: 0 auto;
     }
 }
 
 @media (min-width: 1280px) {
-    .main{
+    .main {
         max-width: 1280px;
         margin: 0 auto;
     }
-    .academia{
+
+    .academia {
         padding: 30px 47px;
     }
-    .foro{
+
+    .foro {
         padding: 30px 47px;
     }
-    .link{
+
+    .link {
         margin-top: 30px;
+    }
+
+    .card_modal {
+        padding: 50px 20px;
+    }
+
+    .card_modal_text {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+
+    #modal_button {
+        padding: 5px 5px;
+        margin: 0 auto;
     }
 }
 
 @media (max-width: 600px) {
-    .academia{
+    .academia {
         display: flex;
         flex-direction: column-reverse;
         color: var(--principal);
         border: 2px solid var(--principal);
         padding: 10px 17px;
     }
-    .foro{
+
+    .foro {
         display: flex;
         flex-direction: column-reverse;
         color: var(--principal);
@@ -168,53 +310,97 @@
         border: 2px solid var(--secundario);
         padding: 10px 17px;
     }
-    .arrow_btn{
+
+    .arrow_btn {
         width: 20px;
         height: 20px;
         background-image: url("/assets/homeSVG/angle-right.svg");
     }
-    .text_link{
+
+    .text_link {
         color: var(--principal);
     }
+
+    .section_card_modal {
+        flex-direction: column-reverse;
+        padding: 20px 0px;
+    }
+
+    .card_modal {
+        padding: 20px 25px;
+    }
+
+    .card_modal_text {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+
+    #modal_button {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
 }
+
 @media (max-width: 500px) {
-    .main{
+    .main {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 5px;
-        
+
         font-family: var(--font);
         padding: 30px;
     }
-    .home_cards{
+
+    .home_cards {
         grid-column: 1/-1;
-        
+
         display: flex;
         flex-direction: column;
     }
-    .academia{
+
+    .academia {
         padding: 30px 37px;
         border-radius: 30px;
         margin-bottom: 30px;
     }
-    .foro{
+
+    .foro {
         padding: 30px 37px;
         border-radius: 30px;
     }
-    .arrow_btn{
+
+    .arrow_btn {
         width: 30px;
         height: 30px;
     }
-    .link{
+
+    .link {
         margin: 0 0 10px 0;
     }
-    .text_link{
+
+    .text_link {
         font-size: 23px;
     }
-    .cards_p{
+
+    .cards_p {
         text-align: left;
         font-size: 16px;
     }
-}
-/* ------------------------- Home card Section End */
 
+    .card_modal {
+        padding: 20px 25px;
+    }
+
+    .card_modal_text {
+        width: 100%;
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+
+    #modal_button {
+        padding: 5px 5px;
+        margin: 0 auto;
+    }
+}
+
+/* ------------------------- Home card Section End */
