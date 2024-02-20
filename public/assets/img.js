@@ -7,8 +7,7 @@ import X from '../assets/img/Twiiter.svg'
 import youtube from './img/Youtube.svg'
 import map from './img/map.svg'
 import dllogo from './img/dllogo.svg'
-import backlogin from './img/backarriba'
-import flecha from './img/arrow.png'
+
 
 export default {
     'logo': logo,
@@ -20,7 +19,4 @@ export default {
     'youtube':youtube,
     'map': map,
     'dllogo' : dllogo,
-    'backlogin': backlogin,
-    'flecha': flecha,
-
 }
