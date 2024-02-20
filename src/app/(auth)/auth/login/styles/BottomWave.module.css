@@ -24,3 +24,10 @@
   color: var(--principal);
   text-decoration: none;
 }
+
+/* desktop styles */
+@media (width > 920px) {
+  .bottomWaveContainer {
+    display: none;
+  }
+}
