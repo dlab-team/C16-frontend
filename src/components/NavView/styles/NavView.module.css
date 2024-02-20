@@ -46,8 +46,8 @@
   justify-content: center;
   gap: 0.7rem;
   color: var(--titulos);
-  font-size: var(--h2);
-  line-height: var(--lh-h2);
+  font-size: var(--h5);
+  line-height: var(--lh-h5);
 }
 
 .link:hover {
@@ -108,6 +108,7 @@
     display: block;
     height: 3rem;
     padding: 0;
+    margin-top: 0.5rem;
   }
   /* class for logo img */
   .logo {
@@ -123,12 +124,6 @@
     gap: 1.5rem;
     padding: 1rem 0 1rem 0;
     background-color: transparent;
-  }
-
-  /* class for Link (a) tag */
-  .link {
-    font-size: var(--h3);
-    line-height: var(--lh-h3);
   }
 
   /* class for img tag */
