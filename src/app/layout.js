@@ -13,10 +13,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body>
-        {/* <NavView />
+        <NavView />
         <>{children}</>
-        <Footer></Footer> */}
-        <LoginForm/>
+        <Footer></Footer> 
       </body>
     </html>
   );
