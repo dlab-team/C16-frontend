@@ -1,5 +1,6 @@
-import './globals.css';
-import { NavView, Footer } from '@/components';
+import { Footer, NavView } from '@/components';
+
+import '../globals.css';
 
 export const metadata = {
   title: "Create Next App",
