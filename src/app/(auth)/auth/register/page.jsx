@@ -1,7 +1,7 @@
 import RegistroComponent from '@/components/RegistroFormComponet/RegistroComponent';
+import "./Styles.css";
 
-
-function login() {
+function register() {
   return (
     <div>
        <RegistroComponent/>
@@ -10,4 +10,4 @@ function login() {
   );
 }
 
-export default login;
+export default register;
