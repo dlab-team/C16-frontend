@@ -8,6 +8,7 @@ import youtube from './img/Youtube.svg'
 import map from './img/map.svg'
 import dllogo from './img/dllogo.svg'
 
+
 export default {
     'logo': logo,
     'facebook' : facebook,
@@ -17,5 +18,5 @@ export default {
     'X': X,
     'youtube':youtube,
     'map': map,
-    'dllogo' : dllogo
+    'dllogo' : dllogo,
 }
