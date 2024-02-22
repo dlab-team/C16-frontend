@@ -1,5 +1,4 @@
 /* mobile styles */
-
 .container {
   width: 100%;
   height: 100dvh;
@@ -15,8 +14,30 @@
 }
 
 .title {
-  font-size: var(--h3);
+  font-size: var(--h5);
   font-weight: 600;
+  line-height: var(--lh-h5);
   color: var(--principal);
   margin-bottom: 4.3rem;
+}
+
+/* desktop styles */
+@media (width > 920px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4.5rem;
+  }
+
+  .wrapper {
+    width: 50%;
+    align-items: flex-start;
+  }
+
+  .title {
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
 }
