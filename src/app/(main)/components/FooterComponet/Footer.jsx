@@ -1,18 +1,18 @@
+import Image from "next/image";
+
 // import React from "react";
 import "./Styles.css";
-import imagenes from "../../../public/assets/img";
-import Image from "next/image";
 
 const Footer = () => {
   return (
     <div className="footer">
       <div className="footer__title">
         <div className="footer__body">
-          <Image src={imagenes.logo} />
+          <Image src={"/assets/img/logo.svg"} width={100} height={100} alt="logo"/>
 
           <div className="footer__body__contact">
             <div className="footer__body__contact__icon">
-              <Image src={imagenes.map} />
+              <Image src={'/assets/img/map.svg'} width={100} height={100} alt="logo"/>
             </div>
 
             <div className="footer__text">
@@ -22,7 +22,7 @@ const Footer = () => {
 
           <div className="footer__body__contact">
             <div className="footer__body__contact__icon">
-              <Image src={imagenes.enviar} />
+              <Image src={"/assets/img/Enviar.svg"} width={100} height={100} alt="logo"/>
             </div>
 
             <div className="footer__text">
@@ -32,7 +32,7 @@ const Footer = () => {
 
           <div className="footer__body__contact">
             <div className="footer__body__contact__icon">
-              <Image src={imagenes.phone} />
+              <Image src={"/assets/img/Telefono.svg"} width={100} height={100} alt="logo"/>
             </div>
 
             <div className="footer__text">
@@ -42,16 +42,16 @@ const Footer = () => {
         </div>
         <div className="footer__logo">
           <a href="">
-            <Image src={imagenes.facebook} />
+            <Image src={"/assets/img/Facebook.svg"} width={100} height={100} alt="logo"/>
           </a>
           <a href="">
-            <Image src={imagenes.instagram} />
+            <Image src={'/assets/img/Instagram.svg'} width={100} height={100} alt="logo"/>
           </a>
           <a href="">
-            <Image src={imagenes.X} />
+            <Image src={"/assets/img/Twiiter.svg"} width={100} height={100} alt="logo"/>
           </a>
           <a href="">
-            <Image src={imagenes.youtube} />
+            <Image src={"/assets/img/Youtube.svg"} width={100} height={100} alt="logo"/>
           </a>
         </div>
         <div className="footer__line">
@@ -65,7 +65,7 @@ const Footer = () => {
 
           <div className="footer__footer__logo">
             <a href="">
-              <Image src={imagenes.dllogo} />
+              <Image src={"/assets/img/dllogo.svg"} width={100} height={100} alt="logo"/>
             </a>
             <div>
               <p>2024</p>

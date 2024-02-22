@@ -1,6 +1,6 @@
     .footer {
       display: flex;
-      background-image: url(../../../public/assets/img/back-phone.png);
+      background-image: url(/assets/img/back-phone.png);
       height: 450px;
       align-items: center;
       font-family: var(--font);
@@ -82,7 +82,7 @@
 
     @media only screen and (min-width: 775px) {
       .footer {
-        background-image: url(../../../public/assets/img/back-tabla.png);
+        background-image: url("/assets/img/back-tabla.png");
       }
     }
 
@@ -93,7 +93,7 @@
       }
 
       .footer {
-        background-image: url(../../../public/assets/img/background.png);
+        background-image: url(/assets/img/background.png);
         height: 23.25rem;
         align-items: center;
         width: 100%;
