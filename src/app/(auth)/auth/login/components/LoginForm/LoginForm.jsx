@@ -16,8 +16,12 @@ function LoginForm() {
 
   return (
     <form className={styles.inputsContainer}>
+      <p className={styles.p}>
+        Podrás dejar tus comentarios y conectar de más cerca con otros
+        cuidadores
+      </p>
       <label htmlFor="email" className={styles.inputWrapper}>
-        Ingresa tu correo
+        Correo electrónico
         <div className={styles.wrapper}>
           <input
             id="email"

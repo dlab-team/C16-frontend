@@ -40,6 +40,8 @@
     width: 100%;
     display: grid;
     place-items: center;
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FRectangle%208.png?alt=media&token=c70965a3-1246-4621-934a-2129fbf44626);
+    
 }
 
 .card_modal {
@@ -142,6 +144,9 @@
         width: 100%;
         display: grid;
         place-items: center;
+        margin: 5% 0% 0% 0%;
+        background-position: center;
+        background-size: cover;
     }
 
     .card_modal_text {
@@ -333,6 +338,7 @@
     .card_modal_text {
         padding: 5px 5px;
         margin: 0 auto;
+        margin: 0%;
     }
 
     #modal_button {
@@ -394,7 +400,8 @@
     .card_modal_text {
         width: 100%;
         padding: 5px 5px;
-        margin: 0 auto;
+        margin: 0% !important;
+        
     }
 
     #modal_button {
