@@ -1,4 +1,4 @@
-import RegistroComponent from '@/app/(auth)/auth/componets/RegistroFormComponet/RegistroComponent';
+import RegistroComponent from "./componets/RegistroFormComponet/RegistroComponent";
 
 import "./Styles.css";
 
