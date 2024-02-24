@@ -3,14 +3,25 @@
 /* class for header tag*/
 .navContainer {
   position: relative;
+  min-width: 100%;
+  height: 5.3rem;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  min-width: 100%;
-  height: 4rem;
+  padding: 0 1rem 0.5rem 1rem; /*ToDo: fix padding horizontal with the all page */
+  background-color: var(--secundario);
   font-family: var(--font);
   font-weight: 600;
+}
+
+.logoContainer {
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 100;
 }
 
 /* class for logo img */
@@ -18,7 +29,6 @@
   display: flex;
   object-fit: cover;
   border-radius: 50%;
-  margin-left: 1rem;
 }
 
 /* class for nav tag */
@@ -44,10 +54,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.7rem;
   color: var(--titulos);
   font-size: var(--h5);
   line-height: var(--lh-h5);
+  transition: all ease-in 250ms;
+  user-select: none;
 }
 
 .link:hover {
@@ -59,82 +70,93 @@
   color: var(--principal);
 }
 
-/* class for img tag */
-.profileImage {
-  display: none;
-}
-
 /* class for div */
 .buttonsContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 1.8rem;
-  margin-right: 1rem;
-}
-
-/* class for login button */
-.loginButton {
-  width: 7rem;
-  height: 2.5rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1rem;
-  background-color: var(--principal);
-  border: none;
-  color: #fff;
-  font-size: var(--p);
-  line-height: var(--lh-p);
+  gap: 0.5rem;
 }
 
 /* class for hamburger button */
 .menuButton {
   display: flex;
-  width: 2.5rem;
-  height: 3;
+  width: 2.9rem;
+  height: 2.7rem;
   padding: 0;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   border: none;
   z-index: 20;
+  cursor: pointer;
 }
 
-/*desktop styles */
-@media (width > 768px) {
+/*small desktop styles */
+@media (width > 820px) {
   /* class for header tag*/
   .navContainer {
-    display: block;
-    height: 3rem;
-    padding: 0;
-    margin-top: 0.5rem;
+    padding: 0 0 0 1.7rem; /*ToDo: fix padding left with all padding page */
+    align-items: center;
   }
+
   /* class for logo img */
   .logo {
-    display: none;
+    height: 4.5rem;
+    width: 4.5rem;
   }
 
   /* class for nav tag */
   .nav {
     display: flex;
-    height: 2rem;
+    height: 100%;
     flex-direction: row;
     align-self: center;
-    gap: 1.5rem;
-    padding: 1rem 0 1rem 0;
+    gap: 0.5rem;
     background-color: transparent;
   }
 
-  /* class for img tag */
-  .profileImage {
-    display: flex;
-    object-fit: cover;
-    border-radius: 50%;
+  .link {
+    height: 100%;
+    width: 6rem;
+    background-color: transparent;
+    text-align: center;
+    font-size: var(--p);
+    line-height: var(--lh-p);
   }
 
-  /* class for div */
+  .link:hover {
+    color: #fff;
+    background-color: rgba(214, 0, 111, 0.1);
+  }
+
+  .active {
+    color: #fff;
+    background-color: var(--principal);
+  }
+
   .buttonsContainer {
+    display: block;
+    height: 100%;
+    width: 5.5rem;
+    z-index: 100;
+  }
+
+  .menuButton {
     display: none;
+  }
+}
+
+/*long desktop screen */
+@media (width > 1120px) {
+  .link {
+    width: 9rem;
+    font-size: var(--h5);
+    line-height: var(--lh-h5);
+  }
+
+  .buttonsContainer {
+    width: 7.5rem;
   }
 }
