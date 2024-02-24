@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 const useNavView = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   //function to change the nav style based on the isMenuOpen state
   const changeNavStyle = () => {
@@ -41,9 +42,16 @@ const useNavView = () => {
     changeNavStyle();
   };
 
+  /* ToDo: remove o change this function, this is only for devMode */
+  async function handleLogin() {
+    setIsAuthenticated(!isAuthenticated);
+  }
+
   return {
     pathname,
     toggleMenu,
+    isAuthenticated,
+    handleLogin,
   };
 };
 
