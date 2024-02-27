@@ -45,6 +45,16 @@ export default function Home() {
       </div>
 
       <section className={styles.home_cards}>
+        <div className={styles.academia}>
+          <Link href='/academia' className={styles.link}>
+            <span className={styles.text_link}>Academia</span>
+            <button className={styles.arrow_btn}></button>
+          </Link>
+          <p className={styles.cards_p}>
+            Revisa videos, guías y material descargable
+          </p>
+        </div>
+
         <div className={styles.foro}>
           <Link href='/foro' className={styles.link}>
             <span className={styles.text_link}>Foro</span>
@@ -53,16 +63,6 @@ export default function Home() {
           <p className={styles.cards_p}>
             Entabla conversaciones con otros cuidadores, pregunta o responde
             preguntas de otros.
-          </p>
-        </div>
-
-        <div className={styles.academia}>
-          <Link href='/academia' className={styles.link}>
-            <span className={styles.text_link}>Academia</span>
-            <button className={styles.arrow_btn}></button>
-          </Link>
-          <p className={styles.cards_p}>
-            Revisa videos, guías y material descargable
           </p>
         </div>
       </section>

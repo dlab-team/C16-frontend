@@ -175,10 +175,10 @@
 
 .academia {
   padding: 15px 23px;
-  background-color: #fff;
   border-radius: 30px;
-  grid-column: 7/-1;
-  border: 2px solid var(--principal);
+  grid-column: 1/5;
+  border: 2px solid var(--secundario);
+  background-color: rgba(241, 125, 88, 0.1);
   box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
   -webkit-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
   -moz-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
@@ -186,10 +186,10 @@
 
 .foro {
   padding: 15px 23px;
-  background-color: rgba(241, 125, 88, 0.1);
-  border: 2px solid var(--secundario);
   border-radius: 30px;
-  grid-column: 1/5;
+  grid-column: 7/-1;
+  background-color: #fff;
+  border: 2px solid var(--principal);
   box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
   -webkit-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
   -moz-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
@@ -230,19 +230,22 @@
 
 @media (min-width: 900px) {
   .home_cards {
-    grid-column: 2/-2;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 8%;
     padding: 70px 0px;
   }
 
   .academia {
-    padding: 25px 40px;
+    flex: 1;
+    padding: 45px 65px;
+    box-shadow: none;
   }
 
   .foro {
-    padding: 25px 40px;
+    flex: 1;
+    padding: 45px 65px;
+    box-shadow: none;
   }
 
   .link {
@@ -271,11 +274,11 @@
   }
 
   .academia {
-    padding: 30px 47px;
+    padding: 55px 90px;
   }
 
   .foro {
-    padding: 30px 47px;
+    padding: 55px 90px;
   }
 
   .link {
@@ -302,12 +305,16 @@
     display: flex;
     flex-direction: column;
     padding: 10px 17px;
+    background-color: #fff;
+    border: 2px solid var(--principal);
   }
 
   .foro {
     display: flex;
     flex-direction: column;
     padding: 10px 17px;
+    border: 2px solid var(--secundario);
+    background-color: rgba(241, 125, 88, 0.1);
   }
 
   .arrow_btn {
@@ -353,18 +360,22 @@
   .home_cards {
     grid-column: 1/-1;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .academia {
     padding: 30px 37px;
     border-radius: 30px;
     margin-bottom: 30px;
+    background-color: #fff;
+    border: 2px solid var(--principal);
   }
 
   .foro {
     padding: 30px 37px;
     border-radius: 30px;
+    border: 2px solid var(--secundario);
+    background-color: rgba(241, 125, 88, 0.1);
   }
 
   .arrow_btn {
