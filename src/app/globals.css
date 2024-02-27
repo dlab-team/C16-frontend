@@ -83,11 +83,11 @@
   --t-desktop-one: 500 52px var(--ff-one);
   --t-desktop-two: italic 500 52px var(--ff-two);
 
-  /* Font Size = fs- Textos = tx */
-  --fs-tx-mobile-one: 500 16px var(--ff-one);
-  --fs-tx-mobile-two: 400 16px var(--ff-one);
-  --fs-tx-desktop-one: 400 20px var(--ff-one);
-  --fs-tx-desktop-two: 600 23px var(--ff-one);
+  /* Textos = tx */
+  --tx-mobile-one: 500 16px var(--ff-one);
+  --tx-mobile-two: 400 16px var(--ff-one);
+  --tx-desktop-one: 400 20px var(--ff-one);
+  --tx-desktop-two: 600 23px var(--ff-one);
 
   /* Font Size textos */
   --fs-text: 16px;
@@ -101,7 +101,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
 }
 
 /* ejemplos de uso */
@@ -116,7 +115,7 @@
   letter-spacing: 4px;
 }
 .textSample{
-  font:var(--fs-tx-mobile-one)
+  font:var(--tx-mobile-one)
 }
 
 
