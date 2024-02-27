@@ -1,38 +1,126 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap'); /* por eliminar */
+
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+}
+
+@font-face {
+  font-family: 'Philosopher';
+  src: url('/assets/fonts/Philosopher/Philosopher-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Philosopher';
+  src: url('/assets/fonts/Philosopher/Philosopher-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Philosopher';
+  src: url('/assets/fonts/Philosopher/Philosopher-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Philosopher';
+  src: url('/assets/fonts/Philosopher/Philosopher-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
-  --titulos: #271d24;
-  --principal: #d6006e;
-  --secundario: #ffc5e4;
+  --titulos: #271d24; /* por eliminar */
+  --principal: #d6006e; /* por eliminar */
+  --secundario: #ffc5e4; /* por eliminar */
 
   /* 200, 300, 400, 500, 600, 700 */
-  --font: 'Montserrat', sans-serif;
+  --font: 'Montserrat', sans-serif; /* por eliminar */
 
-  /* font-sizes */
-  --display: 64px;
-  --h1: 56px;
-  --h2: 48px;
-  --h3: 40px;
-  --h4: 32px;
-  --h5: 24px;
-  --h6: 20px;
-  --p: 16px;
-  --label: 14px;
-  --tiny: 12px;
+  /* Colores = clr */
 
-  /* line-height */
-  --lh-display: 72px;
-  --lh-h1: 64px;
-  --lh-h2: 56px;
-  --lh-h3: 48px;
-  --lh-h4: 40px;
-  --lh-h5: 32px;
-  --lh-h6: 28px;
-  --lh-p: 24px;
-  --lh-label: 22px;
-  --lh-tiny: 20px;
+  --clr-primary-1: #F17D58 ;
+  --clr-primary-2: #06786D ;
+  --clr-secondary-1: #FAD8CE ;
+  --clr-secondary-2: #454444 ;
+
+/*   --clr-one-50: blue;
+  --clr-one-100: blue;
+  --clr-one-200: blue;
+  --clr-one-300: blue;
+  --clr-one-400: blue;
+  --clr-one-500: blue;
+  --clr-one-600: blue;
+  --clr-one-700: blue;
+  --clr-one-800: blue;
+  --clr-one-900: blue;
+  --clr-one-1000: blue;
+
+  --clr-two-50: blue;
+  --clr-two-100: blue;
+  --clr-two-200: blue;
+  --clr-two-300: blue;
+  --clr-two-400: blue;
+  --clr-two-500: blue;
+  --clr-two-600: blue;
+  --clr-two-700: blue;
+  --clr-two-800: blue;
+  --clr-two-900: blue;
+  --clr-two-1000: blue; */
+
+  /* Tipografía - Font Family = ff */
+  --ff-one: Montserrat;   /* 100 - 900 */
+  --ff-two: Philosopher;
+
+  /* Titulos = t */
+  --t-mobile: 600 25px var(--ff-one);
+  --t-desktop-one: 500 52px var(--ff-one);
+  --t-desktop-two: italic 500 52px var(--ff-two);
+
+  /* Font Size = fs- Textos = tx */
+  --fs-tx-mobile-one: 500 16px var(--ff-one);
+  --fs-tx-mobile-two: 400 16px var(--ff-one);
+  --fs-tx-desktop-one: 400 20px var(--ff-one);
+  --fs-tx-desktop-two: 600 23px var(--ff-one);
+
+  /* Font Size textos */
+  --fs-text: 16px;
+  /* Font Size inputs */
+  --fs-inp: 15px;
+  /* Font Size titulos */
+  --fs-inp: 25px;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
 }
+
+/* ejemplos de uso */
+.titleOneSample{
+  font: var(--t-desktop-one);
+  color: var(--clr-primary-1);
+  letter-spacing: 4px;
+}
+.titleTwoSample{
+  font: var(--t-desktop-two);
+  color: var(--clr-primary-2);
+  letter-spacing: 4px;
+}
+.textSample{
+  font:var(--fs-tx-mobile-one)
+}
+
+
+/* Break Points - Mobile first */
+@media (min-width: 576px) {} /* pantalla mediana */
+@media (min-width: 992px) {} /* pantalla grande */
+@media (min-width: 1400px) {} /* pantalla extra grande */
