@@ -12,27 +12,39 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.section_switch}>
-        {/* Seccion Modal y Carrusel */}
-        <section className={styles.section_card_modal}>
-          <div className={styles.card_modal}>
-            <div className={styles.card_modal_text}>
-              <h3 className={styles.card_title}>Dysgen retåse</h3>
-              <p className={styles.card_text}>
-                Lörem ipsum parasat ponerade, vabåligt järad. Kroling eus
-                benöna. Terakadade postsocial, synösamma, ossa, agnostilog.
-                Bingen äspevis.
+
+        {/* Seccion Banner */}
+
+        <section className={styles.section_banner}>
+          <img className={styles.image_container} src="https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fmanos_unidas.png?alt=media&token=f47a7fc7-7178-4e91-932f-11e43f68d4d"></img>
+
+          <div className={styles.modal_conteiner}>
+            <div className={styles.text_conteiner}>
+              
+              <h1>
+                <span className={styles.title_uniendo}>Uniendo</span>
+                <span className={styles.title_uniendo}> a</span>
+                <span className={styles.title_cuidadores}> Cuidadores</span>
+              </h1>
+
+              <p className={styles.text_banner}>
+                Únete a la red más grande de apoyo para cuidadores
               </p>
-              <button onClick={() => setIsOpen(true)} id={styles.modal_button}>
-                {' '}
-                Quiero ser parte{' '}
-              </button>
-              <Modal isOpen={isOpen} onClose={closeModal}>
-                <h2>Modal Registro</h2>
-                <p>¡Este es el contenido del modal!</p>
-              </Modal>
             </div>
+
+            <button onClick={() => setIsOpen(true)} id={styles.modal_button}>
+              {' '}
+              Inscríbete
+              {' '}
+            </button>
+            <Modal isOpen={isOpen} onClose={closeModal}>
+              <h2>Modal Registro</h2>
+              <p>¡Este es el contenido del modal!</p>
+            </Modal>
           </div>
         </section>
+
+        {/* Seccion Bienvenida*/}
 
         <section className={styles.welcome_section}>
           <h1 className={styles.welcome_title}>Bienvenid@s</h1>
@@ -43,6 +55,8 @@ export default function Home() {
           </p>
         </section>
       </div>
+
+      {/* Seccion Tarjetas Home*/}
 
       <section className={styles.home_cards}>
         <div className={styles.academia}>
