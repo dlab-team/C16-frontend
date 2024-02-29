@@ -80,6 +80,7 @@
 
   /* Titulos = t */
   --t-mobile: 600 25px var(--ff-one);
+  --t-mobile-two: 600 25px var(--ff-two);
   --t-desktop-one: 500 52px var(--ff-one);
   --t-desktop-two: italic 500 52px var(--ff-two);
 

@@ -7,13 +7,6 @@
   box-sizing: border-box;
 }
 
-.section {
-  margin: 10px;
-  background-color: rgba(0, 0, 0, 0.085);
-  padding: 20px;
-  text-align: center;
-}
-
 .section_switch {
   grid-column: 1/-1;
 }
@@ -30,74 +23,72 @@
   font-size: 18px;
 }
 
-.section_card_modal {
-  margin: 5px;
-  background-color: rgba(0, 0, 0, 0.085);
-  padding: 20px;
-  text-align: center;
-  aspect-ratio: 16/9;
-  width: 100%;
+/*----------------Estilos Seccion Banner*/
+
+.section_banner {
   display: grid;
-  place-items: center;
-  background-image: url(https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FRectangle%208.png?alt=media&token=c70965a3-1246-4621-934a-2129fbf44626);
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  background-color: var(--clr-secondary-1);
+
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
-.card_modal {
-  text-align: center;
-  padding: 50px 20px;
+.image_container {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  max-width: 100%;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.modal_conteiner {
+  grid-column: 2/-2;
+  grid-row: 2/5;
+  /* background-color: rgba(200, 23, 23, 0.8); */
+  align-items: center;
+}
+
+.text_container{
+  grid-column: 2/-2;
+  grid-row: 2/2;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 30px;
-  width: 73%;
-}
-
-.card_modal_text {
-  width: 62%;
-  gap: 30px;
-  padding: 1%;
-  display: flex;
   align-items: center;
-  flex-direction: column;
 }
 
-.card_title {
+.title_uniendo {
   text-align: left;
-  width: 100%;
-  font-weight: 600;
-  font-size: clamp(0.7rem, 1.7vw, 1.5rem);
-  color: black;
+  font: var(--t-mobile);
 }
 
-.card_text {
+.title_cuidadores {
   text-align: left;
-  width: 100%;
-  font-weight: 400;
-  font-size: clamp(0.7rem, 1.7vw, 1.5rem);
-  color: black;
+  font: var(--t-mobile-two);
+  color: var(--clr-primary-2);
+}
+
+.text_banner {
+  text-align: left;
+  font: var(--tx-mobile-one);
 }
 
 #modal_button {
-  height: 42px;
-  width: 61%;
-  font-family: var(--font);
-  font-weight: 600;
-  font-size: clamp(0.7rem, 1.7vw, 1rem);
-  color: black;
+  font: var(--tx-mobile-two);
+  color: var(--clr-primary-2);
   background-color: rgba(255, 255, 255, 1);
   border-radius: 10px;
-  border: 2px solid var(--principal);
+  border: 1px solid var(--clr-primary-2);
   cursor: pointer;
 }
 
 #modal_button:hover {
-  height: 42px;
-  width: 61%;
-  font-family: var(--font);
-  font-weight: 600;
-  font-size: clamp(0.7rem, 1.7vw, 1rem);
+  font: var(--tx-mobile-two);
   color: white;
-  background-color: var(--principal);
-  border: 2px solid var(--principal);
+  background-color: var(--clr-primary-2);
   border-radius: 10px;
+  border: 1px solid var(--clr-primary-2);
   cursor: pointer;
 }
 
