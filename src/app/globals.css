@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap'); /* por eliminar */
 
-
 @font-face {
   font-family: 'Montserrat';
-  src: url('/assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+  src: url('/assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf')
+    format('truetype');
   font-weight: 100 900;
 }
 
@@ -16,21 +16,24 @@
 
 @font-face {
   font-family: 'Philosopher';
-  src: url('/assets/fonts/Philosopher/Philosopher-BoldItalic.ttf') format('truetype');
+  src: url('/assets/fonts/Philosopher/Philosopher-BoldItalic.ttf')
+    format('truetype');
   font-weight: 700;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Philosopher';
-  src: url('/assets/fonts/Philosopher/Philosopher-Italic.ttf') format('truetype');
+  src: url('/assets/fonts/Philosopher/Philosopher-Italic.ttf')
+    format('truetype');
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Philosopher';
-  src: url('/assets/fonts/Philosopher/Philosopher-regular.ttf') format('truetype');
+  src: url('/assets/fonts/Philosopher/Philosopher-regular.ttf')
+    format('truetype');
   font-weight: 400;
   font-style: normal;
 }
@@ -45,12 +48,12 @@
 
   /* Colores = clr */
 
-  --clr-primary-1: #F17D58 ;
-  --clr-primary-2: #06786D ;
-  --clr-secondary-1: #FAD8CE ;
-  --clr-secondary-2: #454444 ;
+  --clr-primary-1: #f17d58;
+  --clr-primary-2: #06786d;
+  --clr-secondary-1: #fad8ce;
+  --clr-secondary-2: #454444;
 
-/*   --clr-one-50: blue;
+  /*   --clr-one-50: blue;
   --clr-one-100: blue;
   --clr-one-200: blue;
   --clr-one-300: blue;
@@ -75,7 +78,7 @@
   --clr-two-1000: blue; */
 
   /* Tipografía - Font Family = ff */
-  --ff-one: Montserrat;   /* 100 - 900 */
+  --ff-one: Montserrat; /* 100 - 900 */
   --ff-two: Philosopher;
 
   /* Titulos = t */
@@ -94,7 +97,7 @@
   /* Font Size inputs */
   --fs-inp: 15px;
   /* Font Size titulos */
-  --fs-inp: 25px;
+  --fs-title: 25px;
 }
 
 * {
@@ -104,22 +107,24 @@
 }
 
 /* ejemplos de uso */
-.titleOneSample{
+.titleOneSample {
   font: var(--t-desktop-one);
   color: var(--clr-primary-1);
   letter-spacing: 4px;
 }
-.titleTwoSample{
+.titleTwoSample {
   font: var(--t-desktop-two);
   color: var(--clr-primary-2);
   letter-spacing: 4px;
 }
-.textSample{
-  font:var(--tx-mobile-one)
+.textSample {
+  font: var(--tx-mobile-one);
 }
 
-
 /* Break Points - Mobile first */
-@media (min-width: 576px) {} /* pantalla mediana */
-@media (min-width: 992px) {} /* pantalla grande */
-@media (min-width: 1400px) {} /* pantalla extra grande */
+@media (min-width: 576px) {
+} /* pantalla mediana */
+@media (min-width: 992px) {
+} /* pantalla grande */
+@media (min-width: 1400px) {
+} /* pantalla extra grande */
