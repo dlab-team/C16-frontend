@@ -1,11 +1,8 @@
 import Image from 'next/image';
 import styles from '../styles/LoginButton.module.css';
-import { useNavView } from '../hook';
 import { ProfileDesktopIcon, ProfileMobileIcon } from '../icons';
 
-function LoginButton() {
-  const { isAuthenticated, handleLogin } = useNavView();
-
+function LoginButton({ isAuthenticated, handleLogin }) {
   return (
     <button className={styles.loginButton} onClick={handleLogin}>
       {isAuthenticated ? (

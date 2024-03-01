@@ -9,6 +9,7 @@ const useNavView = () => {
   //function to change the nav style based on the isMenuOpen state
   const changeNavStyle = () => {
     const navContainer = document.getElementById('navContainer');
+
     if (!isMenuOpen && window.innerWidth <= 768) {
       navContainer.style.display = 'none';
     } else {

@@ -5,16 +5,16 @@ import styles from './styles/NavView.module.css';
 import { ROUTES_INFO } from './constants';
 import { MenuIcon } from './icons';
 import { useNavView } from './hook';
-import { LoginButton } from './components';
+import { LoginButton, NavUserInfo } from './components';
 
 const NavView = () => {
-  const { pathname, toggleMenu } = useNavView();
+  const { pathname, toggleMenu, isAuthenticated, handleLogin } = useNavView();
 
   return (
     <header className={styles.navContainer}>
       <Link href='/' className={styles.logoContainer}>
         <Image
-          src='/assets/logo-ronda.svg'
+          src='https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2Flogo.svg?alt=media&token=0c84752a-14aa-4859-ad08-ecdc95666039'
           alt='logo Ronda'
           width={53}
           height={53}
@@ -22,22 +22,34 @@ const NavView = () => {
           className={styles.logo}
         />
       </Link>
-      <nav id='navContainer' className={styles.nav}>
-        {ROUTES_INFO.map((route) => (
-          <Link
-            className={`${styles.link} ${
-              pathname === route.pathname && styles.active
-            }`}
-            href={route.pathname}
-            onClick={toggleMenu}
-            key={route.id}
-          >
-            {route.title}
-          </Link>
-        ))}
-      </nav>
+      <div id='navContainer' className={styles.navWrapper}>
+        <nav className={styles.nav}>
+          <NavUserInfo
+            toggleMenu={toggleMenu}
+            isAuthenticated={isAuthenticated}
+          />
+          {ROUTES_INFO.map((route) => (
+            <Link
+              className={`${styles.link} ${
+                pathname === route.pathname && styles.active
+              }`}
+              href={route.pathname}
+              onClick={toggleMenu}
+              key={route.id}
+            >
+              {route.title}
+            </Link>
+          ))}
+          <button className={styles.loginButton}>
+            {isAuthenticated ? 'Cerrar Sesión' : 'Iniciar sesión'}
+          </button>
+        </nav>
+      </div>
       <div className={styles.buttonsContainer}>
-        <LoginButton />
+        <LoginButton
+          isAuthenticated={isAuthenticated}
+          handleLogin={handleLogin}
+        />
         <button onClick={toggleMenu} className={styles.menuButton}>
           <MenuIcon />
         </button>
