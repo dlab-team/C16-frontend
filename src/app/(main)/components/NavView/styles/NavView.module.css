@@ -23,7 +23,7 @@
   border-radius: 50%;
   background-color: transparent;
   cursor: pointer;
-  z-index: 100;
+  z-index: 120;
 }
 
 /* class for logo img */
@@ -143,6 +143,7 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
+    border: none;
     animation: none;
   }
 
