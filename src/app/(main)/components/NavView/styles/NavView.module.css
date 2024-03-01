@@ -3,16 +3,18 @@
 /* class for header tag*/
 .navContainer {
   position: relative;
-  min-width: 100%;
-  height: 5.3rem;
+  width: 100%;
+  height: 6.3rem;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
   padding: 0 1rem 0.5rem 1rem; /*ToDo: fix padding horizontal with the all page */
-  background-color: var(--secundario);
-  font-family: var(--font);
+  background-color: var(--clr-secondary-1);
+  font-family: var(--ff-one);
+  font-size: 20px;
   font-weight: 600;
+  color: var(--clr-secondary-2);
 }
 
 .logoContainer {
@@ -31,20 +33,32 @@
   border-radius: 50%;
 }
 
-/* class for nav tag */
-.nav {
+.navWrapper {
   display: none;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
-  height: 99vh;
-  z-index: 10;
-  flex-direction: column;
+  height: 100dvh;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  background: rgba(16, 16, 16, 0.4);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(16, 16, 16, 0.3);
+  z-index: 100;
+  animation: appear 250ms ease-in;
+}
+
+/* class for nav tag */
+.nav {
+  position: relative;
+  display: flex;
+  width: 80%;
+  height: 100%;
+  flex-direction: column;
   gap: 2rem;
-  background-color: var(--secundario);
+  background-color: #fff;
+  z-index: 110;
 }
 
 /* class for Link (a) tag */
@@ -54,20 +68,34 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: var(--titulos);
-  font-size: var(--h5);
-  line-height: var(--lh-h5);
+  color: var(--clr-secondary-2);
+  font-size: 20px;
   transition: all ease-in 250ms;
   user-select: none;
 }
 
 .link:hover {
-  color: var(--principal);
+  color: var(--clr-primary-2);
   transition-duration: 300ms;
+  text-decoration: none;
 }
 
 .active {
-  color: var(--principal);
+  color: var(--clr-primary-2);
+  text-decoration: underline #fff;
+}
+
+.loginButton {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  border: none;
+  color: var(--clr-primary-2);
+  font-size: 20px;
+  font-weight: 600;
+  align-self: center;
+  margin-top: 7%;
 }
 
 /* class for div */
@@ -89,7 +117,7 @@
   justify-content: center;
   background-color: transparent;
   border: none;
-  z-index: 20;
+  z-index: 80;
   cursor: pointer;
 }
 
@@ -97,8 +125,10 @@
 @media (width > 820px) {
   /* class for header tag*/
   .navContainer {
+    height: 5.3rem;
     padding: 0 0 0 1.7rem; /*ToDo: fix padding left with all padding page */
     align-items: center;
+    background-color: var(--clr-secondary-1);
   }
 
   /* class for logo img */
@@ -107,40 +137,58 @@
     width: 4.5rem;
   }
 
+  .navWrapper {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    animation: none;
+  }
+
   /* class for nav tag */
   .nav {
     display: flex;
     height: 100%;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     align-self: center;
     gap: 0.5rem;
     background-color: transparent;
   }
 
   .link {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 6rem;
     background-color: transparent;
     text-align: center;
-    font-size: var(--p);
-    line-height: var(--lh-p);
+    font-size: var(--fs-text);
+    font-weight: 500;
+    color: var(--clr-secondary-2);
   }
 
   .link:hover {
-    color: #fff;
-    background-color: rgba(214, 0, 111, 0.1);
+    color: var(--clr-secondary-2);
+    background-color: rgba(6, 120, 109, 0.1);
   }
 
   .active {
     color: #fff;
-    background-color: var(--principal);
+    background-color: var(--clr-primary-2);
+  }
+
+  .loginButton {
+    display: none;
   }
 
   .buttonsContainer {
     display: block;
     height: 100%;
     width: 5.5rem;
-    z-index: 100;
+    z-index: 140;
   }
 
   .menuButton {
@@ -152,11 +200,23 @@
 @media (width > 1120px) {
   .link {
     width: 9rem;
-    font-size: var(--h5);
-    line-height: var(--lh-h5);
+    font-size: 24px;
+    font-weight: 500;
   }
 
   .buttonsContainer {
     width: 7.5rem;
+  }
+}
+
+/* appear animation */
+@keyframes appear {
+  from {
+    left: 100%;
+    opacity: 0.5;
+  }
+  to {
+    left: 0;
+    opacity: 1;
   }
 }
