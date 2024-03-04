@@ -3,43 +3,29 @@
   grid-template-columns: repeat(12, 1fr);
   gap: 5px;
 
-  font-family: var(--font);
+  font-family: var(--ff-one);
   box-sizing: border-box;
 }
 
 .section {
   margin: 10px;
-  background-color: rgba(0, 0, 0, 0.085);
   padding: 20px;
   text-align: center;
-}
-
-.section_switch {
   grid-column: 1/-1;
 }
 
-.welcome_title {
-  text-align: center;
-  font-size: 23px;
-  font-weight: 600;
-  margin-bottom: 14px;
-}
-
-.welcome_p {
-  text-align: center;
-  font-size: 18px;
-}
+/* ------------------- Banner Section */
 
 .section_card_modal {
   margin: 5px;
-  background-color: rgba(0, 0, 0, 0.085);
+  background-color: var(--clr-secondary-1);
   padding: 20px;
   text-align: center;
   aspect-ratio: 16/9;
   width: 100%;
   display: grid;
   place-items: center;
-  background-image: url(https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FRectangle%208.png?alt=media&token=c70965a3-1246-4621-934a-2129fbf44626);
+  border-radius: 30px;
 }
 
 .card_modal {
@@ -81,10 +67,10 @@
   font-family: var(--font);
   font-weight: 600;
   font-size: clamp(0.7rem, 1.7vw, 1rem);
-  color: black;
+  color: var(--clr-primary-2);
   background-color: rgba(255, 255, 255, 1);
   border-radius: 10px;
-  border: 2px solid var(--principal);
+  border: 2px solid var(--clr-primary-2);
   cursor: pointer;
 }
 
@@ -95,42 +81,87 @@
   font-weight: 600;
   font-size: clamp(0.7rem, 1.7vw, 1rem);
   color: white;
-  background-color: var(--principal);
-  border: 2px solid var(--principal);
+  background-color: var(--clr-primary-2);
+  border: 2px solid var(--clr-primary-2);
   border-radius: 10px;
   cursor: pointer;
 }
 
+/* ------------------- Welcome Section */
+
+.welcome_title {
+  text-align: center;
+  font: var(--t-mobile-three);
+  color: var(--clr-primary-2);
+  margin-bottom: 14px;
+}
+
+.welcome_p {
+  text-align: center;
+  font: var(--tx-mobile-one);
+  font-size: 18px;
+}
+
+/* ------------------- Home Card Section */
+
+.home_cards {
+  grid-column: 2/-2;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+  padding: 50px 0px;
+}
+
+.academia {
+  padding: 15px 23px;
+  border-radius: 30px;
+  grid-column: 1/5;
+  border: 2px solid var(--clr-secondary-3);
+  background-color: var(--clr-secondary-3);
+}
+
+.foro {
+  padding: 15px 23px;
+  border-radius: 30px;
+  grid-column: 7/-1;
+  background-color: #fff;
+  border: 2px solid var(--clr-secondary-1);
+}
+
+.cards_p {
+  text-align: left;
+  margin-top: 1rem;
+  font-size: clamp(0.4rem, 1.5vw, 1.3rem);
+}
+
+.link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.arrow_btn {
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  color: var(--clr-primary-2);
+  border: inherit;
+}
+
+.text_link {
+  font: var(--tx-desktop-two);
+  color: var(--clr-primary-2);
+}
+
 @media (min-width: 601px) {
-  .section_switch {
-    display: flex;
-    flex-direction: column-reverse;
-  }
 
-  .welcome_section {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 5px;
-
-    margin-top: 50px;
-  }
-
-  .welcome_title {
-    grid-column: 2/-2;
-
-    text-align: left;
-    font-weight: 400;
-    font-size: clamp(35px, 4vw, 64px);
-    color: var(--principal);
-  }
-
-  .welcome_p {
-    grid-column: 2/-2;
-
-    font-size: clamp(11.5px, 2vw, 26px);
-    font-weight: 400;
-    text-align: left;
-  }
+  /* ------------------- Banner Section */
 
   .section_card_modal {
     display: grid;
@@ -155,80 +186,46 @@
     padding: 5px 5px;
     margin: 0 auto;
   }
+
+  /* ------------------- Welcome Section */
+
+  .welcome_section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 5px;
+
+    margin-top: 50px;
+  }
+
+  .welcome_title {
+    grid-column: 2/-2;
+    text-align: center;
+
+    font: var(--t-desktop-three);
+    color: var(--clr-primary-2);
+  }
+
+  .welcome_p {
+    grid-column: 2/-2;
+
+    font: var(--tx-desktop-three);
+  }
 }
 
 @media (min-width: 1290px) {
+
+  /* ------------------- Welcome Section */
+
   .welcome_section {
     margin-top: 90px;
   }
 }
 
-/* ------------------------- Home card Section start */
-
-.home_cards {
-  grid-column: 2/-2;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 5px;
-  padding: 50px 0px;
-}
-
-.academia {
-  padding: 15px 23px;
-  border-radius: 30px;
-  grid-column: 1/5;
-  border: 2px solid var(--secundario);
-  background-color: rgba(241, 125, 88, 0.1);
-  box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
-  -webkit-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
-  -moz-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
-}
-
-.foro {
-  padding: 15px 23px;
-  border-radius: 30px;
-  grid-column: 7/-1;
-  background-color: #fff;
-  border: 2px solid var(--principal);
-  box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
-  -webkit-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
-  -moz-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
-}
-
-.cards_p {
-  text-align: left;
-  margin-top: 1rem;
-  font-size: clamp(0.4rem, 1.5vw, 1.3rem);
-}
-
-.link {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-top: 10px;
-  text-decoration: none;
-}
-
-.arrow_btn {
-  width: 30px;
-  height: 30px;
-  background-image: url('/assets/arrow-left.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
-  border: inherit;
-}
-
-.text_link {
-  font-weight: 600;
-  text-transform: capitalize;
-  font-size: clamp(0.7rem, 1.7vw, 1.5rem);
-  color: var(--principal);
-}
 
 @media (min-width: 900px) {
+
+  /* ------------------- Home Card Section */
+
   .home_cards {
     display: flex;
     flex-direction: row;
@@ -252,6 +249,8 @@
     margin-top: 27px;
   }
 
+  /* ------------------- Banner Section */
+
   .card_modal {
     padding: 50px 20px;
   }
@@ -268,22 +267,13 @@
 }
 
 @media (min-width: 1280px) {
+
   .main {
     max-width: 1280px;
     margin: 0 auto;
   }
 
-  .academia {
-    padding: 55px 90px;
-  }
-
-  .foro {
-    padding: 55px 90px;
-  }
-
-  .link {
-    margin-top: 30px;
-  }
+  /* ------------------- Banner Section */
 
   .card_modal {
     padding: 50px 20px;
@@ -298,37 +288,28 @@
     padding: 5px 5px;
     margin: 0 auto;
   }
-}
 
-@media (max-width: 600px) {
+  /* ------------------- Home Card Section */
+
   .academia {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 17px;
-    background-color: #fff;
-    border: 2px solid var(--principal);
+    padding: 55px 90px;
   }
 
   .foro {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 17px;
-    border: 2px solid var(--secundario);
-    background-color: rgba(241, 125, 88, 0.1);
+    padding: 55px 90px;
   }
 
-  .arrow_btn {
-    width: 20px;
-    height: 20px;
-    background-image: url('/assets/homeSVG/angle-right.svg');
+  .link {
+    margin-top: 30px;
   }
 
-  .text_link {
-    color: var(--principal);
-  }
+}
+
+@media (max-width: 600px) {
+
+  /* ------------------- Banner Section */
 
   .section_card_modal {
-    flex-direction: column-reverse;
     padding: 20px 0px;
   }
 
@@ -346,6 +327,35 @@
     padding: 5px 5px;
     margin: 0 auto;
   }
+
+  /* ------------------- Home Card Section */
+
+  .academia {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 17px;
+    background-color: #fff;
+    border: 2px solid var(--clr-secondary-1);
+  }
+
+  .foro {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 17px;
+    border: 2px solid var(--clr-secondary-3);
+    background-color: var(--clr-secondary-3);
+  }
+
+  .arrow_btn {
+    width: 20px;
+    height: 20px;
+  }
+
+  .text_link {
+    color: var(--clr-primary-2);
+  }
+
+
 }
 
 @media (max-width: 500px) {
@@ -356,6 +366,25 @@
     font-family: var(--font);
     padding: 30px;
   }
+
+  /* ------------------- Banner Section */
+
+  .card_modal {
+    padding: 20px 25px;
+  }
+
+  .card_modal_text {
+    width: 100%;
+    padding: 5px 5px;
+    margin: 0% !important;
+  }
+
+  #modal_button {
+    padding: 5px 5px;
+    margin: 0 auto;
+  }
+
+  /* ------------------- Home Card Section */
 
   .home_cards {
     grid-column: 1/-1;
@@ -368,14 +397,14 @@
     border-radius: 30px;
     margin-bottom: 30px;
     background-color: #fff;
-    border: 2px solid var(--principal);
+    border: 2px solid var(--clr-secondary-1);
   }
 
   .foro {
     padding: 30px 37px;
     border-radius: 30px;
-    border: 2px solid var(--secundario);
-    background-color: rgba(241, 125, 88, 0.1);
+    border: 2px solid var(--clr-secondary-3);
+    background-color: var(--clr-secondary-3);
   }
 
   .arrow_btn {
@@ -396,21 +425,4 @@
     font-size: var(--p);
     line-height: var(--lh-p);
   }
-
-  .card_modal {
-    padding: 20px 25px;
-  }
-
-  .card_modal_text {
-    width: 100%;
-    padding: 5px 5px;
-    margin: 0% !important;
-  }
-
-  #modal_button {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
 }
-
-/* ------------------------- Home card Section End */
