@@ -85,7 +85,7 @@
   --t-mobile-three: 600 25px var(--ff-two);
   --t-desktop-one: 500 52px var(--ff-one);
   --t-desktop-two: italic 500 52px var(--ff-two);
-  --t-desktop-three: 500 52px var(--ff-two);
+  --t-desktop-three: 600 52px var(--ff-two);
 
   /* Textos = tx */
   --tx-mobile-one: 500 16px var(--ff-one);
