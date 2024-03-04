@@ -99,7 +99,7 @@
 .welcome_p {
   text-align: center;
   font: var(--tx-mobile-one);
-  font-size: 18px;
+  /* font-size: 18px; */
 }
 
 /* ------------------- Home Card Section */
@@ -159,206 +159,10 @@
   color: var(--clr-primary-2);
 }
 
-@media (min-width: 601px) {
-
-  /* ------------------- Banner Section */
-
-  .section_card_modal {
-    display: grid;
-    gap: 5px;
-    margin-top: 50px;
-    text-align: center;
-    aspect-ratio: 16/9;
-    width: 100%;
-    display: grid;
-    place-items: center;
-    margin: 5% 0% 0% 0%;
-    background-position: center;
-    background-size: cover;
-  }
-
-  .card_modal_text {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-
-  #modal_button {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-
-  /* ------------------- Welcome Section */
-
-  .welcome_section {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 5px;
-
-    margin-top: 50px;
-  }
-
-  .welcome_title {
-    grid-column: 2/-2;
-    text-align: center;
-
-    font: var(--t-desktop-three);
-    color: var(--clr-primary-2);
-  }
-
-  .welcome_p {
-    grid-column: 2/-2;
-
-    font: var(--tx-desktop-three);
-  }
-}
-
-@media (min-width: 1290px) {
-
-  /* ------------------- Welcome Section */
-
-  .welcome_section {
-    margin-top: 90px;
-  }
-}
-
-
-@media (min-width: 900px) {
-
-  /* ------------------- Home Card Section */
-
-  .home_cards {
-    display: flex;
-    flex-direction: row;
-    gap: 8%;
-    padding: 70px 0px;
-  }
-
-  .academia {
-    flex: 1;
-    padding: 45px 65px;
-    box-shadow: none;
-  }
-
-  .foro {
-    flex: 1;
-    padding: 45px 65px;
-    box-shadow: none;
-  }
-
-  .link {
-    margin-top: 27px;
-  }
-
-  /* ------------------- Banner Section */
-
-  .card_modal {
-    padding: 50px 20px;
-  }
-
-  .card_modal_text {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-
-  #modal_button {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-}
-
-@media (min-width: 1280px) {
-
-  .main {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-
-  /* ------------------- Banner Section */
-
-  .card_modal {
-    padding: 50px 20px;
-  }
-
-  .card_modal_text {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-
-  #modal_button {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-
-  /* ------------------- Home Card Section */
-
-  .academia {
-    padding: 55px 90px;
-  }
-
-  .foro {
-    padding: 55px 90px;
-  }
-
-  .link {
-    margin-top: 30px;
-  }
-
-}
-
-@media (max-width: 600px) {
-
-  /* ------------------- Banner Section */
-
-  .section_card_modal {
-    padding: 20px 0px;
-  }
-
-  .card_modal {
-    padding: 20px 25px;
-  }
-
-  .card_modal_text {
-    padding: 5px 5px;
-    margin: 0 auto;
-    margin: 0%;
-  }
-
-  #modal_button {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-
-  /* ------------------- Home Card Section */
-
-  .academia {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 17px;
-    background-color: #fff;
-    border: 2px solid var(--clr-secondary-1);
-  }
-
-  .foro {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 17px;
-    border: 2px solid var(--clr-secondary-3);
-    background-color: var(--clr-secondary-3);
-  }
-
-  .arrow_btn {
-    width: 20px;
-    height: 20px;
-  }
-
-  .text_link {
-    color: var(--clr-primary-2);
-  }
-
-
-}
+/* ------------------- Pantalla Pequeña */
 
 @media (max-width: 500px) {
+
   .main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -424,5 +228,171 @@
     text-align: left;
     font-size: var(--p);
     line-height: var(--lh-p);
+  }
+}
+
+/* ------------------- Pantalla Mediana */
+
+@media (min-width: 576px) {
+
+  /* ------------------- Banner Section */
+
+  .section_card_modal {
+    display: grid;
+    gap: 5px;
+    margin-top: 50px;
+    text-align: center;
+    aspect-ratio: 16/9;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    margin: 5% 0% 0% 0%;
+    background-position: center;
+    background-size: cover;
+  }
+
+
+  .card_modal {
+    padding: 20px 25px;
+  }
+
+  .card_modal_text {
+    padding: 5px 5px;
+    margin: 0 auto;
+  }
+
+  #modal_button {
+    padding: 5px 5px;
+    margin: 0 auto;
+  }
+
+  /* ------------------- Welcome Section */
+
+  .welcome_section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 5px;
+
+    margin-top: 50px;
+  }
+
+  .welcome_title {
+    grid-column: 2/-2;
+    text-align: center;
+
+    font: var(--t-desktop-three);
+    color: var(--clr-primary-2);
+  }
+
+  .welcome_title {
+    font: var(--t-desktop-three);
+    color: var(--clr-primary-2);
+  }
+
+  .welcome_p {
+    grid-column: 2/-2;
+
+    font: var(--tx-desktop-one);
+  }
+
+  /* ------------------- Home Card Section */
+
+  .academia {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 17px;
+    background-color: #fff;
+    border: 2px solid var(--clr-secondary-3);
+    background-color: var(--clr-secondary-3);
+  }
+
+  .foro {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 17px;
+    border: 2px solid var(--clr-secondary-1);
+  }
+
+  .arrow_btn {
+    width: 20px;
+    height: 20px;
+  }
+
+  .text_link {
+    color: var(--clr-primary-2);
+    font-size: 23px;
+  }
+
+}
+
+/* ------------------- Pantalla Grande */
+
+@media (min-width: 992px) {
+
+  .main {
+    max-width: 1290px;
+    margin: 0 auto;
+  }
+
+  /* ------------------- Banner Section */
+
+  .card_modal {
+    padding: 50px 20px;
+  }
+
+  .card_modal_text {
+    padding: 5px 5px;
+    margin: 0 auto;
+  }
+
+  #modal_button {
+    padding: 5px 5px;
+    margin: 0 auto;
+  }
+
+  /* ------------------- Welcome Section */
+
+  .welcome_p {
+    font: var(--tx-desktop-three);
+  }
+
+  /* ------------------- Home Card Section */
+
+  .home_cards {
+    display: flex;
+    flex-direction: row;
+    gap: 8%;
+    padding: 70px 0px;
+  }
+
+  .academia {
+    flex: 1;
+    padding: 45px 65px;
+    box-shadow: none;
+  }
+
+  .foro {
+    flex: 1;
+    padding: 45px 65px;
+    box-shadow: none;
+  }
+
+  .link {
+    margin-top: 30px;
+  }
+
+  .arrow_btn {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* ------------------- Pantalla Extra-Grande */
+
+@media (min-width: 1400px) {
+
+  .main {
+    max-width: 1400px;
+    margin: 0 auto;
   }
 }
