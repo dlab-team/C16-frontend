@@ -49,6 +49,7 @@
   --clr-primary-2: #06786D ;
   --clr-secondary-1: #FAD8CE ;
   --clr-secondary-2: #454444 ;
+  --clr-secondary-3: #FCEBE666;
 
 /*   --clr-one-50: blue;
   --clr-one-100: blue;
@@ -79,22 +80,25 @@
   --ff-two: Philosopher;
 
   /* Titulos = t */
-  --t-mobile: 600 25px var(--ff-one);
+  --t-mobile-one: 600 25px var(--ff-one);
+  --t-mobile-two: italic 600 25px var(--ff-two);
+  --t-mobile-three: 600 25px var(--ff-two);
   --t-desktop-one: 500 52px var(--ff-one);
   --t-desktop-two: italic 500 52px var(--ff-two);
+  --t-desktop-three: 500 52px var(--ff-two);
 
   /* Textos = tx */
   --tx-mobile-one: 500 16px var(--ff-one);
   --tx-mobile-two: 400 16px var(--ff-one);
   --tx-desktop-one: 400 20px var(--ff-one);
   --tx-desktop-two: 600 23px var(--ff-one);
+  --tx-desktop-three: 400 30px var(--ff-one);
+
 
   /* Font Size textos */
   --fs-text: 16px;
   /* Font Size inputs */
   --fs-inp: 15px;
-  /* Font Size titulos */
-  --fs-inp: 25px;
 }
 
 * {
