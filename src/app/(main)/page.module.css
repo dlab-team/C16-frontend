@@ -3,158 +3,116 @@
   grid-template-columns: repeat(12, 1fr);
   gap: 5px;
 
-  font-family: var(--font);
+  font-family: var(--ff-one);
   box-sizing: border-box;
 }
 
-.section_switch {
+.section {
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
   grid-column: 1/-1;
 }
 
-.welcome_title {
-  text-align: center;
-  font-size: 23px;
-  font-weight: 600;
-  margin-bottom: 14px;
-}
-
-.welcome_p {
-  text-align: center;
-  font-size: 18px;
-}
-
-/*----------------Estilos Seccion Banner*/
+/* ------------------- Banner Section */
 
 .section_banner {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   background-color: var(--clr-secondary-1);
 
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
+  margin-bottom: 20px;
 }
 
 .image_container {
   grid-column: 1/-1;
   grid-row: 1/-1;
   max-width: 100%;
+
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
 }
 
-.modal_conteiner {
-  grid-column: 2/-2;
-  grid-row: 2/5;
-  /* background-color: rgba(200, 23, 23, 0.8); */
-  align-items: center;
-}
-
 .text_container{
   grid-column: 2/-2;
-  grid-row: 2/2;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 30px;
+  grid-row: 2/-2;
   align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
+} 
+
+.text_banner {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  align-items: center;
+  grid-column: 1/-1;
+  grid-row: 1/3;
+  padding-top: 20px;
 }
 
-.title_uniendo {
-  text-align: left;
-  font: var(--t-mobile);
+.title_uniendo{
+  font: var(--t-mobile-four);
 }
 
-.title_cuidadores {
-  text-align: left;
+.title_cuidadores{
   font: var(--t-mobile-two);
   color: var(--clr-primary-2);
 }
 
-.text_banner {
-  text-align: left;
+.detail_banner{
+  text-align: center;
   font: var(--tx-mobile-one);
+  margin: 20px;
 }
 
 #modal_button {
-  font: var(--tx-mobile-two);
+  font: var(--tx-mobile-three);
   color: var(--clr-primary-2);
   background-color: rgba(255, 255, 255, 1);
   border-radius: 10px;
   border: 1px solid var(--clr-primary-2);
   cursor: pointer;
+  grid-column: 2/-2;
+  grid-row: 3/-1;
+  margin-bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #modal_button:hover {
-  font: var(--tx-mobile-two);
+  font: var(--tx-mobile-three);
   color: white;
   background-color: var(--clr-primary-2);
   border-radius: 10px;
   border: 1px solid var(--clr-primary-2);
   cursor: pointer;
+  grid-column: 2/-2;
+  grid-row: 3/-1;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-@media (min-width: 601px) {
-  .section_switch {
-    display: flex;
-    flex-direction: column-reverse;
-  }
+/* ------------------- Welcome Section */
 
-  .welcome_section {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 5px;
-
-    margin-top: 50px;
-  }
-
-  .welcome_title {
-    grid-column: 2/-2;
-
-    text-align: left;
-    font-weight: 400;
-    font-size: clamp(35px, 4vw, 64px);
-    color: var(--principal);
-  }
-
-  .welcome_p {
-    grid-column: 2/-2;
-
-    font-size: clamp(11.5px, 2vw, 26px);
-    font-weight: 400;
-    text-align: left;
-  }
-
-  .section_card_modal {
-    display: grid;
-    gap: 5px;
-    margin-top: 50px;
-    text-align: center;
-    aspect-ratio: 16/9;
-    width: 100%;
-    display: grid;
-    place-items: center;
-    margin: 5% 0% 0% 0%;
-    background-position: center;
-    background-size: cover;
-  }
-
-  .card_modal_text {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-
-  #modal_button {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
+.welcome_title {
+  text-align: center;
+  font: var(--t-mobile-three);
+  color: var(--clr-primary-2);
+  letter-spacing: 4px;
+  margin-bottom: 14px;
 }
 
-@media (min-width: 1290px) {
-  .welcome_section {
-    margin-top: 90px;
-  }
+.welcome_p {
+  text-align: center;
+  font: var(--tx-mobile-one);
 }
 
-/* ------------------------- Home card Section start */
+/* ------------------- Home Card Section */
 
 .home_cards {
   grid-column: 2/-2;
@@ -168,11 +126,8 @@
   padding: 15px 23px;
   border-radius: 30px;
   grid-column: 1/5;
-  border: 2px solid var(--secundario);
-  background-color: rgba(241, 125, 88, 0.1);
-  box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
-  -webkit-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
-  -moz-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
+  border: 2px solid var(--clr-secondary-3);
+  background-color: var(--clr-secondary-3);
 }
 
 .foro {
@@ -180,10 +135,7 @@
   border-radius: 30px;
   grid-column: 7/-1;
   background-color: #fff;
-  border: 2px solid var(--principal);
-  box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
-  -webkit-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
-  -moz-box-shadow: 0px 3px 13px -6px rgba(6, 120, 109, 0.6);
+  border: 2px solid var(--clr-secondary-1);
 }
 
 .cards_p {
@@ -204,142 +156,23 @@
 .arrow_btn {
   width: 30px;
   height: 30px;
-  background-image: url('/assets/arrow-left.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: transparent;
+  color: var(--clr-primary-2);
   border: inherit;
 }
 
 .text_link {
-  font-weight: 600;
-  text-transform: capitalize;
-  font-size: clamp(0.7rem, 1.7vw, 1.5rem);
-  color: var(--principal);
+  font: var(--tx-desktop-two);
+  color: var(--clr-primary-2);
 }
 
-@media (min-width: 900px) {
-  .home_cards {
-    display: flex;
-    flex-direction: row;
-    gap: 8%;
-    padding: 70px 0px;
-  }
-
-  .academia {
-    flex: 1;
-    padding: 45px 65px;
-    box-shadow: none;
-  }
-
-  .foro {
-    flex: 1;
-    padding: 45px 65px;
-    box-shadow: none;
-  }
-
-  .link {
-    margin-top: 27px;
-  }
-
-  .card_modal {
-    padding: 50px 20px;
-  }
-
-  .card_modal_text {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-
-  #modal_button {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-}
-
-@media (min-width: 1280px) {
-  .main {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-
-  .academia {
-    padding: 55px 90px;
-  }
-
-  .foro {
-    padding: 55px 90px;
-  }
-
-  .link {
-    margin-top: 30px;
-  }
-
-  .card_modal {
-    padding: 50px 20px;
-  }
-
-  .card_modal_text {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-
-  #modal_button {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 600px) {
-  .academia {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 17px;
-    background-color: #fff;
-    border: 2px solid var(--principal);
-  }
-
-  .foro {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 17px;
-    border: 2px solid var(--secundario);
-    background-color: rgba(241, 125, 88, 0.1);
-  }
-
-  .arrow_btn {
-    width: 20px;
-    height: 20px;
-    background-image: url('/assets/homeSVG/angle-right.svg');
-  }
-
-  .text_link {
-    color: var(--principal);
-  }
-
-  .section_card_modal {
-    flex-direction: column-reverse;
-    padding: 20px 0px;
-  }
-
-  .card_modal {
-    padding: 20px 25px;
-  }
-
-  .card_modal_text {
-    padding: 5px 5px;
-    margin: 0 auto;
-    margin: 0%;
-  }
-
-  #modal_button {
-    padding: 5px 5px;
-    margin: 0 auto;
-  }
-}
+/* ------------------- Pantalla Pequeña */
 
 @media (max-width: 500px) {
+
   .main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -347,6 +180,8 @@
     font-family: var(--font);
     padding: 30px;
   }
+
+  /* ------------------- Home Card Section */
 
   .home_cards {
     grid-column: 1/-1;
@@ -359,14 +194,14 @@
     border-radius: 30px;
     margin-bottom: 30px;
     background-color: #fff;
-    border: 2px solid var(--principal);
+    border: 2px solid var(--clr-secondary-1);
   }
 
   .foro {
     padding: 30px 37px;
     border-radius: 30px;
-    border: 2px solid var(--secundario);
-    background-color: rgba(241, 125, 88, 0.1);
+    border: 2px solid var(--clr-secondary-3);
+    background-color: var(--clr-secondary-3);
   }
 
   .arrow_btn {
@@ -387,21 +222,124 @@
     font-size: var(--p);
     line-height: var(--lh-p);
   }
+}
 
-  .card_modal {
-    padding: 20px 25px;
+/* ------------------- Pantalla Mediana */
+
+@media (min-width: 576px) {
+
+  /* ------------------- Banner Section */
+
+
+  /* ------------------- Welcome Section */
+
+  .welcome_section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 5px;
+
+    margin-top: 50px;
   }
 
-  .card_modal_text {
-    width: 100%;
-    padding: 5px 5px;
-    margin: 0% !important;
+  .welcome_title {
+    grid-column: 2/-2;
+    text-align: center;
+
+    font: var(--t-desktop-three);
+    color: var(--clr-primary-2);
   }
 
-  #modal_button {
-    padding: 5px 5px;
+  .welcome_p {
+    grid-column: 2/-2;
+
+    font: var(--tx-desktop-one);
+  }
+
+  /* ------------------- Home Card Section */
+
+  .academia {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 17px;
+    background-color: #fff;
+    border: 2px solid var(--clr-secondary-3);
+    background-color: var(--clr-secondary-3);
+  }
+
+  .foro {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 17px;
+    border: 2px solid var(--clr-secondary-1);
+  }
+
+  .arrow_btn {
+    width: 20px;
+    height: 20px;
+  }
+
+  .text_link {
+    color: var(--clr-primary-2);
+    font-size: 23px;
+  }
+
+}
+
+/* ------------------- Pantalla Grande */
+
+@media (min-width: 992px) {
+
+  .main {
+    max-width: 1290px;
     margin: 0 auto;
+  }
+
+  /* ------------------- Banner Section */
+
+
+  /* ------------------- Welcome Section */
+
+  .welcome_p {
+    font: var(--tx-desktop-three);
+  }
+
+  /* ------------------- Home Card Section */
+
+  .home_cards {
+    display: flex;
+    flex-direction: row;
+    gap: 8%;
+    padding: 70px 0px;
+  }
+
+  .academia {
+    flex: 1;
+    padding: 45px 65px;
+    box-shadow: none;
+  }
+
+  .foro {
+    flex: 1;
+    padding: 45px 65px;
+    box-shadow: none;
+  }
+
+  .link {
+    margin-top: 30px;
+  }
+
+  .arrow_btn {
+    width: 30px;
+    height: 30px;
   }
 }
 
-/* ------------------------- Home card Section End */
+/* ------------------- Pantalla Extra-Grande */
+
+@media (min-width: 1400px) {
+
+  .main {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
