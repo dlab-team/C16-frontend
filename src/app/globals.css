@@ -89,6 +89,7 @@
   --t-mobile-four: 400 25px var(--ff-one);
   --t-mobile-five: italic 500 30px var(--ff-two);
   --t-mobile-six: 500 30px var(--ff-one);
+  --t-mobile-seven: 500 30px var(--ff-two);
   
   /* Titulos Desktop */
   --t-desktop-one: 500 52px var(--ff-one);

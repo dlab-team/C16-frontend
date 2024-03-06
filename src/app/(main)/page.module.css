@@ -8,8 +8,6 @@
 }
 
 .section {
-  margin: 10px;
-  padding: 20px;
   text-align: center;
   grid-column: 1/-1;
 }
@@ -181,6 +179,11 @@
     padding: 30px;
   }
 
+  .section {
+    margin-right: -30px;
+    margin-left: -30px;
+  }
+
   /* ------------------- Home Card Section */
 
   .home_cards {
@@ -228,11 +231,6 @@
 
 @media (min-width: 576px) {
 
-  /* ------------------- Banner Section */
-
-  
-
-
   /* ------------------- Welcome Section */
 
   .welcome_section {
@@ -247,7 +245,7 @@
     grid-column: 2/-2;
     text-align: center;
 
-    font: var(--t-mobile-five);
+    font: var(--t-mobile-seven);
     color: var(--clr-primary-2);
   }
 
@@ -287,6 +285,11 @@
 }
 
 @media (min-width: 760px) {
+
+  .section {
+    margin-right: 30px;
+    margin-left: 30px;
+  }
 
   /* ------------------- Banner Section */
 
