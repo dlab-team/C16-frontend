@@ -1,0 +1,103 @@
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.6rem;
+  margin-top: 2rem;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.9rem;
+  -webkit-box-shadow: 0px 7px 12px -6px rgba(69, 68, 68, 0.61);
+  -moz-box-shadow: 0px 7px 12px -6px rgba(69, 68, 68, 0.61);
+  box-shadow: 0px 7px 12px -6px rgba(69, 68, 68, 0.61);
+}
+
+.cardImage {
+  width: 100%;
+  border-radius: 0.9rem;
+  object-fit: cover;
+}
+
+.textContainer {
+  width: 100%;
+  height: 13.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem 3rem 1.5rem 1rem;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--clr-primary-2);
+}
+
+.p {
+  width: 100%;
+  max-height: 5.4rem;
+  font-size: var(--fs-text);
+  font-weight: 400;
+  line-height: 1.3rem;
+  color: var(--clr-secondary-2);
+  max-lines: 4;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-wrap: pretty;
+}
+
+.dateWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dateText {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--clr-secondary-2);
+}
+
+.link {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--clr-primary-2);
+  margin-right: 1rem;
+}
+
+/* pc styles */
+@media (width > 920px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .container > :nth-child(1) {
+    width: 100%;
+    height: 21rem;
+    flex-direction: row-reverse;
+  }
+
+  .container > :nth-child(n + 2) {
+    width: 31%;
+  }
+
+  .container > :nth-child(1) > .textContainer {
+    width: 68%;
+  }
+
+  .cardImage {
+    height: 100%;
+  }
+}
