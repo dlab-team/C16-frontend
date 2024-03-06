@@ -180,8 +180,7 @@
   }
 
   .section {
-    margin-right: -30px;
-    margin-left: -30px;
+    margin: -30px;
   }
 
   /* ------------------- Home Card Section */
@@ -287,8 +286,7 @@
 @media (min-width: 760px) {
 
   .section {
-    margin-right: 30px;
-    margin-left: 30px;
+    margin: 30px;
   }
 
   /* ------------------- Banner Section */
