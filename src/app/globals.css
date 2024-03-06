@@ -36,13 +36,7 @@
 }
 
 :root {
-  --titulos: #271d24; /* por eliminar */
-  --principal: #d6006e; /* por eliminar */
-  --secundario: #ffc5e4; /* por eliminar */
-
-  /* 200, 300, 400, 500, 600, 700 */
-  --font: 'Montserrat', sans-serif; /* por eliminar */
-
+  
   /* Colores = clr */
 
   --clr-primary-1: #F17D58 ;
@@ -80,22 +74,34 @@
   --ff-two: Philosopher;
 
   /* Titulos = t */
+
+  /* Titulos Mobile */
   --t-mobile-one: 600 25px var(--ff-one);
   --t-mobile-two: italic 600 25px var(--ff-two);
   --t-mobile-three: 600 25px var(--ff-two);
   --t-mobile-four: 400 25px var(--ff-one);
+  --t-mobile-five: italic 500 30px var(--ff-two);
+  --t-mobile-six: 500 30px var(--ff-one);
   
+  /* Titulos Desktop */
   --t-desktop-one: 500 52px var(--ff-one);
   --t-desktop-two: italic 500 52px var(--ff-two);
   --t-desktop-three: 600 52px var(--ff-two);
+  --t-desktop-four: 500 40px var(--ff-one);
+  --t-desktop-five: italic 500 40px var(--ff-two);
 
   /* Textos = tx */
+
+  /* Textos Mobile */
   --tx-mobile-one: 500 16px var(--ff-one);
   --tx-mobile-two: 400 16px var(--ff-one);
   --tx-mobile-three: 600 16px var(--ff-one);
+
+  /* Textos Desktop */
   --tx-desktop-one: 400 20px var(--ff-one);
   --tx-desktop-two: 600 23px var(--ff-one);
   --tx-desktop-three: 400 30px var(--ff-one);
+  --tx-desktop-four: 400 23px var(--ff-one);
 
 
   /* Font Size textos */
