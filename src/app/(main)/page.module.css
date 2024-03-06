@@ -36,7 +36,7 @@
   border-bottom-right-radius: 30px;
 }
 
-.text_container{
+.text_container {
   grid-column: 2/-2;
   grid-row: 2/-2;
   align-items: center;
@@ -44,7 +44,7 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
 
-} 
+}
 
 .text_banner {
   background-color: rgba(255, 255, 255, 0.8);
@@ -55,16 +55,16 @@
   padding-top: 20px;
 }
 
-.title_uniendo{
+.title_uniendo {
   font: var(--t-mobile-four);
 }
 
-.title_cuidadores{
+.title_cuidadores {
   font: var(--t-mobile-two);
   color: var(--clr-primary-2);
 }
 
-.detail_banner{
+.detail_banner {
   text-align: center;
   font: var(--tx-mobile-one);
   margin: 20px;
@@ -230,6 +230,8 @@
 
   /* ------------------- Banner Section */
 
+  
+
 
   /* ------------------- Welcome Section */
 
@@ -245,13 +247,12 @@
     grid-column: 2/-2;
     text-align: center;
 
-    font: var(--t-desktop-three);
+    font: var(--t-mobile-five);
     color: var(--clr-primary-2);
   }
 
   .welcome_p {
     grid-column: 2/-2;
-
     font: var(--tx-desktop-one);
   }
 
@@ -285,6 +286,64 @@
 
 }
 
+@media (min-width: 760px) {
+
+  /* ------------------- Banner Section */
+
+  .section_banner {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+
+    border-radius: 30px;
+    margin-top: 20px;
+  }
+
+  .image_container {
+    grid-column: 1/6;
+    grid-row: 1/-1;
+    max-width: 100%;
+
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 0px;
+  }
+
+  .text_container {
+    grid-column: 7/-2;
+    grid-row: 1/-1;
+  }
+
+  .text_banner {
+    border-radius: 30px;
+  }
+
+  .title_uniendo {
+    font: var(--t-mobile-four);
+  }
+
+  .title_cuidadores {
+    font: var(--t-mobile-two);
+  }
+
+  .detail_banner {
+    text-align: left;
+    font: var(--tx-mobile-one);
+    margin: 30px;
+  }
+
+  #modal_button {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 20px;
+  }
+
+  #modal_button:hover {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 20px;
+  }
+}
+
 /* ------------------- Pantalla Grande */
 
 @media (min-width: 992px) {
@@ -295,12 +354,28 @@
   }
 
   /* ------------------- Banner Section */
+  
+  .title_uniendo {
+    font: var(--t-mobile-six);
+    letter-spacing: 2px;
+  } 
 
+  .title_cuidadores {
+    font: var(--t-mobile-five);
+    letter-spacing: 2px;
+  }
+
+  .detail_banner {
+    font: var(--tx-desktop-four);
+  }
 
   /* ------------------- Welcome Section */
 
   .welcome_p {
     font: var(--tx-desktop-three);
+  }
+  .welcome_title {
+    font: var(--t-desktop-two);
   }
 
   /* ------------------- Home Card Section */
@@ -335,6 +410,57 @@
 }
 
 /* ------------------- Pantalla Extra-Grande */
+
+
+@media (min-width: 1200px) {
+
+/* ------------------- Banner Section */
+
+  .text_banner {
+    padding-left: 30px;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .title_uniendo {
+    font: var(--t-desktop-four);
+    letter-spacing: 4px;
+  }
+
+  .title_cuidadores {
+    font: var(--t-desktop-five);
+    letter-spacing: 4px;
+  }
+
+  .detail_banner {
+    margin-left: 0px;
+  }
+
+}
+@media (min-width: 1290px) {
+
+/* ------------------- Banner Section */
+  
+  .title_uniendo {
+    font: var(--t-desktop-one);
+  }
+
+  .title_cuidadores {
+    font: var(--t-desktop-two);
+  }
+
+  .detail_banner {
+    font: var(--tx-desktop-four);
+  }
+
+  #modal_button {
+    font: var(--tx-desktop-two);
+  }
+
+  #modal_button:hover {
+    font: var(--tx-desktop-two);
+  }
+}
 
 @media (min-width: 1400px) {
 
