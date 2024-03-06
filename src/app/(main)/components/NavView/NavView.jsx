@@ -5,46 +5,51 @@ import styles from './styles/NavView.module.css';
 import { ROUTES_INFO } from './constants';
 import { MenuIcon } from './icons';
 import { useNavView } from './hook';
+import { LoginButton, NavUserInfo } from './components';
 
 const NavView = () => {
-  const { pathname, toggleMenu } = useNavView();
+  const { pathname, toggleMenu, isAuthenticated, handleLogin } = useNavView();
 
   return (
     <header className={styles.navContainer}>
-      <Image
-        src="/assets/logo-ronda.svg"
-        alt="logo Ronda"
-        width={53}
-        height={53}
-        loading="lazy"
-        className={styles.logo}
-      />
-      <nav id="navContainer" className={styles.nav}>
-        {ROUTES_INFO.map((route) => (
-          <Link
-            className={`${styles.link} ${
-              pathname === route.pathname && styles.active
-            }`}
-            href={route.pathname}
-            onClick={toggleMenu}
-            key={route.id}
-          >
-            {/* ToDo: Do all items have an icon or none? */}
-            {/* {pathname === route.pathname && route.icon} */}
-            {route.title}
-          </Link>
-        ))}
+      <Link href='/' className={styles.logoContainer}>
         <Image
-          src="https://cdn.pixabay.com/photo/2017/11/29/09/15/paint-2985569_1280.jpg"
-          alt="user profile"
-          width={30}
-          height={30}
-          loading="lazy"
-          className={styles.profileImage}
+          src='https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2Flogo.svg?alt=media&token=0c84752a-14aa-4859-ad08-ecdc95666039'
+          alt='logo Ronda'
+          width={53}
+          height={53}
+          loading='lazy'
+          className={styles.logo}
         />
-      </nav>
+      </Link>
+      <div id='navContainer' className={styles.navWrapper}>
+        <nav className={styles.nav}>
+          <NavUserInfo
+            toggleMenu={toggleMenu}
+            isAuthenticated={isAuthenticated}
+          />
+          {ROUTES_INFO.map((route) => (
+            <Link
+              className={`${styles.link} ${
+                pathname === route.pathname && styles.active
+              }`}
+              href={route.pathname}
+              onClick={toggleMenu}
+              key={route.id}
+            >
+              {route.title}
+            </Link>
+          ))}
+          <button className={styles.loginButton}>
+            {isAuthenticated ? 'Cerrar Sesión' : 'Iniciar sesión'}
+          </button>
+        </nav>
+      </div>
       <div className={styles.buttonsContainer}>
-        <button className={styles.loginButton}>Ingresar</button>
+        <LoginButton
+          isAuthenticated={isAuthenticated}
+          handleLogin={handleLogin}
+        />
         <button onClick={toggleMenu} className={styles.menuButton}>
           <MenuIcon />
         </button>
