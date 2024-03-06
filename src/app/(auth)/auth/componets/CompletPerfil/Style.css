@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 45rem;
+  height: 50rem;
   font: var(--tx-mobile-one);
   margin-top: 5%;
   background-color: #fff;
@@ -29,13 +29,13 @@ h2 {
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 100%;
   align-items: center;
 }
 .register__input {
   width: 80%;
-  height: 12%;
+  height: 10%;
   display: flex;
   flex-direction: column;
   gap: 10% 0%;
@@ -53,17 +53,21 @@ input {
   height: 37px;
   cursor: pointer;
 }
+label{
+  cursor: pointer;
+}
 input:focus {
   outline: #787575;
 }
 select {
-  width: 50rem;
+  width: 350rem;
   border: none;
   background-image: url("https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FVector.svg?alt=media&token=cd044697-8b70-46e0-b0fa-aafd69945b1d");
   background-position: right center;
   background-repeat: no-repeat;
   appearance: none;
   cursor: pointer;
+  height: 37px;
 }
 select:focus {
   outline: #787575;
@@ -133,7 +137,7 @@ select:focus {
   .register__descktop {
     background-color: #fff;
     width: 30rem;
-    height: 50rem;
+    height: 55rem;
     border-radius: 20px;
   }
 }
@@ -145,43 +149,80 @@ select:focus {
   width: 38px;
   background-color: #fff;
 }
-.register__input__toogle{
-    display: flex;
-    width: 80%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 20%;
-
+.register__input__toogle {
+  display: flex;
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 15%;
 }
 
-
-.register__toogles__buttons{
-    background-color: #E8E8E8;
-    width: 126px;
-    height: 35px;
-    border-radius: 20px;
-    color: #fff;
-    overflow: auto;
+.register__toogles__buttons {
+  background-color: #e8e8e8;
+  width: 126px;
+  height: 35px;
+  border-radius: 20px;
+  color: #fff;
+  overflow: auto;
 }
 
-.switch{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
-
-
-
 
 .register__buttons__pink {
-    background-color: var(--clr-primary-1);
-    color: #fff;
-    border: none;
-    width: 100%;
-    height: 42px;
-    border-radius: 8px;
-    font-weight: 700;
-    cursor: pointer;
+  background-color: var(--clr-primary-1);
+  color: #fff;
+  border: none;
+  width: 120px;
+  height: 42px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.register__remenber {
+  display: flex;
+  width: 80%;
+}
+.register__remenber__input {
+  display: flex;
+  width: 20%;
+  height: 34px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.custom-checkbox{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%; /* Hace que el checkbox sea redondo */
+  border: 2px solid #06786d ; /* Color del borde del checkbox */
+  background-color: #fff; /* Color de fondo del checkbox */
+  outline: none;
+  cursor: pointer;
+  vertical-align: middle;
+  
+
+}
+.custom-checkbox:checked {
+  background: #fff; 
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2Fcheck.svg?alt=media&token=cd538443-229c-4ca6-ae57-9d4961e90e04');
+  background-size: cover;
+  background-position: center;
+
+}
+
+@media (min-width: 992px) {
+  .register {
+    height: 50rem;
   }
+}

@@ -5,7 +5,7 @@ import "../../../../globals.css";
 import { useState } from "react";
 import { AiFillCalendar } from "react-icons/ai";
 
-const RegistroComponenteII = () => {
+const CompletPerfil = () => {
   const [number, setNumber] = useState("");
   const [sexo, setSexo] = useState("");
   const [rut, setRut] = useState("");
@@ -14,7 +14,7 @@ const RegistroComponenteII = () => {
   const [comuna, setComuna] = useState("");
   const [caretaker, setCaretaker] = useState("");
   const [labelColor, setLabelColor] = useState("#E8E8E8");
-  const [term, setTerm] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const changeColor = (selectedSexo) => {
     switch (selectedSexo) {
@@ -38,36 +38,16 @@ const RegistroComponenteII = () => {
     setSexo(selectedSexo);
     changeColor(selectedSexo);
   };
-  const handleterm = (e) => {
-    setTerm(true);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked); // Invertimos el valor actual del estado
   };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
 
-  //   setNumber('');
-  //   setRut('');
-  //   setYear('');
-  //   setRegion('');
-  //   setComuna('');
-  //   setCaretaker('');
-  //   setTerm ('')
-
-  //   if (number === '' || rut === '' || year=== '' || region === '' || comuna === '' || caretaker === '' || term === '') {
-
-  //       handleRegistro(2)
-  //       setAlert(true);
-  //       return;
-  //   }
-
-  //   handleRegistro(1)
-  //   setAlert(true);
-  // onSubmit={handleSubmit}
-  // };
 
   return (
     <div>
       <div className="register__descktop">
-        <button className="button__back"></button>
+
         <form>
           <div className="register">
             <h2>Completa tu Perfil</h2>
@@ -127,7 +107,7 @@ const RegistroComponenteII = () => {
                   />
                   <label
                     className="switch"
-                    For="register_woman"
+                    htmlFor="register_woman"
                     style={{
                       background: sexo === "mujer" ? "#06786D" : "#E8E8E8",
                     }}
@@ -150,7 +130,7 @@ const RegistroComponenteII = () => {
                   />
                   <label
                     className="switch"
-                    for="register_man"
+                    htmlFor="register_man"
                     style={{
                       background: sexo === "hombre" ? "#06786D" : "#E8E8E8",
                     }}
@@ -173,7 +153,7 @@ const RegistroComponenteII = () => {
                   />
                   <label
                     className="switch"
-                    for="register_sinespecificar"
+                    htmlFor="register_sinespecificar"
                     style={{
                       background:
                         sexo === "Sin especificar" ? "#06786D" : "#E8E8E8",
@@ -194,9 +174,7 @@ const RegistroComponenteII = () => {
                       setRegion(e.target.value);
                     }}
                   >
-                    <option value="" selected>
-                      selecciona
-                    </option>
+                    <option value="none">selecciona</option>
                     <option value="value1">Value 1</option>
                     <option value="value2">Value 2</option>
                     <option value="value3">Value 3</option>
@@ -215,13 +193,9 @@ const RegistroComponenteII = () => {
                       setComuna(e.target.value);
                     }}
                   >
-                    <option value="" selected>
-                      selecciona
-                    </option>
+                    <option value="none">selecciona</option>
                     <option value="value1">Value 1</option>
-                    <option value="value2" selected>
-                      Value 2
-                    </option>
+                    <option value="value2">Value 2</option>
                     <option value="value3">Value 3</option>
                   </select>
 
@@ -238,9 +212,7 @@ const RegistroComponenteII = () => {
                       setCaretaker(e.target.value);
                     }}
                   >
-                    <option value="none" selected>
-                      selecciona
-                    </option>
+                    <option value="none">selecciona</option>
                     <option value="Pariente mayor de edad">
                       Pariente mayor de edad
                     </option>
@@ -258,15 +230,17 @@ const RegistroComponenteII = () => {
               </div>
 
               <div className="register__remenber">
+                <div className="register__remenber__input">
                 <input
-                  type="radio"
-                  value={term}
-                  onChange={(e) => {
-                    handleterm();
-                  }}
+                  type="checkbox"
+                  className="custom-checkbox"
+                  checked={isChecked} 
+        onChange={handleCheckboxChange} 
                 />
+                </div>
+            
                 <span>
-                  Acepto la política de Tratamiento de datos personales{" "}
+                  Acepto la política de Tratamiento de datos personales
                 </span>
               </div>
 
@@ -284,4 +258,4 @@ const RegistroComponenteII = () => {
   );
 };
 
-export default RegistroComponenteII;
+export default CompletPerfil;
