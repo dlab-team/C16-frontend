@@ -342,6 +342,11 @@
     padding-bottom: 15px;
     border-radius: 20px;
   }
+
+  /* ------------------- Welcome Section */
+  .welcome_title {
+    font: var(--t-desktop-five);
+  }
 }
 
 /* ------------------- Pantalla Grande */
@@ -371,13 +376,14 @@
 
   /* ------------------- Welcome Section */
 
+  .welcome_title {
+    font: var(--t-desktop-six);
+  }
+
   .welcome_p {
     font: var(--tx-desktop-three);
   }
-  .welcome_title {
-    font: var(--t-desktop-two);
-  }
-
+  
   /* ------------------- Home Card Section */
 
   .home_cards {

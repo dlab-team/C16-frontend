@@ -36,6 +36,13 @@
 }
 
 :root {
+
+  --titulos: #271d24; /* por eliminar */
+  --principal: #d6006e; /* por eliminar */
+  --secundario: #ffc5e4; /* por eliminar */
+
+  /* 200, 300, 400, 500, 600, 700 */
+  --font: 'Montserrat', sans-serif; /* por eliminar */
   
   /* Colores = clr */
 
@@ -88,7 +95,9 @@
   --t-desktop-two: italic 500 52px var(--ff-two);
   --t-desktop-three: 600 52px var(--ff-two);
   --t-desktop-four: 500 40px var(--ff-one);
-  --t-desktop-five: italic 500 40px var(--ff-two);
+  --t-desktop-five: 500 40px var(--ff-two);
+  --t-desktop-six: 500 52px var(--ff-two);
+
 
   /* Textos = tx */
 
