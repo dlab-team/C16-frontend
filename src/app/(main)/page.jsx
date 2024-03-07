@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import styles from './page.module.css';
 import Modal from '@/components/ModalRegistro/ModalRegistro';
+import { IoIosArrowForward } from "react-icons/io";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,44 +12,55 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <div className={styles.section_switch}>
-        {/* Seccion Modal y Carrusel */}
-        <section className={styles.section_card_modal}>
-          <div className={styles.card_modal}>
-            <div className={styles.card_modal_text}>
-              <h3 className={styles.card_title}>Dysgen retåse</h3>
-              <p className={styles.card_text}>
-                Lörem ipsum parasat ponerade, vabåligt järad. Kroling eus
-                benöna. Terakadade postsocial, synösamma, ossa, agnostilog.
-                Bingen äspevis.
-              </p>
-              <button onClick={() => setIsOpen(true)} id={styles.modal_button}>
-                {' '}
-                Quiero ser parte{' '}
-              </button>
-              <Modal isOpen={isOpen} onClose={closeModal}>
-                <h2>Modal Registro</h2>
-                <p>¡Este es el contenido del modal!</p>
-              </Modal>
+      <div className={styles.section}>
+
+        {/* ----- Seccion Banner ----- */}
+
+        <section className={styles.section_banner}>
+          <img className={styles.image_container} src="https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fmanos_unidas.png?alt=media&token=f47a7fc7-7178-4e91-932f-11e43f68d4d"></img>
+
+          <div className={styles.text_container}>
+            <div className={styles.text_banner}>
+                <h1>
+                  <span className={styles.title_uniendo}>Uniendo</span>
+                  <span className={styles.title_uniendo}> a</span>
+                  <span className={styles.title_cuidadores}> Cuidadores</span>
+                </h1>
+                <p className={styles.detail_banner}>
+                  Únete a la red más grande de apoyo para cuidadores
+                </p>
             </div>
+            <button onClick={() => setIsOpen(true)} id={styles.modal_button}>
+              {' '}
+              Inscríbete
+              {' '}
+            </button>
+            <Modal isOpen={isOpen} onClose={closeModal}>
+              <h2>Modal Registro</h2>
+              <p>¡Este es el contenido del modal!</p>
+            </Modal>
           </div>
         </section>
 
+        {/* ----- Welcome Section ----- */}
+
         <section className={styles.welcome_section}>
-          <h1 className={styles.welcome_title}>Bienvenid@s</h1>
+          <h1 className={styles.welcome_title}>Bienvenid@</h1>
           <p className={styles.welcome_p}>
-            Lörem ipsum ösegarade agnostistat, myviras om än mydat pängen.
-            Aspludd trir. Ire astropod den lalig presaning: i vigisk. Exoktigt
-            his senän.
+            Sabemos lo desafiante que puede ser asumir este rol, por eso estamos para ayudarte en cada paso del camino.
           </p>
         </section>
       </div>
+
+      {/* ----- Home Card Section ----- */}
 
       <section className={styles.home_cards}>
         <div className={styles.academia}>
           <Link href='/academia' className={styles.link}>
             <span className={styles.text_link}>Academia</span>
-            <button className={styles.arrow_btn}></button>
+            <button className={styles.arrow_btn}>
+              <IoIosArrowForward className={styles.arrow_btn} />
+            </button>
           </Link>
           <p className={styles.cards_p}>
             Revisa videos, guías y material descargable
@@ -58,7 +70,9 @@ export default function Home() {
         <div className={styles.foro}>
           <Link href='/foro' className={styles.link}>
             <span className={styles.text_link}>Foro</span>
-            <button className={styles.arrow_btn}></button>
+            <button className={styles.arrow_btn}>
+              <IoIosArrowForward className={styles.arrow_btn} />
+            </button>
           </Link>
           <p className={styles.cards_p}>
             Entabla conversaciones con otros cuidadores, pregunta o responde
