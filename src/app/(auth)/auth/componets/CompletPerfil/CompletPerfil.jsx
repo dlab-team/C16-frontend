@@ -4,6 +4,8 @@ import "./Style.css";
 import "../../../../globals.css";
 import { useState } from "react";
 import { AiFillCalendar } from "react-icons/ai";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const CompletPerfil = () => {
   const [number, setNumber] = useState("");
@@ -15,6 +17,27 @@ const CompletPerfil = () => {
   const [caretaker, setCaretaker] = useState("");
   const [labelColor, setLabelColor] = useState("#E8E8E8");
   const [isChecked, setIsChecked] = useState(false);
+
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const toggleCalendar = () => {
+    setShowCalendar((prevState) => !prevState);
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    const formattedDate = formatDate(date); // Formatear la fecha
+    document.getElementById("calendario").value = formattedDate; // Actualizar el valor del input tipo texto
+  };
+
+  // Función para formatear la fecha a DD/MM/YYYY
+  const formatDate = (date) => {
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // Los meses van de 0 a 11
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
 
   const changeColor = (selectedSexo) => {
     switch (selectedSexo) {
@@ -43,11 +66,24 @@ const CompletPerfil = () => {
     setIsChecked(!isChecked); // Invertimos el valor actual del estado
   };
 
+  const handleDateTimeChange = (newValue) => {
+    setValue(newValue);
+    // Actualiza el valor del input cuando cambia el DateTimePicker
+    setDateInputValue(newValue);
+  };
 
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    // Actualiza el valor del estado del input y del DateTimePicker
+    setDateInputValue(inputValue);
+    setValue(new Date(inputValue));
+  };
   return (
     <div>
       <div className="register__descktop">
-
+      <button className="button__back">
+        
+        </button>
         <form>
           <div className="register">
             <h2>Completa tu Perfil</h2>
@@ -74,19 +110,35 @@ const CompletPerfil = () => {
                   onChange={(e) => setRut(e.target.value)}
                 />
               </div>
-
               <div className="register__input">
-                <p>Fecha de nacimiento</p>
-                <div className="register__input__button">
+                <label htmlFor=""> Fecha de nacimiento</label>
+
+                <div className="register__input__button__img">
                   <input
-                    type="texte"
+                    type="text"
                     placeholder="DD/MM/YYYY"
-                    id="brithday"
-                    value={year}
-                    onChange={(e) => setYear(e.target.value)}
+                    id="calendario"
+                    onChange={selectedDate.toLocaleDateString()}
                   />
-                  <div className="register__input__button__img">
-                    <AiFillCalendar />
+
+                  <div className="register__input__button__calendar">
+                    <input
+                      type="checkbox"
+                      id="toggleCalendar"
+                      onChange={toggleCalendar}
+                      className="toggle__calendar"
+                    />
+
+                    <div className="register__calendar" id="calendarContainer">
+                      {showCalendar && (
+                        <div className="register__calendar">
+                          <Calendar
+                            onChange={handleDateChange}
+                            value={selectedDate}
+                          />
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -231,14 +283,14 @@ const CompletPerfil = () => {
 
               <div className="register__remenber">
                 <div className="register__remenber__input">
-                <input
-                  type="checkbox"
-                  className="custom-checkbox"
-                  checked={isChecked} 
-        onChange={handleCheckboxChange} 
-                />
+                  <input
+                    type="checkbox"
+                    className="custom-checkbox"
+                    checked={isChecked}
+                    onChange={handleCheckboxChange}
+                  />
                 </div>
-            
+
                 <span>
                   Acepto la política de Tratamiento de datos personales
                 </span>
