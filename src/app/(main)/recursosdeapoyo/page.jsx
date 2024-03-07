@@ -1,10 +1,14 @@
+'use client'
 import { Tabs } from './components'
+import { ResourcesProvider } from './context/ResourcesProvider'
 
 function RecursosDeApoyo() {
   return (
-    <main>
-      <Tabs />
-    </main>
+    <ResourcesProvider>
+      <main>
+        <Tabs />
+      </main>
+    </ResourcesProvider>
   )
 }
 
