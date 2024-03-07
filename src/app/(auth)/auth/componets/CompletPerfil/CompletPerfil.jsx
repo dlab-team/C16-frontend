@@ -217,7 +217,8 @@ const CompletPerfil = () => {
               </div>
 
               <div className="register__input">
-                <p>Regíon</p>
+                <label htmlFor="region">Regíon</label>
+     
                 <div className="register__input__button">
                   <select
                     name="region"
@@ -236,7 +237,8 @@ const CompletPerfil = () => {
                 </div>
               </div>
               <div className="register__input">
-                <p>Comuna</p>
+                <label htmlFor="Comuna">Comuna</label>
+           
                 <div className="register__input__button">
                   <select
                     name="comuna"
@@ -255,7 +257,8 @@ const CompletPerfil = () => {
                 </div>
               </div>
               <div className="register__input">
-                <p>A quien Cuida</p>
+                <label htmlFor="cuidador">A quien Cuida</label>
+
                 <div className="register__input__button">
                   <select
                     name="region"

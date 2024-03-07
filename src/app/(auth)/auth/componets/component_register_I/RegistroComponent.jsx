@@ -71,7 +71,8 @@ const RegistroComponent = () => {
               />
             </div>
             <div className="register__input">
-              <p>Apellido</p>
+              <label htmlFor="Apellido">Apellido</label>
+      
               <input
                 type="text"
                 placeholder="Perez"
@@ -82,7 +83,8 @@ const RegistroComponent = () => {
               />
             </div>
             <div className="register__input">
-              <p>Correo</p>
+              <label htmlFor="Correo">Correo</label>
+
               <input
                 type="text"
                 placeholder="correo@electronico.com"
@@ -93,7 +95,8 @@ const RegistroComponent = () => {
             </div>
 
             <div className="register__input">
-              <p>Contraseña</p>
+              <label htmlFor="contraseña">Contraseña</label>
+      
               <div className="register__input__password">
                 <input
                   type="password"

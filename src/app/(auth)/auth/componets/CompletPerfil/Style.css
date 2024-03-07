@@ -44,6 +44,10 @@ h2 {
   border-bottom: 1px solid var(--clr-primary-2);
   width: 70%;
 }
+label{
+  font: var(--ff-one);
+  font-weight: 500;
+}
 input {
   border: none;
   display: flex;
