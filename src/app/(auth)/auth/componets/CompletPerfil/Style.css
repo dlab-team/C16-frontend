@@ -74,16 +74,23 @@ select:focus {
 }
 .register__input__button {
   display: flex;
+
+}
+.register__input__button__calendar{
+  display: flex;
+  flex-direction: column;
+  width: 45px;
+  align-items: center;
+  justify-content: center;
 }
 .register__input__button__img {
-  width: 20%;
   height: 37px;
   text-align: center;
   display: flex;
   font-size: 24px;
   color: var(--clr-primary-2);
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .register__button {
@@ -220,9 +227,36 @@ select:focus {
   background-position: center;
 
 }
-
+.register__calendar{
+  position: absolute;
+  z-index: 2;
+  right: 3rem;
+  top: 13rem;
+}
+.toggle__calendar{
+  appearance: none;
+  border: none;
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2Fcalendar.svg?alt=media&token=b455ed59-2864-4d2a-b385-40e6d80d55de');
+  background-size: cover;
+  
+}
 @media (min-width: 992px) {
   .register {
     height: 50rem;
   }
+
+  .register__calendar{
+    right: 10rem;
+   
+  }
+
 }
+
+@media (min-width: 1400px) {
+  .register__calendar{
+    right: 16rem;
+
+  }
+
+} 
+
