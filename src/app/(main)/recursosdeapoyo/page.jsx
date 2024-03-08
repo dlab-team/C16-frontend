@@ -1,14 +1,16 @@
-import { PaginationView } from './components';
+'use client'
+import { Tabs } from './components'
+import { ResourcesProvider } from './context/ResourcesProvider'
+import { PaginationView } from './components'
 
 function RecursosDeApoyo() {
   return (
-    <div>
-      <h1 style={{ textAlign: 'center', padding: '20px' }}>
-        RecursosDeApoyo page
-      </h1>
-      <PaginationView />
-    </div>
-  );
+    <ResourcesProvider>
+      <main>
+        <Tabs />
+      </main>
+    </ResourcesProvider>
+  )
 }
 
-export default RecursosDeApoyo;
+export default RecursosDeApoyo
