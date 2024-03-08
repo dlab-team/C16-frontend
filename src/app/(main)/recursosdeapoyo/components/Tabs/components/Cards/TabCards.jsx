@@ -7,7 +7,14 @@ function TabCards() {
   const { resources } = useResources()
 
   return (
-    <div className={styles.container}>
+    <div
+      style={
+        resources.length > 3
+          ? { 'justify-content': 'space-between' }
+          : { 'justify-content': 'flex-start' }
+      }
+      className={styles.container}
+    >
       {resources.map((item) => (
         <div className={styles.cardContainer} key={item?.id}>
           <Image
