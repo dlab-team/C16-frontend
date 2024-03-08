@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useMemo } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import FAKE_RESOURCES_DATA from '../mockupData/fakeResourcesData'
 import { resourcesInfoAdapter } from '../adapters'
 
@@ -6,8 +6,11 @@ const ResourcesContext = createContext()
 
 const ResourcesProvider = ({ children }) => {
   const [resources, setResources] = useState([])
+  const [paginationOptions, setPaginationOptions] = useState([])
   const [tabActive, setTabActive] = useState(1)
   const [tabName, setTabName] = useState('tutoriales')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [itemsPerPage, setItemsPerPage] = useState(4)
 
   const TABS_NAMES = [
     {
@@ -39,14 +42,59 @@ const ResourcesProvider = ({ children }) => {
     return filteredResources
   }
 
-  useEffect(() => {
+  // Function to calculate the total number of pages
+  const getTotalPages = () => {
     const filteredResources = filterResourcesByType()
-    setResources(resourcesInfoAdapter(filteredResources.slice(0, 4)))
-  }, [tabName])
+    return Math.ceil(filteredResources.length / itemsPerPage)
+  }
+
+  useEffect(() => {
+    const totalPages = getTotalPages()
+    const options = []
+    for (let i = 1; i <= totalPages; i++) {
+      options.push(
+        <option key={i} value={i}>
+          {i}
+        </option>,
+      )
+    }
+    setPaginationOptions(options)
+  }, [getTotalPages])
+
+  // Function to handle pagination selection change
+  function handlePageChange(event) {
+    setCurrentPage(parseInt(event.target.value)) // Ensure numeric value
+  }
+
+  // Get the current page of resources based on pagination
+  const getPaginatedResources = () => {
+    const filteredResources = filterResourcesByType()
+    const startIndex = (currentPage - 1) * itemsPerPage
+    const endIndex = startIndex + itemsPerPage
+    return resourcesInfoAdapter(filteredResources.slice(startIndex, endIndex))
+  }
+
+  useEffect(() => {
+    const paginatedResources = getPaginatedResources()
+    setResources(paginatedResources)
+  }, [tabName, currentPage, itemsPerPage])
 
   return (
     <ResourcesContext.Provider
-      value={{ TABS_NAMES, tabActive, handleTabActive, setTabName, resources }}
+      value={{
+        TABS_NAMES,
+        tabActive,
+        handleTabActive,
+        setTabName,
+        resources,
+        currentPage,
+        setCurrentPage,
+        itemsPerPage,
+        setItemsPerPage,
+        getTotalPages,
+        paginationOptions,
+        handlePageChange,
+      }}
     >
       {children}
     </ResourcesContext.Provider>
