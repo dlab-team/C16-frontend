@@ -1,13 +1,13 @@
 'use client'
-import { Tabs } from './components'
+import { Tabs, PaginationView } from './components'
 import { ResourcesProvider } from './context/ResourcesProvider'
-import { PaginationView } from './components'
 
 function RecursosDeApoyo() {
   return (
     <ResourcesProvider>
       <main>
         <Tabs />
+        <PaginationView />
       </main>
     </ResourcesProvider>
   )
