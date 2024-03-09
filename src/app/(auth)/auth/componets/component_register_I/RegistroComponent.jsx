@@ -12,9 +12,9 @@ const RegistroComponent = () => {
   const [lastname, setLastname] = useState("");
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
-  const validateEmail = (email) => {
+  const validatmail = (mail) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
+    return re.test(mail);
 };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +38,7 @@ const RegistroComponent = () => {
       return;
     }
 
-    if (!validateEmail(email)) {
+    if (!validatmail(mail)) {
       handleRegistro(3);
       setAlert(true);
       return;
