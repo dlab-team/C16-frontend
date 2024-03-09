@@ -1,12 +1,9 @@
 import React from 'react'
-import CompletPerfil from '../componets/CompletPerfil/CompletPerfil'
+import CompletPerfil from '../componets/CompleteProfile/CompletPerfil'
 import "./Styles.css";
 
 const page = () => {
-
-
-
-
+  
   return (
   
     

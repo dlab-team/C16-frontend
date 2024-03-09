@@ -7,7 +7,7 @@ import { AiFillCalendar } from "react-icons/ai";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-const CompletPerfil = () => {
+const CompleteProfile = () => {
   const [number, setNumber] = useState("");
   const [sexo, setSexo] = useState("");
   const [rut, setRut] = useState("");
@@ -313,4 +313,4 @@ const CompletPerfil = () => {
   );
 };
 
-export default CompletPerfil;
+export default CompleteProfile;
