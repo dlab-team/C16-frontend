@@ -10,8 +10,8 @@ function TabCards() {
     <div
       style={
         resources.length > 3
-          ? { 'justify-content': 'space-between' }
-          : { 'justify-content': 'flex-start' }
+          ? { justifyContent: 'space-between' }
+          : { justifyContent: 'flex-start' }
       }
       className={styles.container}
     >
