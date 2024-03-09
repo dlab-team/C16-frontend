@@ -59,7 +59,7 @@ const ResourcesProvider = ({ children }) => {
       )
     }
     setPaginationOptions(options)
-  }, [getTotalPages])
+  }, [currentPage, itemsPerPage, tabName])
 
   // Function to handle pagination selection change
   function handlePageChange(event) {
