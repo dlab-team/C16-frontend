@@ -11,7 +11,6 @@ const CompleteProfile = () => {
   const [number, setNumber] = useState("");
   const [sexo, setSexo] = useState("");
   const [rut, setRut] = useState("");
-  const [year, setYear] = useState("");
   const [region, setRegion] = useState("");
   const [comuna, setComuna] = useState("");
   const [caretaker, setCaretaker] = useState("");
