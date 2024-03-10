@@ -15,7 +15,7 @@ const RegistroComponent = () => {
   const validatmail = (mail) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(mail);
-};
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -25,14 +25,7 @@ const RegistroComponent = () => {
     setLastname("");
     setPassword("");
 
-
-    if (
-      name === "" ||
-      mail === "" ||
-      lastname === "" ||
-      password === "" 
-      
-    ) {
+    if (name === "" || mail === "" || lastname === "" || password === "") {
       handleRegistro(2);
       setAlert(true);
       return;
@@ -60,7 +53,7 @@ const RegistroComponent = () => {
 
           <form onSubmit={handleSubmit} className="register__inputgroup">
             <div className="register__input">
-    <label htmlFor="nombre"> Nombre</label>
+              <label htmlFor="nombre"> Nombre</label>
               <input
                 type="text"
                 placeholder="Pedro"
@@ -72,7 +65,7 @@ const RegistroComponent = () => {
             </div>
             <div className="register__input">
               <label htmlFor="Apellido">Apellido</label>
-      
+
               <input
                 type="text"
                 placeholder="Perez"
@@ -96,7 +89,7 @@ const RegistroComponent = () => {
 
             <div className="register__input">
               <label htmlFor="contraseña">Contraseña</label>
-      
+
               <div className="register__input__password">
                 <input
                   type="password"
@@ -151,7 +144,6 @@ const RegistroComponent = () => {
             <div className="register__refer">
               <a href="">Inicia sesión</a>
             </div>
-            
           </div>
         </div>
       </div>

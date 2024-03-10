@@ -66,24 +66,10 @@ const CompleteProfile = () => {
     setIsChecked(!isChecked); // Invertimos el valor actual del estado
   };
 
-  const handleDateTimeChange = (newValue) => {
-    setValue(newValue);
-    // Actualiza el valor del input cuando cambia el DateTimePicker
-    setDateInputValue(newValue);
-  };
-
-  const handleInputChange = (e) => {
-    const inputValue = e.target.value;
-    // Actualiza el valor del estado del input y del DateTimePicker
-    setDateInputValue(inputValue);
-    setValue(new Date(inputValue));
-  };
   return (
     <div>
       <div className="register__descktop">
-      <button className="button__back">
-        
-        </button>
+        <button className="button__back"></button>
         <form>
           <div className="register">
             <h2>Completa tu Perfil</h2>
@@ -118,7 +104,8 @@ const CompleteProfile = () => {
                     type="text"
                     placeholder="DD/MM/YYYY"
                     id="calendario"
-                    onChange={selectedDate.toLocaleDateString()}
+                    value={selectedDate.toLocaleDateString()} // Debes incluir el valor aquí
+                    onChange={(e) => handleDateChange(e.target.value)} // Pasar la función handleDateChange
                   />
 
                   <div className="register__input__button__calendar">
@@ -154,9 +141,10 @@ const CompleteProfile = () => {
                     value="mujer"
                     onChange={(e) => {
                       setSexo(e.target.value);
-                      handleSexoChange;
+                      handleSexoChange(); // Llamar a la función
                     }}
                   />
+
                   <label
                     className="switch"
                     htmlFor="register_woman"
@@ -218,7 +206,7 @@ const CompleteProfile = () => {
 
               <div className="register__input">
                 <label htmlFor="region">Regíon</label>
-     
+
                 <div className="register__input__button">
                   <select
                     name="region"
@@ -238,7 +226,7 @@ const CompleteProfile = () => {
               </div>
               <div className="register__input">
                 <label htmlFor="Comuna">Comuna</label>
-           
+
                 <div className="register__input__button">
                   <select
                     name="comuna"
