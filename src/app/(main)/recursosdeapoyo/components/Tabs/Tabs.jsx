@@ -4,7 +4,8 @@ import styles from './styles/Tabs.module.css'
 import { useResources } from '../../hooks'
 
 const Tabs = () => {
-  const { TABS_NAMES, tabActive, handleTabActive, setTabName } = useResources()
+  const { TABS_NAMES, tabActive, handleTabActive, setTabName, setCurrentPage } =
+    useResources()
 
   return (
     <section className={styles.container}>
@@ -18,6 +19,7 @@ const Tabs = () => {
               onClick={() => {
                 handleTabActive(tab.id)
                 setTabName(tab.name)
+                setCurrentPage(1)
               }}
             >
               <AiFillFile className={styles.fillIcon} />
