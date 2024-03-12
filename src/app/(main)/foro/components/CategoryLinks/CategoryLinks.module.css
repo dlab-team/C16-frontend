@@ -1,0 +1,48 @@
+.categoryContainer{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    width: 100%;
+    margin-top: 1.3rem;
+    
+}
+
+.itemNav{
+    font-family: var(--ff-one);
+    font-size: 0.8rem;
+    color: var(--clr-secondary-2);
+    text-decoration: none;
+}
+
+.itemSelected{
+    font-family: var(--ff-one);
+    font-size: 0.8rem;
+    color: var(--clr-primary-2);
+    text-decoration: underline 2px;
+    text-underline-offset: 5px;
+}
+
+@media (min-width: 576px) {
+    .categoryContainer{
+        grid-column: 3/-3;
+
+        gap: 25px;
+        margin-top: 2rem;
+    }
+
+
+    .itemNav{
+        font-size: 1rem;
+    }
+    
+    .itemSelected{
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .categoryContainer{
+        gap: 40px;
+    }
+}
