@@ -1,0 +1,32 @@
+/* Modal.module.css */
+.modalOverlay {
+    position: fixed;
+    /* Esto asegura que el overlay sea fijo y cubra toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* 100% del ancho de la ventana gráfica */
+    height: 100vh;
+    /* 100% del alto de la ventana gráfica */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Fondo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Asegura que el modal esté por encima de otros elementos */
+}
+
+.modalContent {
+    position: relative;
+    /* Posicionamiento relativo dentro del overlay */
+    margin: auto;
+    /* Centra el contenido en el overlay */
+    background: white;
+    padding: 20px;
+    width: 80%;
+    /* O cualquier otro ancho que prefieras */
+    max-width: 500px;
+    /* Un máximo para que no se vea demasiado grande en pantallas grandes */
+    border-radius: 5px;
+}
