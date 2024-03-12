@@ -30,7 +30,7 @@ export const ROUTES_INFO = [
   },
   {
     id: 6,
-    pathname: '/foro',
+    pathname: '/foro/recientes',
     title: 'Foro',
   },
 ];
