@@ -1,0 +1,35 @@
+.postList{
+    min-height: 400px;
+}
+.pagination{
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    width: 100%;
+    color: var(--clr-secondary-2);
+    font-family: var(--ff-one);
+}
+.select{
+    border: 0.3px solid var(--clr-two-500);
+    padding: 8px;
+    width: 55px;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+@media (min-width: 576px) {
+    .postList{
+        min-height: 500px;
+    }
+    .pagination{
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .postList{
+        min-height: 600px;
+    }
+} /* pantalla grande */

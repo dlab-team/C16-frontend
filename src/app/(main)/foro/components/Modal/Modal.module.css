@@ -1,0 +1,105 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    position: relative;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 270px;
+    border-radius: 1px;
+}
+
+.header{
+    display: none;
+}
+
+.modalInfo{
+    font-family: var(--ff-one);
+    color: var(--clr-secondary-2);
+    margin: 1rem 0;
+}
+.title{
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.message{
+    font-weight: 200;
+    font-size: 0.9rem;
+}
+
+.modalActions{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.closeButton{
+    background-color: transparent;
+    border: .5px solid var(--clr-primary-2);
+    color: var(--clr-primary-2);
+    padding: 7px;
+    border-radius: 5px;
+}
+.reportButton{
+    background-color: var(--clr-primary-1);
+    border: .5px solid var(--clr-primary-1);
+    color: white;
+    padding: 7px;
+    border-radius: 5px;
+}
+.closeButton:hover{
+    cursor: pointer;
+}
+.reportButton:hover{
+    cursor: pointer;
+}
+
+@media (min-width: 576px) {
+    .modalContent {
+        max-width: 500px;
+    }
+    .modalInfo{
+        margin: 0 0 1rem 0;
+    }
+    .modalActions{
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .header{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .closeBtn{
+        width: 25px;
+        height: 25px;
+        background-image: url('/assets/images/foro/closeIcon.svg');
+        background-position: center;
+        background-size: contain;
+        background-color: transparent;
+        border: none;
+    }
+    .closeBtn:hover{
+        cursor: pointer;
+    }
+
+    .closeButton{
+        padding: 7px 15px;
+    }
+    .reportButton{
+        padding: 7px 15px;
+    }
+    
+} /* pantalla mediana */

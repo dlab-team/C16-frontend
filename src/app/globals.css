@@ -55,29 +55,29 @@
   --clr-secondary-2: #454444 ;
   --clr-secondary-3: #FCEBE666;
 
-  /*   --clr-one-50: blue;
-  --clr-one-100: blue;
-  --clr-one-200: blue;
-  --clr-one-300: blue;
-  --clr-one-400: blue;
-  --clr-one-500: blue;
-  --clr-one-600: blue;
-  --clr-one-700: blue;
-  --clr-one-800: blue;
-  --clr-one-900: blue;
-  --clr-one-1000: blue;
+  --clr-one-50: #FDF5F3;
+  --clr-one-100: #FCEBE6;
+  --clr-one-200: #FAD8CE;
+  --clr-one-300: #F5BDAC;
+  --clr-one-400: #ED967C;
+  --clr-one-500: #E17252;
+  --clr-one-600: #CE5734;
+  --clr-one-700: #AD4628;
+  --clr-one-800: #8F3D25;
+  --clr-one-900: #773825;
+  --clr-one-1000: #401A0F;
 
-  --clr-two-50: blue;
-  --clr-two-100: blue;
-  --clr-two-200: blue;
-  --clr-two-300: blue;
-  --clr-two-400: blue;
-  --clr-two-500: blue;
-  --clr-two-600: blue;
-  --clr-two-700: blue;
-  --clr-two-800: blue;
-  --clr-two-900: blue;
-  --clr-two-1000: blue; */
+  --clr-two-50: #EFFEFB;
+  --clr-two-100: #C8FFF2;
+  --clr-two-200: #91FEE7;
+  --clr-two-300: #52F6D9;
+  --clr-two-400: #1FE2C6;
+  --clr-two-500: #06C6AD;
+  --clr-two-600: #029F8E;
+  --clr-two-700: #06786D;
+  --clr-two-800: #0B645D;
+  --clr-two-900: #0E534D;
+  --clr-two-1000: #003330;
 
   /* Tipografía - Font Family = ff */
   --ff-one: Montserrat; /* 100 - 900 */
