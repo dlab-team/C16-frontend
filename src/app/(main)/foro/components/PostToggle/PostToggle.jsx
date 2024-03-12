@@ -74,9 +74,8 @@ function PostToggle({ data }) {
                 </div>
             </div>
 
-            <Modal isOpen={isModalOpen} onClose={closeModal} onConfirm={reportPost}>
-                <p>¿Estás seguro de que quieres reportar este comentario como inapropiado? id: {data.id}</p>
-            </Modal>
+            <Modal isOpen={isModalOpen} onClose={closeModal} onConfirm={reportPost} />
+
 
 
 
