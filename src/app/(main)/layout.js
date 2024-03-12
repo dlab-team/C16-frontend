@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         <html lang="es">
             <body>
                 <header>
-                    {/* <NavView /> */}
+                    <NavView />
                 </header>
 
                 <>{children}</>
