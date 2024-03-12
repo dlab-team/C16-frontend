@@ -14,7 +14,7 @@ const NavView = () => {
     <header className={styles.navContainer}>
       <Link href='/' className={styles.logoContainer}>
         <Image
-          src='https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2Flogo.svg?alt=media&token=0c84752a-14aa-4859-ad08-ecdc95666039'
+          src='https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2Ficonomov-rnc.png?alt=media&token=890c66ed-e3d7-441b-8c73-40366555e6bc'
           alt='logo Ronda'
           width={53}
           height={53}
