@@ -1,0 +1,124 @@
+.postFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 1rem;
+    width: 100%;
+}
+.timeBox{
+    display: flex;
+    gap: 10px;
+
+    font-size: 0.8rem;
+    color: var(--clr-secondary-2);
+}
+.actionsBox{
+    display: flex;
+    gap: 5px;
+}
+.likeIcon{
+    background-image: url('/assets/images/foro/likeIcon.svg');
+    background-position: center;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+}
+.commentIcon{
+    background-image: url('/assets/images/foro/commentIcon.svg');
+    background-position: center;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+}
+.reportIcon{
+    background-image: url('/assets/images/foro/reportIcon.svg');
+    background-position: center;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+}
+.actionText {
+    display: none;
+}
+.action{
+    background-color: transparent;
+    border: none;
+}
+.action:hover{
+    cursor: pointer;
+}
+
+.hideInput{
+    display: none;
+}
+.inputCommentBox{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1;
+    align-items: center;
+
+    margin-top: 0.5rem;
+    width: 100%;
+}
+.commentInput{
+    grid-column: 1/-1;
+    grid-row: 1;
+
+    height: 40px;
+    border-radius: 7px;
+    border: 0.5px solid var(--clr-two-100);
+
+}
+.sendBtn{
+    grid-column: 6/-1;
+    grid-row: 1;
+    
+    width: 25px;
+    height: 25px;
+    background-image: url('/assets/images/foro/sendIcon.svg');
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+
+    border: none;
+}
+
+@media (min-width: 576px) {
+    .actionsBox{
+        gap: 10px;
+    }
+
+    
+}
+
+@media (min-width: 992px) {
+    .action{
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+    .actionText {
+        display: unset;
+        font-family: var(--ff-one);
+        color: var(--clr-secondary-2);
+        font-weight: 200;
+        font-size: 0.9rem;
+    }
+
+    .inputCommentBox{
+        grid-template-columns: repeat(12, 1fr);
+        border-radius: 10px;
+    }
+    .commentInput{
+        grid-column: 2/-2;
+        height: 50px;
+    }
+    .sendBtn{
+        grid-column: 11/-2;
+        grid-row: 1;
+
+        width: 35px;
+        height: 35px;
+    }
+} /* pantalla grande */
