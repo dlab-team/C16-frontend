@@ -1,11 +1,11 @@
-import RegistroComponent from "./componets/RegistroFormComponet/RegistroComponent";
-
+/* import RegistroComponent from "./componets/RegistroFormComponet/RegistroComponent";
+ */
 import "./Styles.css";
 
 function register() {
   return (
     <>
-      <RegistroComponent />
+      {/* <RegistroComponent /> */}
     </>
 
   );
