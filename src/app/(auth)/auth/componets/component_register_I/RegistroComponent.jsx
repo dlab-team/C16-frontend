@@ -12,35 +12,8 @@ const RegistroComponent = () => {
   const [lastname, setLastname] = useState("");
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
-  const validatmail = (mail) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(mail);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
-    // Vaciamos el formulario
-    setName("");
-    setMail("");
-    setLastname("");
-    setPassword("");
-
-    if (name === "" || mail === "" || lastname === "" || password === "") {
-      handleRegistro(2);
-      setAlert(true);
-      return;
-    }
-
-    if (!validatmail(mail)) {
-      handleRegistro(3);
-      setAlert(true);
-      return;
-    }
-
-    handleRegistro(1);
-    setAlert(true);
-  };
-
+  
   return (
     <div>
       <div className="register__descktop">
@@ -51,7 +24,7 @@ const RegistroComponent = () => {
         <div className="register">
           <h2>Registrate</h2>
 
-          <form onSubmit={handleSubmit} className="register__inputgroup">
+          <form  className="register__inputgroup">
             <div className="register__input">
               <label htmlFor="nombre"> Nombre</label>
               <input
