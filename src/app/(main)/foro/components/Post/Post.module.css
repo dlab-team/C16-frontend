@@ -4,7 +4,11 @@
     padding: 1rem;
     border-radius: 20px;
     overflow: hidden;
-    margin-bottom: 1rem;
+    margin-top: 1.2rem;
+
+    -webkit-box-shadow: 4px 4px 9px -6px rgba(0,0,0,0.54);
+    -moz-box-shadow: 4px 4px 9px -6px rgba(0,0,0,0.54);
+    box-shadow: 4px 4px 9px -6px rgba(0,0,0,0.54);
 }
 .postHeader{
     width: 100%;
@@ -40,7 +44,9 @@
 
 @media (min-width: 576px) {
     .postBox{
-        margin-bottom: 1.5rem;
+        grid-column: 2/-2;
+
+        margin-top: 1.8rem;
     }
     .message{
         background-color: var(--clr-one-50);

@@ -54,8 +54,7 @@
 } /* pantalla mediana */
 @media (min-width: 992px) {
     .banner{
-        max-width: 1290px;
-        margin: 0 auto;
+        margin-top: 2rem;
     }
     .textBox{
         gap: 20px;
