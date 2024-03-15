@@ -48,13 +48,15 @@
 .action:hover{
     cursor: pointer;
 }
-
+.linkComment{
+    text-decoration: none;
+}
 .hideInput{
     display: none;
 }
 .inputCommentBox{
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 1;
     align-items: center;
 
@@ -71,7 +73,7 @@
 
 }
 .sendBtn{
-    grid-column: 6/-1;
+    grid-column: 8/-1;
     grid-row: 1;
     
     width: 25px;
