@@ -1,11 +1,14 @@
 import Banner from "./components/Banner/Banner"
+import styles from './Foro.module.css'
 
 
 function layout({ children }) {
     return (
         <>
-            <Banner />
-            <>{children}</>
+            <main className={styles.main}>
+                <Banner />
+                <>{children}</>
+            </main>
         </>
 
     )

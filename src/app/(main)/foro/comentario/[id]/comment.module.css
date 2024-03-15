@@ -1,0 +1,39 @@
+.container{
+    text-decoration: none;
+    margin: 1rem 1rem 2rem 1rem;
+}
+.subTitle{
+    font-family: var(--ff-one);
+    color: var(--clr-primary-2);
+    text-decoration: underline 2px;
+    text-underline-offset: 7px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: 2rem;
+}
+
+.postBox{
+    margin: 1rem;
+}
+
+@media (min-width: 576px) {
+    .container{
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap:5px;
+
+        margin: 3rem 1rem;
+        align-items: center;
+    }
+    .subTitle{
+        grid-column: 3/6;
+        margin-top: 0;
+    }
+
+    .postBox{
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap:5px;
+    }
+}
