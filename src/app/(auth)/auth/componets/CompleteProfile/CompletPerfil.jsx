@@ -101,7 +101,15 @@ const CompleteProfile = () => {
 
                 <div className="register__input__button__img">
                  
-                  <div className="register__input__button__calendar">
+  
+                  <input
+                    type="text"
+                    placeholder="DD/MM/YYYY"
+                    id="calendario"
+                    value={selectedDate.toLocaleDateString()} // Debes incluir el valor aquí
+                    onChange={(e) => handleDateChange(e.target.value)} // Pasar la función handleDateChange
+                  />
+                <div className="register__input__button__calendar">
                     <input
                       type="checkbox"
                       id="toggleCalendar"
@@ -121,14 +129,6 @@ const CompleteProfile = () => {
                       )}
                     </div>
                   </div>
-                  <input
-                    type="text"
-                    placeholder="DD/MM/YYYY"
-                    id="calendario"
-                    value={selectedDate.toLocaleDateString()} // Debes incluir el valor aquí
-                    onChange={(e) => handleDateChange(e.target.value)} // Pasar la función handleDateChange
-                  />
-
                 </div>
               </div>
 
