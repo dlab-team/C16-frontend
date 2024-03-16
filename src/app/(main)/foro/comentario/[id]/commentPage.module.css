@@ -1,5 +1,4 @@
 .container{
-    text-decoration: none;
     margin: 1rem 1rem 2rem 1rem;
 }
 .subTitle{
@@ -24,8 +23,8 @@
         gap:5px;
 
         margin: 3rem 1rem;
-        align-items: center;
     }
+
     .subTitle{
         grid-column: 3/6;
         margin-top: 0;
