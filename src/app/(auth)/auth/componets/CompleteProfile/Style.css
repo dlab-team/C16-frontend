@@ -235,8 +235,9 @@ select:focus {
 .register__calendar{
   position: absolute;
   z-index: 2;
-  top: 200px;
-  
+  top: 34%;
+  right: 20%;
+
 }
 .toggle__calendar{
   appearance: none;
@@ -247,7 +248,10 @@ select:focus {
 }
 @media (min-width: 576px) {
   .register__calendar{
-    top: 220px;
+top: 38%;
+    right: 25%;
+
+
     }
 }
 
@@ -261,11 +265,21 @@ select:focus {
   }
 
   .register__calendar{
-top: 213px;
-   
+    top: 37%;
+    right: 33%;
+
+
   }
 
 }
+@media (min-width: 1400px) {
+  .register__calendar{
+
+    right: 41%;
+    
+      }
+}
+
 
 
 
