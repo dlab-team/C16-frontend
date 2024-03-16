@@ -9,16 +9,17 @@ import "react-calendar/dist/Calendar.css";
 
 const CompleteProfile = () => {
   const [number, setNumber] = useState("");
-  const [sexo, setSexo] = useState("");
   const [rut, setRut] = useState("");
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [region, setRegion] = useState("");
+  const [sexo, setSexo] = useState("");
   const [comuna, setComuna] = useState("");
   const [caretaker, setCaretaker] = useState("");
   const [labelColor, setLabelColor] = useState("#E8E8E8");
   const [isChecked, setIsChecked] = useState(false);
 
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+
 
   const toggleCalendar = () => {
     setShowCalendar((prevState) => !prevState);
@@ -99,14 +100,7 @@ const CompleteProfile = () => {
                 <label htmlFor=""> Fecha de nacimiento</label>
 
                 <div className="register__input__button__img">
-                  <input
-                    type="text"
-                    placeholder="DD/MM/YYYY"
-                    id="calendario"
-                    value={selectedDate.toLocaleDateString()} // Debes incluir el valor aquí
-                    onChange={(e) => handleDateChange(e.target.value)} // Pasar la función handleDateChange
-                  />
-
+                 
                   <div className="register__input__button__calendar">
                     <input
                       type="checkbox"
@@ -121,11 +115,20 @@ const CompleteProfile = () => {
                           <Calendar
                             onChange={handleDateChange}
                             value={selectedDate}
+                            maxDate={new Date()} 
                           />
                         </div>
                       )}
                     </div>
                   </div>
+                  <input
+                    type="text"
+                    placeholder="DD/MM/YYYY"
+                    id="calendario"
+                    value={selectedDate.toLocaleDateString()} // Debes incluir el valor aquí
+                    onChange={(e) => handleDateChange(e.target.value)} // Pasar la función handleDateChange
+                  />
+
                 </div>
               </div>
 
@@ -140,7 +143,7 @@ const CompleteProfile = () => {
                     value="mujer"
                     onChange={(e) => {
                       setSexo(e.target.value);
-                      handleSexoChange(); // Llamar a la función
+                      handleSexoChange(e); // Cambio aquí
                     }}
                   />
 
@@ -159,7 +162,6 @@ const CompleteProfile = () => {
                     name="sexo"
                     className="toogle"
                     type="radio"
-                    placeholder="mujer"
                     id="register_man"
                     value="hombre"
                     onChange={(e) => {
