@@ -1,15 +1,17 @@
 .postBox{
-    width: 100%;
-    background-color: var(--clr-one-100);
+    grid-column: 3/-1;
+
+    background-color: white;
     padding: 1rem;
     border-radius: 20px;
+    border: 1px solid #989898;
     overflow: hidden;
-    margin-top: 1.2rem;
-    z-index: 2;
+    height: fit-content;
+    margin-bottom: 1rem;
 
-    -webkit-box-shadow: 4px 4px 9px -6px rgba(0,0,0,0.54);
-    -moz-box-shadow: 4px 4px 9px -6px rgba(0,0,0,0.54);
-    box-shadow: 4px 4px 9px -6px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 0px 0px 13px -12px rgba(54,54,54,1);
+    -moz-box-shadow: 0px 0px 13px -12px rgba(54,54,54,1);
+    box-shadow: 0px 0px 13px -12px rgba(54,54,54,1);
 }
 .postHeader{
     width: 100%;
@@ -19,35 +21,35 @@
     padding-bottom: 0.5rem;
 }
 .imageHeader{
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
 }
 .authorInfo{
     font-family: var(--ff-one);
     color: var(--clr-secondary-2);
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     text-transform: capitalize;
+    margin-left: 1rem;
 }
 .stromg{
     font-weight: 500;
 }
 .message{
-    background-color: white;
+    background-color: var(--clr-one-50);
     padding: 1rem;
     height: fit-content;
     border-radius: 10px;
     font-family: var(--ff-one);
     font-weight: 200;
+    font-size: 0.8rem;
     color: var(--clr-secondary-2);
     border: 1px solid var(--clr-one-200);
 }
 
 @media (min-width: 576px) {
     .postBox{
-        grid-column: 2/-2;
-
-        margin-top: 1.8rem;
+        grid-column: 2/-1;
     }
     .message{
         background-color: var(--clr-one-50);
