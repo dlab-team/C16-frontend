@@ -9,6 +9,8 @@
 .timeBox{
     display: flex;
     gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
 
     font-size: 0.8rem;
     color: var(--clr-secondary-2);
@@ -70,6 +72,7 @@
     height: 40px;
     border-radius: 7px;
     border: 0.5px solid var(--clr-two-100);
+    text-indent: 1rem;
 
 }
 .sendBtn{
@@ -109,7 +112,7 @@
     }
 
     .inputCommentBox{
-        grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(20, 1fr);
         border-radius: 10px;
     }
     .commentInput{
@@ -117,10 +120,10 @@
         height: 50px;
     }
     .sendBtn{
-        grid-column: 11/-2;
+        grid-column: 18/-2;
         grid-row: 1;
 
         width: 35px;
         height: 35px;
     }
-} /* pantalla grande */
+}
