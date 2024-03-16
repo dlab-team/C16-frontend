@@ -56,6 +56,7 @@ input {
   align-items: center;
   height: 37px;
   cursor: pointer;
+  font: var(--tx-mobile-one);
 }
 label{
   cursor: pointer;
@@ -234,8 +235,8 @@ select:focus {
 .register__calendar{
   position: absolute;
   z-index: 2;
-  right: 3rem;
-  top: 13rem;
+  top: 200px;
+  
 }
 .toggle__calendar{
   appearance: none;
@@ -244,23 +245,27 @@ select:focus {
   background-size: cover;
   
 }
+@media (min-width: 576px) {
+  .register__calendar{
+    top: 220px;
+    }
+}
+
+
 @media (min-width: 992px) {
   .register {
     height: 50rem;
   }
+  input{
+    font: var(--tx-desktop-one);
+  }
 
   .register__calendar{
-    right: 10rem;
+top: 213px;
    
   }
 
 }
 
-@media (min-width: 1400px) {
-  .register__calendar{
-    right: 16rem;
 
-  }
-
-} 
 
