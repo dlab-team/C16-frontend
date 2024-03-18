@@ -92,13 +92,17 @@
   }
 
   .container > :nth-child(n + 2) {
-    width: 31%;
+    width: 30%;
   }
 
   .container > :nth-child(1) > .textContainer {
     width: 68%;
     height: 100%;
     padding: 3.1rem 3rem 3.5rem 1rem;
+  }
+
+  .container > :nth-child(n + 2) > .textContainer {
+    padding: 1rem 2.5rem 1.5rem 1rem;
   }
 
   .cardImage {
@@ -120,5 +124,11 @@
   .p {
     max-height: 7.8rem;
     max-lines: 6;
+  }
+}
+
+@media (width > 2000px) {
+  .container {
+    width: 80%;
   }
 }
