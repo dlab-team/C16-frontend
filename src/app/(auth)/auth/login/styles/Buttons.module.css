@@ -13,9 +13,9 @@
   border: none;
   align-self: center;
   border-radius: 0.6rem;
-  background-color: var(--principal);
+  background-color: var(--clr-primary-1);
   color: #fff;
-  font-size: var(--p);
+  font-size: var(--tx-mobile-one);
   font-weight: 700;
   cursor: pointer;
 }
@@ -26,14 +26,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
   margin-top: 2.3rem;
   background-color: transparent;
-  border: 2px solid var(--principal);
+  border: 2px solid var(--clr-primary-2);
   border-radius: 0.6rem;
-  color: #333;
-  font-size: var(--p);
-  font-weight: 400;
+  color: var(--clr-primary-2);
+  font-size: var(--tx-mobile-one);
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -46,15 +45,27 @@
 }
 
 .forgotMyPassword {
-  font-size: var(--label);
-  font-weight: 500;
-  color: var(--principal);
+  font-size: var(--tx-mobile-one);
+  font-weight: 600;
+  color: var(--clr-primary-2);
   text-decoration: none;
   margin-top: 3rem;
 }
 
 .p {
-  display: none;
+  width: 60%;
+  display: block;
+  font-size: var(--p);
+  font-weight: 400;
+  color: #787575;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.link {
+  font-weight: 600;
+  color: var(--clr-primary-2);
+  text-decoration: none;
 }
 
 /* tablet styles */
@@ -77,14 +88,14 @@
     align-items: center;
     justify-content: space-between;
     align-self: flex-start;
-    color: var(--principal);
+    color: var(--clr-primary-2);
   }
 
   .hr {
     width: 41%;
     margin: 0.9rem 0 0.9rem 0;
-    background-color: var(--principal);
-    border: 0.002rem solid var(--principal);
+    background-color: var(--clr-primary-2);
+    border: 0.002rem solid var(--clr-primary-2);
   }
 
   .loginButton {
@@ -98,7 +109,7 @@
     margin-top: 1.5rem;
     font-size: var(--label);
     font-weight: 700;
-    color: var(--principal);
+    color: var(--clr-primary-2);
   }
 
   .googleIconForMobile {
@@ -113,21 +124,5 @@
     width: 60%;
     align-self: flex-start;
     margin-top: 0.9rem;
-  }
-
-  .p {
-    width: 60%;
-    display: block;
-    font-size: var(--p);
-    font-weight: 500;
-    color: #787575;
-    margin-top: 1rem;
-    text-align: center;
-  }
-
-  .link {
-    font-weight: 600;
-    color: var(--principal);
-    text-decoration: none;
   }
 }
