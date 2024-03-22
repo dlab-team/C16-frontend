@@ -18,7 +18,7 @@ const useModifyData = (url, method, body) => {
       setLoading(true)
       try {
         const result = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}${url}`,
+          `${url}`,
           {
             method,
             body: body ? JSON.stringify(body) : {},
@@ -43,7 +43,7 @@ const useModifyData = (url, method, body) => {
     }
 
     modifyData()
-  }, [url, method, body])
+  }, [])
 
   return { response, loading, isError, error }
 }
