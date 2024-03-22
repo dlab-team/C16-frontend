@@ -106,7 +106,7 @@
     .actionText {
         display: unset;
         font-family: var(--ff-one);
-        color: var(--clr-secondary-2);
+        color: var(--clr-primary-2);
         font-weight: 200;
         font-size: 0.9rem;
     }

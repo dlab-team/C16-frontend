@@ -4,7 +4,7 @@
     background-color: white;
     padding: 1rem;
     border-radius: 20px;
-    border: 1px solid #989898;
+    border: 1px solid var(--clr-two-100);
     overflow: hidden;
     height: fit-content;
     margin-bottom: 1rem;
@@ -27,7 +27,7 @@
 }
 .authorInfo{
     font-family: var(--ff-one);
-    color: var(--clr-secondary-2);
+    color: var(--clr-primary-2);
     font-size: 0.6rem;
     text-transform: capitalize;
     margin-left: 1rem;

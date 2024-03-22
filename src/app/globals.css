@@ -49,10 +49,10 @@
   
   /* Colores = clr */
 
-  --clr-primary-1: #F17D58 ;
-  --clr-primary-2: #06786D ;
-  --clr-secondary-1: #FAD8CE ;
-  --clr-secondary-2: #454444 ;
+  --clr-primary-1: #FEBD94;
+  --clr-primary-2: #02385F;
+  --clr-secondary-1: #FFD8BF;
+  --clr-secondary-2: #1D1D1B;
   --clr-secondary-3: #FCEBE666;
 
   --clr-one-50: #FDF5F3;
@@ -67,16 +67,16 @@
   --clr-one-900: #773825;
   --clr-one-1000: #401A0F;
 
-  --clr-two-50: #EFFEFB;
-  --clr-two-100: #C8FFF2;
-  --clr-two-200: #91FEE7;
-  --clr-two-300: #52F6D9;
-  --clr-two-400: #1FE2C6;
-  --clr-two-500: #06C6AD;
-  --clr-two-600: #029F8E;
-  --clr-two-700: #06786D;
-  --clr-two-800: #0B645D;
-  --clr-two-900: #0E534D;
+  --clr-two-50: #e6ebef;
+  --clr-two-100: #b1c1cd;
+  --clr-two-200: #8ba3b5;
+  --clr-two-300: #557a94;
+  --clr-two-400: #35607f;
+  --clr-two-500: #02385f;
+  --clr-two-600: #023356;
+  --clr-two-700: #012843;
+  --clr-two-800: #011f34;
+  --clr-two-900: #011828;
   --clr-two-1000: #003330;
 
   /* Tipografía - Font Family = ff */
