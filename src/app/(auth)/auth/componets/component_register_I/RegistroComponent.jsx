@@ -4,14 +4,48 @@ import "./Style.css";
 import { AiOutlineLeft } from "react-icons/ai";
 import { LuEye } from "react-icons/lu";
 import "../../../../globals.css";
-
 import { useState } from "react";
+import { useModifyData } from "@/hooks";
+import { useContext } from "react";
 
-const RegistroComponent = () => {
-  const [name, setName] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [mail, setMail] = useState("");
+
+const RegistroComponent = (response, loading, isError, error) => {
+
+
+// const [id, setId] = useState("")
+  // const [alert, setAlert] = useState(false);
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const isEmailValid = (email) => {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  return re.test(String(email).toLowerCase());
+   };
+
+
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  method('POST')
+response ({
+
+ headers:{
+  'Content-Type': 'application/json',
+} ,
+body: body ? JSON.stringify(body) : {},
+})
+url('http://c16-backend.onrender.com/api/users')
+  if (response) {
+"respuesta exitosa"
+   }
+     else {
+"repuesta de error"
+   }
+
+
+}
+
+
 
   
   return (
@@ -24,39 +58,18 @@ const RegistroComponent = () => {
         <div className="register">
           <h2>Registrate</h2>
 
-          <form  className="register__inputgroup">
+          <form  className="register__inputgroup" onSubmit={handleSubmit}>
+        
             <div className="register__input">
-              <label htmlFor="nombre"> Nombre</label>
-              <input
-                type="text"
-                placeholder="Pedro"
-                id="name"
-                autoFocus
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div className="register__input">
-              <label htmlFor="Apellido">Apellido</label>
 
-              <input
-                type="text"
-                placeholder="Perez"
-                id="apellido"
-                autoFocus
-                value={lastname}
-                onChange={(e) => setLastname(e.target.value)}
-              />
-            </div>
-            <div className="register__input">
               <label htmlFor="Correo">Correo</label>
 
               <input
                 type="text"
                 placeholder="correo@electronico.com"
                 id="correo"
-                value={mail}
-                onChange={(e) => setMail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -78,8 +91,14 @@ const RegistroComponent = () => {
             </div>
 
             <div className="register__button">
-              <button className="register__buttons__pink">Crear cuenta</button>
-              <button className="register__buttons__outline">
+            <div className="register__button">
+              <button className="register__buttons__pink" type="submit">Crear cuenta</button>
+             
+              {loading && <p>Cargando...</p>}
+              
+              {isError && <p>Error: {error}</p>}
+            </div>
+              <button className="register__buttons__outline" >
                 Ingresar con Google
                 <svg
                   width="29"

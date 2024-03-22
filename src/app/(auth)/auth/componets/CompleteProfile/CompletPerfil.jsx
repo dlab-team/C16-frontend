@@ -8,6 +8,8 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 const CompleteProfile = () => {
+
+  
   const [number, setNumber] = useState("");
   const [sexo, setSexo] = useState("");
   const [rut, setRut] = useState("");
