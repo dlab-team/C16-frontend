@@ -3,11 +3,13 @@ import React from "react";
 import "./Style.css";
 import "../../../../globals.css";
 import { useState } from "react";
-import { AiFillCalendar } from "react-icons/ai";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CompleteProfile = () => {
+
+ 
+
   const [number, setNumber] = useState("");
   const [rut, setRut] = useState("");
   const [showCalendar, setShowCalendar] = useState(false);
@@ -18,7 +20,7 @@ const CompleteProfile = () => {
   const [caretaker, setCaretaker] = useState("");
   const [labelColor, setLabelColor] = useState("#E8E8E8");
   const [isChecked, setIsChecked] = useState(false);
-
+const [startDate, setStartDate] = useState(new Date());
 
 
   const toggleCalendar = () => {
@@ -70,20 +72,48 @@ const CompleteProfile = () => {
     <div>
       <div className="register__descktop">
         <button className="button__back"></button>
-        <form>
+        <form >
           <div className="register">
             <h2>Completa tu Perfil</h2>
+            
             <div className="register__inputgroup">
-              <div className="register__input">
-                <label htmlFor="">Numero de telefono</label>
+
+            <div className="register__input">
+                <label htmlFor="">Nombre completo</label>
                 <input
                   type="text"
-                  placeholder="+569"
+                  placeholder="Pedro"
                   id="name"
                   autoFocus
                   value={number}
                   onChange={(e) => setNumber(e.target.value)}
                 />
+              </div>
+
+              <div className="register__input">
+                <label htmlFor="">Apellido</label>
+                <input
+                  type="text"
+                  placeholder="Apellido"
+                  id="name"
+                  autoFocus
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                />
+              </div>
+              <div className="register__input">
+                <label htmlFor="numero de telefono">Numero de telefono</label>
+                <div className="register__phone">
+                <div className="register__phone__number" ><p>+56</p></div>
+                <input
+                  type="text"
+                  placeholder="9 12345678"
+                  id="name"
+                  autoFocus
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                />
+                </div>
               </div>
               <div className="register__input">
                 <label htmlFor="">RUT</label>
@@ -101,36 +131,17 @@ const CompleteProfile = () => {
 
                 <div className="register__input__button__img">
                  
-  
-                  <input
-                    type="text"
-                    placeholder="DD/MM/YYYY"
-                    id="calendario"
-                    value={selectedDate.toLocaleDateString()} // Debes incluir el valor aquí
-                    onChange={(e) => handleDateChange(e.target.value)} // Pasar la función handleDateChange
-                  />
-                <div className="register__input__button__calendar">
-                    <input
-                      type="checkbox"
-                      id="toggleCalendar"
-                      onChange={toggleCalendar}
-                      className="toggle__calendar"
+                <DatePicker
+                 selected={startDate}
+                 onChange={(date) => setStartDate(date)}
+                 showYearDropdown
+                 dateFormatCalendar="MMMM"
+                 yearDropdownItemNumber={100}
+                 scrollableYearDropdown
+           maxDate={new Date()}
                     />
-
-                    <div className="register__calendar" id="calendarContainer">
-                      <div className="father__register__calendar">
-                      {showCalendar && (
-                        <div className="register__calendar">
-                          <Calendar
-                            onChange={handleDateChange}
-                            value={selectedDate}
-                            maxDate={new Date()} 
-                          />
-                        </div>
-                      )}
-                      </div>
-                    </div>
-                  </div>
+                 
+              
                 </div>
               </div>
 
