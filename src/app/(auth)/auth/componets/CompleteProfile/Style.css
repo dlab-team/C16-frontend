@@ -44,7 +44,7 @@ h2 {
   border-bottom: 1px solid var(--clr-primary-2);
   width: 70%;
 }
-label{
+label {
   font: var(--ff-one);
   font-weight: 500;
 }
@@ -58,7 +58,7 @@ input {
   cursor: pointer;
   font: var(--tx-mobile-one);
 }
-label{
+label {
   cursor: pointer;
 }
 input:focus {
@@ -67,7 +67,7 @@ input:focus {
 select {
   width: 350rem;
   border: none;
-  background-image: url("https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FVector.svg?alt=media&token=cd044697-8b70-46e0-b0fa-aafd69945b1d");
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FVector.svg?alt=media&token=cd044697-8b70-46e0-b0fa-aafd69945b1d');
   background-position: right center;
   background-repeat: no-repeat;
   appearance: none;
@@ -79,9 +79,8 @@ select:focus {
 }
 .register__input__button {
   display: flex;
-
 }
-.register__input__button__calendar{
+.register__input__button__calendar {
   display: flex;
   flex-direction: column;
   width: 45px;
@@ -96,8 +95,12 @@ select:focus {
   color: var(--clr-primary-2);
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
-
+.register__input__button__img #calendario {
+  height: auto;
+  width: fit-content;
+}
 .register__button {
   display: flex;
   flex-direction: column;
@@ -141,6 +144,10 @@ select:focus {
 .register__refer a {
   color: var(--clr-primary-2);
   text-decoration: none;
+}
+.toggle__calendar {
+  height: 34px;
+  width: 34px;
 }
 @media (min-width: 992px) {
   .register {
@@ -209,77 +216,85 @@ select:focus {
   align-items: center;
 }
 
-
-.custom-checkbox{
+.custom-checkbox {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 24px;
   height: 24px;
   border-radius: 50%; /* Hace que el checkbox sea redondo */
-  border: 2px solid #06786d ; /* Color del borde del checkbox */
+  border: 2px solid #06786d; /* Color del borde del checkbox */
   background-color: #fff; /* Color de fondo del checkbox */
   outline: none;
   cursor: pointer;
   vertical-align: middle;
-  
-
 }
 .custom-checkbox:checked {
-  background: #fff; 
+  background: #fff;
   background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2Fcheck.svg?alt=media&token=cd538443-229c-4ca6-ae57-9d4961e90e04');
   background-size: cover;
   background-position: center;
-
 }
-.register__calendar{
+.father__register__calendar {
+  position: relative;
+}
+.register__calendar {
   position: absolute;
   z-index: 2;
-  top: 34%;
-  right: 20%;
-
+  top: 42%;
+  right: 25%;
 }
-.toggle__calendar{
+.toggle__calendar {
   appearance: none;
   border: none;
   background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2Fcalendar.svg?alt=media&token=b455ed59-2864-4d2a-b385-40e6d80d55de');
   background-size: cover;
-  
 }
 @media (min-width: 576px) {
-  .register__calendar{
-top: 38%;
+  .register__calendar {
+    top: 42%;
     right: 25%;
-
-
-    }
+  }
 }
-
 
 @media (min-width: 992px) {
   .register {
     height: 50rem;
   }
-  input{
+  input {
     font: var(--tx-desktop-one);
   }
 
-  .register__calendar{
-    top: 37%;
+  .register__calendar {
+    top: 42%;
     right: 33%;
-
-
   }
-
 }
 @media (min-width: 1400px) {
-  .register__calendar{
-
+  .register__calendar {
     right: 41%;
-    
-      }
+  }
 }
 
+@-moz-document url-prefix() {
+  .register__input__button__img .toggle__calendar{
+    height: 30px;
+    width: 30px;
+    top: -3px;
+  }
+  .register__calendar{
+    top: 20px;
+  }
+  .register__calendar {
+    top: 44%;
+    right: 15%;
+  }
+  @media (min-width: 992px){
+    .register__calendar {
+      top: 67%;
+      right: 37%;
+    }
+  }
 
 
-
+}

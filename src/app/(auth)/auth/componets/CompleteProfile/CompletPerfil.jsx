@@ -118,6 +118,7 @@ const CompleteProfile = () => {
                     />
 
                     <div className="register__calendar" id="calendarContainer">
+                      <div className="father__register__calendar">
                       {showCalendar && (
                         <div className="register__calendar">
                           <Calendar
@@ -127,6 +128,7 @@ const CompleteProfile = () => {
                           />
                         </div>
                       )}
+                      </div>
                     </div>
                   </div>
                 </div>
