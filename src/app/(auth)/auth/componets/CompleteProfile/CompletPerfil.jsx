@@ -9,7 +9,37 @@ import "react-calendar/dist/Calendar.css";
 
 const CompleteProfile = () => {
 
-  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      // // Genera el ID basado en la fecha actual y un número aleatorio de 3 dígitos
+      // const currentDate = Date.now();
+      // const randomId = generateRandomId();
+      // const generatedId = currentDate + randomId;
+
+      // Realiza la solicitud POST al servidor
+      const response = await fetch("http://c16-backend.onrender.com/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: generatedId, email }), // Envía el correo electrónico y el ID generado
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al crear la cuenta");
+      }
+
+      // Aquí puedes manejar la respuesta si es necesario
+    } catch (error) {
+      console.error("Error al crear la cuenta:", error);
+      // Manejar el error apropiadamente, ya sea mostrando un mensaje al usuario o realizando alguna otra acción
+    }
+  };
+
+
+
+
   const [number, setNumber] = useState("");
   const [sexo, setSexo] = useState("");
   const [rut, setRut] = useState("");
@@ -71,12 +101,38 @@ const CompleteProfile = () => {
     <div>
       <div className="register__descktop">
         <button className="button__back"></button>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="register">
             <h2>Completa tu Perfil</h2>
+            
             <div className="register__inputgroup">
+
+            <div className="register__input">
+                <label htmlFor="">Nombre completo</label>
+                <input
+                  type="text"
+                  placeholder="Pedro"
+                  id="name"
+                  autoFocus
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                />
+              </div>
+
               <div className="register__input">
-                <label htmlFor="">Numero de telefono</label>
+                <label htmlFor="">Apellido</label>
+                <input
+                  type="text"
+                  placeholder="Apellido"
+                  id="name"
+                  autoFocus
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                />
+              </div>
+              <div className="register__input">
+                <label htmlFor="numero de telefono">Numero de telefono</label>
+                <div className="register__phone__number" >+56</div>
                 <input
                   type="text"
                   placeholder="+569"

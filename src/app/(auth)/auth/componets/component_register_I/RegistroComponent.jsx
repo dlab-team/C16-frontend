@@ -5,8 +5,7 @@ import { AiOutlineLeft } from "react-icons/ai";
 import { LuEye } from "react-icons/lu";
 import "../../../../globals.css";
 import { useState } from "react";
-import { useModifyData } from "@/hooks";
-import { useContext } from "react";
+
 
 
 const RegistroComponent = (response, loading, isError, error) => {
@@ -16,6 +15,8 @@ const RegistroComponent = (response, loading, isError, error) => {
   // const [alert, setAlert] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+   const [id, setId] = useState("");
+
   const isEmailValid = (email) => {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -24,26 +25,38 @@ const RegistroComponent = (response, loading, isError, error) => {
 
 
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
-  method('POST')
-response ({
-
- headers:{
-  'Content-Type': 'application/json',
-} ,
-body: body ? JSON.stringify(body) : {},
-})
-url('http://c16-backend.onrender.com/api/users')
-  if (response) {
-"respuesta exitosa"
-   }
-     else {
-"repuesta de error"
-   }
-
-
-}
+   const generateRandomId = () => {
+     // Genera un número aleatorio de 3 dígitos
+     return Math.floor(100 + Math.random() * 900);
+   };
+ 
+   const handleSubmit = async (event) => {
+     event.preventDefault();
+     try {
+       // Genera el ID basado en la fecha actual y un número aleatorio de 3 dígitos
+       const currentDate = Date.now();
+       const randomId = generateRandomId();
+       const generatedId = currentDate + randomId;
+ 
+       // Realiza la solicitud POST al servidor
+       const response = await fetch("http://c16-backend.onrender.com/api/users", {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify({ id: generatedId, email }), // Envía el correo electrónico y el ID generado
+       });
+ 
+       if (!response.ok) {
+         throw new Error("Error al crear la cuenta");
+       }
+ 
+       // Aquí puedes manejar la respuesta si es necesario
+     } catch (error) {
+       console.error("Error al crear la cuenta:", error);
+       // Manejar el error apropiadamente, ya sea mostrando un mensaje al usuario o realizando alguna otra acción
+     }
+   };
 
 
 
