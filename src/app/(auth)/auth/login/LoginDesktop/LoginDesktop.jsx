@@ -10,22 +10,20 @@ const Modal = ({ isOpen, onClose, children }) => {
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
+                <button className={styles.closeButtonX} onClick={onClose}>
+                    <IoIosClose className={styles.xButton} onClick={onClose} />
+                </button>
                 <div className={styles.modalContainer}>
-                    <div className={styles.modalContent}>
-                        <button className={styles.closeButtonBack} onClick={onClose}>
-                        <IoIosArrowBack className={styles.backButton} onClick={onClose}/>
-                        </button>
-                        <button className={styles.closeButton} onClick={onClose}>
-                        <IoIosClose className={styles.xButton} onClick={onClose}/>
-                        </button>
-                        <main className={styles.container}>
-                            <LoginImage />
-                            <section className={styles.wrapper}>
-                                <h3 className={styles.title}>Iniciar Sesión</h3>
-                                <LoginForm />
-                            </section>
-                        </main>
-                    </div>
+                    <button className={styles.closeButtonBack} onClick={onClose}>
+                        <IoIosArrowBack className={styles.backButton} onClick={onClose} />
+                    </button>
+                    <main className={styles.container}>
+                        <LoginImage className={styles.image}/>
+                        <section className={styles.wrapper}>
+                            <h3 className={styles.title}>Iniciar Sesión</h3>
+                            <LoginForm />
+                        </section>
+                    </main>
                 </div>
             </div>
         </div>

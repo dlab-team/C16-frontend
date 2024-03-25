@@ -7,7 +7,7 @@
 @media (width > 920px) {
   .img {
     width: 50%;
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: flex-end;
   }
