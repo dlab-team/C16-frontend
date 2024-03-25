@@ -6,7 +6,7 @@ function CommentContainer({data}) {
     return (
 
         <div className={styles.commentContainer} role='listitem'>
-           {/*  <Image className={styles.commentlineImg} width={100} height={100} src={'/assets/images/foro/commentLine.svg'} alt='' /> */}
+            <Image className={styles.commentlineImg} width={100} height={100} src={'/assets/images/foro/commentLine.svg'} alt='' />
 
             <Comment data={data}/>
         </div>
