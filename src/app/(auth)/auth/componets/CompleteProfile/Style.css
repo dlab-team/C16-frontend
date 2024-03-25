@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 50rem;
+  height: 70rem;
   font: var(--tx-mobile-one);
   margin-top: 5%;
   background-color: #fff;
@@ -34,15 +34,17 @@ h2 {
   align-items: center;
 }
 .register__input {
-  width: 80%;
-  height: 10%;
+  height: 8%;
   display: flex;
   flex-direction: column;
   gap: 10% 0%;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 .register__input {
   border-bottom: 1px solid var(--clr-primary-2);
   width: 70%;
+  padding: 0% 3%;
 }
 label {
   font: var(--ff-one);
@@ -65,7 +67,7 @@ input:focus {
   outline: #787575;
 }
 select {
-  width: 350rem;
+  width: 305px;
   border: none;
   background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FVector.svg?alt=media&token=cd044697-8b70-46e0-b0fa-aafd69945b1d');
   background-position: right center;
@@ -80,27 +82,7 @@ select:focus {
 .register__input__button {
   display: flex;
 }
-.register__input__button__calendar {
-  display: flex;
-  flex-direction: column;
-  width: 45px;
-  align-items: center;
-  justify-content: center;
-}
-.register__input__button__img {
-  height: 37px;
-  text-align: center;
-  display: flex;
-  font-size: 24px;
-  color: var(--clr-primary-2);
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-.register__input__button__img #calendario {
-  height: auto;
-  width: fit-content;
-}
+
 .register__button {
   display: flex;
   flex-direction: column;
@@ -140,7 +122,23 @@ select:focus {
   align-items: center;
   gap: 1%;
 }
+.register__phone{
+  display: flex;
+  align-items: center;
+  gap: 0% 4%;
+}
 
+.register__phone__number{
+  background-color: #5C5C5C0D;
+  font-weight: bold;
+  border: 1px solid #4544445C;
+  border-radius: 5px;
+  width: 46px;
+  height: 35px ;
+  display: flex;
+ align-items: center;
+  justify-content: center;
+}
 .register__refer a {
   color: var(--clr-primary-2);
   text-decoration: none;
@@ -149,17 +147,7 @@ select:focus {
   height: 34px;
   width: 34px;
 }
-@media (min-width: 992px) {
-  .register {
-    height: 41rem;
-  }
-  .register__descktop {
-    background-color: #fff;
-    width: 30rem;
-    height: 55rem;
-    border-radius: 20px;
-  }
-}
+
 .toogle {
   display: none;
 }
@@ -235,46 +223,29 @@ select:focus {
   background-size: cover;
   background-position: center;
 }
-.father__register__calendar {
-  position: relative;
-}
-.register__calendar {
-  position: absolute;
-  z-index: 2;
-  top: 42%;
-  right: 25%;
-}
-.toggle__calendar {
-  appearance: none;
-  border: none;
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2Fcalendar.svg?alt=media&token=b455ed59-2864-4d2a-b385-40e6d80d55de');
-  background-size: cover;
-}
+
 @media (min-width: 576px) {
   .register__calendar {
     top: 42%;
     right: 25%;
   }
 }
-
 @media (min-width: 992px) {
   .register {
-    height: 50rem;
+    height: 55rem;
+  }
+  .register__descktop {
+    background-color: #fff;
+    width: 30rem;
+    height: 60rem;
+    border-radius: 20px;
   }
   input {
     font: var(--tx-desktop-one);
   }
+}
 
-  .register__calendar {
-    top: 42%;
-    right: 33%;
-  }
-}
-@media (min-width: 1400px) {
-  .register__calendar {
-    right: 41%;
-  }
-}
+
 
 @-moz-document url-prefix() {
   .register__input__button__img .toggle__calendar{
