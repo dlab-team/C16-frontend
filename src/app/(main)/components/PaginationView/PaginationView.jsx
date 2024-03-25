@@ -1,10 +1,11 @@
-import { useResources } from '../../hooks'
 import styles from './styles/PaginationView.module.css'
 
-const PaginationView = () => {
-  const { paginationOptions, currentPage, handlePageChange, getTotalPages } =
-    useResources()
-
+const PaginationView = ({
+  paginationOptions,
+  currentPage,
+  handlePageChange,
+  getTotalPages,
+}) => {
   return (
     <div className={styles.container}>
       <p className={styles.p}>Pag</p>
@@ -14,7 +15,7 @@ const PaginationView = () => {
           value={currentPage}
           onChange={handlePageChange}
         >
-          {paginationOptions.map((option) => option)}
+          {paginationOptions?.map((option) => option)}
         </select>
         <i className={styles.i} />
       </div>
