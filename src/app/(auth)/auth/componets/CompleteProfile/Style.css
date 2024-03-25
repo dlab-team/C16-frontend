@@ -247,25 +247,3 @@ select:focus {
 
 
 
-@-moz-document url-prefix() {
-  .register__input__button__img .toggle__calendar{
-    height: 30px;
-    width: 30px;
-    top: -3px;
-  }
-  .register__calendar{
-    top: 20px;
-  }
-  .register__calendar {
-    top: 44%;
-    right: 15%;
-  }
-  @media (min-width: 992px){
-    .register__calendar {
-      top: 67%;
-      right: 37%;
-    }
-  }
-
-
-}
