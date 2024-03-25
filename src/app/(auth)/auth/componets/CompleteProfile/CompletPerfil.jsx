@@ -139,6 +139,7 @@ const [startDate, setStartDate] = useState(new Date());
                  yearDropdownItemNumber={100}
                  scrollableYearDropdown
            maxDate={new Date()}
+           showIcon
                     />
                  
               
