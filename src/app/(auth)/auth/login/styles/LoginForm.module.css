@@ -113,7 +113,8 @@
   display: block;
 }
 
-/* tablet styles */
+/* Tablet Styles */
+
 @media (width >= 768px) {
   .inputWrapper {
     width: 60%;

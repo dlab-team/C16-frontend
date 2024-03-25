@@ -68,7 +68,8 @@
   text-decoration: none;
 }
 
-/* tablet styles */
+/* Tablet Styles */
+
 @media (width >= 768px) {
   .loginButton {
     width: 60%;
