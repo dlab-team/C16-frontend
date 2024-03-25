@@ -1,39 +1,34 @@
-import Post from "../Post/Post"
-import styles from './PostList.module.css'
+import Breadcumbs from "../comentario/[id]/components/Breadcumbs/Breadcumbs"
+import Post from "../components/Post/Post"
+import SearchBar from "../components/SearchBar/SearchBar"
+
+import styles from './busqueda.module.css'
 
 // Simula los datos
-const recientes = [
+const posts = [
     { id:1, nombre: "barbara gutierrez", region: "Venezuela", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" },
     { id:2, nombre: "paula Mendez", region: "colombia", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" },
     { id:3, nombre: "Macarena Ramdorh", region: "cHilE", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" },
-]
-const populares = [
     { id:4,nombre: "Ingrid morales", region: "chile", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" },
     { id:5, nombre: "sebasTian güiza", region: "colombia", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" },
 ]
-const actividad = [
-    { id:6, nombre: "Diego Fernández", region: "costa Rica", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" },
-]
 
-// Simula la llamada a una API 
-const llamadaAPI = (categoria) =>{
-    if(categoria == "actividad"){
-        return actividad
-    }else if(categoria == "populares"){
-        return populares
-    }
-    return recientes
-}
-
-function PostList({category}) {
-    const publications = llamadaAPI(category)
-
-
+function Busqueda() {
     return (
         <>
-            <div role="list" className={styles.postList}>
-                {publications.map((post)=> <Post key={post.id} data={post} type="publications"/> )}
+        <section className={styles.busquedaContainer}>
+            <Breadcumbs message="Atrás" />
+            <SearchBar />
+        </section>
+
+
+        <section className={styles.listContainer}>
+
+            <div className={styles.resultList} role="list">
+                {posts.map((post)=> <Post key={post.id} data={post} type="publications"/> )}
             </div>
+
+
 
             <div className={styles.pagination}>
                 <span>Pag</span>
@@ -48,8 +43,10 @@ function PostList({category}) {
                 <span>de 10</span>
 
             </div>
+        </section>
+
         </>
     )
 }
 
-export default PostList
+export default Busqueda

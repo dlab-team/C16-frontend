@@ -1,11 +1,14 @@
 'use client'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './PostToogle.module.css'
 import Modal from '../Modal/Modal';
+import Link from 'next/link';
 
-
-function PostToggle({ data }) {
+// recibe por parámetros la información del comentario y el tipo
+// type="detail" si es para la vista detalle del comentario
+// type="pubications" si es para la vista de la lista de comentarios
+function PostToggle({ data, type = "detail" }) {
     const [isVisible, setIsVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -17,11 +20,17 @@ function PostToggle({ data }) {
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-
     const reportPost = () => {
         alert('Comentario reportado')
         closeModal();
     }
+
+    useEffect(() => {
+        if (type == 'detail') {
+            setIsVisible(true)
+            console.log(type)
+        }
+    }, []);
 
     /* // Función para reportar el post
     const reportPost = () => {
@@ -60,11 +69,22 @@ function PostToggle({ data }) {
                         <div className={styles.likeIcon}></div>
                         <span className={styles.actionText}>Me Gusta</span>
                     </div>
+                    {
+                        type == "detail" ?
+                            <button onClick={toggleVisibility} className={styles.action}>
+                                <div className={styles.commentIcon}></div>
+                                <span className={styles.actionText}>Comentar</span>
+                            </button>
+                            :
+                            <Link href={`/foro/comentario/${data.id}`} className={styles.linkComment}>
+                                <button className={styles.action}>
+                                    <div className={styles.commentIcon}></div>
+                                    <span className={styles.actionText}>Comentar</span>
+                                </button>
+                            </Link>
+                    }
 
-                    <button onClick={toggleVisibility} className={styles.action}>
-                        <div className={styles.commentIcon}></div>
-                        <span className={styles.actionText}>Comentar</span>
-                    </button>
+
 
                     <button onClick={openModal} className={styles.action}>
                         <div className={styles.reportIcon}></div>
