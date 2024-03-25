@@ -1,6 +1,8 @@
 .postBox{
+    position: relative;
+
     width: 100%;
-    background-color: var(--clr-one-100);
+    background-color: var(--clr-one-200);
     padding: 1rem;
     border-radius: 20px;
     overflow: hidden;
