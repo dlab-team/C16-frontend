@@ -1,0 +1,30 @@
+.commentContainer{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+.commentlineImg{
+    grid-column: 1/3;
+    width: 40%;
+    height: 100%;
+    transform: translateY(-40%);
+}
+
+@media (min-width: 576px) {
+/*     .commentContainer{
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    } */
+    .commentlineImg{
+        grid-column: 1/2;
+        width: 40%;
+        height: 100%;
+        transform: translateY(-40%);
+    }
+
+}
+@media (min-width: 992px) {
+    
+   /*  .message{
+        padding: 25px;
+    } */
+}

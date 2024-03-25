@@ -1,8 +1,21 @@
-.postList{
-    min-height: 400px;
-    margin-top: 2rem;
+.commentListContainer{
+    display: grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap: 5px;
+    
+    margin: 0 1rem 1rem 1rem;
 }
+
+.commentList{
+    grid-column: 1/-1;
+
+    min-height: 300px;
+}
+
+
 .pagination{
+    grid-column: 1/-1;
+
     margin-top: 1.5rem;
     display: flex;
     justify-content: center;
@@ -20,18 +33,17 @@
     background-color: transparent;
 }
 
+
 @media (min-width: 576px) {
-    .postList{
-        min-height: 500px;
-        margin-top: 0rem;
+    .commentListContainer{
+        grid-template-columns:repeat(12, 1fr);
     }
+
+    .commentList{
+        grid-column: 2/-2;
+    }
+
     .pagination{
         font-size: 1.1rem;
     }
 }
-
-@media (min-width: 992px) {
-    .postList{
-        min-height: 600px;
-    }
-} /* pantalla grande */
