@@ -23,24 +23,10 @@ const CompleteProfile = () => {
 const [startDate, setStartDate] = useState(new Date());
 
 
-  const toggleCalendar = () => {
-    setShowCalendar((prevState) => !prevState);
-  };
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    const formattedDate = formatDate(date); // Formatear la fecha
-    document.getElementById("calendario").value = formattedDate; // Actualizar el valor del input tipo texto
-  };
+ 
 
-  // Función para formatear la fecha a DD/MM/YYYY
-  const formatDate = (date) => {
-    const day = date.getDate();
-    const month = date.getMonth() + 1; // Los meses van de 0 a 11
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  };
-
+  
   const changeColor = (selectedSexo) => {
     switch (selectedSexo) {
       case "mujer":
