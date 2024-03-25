@@ -3,41 +3,30 @@ import React from "react";
 import "./Style.css";
 import "../../../../globals.css";
 import { useState } from "react";
-import { AiFillCalendar } from "react-icons/ai";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CompleteProfile = () => {
+
+ 
+
   const [number, setNumber] = useState("");
-  const [sexo, setSexo] = useState("");
   const [rut, setRut] = useState("");
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [region, setRegion] = useState("");
+  const [sexo, setSexo] = useState("");
   const [comuna, setComuna] = useState("");
   const [caretaker, setCaretaker] = useState("");
   const [labelColor, setLabelColor] = useState("#E8E8E8");
   const [isChecked, setIsChecked] = useState(false);
+const [startDate, setStartDate] = useState(new Date());
 
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const toggleCalendar = () => {
-    setShowCalendar((prevState) => !prevState);
-  };
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    const formattedDate = formatDate(date); // Formatear la fecha
-    document.getElementById("calendario").value = formattedDate; // Actualizar el valor del input tipo texto
-  };
+ 
 
-  // Función para formatear la fecha a DD/MM/YYYY
-  const formatDate = (date) => {
-    const day = date.getDate();
-    const month = date.getMonth() + 1; // Los meses van de 0 a 11
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  };
-
+  
   const changeColor = (selectedSexo) => {
     switch (selectedSexo) {
       case "mujer":
@@ -69,20 +58,48 @@ const CompleteProfile = () => {
     <div>
       <div className="register__descktop">
         <button className="button__back"></button>
-        <form>
+        <form >
           <div className="register">
             <h2>Completa tu Perfil</h2>
+            
             <div className="register__inputgroup">
-              <div className="register__input">
-                <label htmlFor="">Numero de telefono</label>
+
+            <div className="register__input">
+                <label htmlFor="">Nombre completo</label>
                 <input
                   type="text"
-                  placeholder="+569"
+                  placeholder="Pedro"
                   id="name"
                   autoFocus
                   value={number}
                   onChange={(e) => setNumber(e.target.value)}
                 />
+              </div>
+
+              <div className="register__input">
+                <label htmlFor="">Apellido</label>
+                <input
+                  type="text"
+                  placeholder="Apellido"
+                  id="name"
+                  autoFocus
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                />
+              </div>
+              <div className="register__input">
+                <label htmlFor="numero de telefono">Numero de telefono</label>
+                <div className="register__phone">
+                <div className="register__phone__number" ><p>+56</p></div>
+                <input
+                  type="text"
+                  placeholder="9 12345678"
+                  id="name"
+                  autoFocus
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                />
+                </div>
               </div>
               <div className="register__input">
                 <label htmlFor="">RUT</label>
@@ -99,33 +116,19 @@ const CompleteProfile = () => {
                 <label htmlFor=""> Fecha de nacimiento</label>
 
                 <div className="register__input__button__img">
-                  <input
-                    type="text"
-                    placeholder="DD/MM/YYYY"
-                    id="calendario"
-                    value={selectedDate.toLocaleDateString()} // Debes incluir el valor aquí
-                    onChange={(e) => handleDateChange(e.target.value)} // Pasar la función handleDateChange
-                  />
-
-                  <div className="register__input__button__calendar">
-                    <input
-                      type="checkbox"
-                      id="toggleCalendar"
-                      onChange={toggleCalendar}
-                      className="toggle__calendar"
+                 
+                <DatePicker
+                 selected={startDate}
+                 onChange={(date) => setStartDate(date)}
+                 showYearDropdown
+                 dateFormatCalendar="MMMM"
+                 yearDropdownItemNumber={100}
+                 scrollableYearDropdown
+           maxDate={new Date()}
+           showIcon
                     />
-
-                    <div className="register__calendar" id="calendarContainer">
-                      {showCalendar && (
-                        <div className="register__calendar">
-                          <Calendar
-                            onChange={handleDateChange}
-                            value={selectedDate}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                 
+              
                 </div>
               </div>
 
@@ -140,7 +143,7 @@ const CompleteProfile = () => {
                     value="mujer"
                     onChange={(e) => {
                       setSexo(e.target.value);
-                      handleSexoChange(); // Llamar a la función
+                      handleSexoChange(e); // Cambio aquí
                     }}
                   />
 
@@ -159,7 +162,6 @@ const CompleteProfile = () => {
                     name="sexo"
                     className="toogle"
                     type="radio"
-                    placeholder="mujer"
                     id="register_man"
                     value="hombre"
                     onChange={(e) => {
