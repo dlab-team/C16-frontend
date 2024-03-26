@@ -1,66 +1,88 @@
-"use client";
-import React from "react";
-import "./Style.css";
-import { AiOutlineLeft } from "react-icons/ai";
-import { LuEye } from "react-icons/lu";
-import "../../../../globals.css";
-import { useState } from "react";
+'use client'
+import React from 'react'
+import './Style.css'
+import { AiOutlineLeft } from 'react-icons/ai'
+import { LuEye } from 'react-icons/lu'
+import '../../../../globals.css'
+import { useState } from 'react'
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+
+import { auth } from "../../../../../services/firebaseConfig";
 
 
 
-const RegistroComponent = (response, loading, isError, error) => {
+const RegistroComponent = () => {
 
 
-// const [id, setId] = useState("")
-  // const [alert, setAlert] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-   const [id, setId] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [emailGoogle, setEmailGoogle] = useState('')
 
   const isEmailValid = (email) => {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return re.test(String(email).toLowerCase())
+  }
+  const signUp = (e) => {
+    e.preventDefault();
+    if (!isEmailValid(email)) {
+      // Si el correo electrónico no es válido, manejarlo aquí
+      console.log('Correo electrónico no válido');
+      return;
+    }
 
-  return re.test(String(email).toLowerCase());
-   };
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
 
+        // Envía la solicitud de verificación de correo electrónico
+        sendEmailVerification(auth.currentUser)
+          .then(() => {
+            console.log('Se ha enviado la solicitud de verificación de correo electrónico');
+          })
+          .catch((error) => {
+            console.error('Error al enviar la solicitud de verificación de correo electrónico', error);
+          });
 
+        // Resto del código...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
 
-   const generateRandomId = () => {
-     // Genera un número aleatorio de 3 dígitos
-     return Math.floor(100 + Math.random() * 900);
-   };
- 
-   const handleSubmit = async (event) => {
-     event.preventDefault();
-     try {
-       // Genera el ID basado en la fecha actual y un número aleatorio de 3 dígitos
-       const currentDate = Date.now();
-       const randomId = generateRandomId();
-       const generatedId = currentDate + randomId;
- 
-       // Realiza la solicitud POST al servidor
-       const response = await fetch("http://c16-backend.onrender.com/api/users", {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json",
-         },
-         body: JSON.stringify({ id: generatedId, email }), // Envía el correo electrónico y el ID generado
-       });
- 
-       if (!response.ok) {
-         throw new Error("Error al crear la cuenta");
-       }
- 
-       // Aquí puedes manejar la respuesta si es necesario
-     } catch (error) {
-       console.error("Error al crear la cuenta:", error);
-       // Manejar el error apropiadamente, ya sea mostrando un mensaje al usuario o realizando alguna otra acción
-     }
-   };
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider()
+    signInWithPopup(auth, provider).then((result) => {
+      setEmailGoogle(result.user.email)
+      const credential = GoogleAuthProvider.credentialFromResult(result)
+      //ACCESSTOKEN
+      const token = credential.accessToken
+      console.log('ACCESSTOKEN:', token)
+      //UID
+      const id = result.user.uid
+      console.log('UID:', id)
+      //EMAIL
+      const mail = result.user.email
+      console.log('EMAIL:', mail)
 
+      //Lo que se manda al endpoint
+      //Devolveria nuevo user solo si no existe en la base de datos
+      //Pero si existe, devuelve el user existente
+      const newUser = {
+        userId: result.user.uid,
+        email: result.user.email,
+        userCompleted: false,
+      }
+      console.log(newUser)
+    })
+  }
 
-
-  
   return (
     <div>
       <div className="register__descktop">
@@ -71,10 +93,8 @@ const RegistroComponent = (response, loading, isError, error) => {
         <div className="register">
           <h2>Registrate</h2>
 
-          <form  className="register__inputgroup" onSubmit={handleSubmit}>
-        
+          <form className="register__inputgroup" onSubmit={signUp}>
             <div className="register__input">
-
               <label htmlFor="Correo">Correo</label>
 
               <input
@@ -104,15 +124,17 @@ const RegistroComponent = (response, loading, isError, error) => {
             </div>
 
             <div className="register__button">
-            <div className="register__button">
-              <button className="register__buttons__pink" type="submit">Crear cuenta</button>
-             
-              {loading && <p>Cargando...</p>}
               
-              {isError && <p>Error: {error}</p>}
-            </div>
-              <button className="register__buttons__outline" >
-                Ingresar con Google
+               
+            
+              <button className="register__buttons__pink" type="submit">
+                  Crear cuenta
+                </button>
+              <button
+                className="register__buttons__outline"
+                onClick={() => signInWithGoogle()}
+              >
+                Ingresar con Google {emailGoogle}
                 <svg
                   width="29"
                   height="28"
@@ -138,6 +160,7 @@ const RegistroComponent = (response, loading, isError, error) => {
                   />
                 </svg>
               </button>
+            
             </div>
           </form>
 
@@ -153,7 +176,7 @@ const RegistroComponent = (response, loading, isError, error) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RegistroComponent;
+export default RegistroComponent
