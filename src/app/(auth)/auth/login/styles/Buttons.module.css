@@ -4,6 +4,7 @@
 }
 
 .loginButton {
+  font-family: var(--ff-one);
   width: 100%;
   height: 2.5rem;
   display: flex;
@@ -21,6 +22,7 @@
 }
 
 .socialNetworkButton {
+  font-family: var(--ff-one);
   width: 100%;
   height: 2.5rem;
   display: flex;
@@ -70,7 +72,7 @@
 
 /* Tablet Styles */
 
-@media (width >= 768px) {
+@media (width >=768px) {
   .loginButton {
     width: 60%;
   }
@@ -81,9 +83,9 @@
 }
 
 /* desktop styles */
-@media (width > 920px) {
+@media (width > 1000px) {
   .hrContainer {
-    width: 60%;
+    width: 80%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -103,6 +105,7 @@
     align-self: flex-start;
     height: 3rem;
     margin-top: 0.5rem;
+    width: 80%;
   }
 
   .socialNetworkButton {
@@ -111,6 +114,7 @@
     font-size: var(--label);
     font-weight: 700;
     color: var(--clr-primary-2);
+    width: 80%;
   }
 
   .googleIconForMobile {
@@ -122,8 +126,35 @@
   }
 
   .forgotMyPassword {
-    width: 60%;
+    width: 80%;
     align-self: flex-start;
     margin-top: 0.9rem;
+  }
+
+  .p {
+    width: 80%;
+  }
+}
+
+@media (width > 1500px) {
+
+  .hrContainer {
+    width: 70%;
+  }
+
+  .p {
+    width: 70%;
+  }
+
+  .loginButton {
+    width: 70%;
+  }
+
+  .socialNetworkButton {
+    width: 70%;
+  }
+
+  .forgotMyPassword {
+    width: 70%;
   }
 }
