@@ -2,6 +2,7 @@
 import styles from './Publications.module.css'
 import CategoryLinks from '../CategoryLinks/CategoryLinks'
 import PostList from '../PostList/PostList'
+import SearchBar from '../SearchBar/SearchBar'
 
 function Publications({category}) {
 
@@ -19,6 +20,7 @@ function Publications({category}) {
                     <button className={styles.sendIcon}></button>
                 </form>
             </div>
+            <SearchBar />
 
             <h2 className={styles.subTitle}>Publicaciones</h2>
 

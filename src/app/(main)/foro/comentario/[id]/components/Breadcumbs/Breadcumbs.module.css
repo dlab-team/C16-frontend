@@ -1,0 +1,31 @@
+.breadcumbs{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.arrowIcon{
+    width: 20px;
+    height: 20px;
+    background-image: url("/assets/images/foro/arrowleftIcon.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.breadcumbsTitle{
+    font-family: var(--ff-one);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--clr-secondary-2);
+}
+@media (min-width: 576px) {
+    .breadcumbs{
+        grid-column: 2/3;
+    }
+    .breadcumbsTitle{
+        display: none;
+    }
+}

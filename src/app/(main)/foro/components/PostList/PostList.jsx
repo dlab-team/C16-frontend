@@ -32,7 +32,7 @@ function PostList({category}) {
     return (
         <>
             <div role="list" className={styles.postList}>
-                {publications.map((post)=> <Post key={post.id} data={post}/> )}
+                {publications.map((post)=> <Post key={post.id} data={post} type="publications"/> )}
             </div>
 
             <div className={styles.pagination}>
