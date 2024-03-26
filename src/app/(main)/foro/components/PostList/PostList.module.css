@@ -1,5 +1,6 @@
 .postList{
     min-height: 400px;
+    margin-top: 2rem;
 }
 .pagination{
     margin-top: 1.5rem;
@@ -22,6 +23,7 @@
 @media (min-width: 576px) {
     .postList{
         min-height: 500px;
+        margin-top: 0rem;
     }
     .pagination{
         font-size: 1.1rem;
