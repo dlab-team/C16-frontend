@@ -1,51 +1,17 @@
-import { useState, useEffect } from 'react'
-
-// Hook para POST, PUT, PATCH
-/**
- * Fetches data from a specified URL using Axios.
- * @param {string} url - The API endpoint URL.
- * @param {string} - HTTP method (POST, PUT, etc.).
- * @param {object} [body] - Data to send in the request body.
- */
-const useModifyData = (url, method, body) => {
-  const [response, setResponse] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    const modifyData = async () => {
-      setLoading(true)
-      try {
-        const result = await fetch(
-          `${url}`,
-          {
-            method,
-            body: body ? JSON.stringify(body) : {},
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          },
-        )
-
-        const jsonData = await result.json()
-        if (result.ok) {
-          setResponse(jsonData)
-        } else {
-          setIsError(true)
-          setError(jsonData)
-        }
-      } catch (error) {
-        setError(error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    modifyData()
-  }, [])
-
-  return { response, loading, isError, error }
+export const modifyData = async (url, method, data)=>{
+  const response = await fetch(url, {
+    method, // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, *cors, same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: "follow", // manual, *follow, error
+    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data), // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+  
 }
-
-export default useModifyData
