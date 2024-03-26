@@ -15,9 +15,9 @@
   align-self: center;
   border-radius: 0.6rem;
   background-color: var(--clr-primary-1);
-  color: #fff;
+  color: var(--clr-primary-2);
   font-size: var(--tx-mobile-one);
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -47,6 +47,7 @@
 }
 
 .forgotMyPassword {
+  font-family: var(--ff-one);
   font-size: var(--tx-mobile-one);
   font-weight: 600;
   color: var(--clr-primary-2);
@@ -55,6 +56,7 @@
 }
 
 .p {
+  font-family: var(--ff-one);
   width: 60%;
   display: block;
   font-size: var(--p);

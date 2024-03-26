@@ -1,0 +1,74 @@
+.form{
+    grid-column: 1/-1;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+}
+.searchIcon{
+    grid-column: 1/2;
+    grid-row: 1;
+    
+    background-image: url('/assets/images/foro/searchIcon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    justify-self: center;
+    
+}
+.input{
+    grid-column: 1/-1;
+    grid-row: 1;
+    
+    border: 1px solid var(--clr-primary-2);
+    border-radius: 10px;
+    height: 57px;
+    padding: 4px;
+    font-family: var(--ff-one);
+    font-size: 1.3rem;
+    font-weight: 200;
+    text-indent: 13vw;
+}
+.filterIcon{
+    grid-column: -1/-2;
+    grid-row: 1;
+
+    background-image: url('/assets/images/foro/filterIcon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 30px;
+    height: 30px;
+}
+
+
+@media (min-width: 576px) {
+    .form{
+        grid-column: 3/-3;
+    }
+    .input{
+        text-indent: 15%;
+    }
+
+}
+
+@media (min-width: 976px) {
+    .form{
+        grid-template-columns: repeat(16, 1fr);
+    }
+    .input{
+        text-indent: 8%;
+    }
+    .searchIcon{
+        grid-column: 1/2;
+        justify-self: end;
+    }
+    .filterIcon{
+        grid-column: -1/-2;
+    }
+}
