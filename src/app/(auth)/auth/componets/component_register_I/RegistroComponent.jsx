@@ -53,30 +53,13 @@ const RegistroComponent = () => {
   }
   const signUp = (e) => {
     e.preventDefault()
-    if (!isEmailValid(email)) {
-      // Si el correo electrónico no es válido, manejarlo aquí
-      console.log('Correo electrónico no válido')
-      return
-    }
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user
+        // const user = userCredential.user
 
         // Envía la solicitud de verificación de correo electrónico
-        sendEmailVerification(auth.currentUser)
-          .then(() => {
-            console.log(
-              'Se ha enviado la solicitud de verificación de correo electrónico',
-            )
-          })
-          .catch((error) => {
-            console.error(
-              'Error al enviar la solicitud de verificación de correo electrónico',
-              error,
-            )
-          })
-
+      
         // Resto del código...
       })
       .catch((error) => {
@@ -104,24 +87,25 @@ const RegistroComponent = () => {
       //Lo que se manda al endpoint
       //Devolveria nuevo user solo si no existe en la base de datos
       //Pero si existe, devuelve el user existente
-      const newUser = {
-        id: result.user.uid,
-        email: result.user.email,
-      }
+      // const newUser = {
+      //   id: result.user.uid,
+      //   email: result.user.email,
+      // }
 
-      modifyData(
-        'https://c16-backend.onrender.com/api/users',
-        'POST',
-        newUser,
-      ).then((res) => {
-        if (res.completed) {
-          router.replace('/')
-        } else {
-          router.replace('/auth/completarPerfil')
-        }
-      })
+      // modifyData(
+      //   'https://c16-backend.onrender.com/api/users',
+      //   'POST',
+      //   newUser,
+      // ).then((res) => {
+      //   if (res.completed) {
+      //     router.replace('/')
+      //   } else {
+      //     router.replace('/auth/completarPerfil')
+      //   }
+      // })
     })
   }
+  //tengo que depurar un poco el codigo por que esto es la validacion del mail y del password
   const handleSubmit = (e) => {
     e.preventDefault()
 
