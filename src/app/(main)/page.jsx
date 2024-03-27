@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from './page.module.css';
-import Modal from '@/components/ModalRegistro/ModalRegistro';
 import { IoIosArrowForward } from "react-icons/io";
+import Modal from '../(auth)/auth/login/LoginDesktop/LoginDesktop';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,24 +21,21 @@ export default function Home() {
 
           <div className={styles.text_container}>
             <div className={styles.text_banner}>
-                <h1>
-                  <span className={styles.title_uniendo}>Uniendo</span>
-                  <span className={styles.title_uniendo}> a</span>
-                  <span className={styles.title_cuidadores}> Cuidadores</span>
-                </h1>
-                <p className={styles.detail_banner}>
-                  Únete a la red más grande de apoyo para cuidadores
-                </p>
+              <h1>
+                <span className={styles.title_uniendo}>Uniendo</span>
+                <span className={styles.title_uniendo}> a</span>
+                <span className={styles.title_cuidadores}> Cuidadores</span>
+              </h1>
+              <p className={styles.detail_banner}>
+                Únete a la red más grande de apoyo para cuidadores
+              </p>
             </div>
-            <button onClick={() => setIsOpen(true)} id={styles.modal_button}>
-              {' '}
-              Inscríbete
-              {' '}
-            </button>
-            <Modal isOpen={isOpen} onClose={closeModal}>
-              <h2>Modal Registro</h2>
-              <p>¡Este es el contenido del modal!</p>
-            </Modal>
+              <button onClick={() => setIsOpen(true)} id={styles.modal_button}>
+                {' '}
+                Inscríbete
+                {' '}
+              </button>
+            <Modal isOpen={isOpen} onClose={closeModal} />
           </div>
         </section>
 

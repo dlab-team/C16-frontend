@@ -3,7 +3,7 @@ const EyeIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
     width="16"
     height="16"
-    fill="#d6006e"
+    fill="#02385F"
     className="bi bi-eye"
     viewBox="0 0 16 16"
   >
