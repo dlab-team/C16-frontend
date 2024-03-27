@@ -1,6 +1,6 @@
 /* import RegistroComponent from "./componets/RegistroFormComponet/RegistroComponent";
  */
-import "./Styles.css";
+// import "./Styles.css";
 
 function register() {
   return (

@@ -13,7 +13,7 @@
   align-items: center;
   height: 45rem;
   font: var(--tx-mobile-one);
-  margin-top: 5%;
+
   background-color: #fff;
 }
 
@@ -32,6 +32,7 @@ h2 {
   justify-content: space-evenly;
   width: 100%;
   align-items: center;
+  gap: 4%;
 }
 .register__input {
   width: 80%;
@@ -68,7 +69,24 @@ input:focus {
   align-items: center;
   justify-content: center;
 }
+.register__password_property{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+}
+.register__password__text{
+  display: flex;
+  justify-content: flex-start;
+  gap: 5%;
+}
+.register__password__text input{
+  width: 5%;
+}
+.password__text{
+  display: flex;
+    align-items: center;
 
+}
 .register__button {
   display: flex;
   flex-direction: column;
@@ -76,13 +94,16 @@ input:focus {
   align-items: center;
   justify-content: space-evenly;
   width: 70%;
+  margin-top: 10%;
 }
 .register__button button {
   width: 100%;
   height: 42px;
   border-radius: 8px;
-  font-weight: 700;
+  font-weight: boldS;
   cursor: pointer;
+  color:var(--clr-primary-2);
+  font: var(--ff-one);
 }
 .register__buttons__pink {
   background-color: var(--clr-primary-1);
