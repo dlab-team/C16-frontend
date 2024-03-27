@@ -180,7 +180,7 @@ const RegistroComponent = () => {
               <div className="register__input__password">
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="*******"
+                  placeholder="3mjxaf2*y"
                   id="password"
                   value={password}
                   onChange={handlePasswordChange}
