@@ -13,7 +13,6 @@ import {
 } from 'firebase/auth'
 
 import { auth } from '../../../../../services/firebaseConfig'
-import { useModifyData } from '@/hooks'
 
 import { modifyData } from '@/hooks/useModifyData'
 
@@ -27,21 +26,21 @@ const RegistroComponent = () => {
   const [hasNumber, setHasNumber] = useState(false)
 
   const handlePasswordChange = (e) => {
-    const newPassword = e.target.value;
+    const newPassword = e.target.value
 
-    setPassword(newPassword);
+    setPassword(newPassword)
 
     // Validar longitud
-    setValidLength(newPassword.length >= 8);
+    setValidLength(newPassword.length >= 8)
 
     // Validar caracter especial
-    const specialCharRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-    setHasSpecialChar(specialCharRegex.test(newPassword));
+    const specialCharRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+    setHasSpecialChar(specialCharRegex.test(newPassword))
 
     // Validar número
-    const numberRegex = /\d/;
-    setHasNumber(numberRegex.test(newPassword));
-  };
+    const numberRegex = /\d/
+    setHasNumber(numberRegex.test(newPassword))
+  }
   const router = useRouter()
 
   const togglePasswordVisibility = () => {
@@ -122,36 +121,36 @@ const RegistroComponent = () => {
         }
       })
     })
-  };
+  }
   const handleSubmit = (e) => {
-    e.preventDefault();
-  
+    e.preventDefault()
+
     if (!isEmailValid(email)) {
-      console.log('Correo electrónico no válido');
-      return;
+      console.log('Correo electrónico no válido')
+      return
     }
-  
+
     if (!password) {
-      console.log('La contraseña no puede estar vacía');
-      return;
+      console.log('La contraseña no puede estar vacía')
+      return
     }
-  
+
     if (!validLength || !hasSpecialChar || !hasNumber) {
       if (!validLength) {
-        console.log('Faltan letras');
+        console.log('Faltan letras')
       }
       if (!hasSpecialChar) {
-        console.log('Faltan caracteres especiales');
+        console.log('Faltan caracteres especiales')
       }
       if (!hasNumber) {
-        console.log('Faltan números');
+        console.log('Faltan números')
       }
-      return;
+      return
     }
-  
+
     // Aquí se envía el formulario
-    signUp(e);
-  };
+    signUp(e)
+  }
   return (
     <div>
       <div className="register__descktop">
@@ -184,7 +183,6 @@ const RegistroComponent = () => {
                   id="password"
                   value={password}
                   onChange={handlePasswordChange}
-                
                 />
                 <div
                   className="register__input__password__img"
