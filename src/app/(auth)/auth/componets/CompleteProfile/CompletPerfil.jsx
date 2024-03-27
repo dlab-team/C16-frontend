@@ -6,14 +6,41 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import regionesData   from "../CompleteProfile/regionesData.json"
+import { modifyData } from '@/hooks/useModifyData'
 
 const CompleteProfile = () => {
+
+  const newUser = {
+    id: result.user.uid,
+    firstname: result.user.firstname,
+    lastname: result.user.lastname,
+    phone: result.user.phone,
+    rut: result.user.rut,
+    region: result.user.region,
+    gender: result.user.gender,
+    comuna: result.user.comuna,
+    caretaker: result.user.caretaker,
+    birthday: result.user.birthday,
+   
+  }
+
 
 
 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    modifyData(
+      'https://c16-backend.onrender.com/api/users',
+      'POST',
+      newUser,
+    ).then((res) => {
+      if (res.completed) {
+        router.replace('/')
+      } else {
+        router.replace('/auth/completarPerfil')
+      }
+    })
     try {
       const response = await fetch("http://c16-backend.onrender.com/api/users", {
         method: "POST",
@@ -27,11 +54,7 @@ const CompleteProfile = () => {
           lastname,
          phone ,
          rut,
-         region,
-         gender,
-         comuna,
-         caretaker,
-         birthday
+       
         }), // Envía el correo electrónico y el ID generado
       });
 
