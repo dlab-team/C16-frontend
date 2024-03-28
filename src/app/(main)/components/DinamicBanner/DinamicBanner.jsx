@@ -1,20 +1,18 @@
-import Image from 'next/image'
-import styles from './DinamicBanner.module.css'
+import Image from 'next/image';
+import styles from './DinamicBanner.module.css';
 
-
-
-function DinamicBanner() {
+function DinamicBanner({ imageSrc, title, message, customStyles }) {
     return (
-        <section className={styles.banner} role='banner'>
-            <Image width={100} height={100} alt='banner image' src='/assets/images/foro/banner_img.png' className={styles.bannerImg} />
-            <div className={styles.bannerTextBox}>
+        <section className={`${styles.banner} ${customStyles.banner}`} role='banner'>
+            <Image width={100} height={100} alt='banner image' src={imageSrc} className={`${styles.bannerImg} ${customStyles.bannerImg}`} />
+            <div className={`${styles.bannerTextBox} ${customStyles.bannerTextBox}`}>
                 <div className={styles.textBox}>
-                    <h1 className={styles.bannerTitle}>Participa en nuestro <strong className={styles.titleStrong}>Foro</strong></h1>
-                    <span className={styles.bannerMessage}>Qorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                    <h1 className={`${styles.bannerTitle} ${customStyles.bannerTitle}`}>{title}</h1>
+                    <span className={`${styles.bannerMessage} ${customStyles.bannerMessage}`}>{message}</span>
                 </div>
             </div>
         </section>
-    )
+    );
 }
 
-export default DinamicBanner
+export default DinamicBanner;
