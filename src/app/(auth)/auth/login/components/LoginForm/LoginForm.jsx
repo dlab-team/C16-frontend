@@ -3,8 +3,13 @@ import { useState } from 'react';
 import styles from '../../styles/LoginForm.module.css';
 import { CheckIcon, EyeIcon, HiddenEyeIcon } from './icons';
 import { Buttons } from './components';
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
+import {auth} from '@/services/firebaseConfig'
+
 
 function LoginForm() {
+
+  const [email, setEmail] = useState('');  
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
@@ -13,6 +18,54 @@ function LoginForm() {
 
     setShowPassword(!showPassword);
   }
+
+  const signIn = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        //ACCESSTOKEN
+        const token = userCredential.user.accessToken;
+        console.log("ACCESSTOKEN:", token);
+        //UID
+        const id = userCredential.user.uid;
+        console.log("UID:", id);
+        //EMAIL
+        const mail = userCredential.user.email;
+        console.log("EMAIL:", mail);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
+
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider).then((result) => {
+      setEmailGoogle(result.user.email);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      //ACCESSTOKEN
+      const token = credential.accessToken;
+      console.log("ACCESSTOKEN:", token);
+      //UID
+      const id = result.user.uid;
+      console.log("UID:", id);
+      //EMAIL
+      const mail = result.user.email;
+      console.log("EMAIL:", mail);
+
+      //Lo que se manda al endpoint
+      //Devolveria nuevo user solo si no existe en la base de datos
+      //Pero si existe, devuelve el user existente
+      const newUser = {
+        userId: result.user.uid,
+        email: result.user.email,
+        userCompleted: false,
+      };
+      console.log(newUser);
+    });
+  };
 
   return (
     <form className={styles.inputsContainer}>
@@ -29,6 +82,8 @@ function LoginForm() {
             type="email"
             placeholder="correo@electronico.com"
             className={styles.input}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
       </label>
