@@ -55,12 +55,18 @@ const RegistroComponent = () => {
     e.preventDefault()
 
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // const user = userCredential.user
+    .then(async (userCredential) => {
+      const idToken = await userCredential.user.getIdToken();
 
-        // Envía la solicitud de verificación de correo electrónico
-      
-        // Resto del código...
+      if (idToken) {
+        fetch("https://c16-backend.onrender.com/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`,
+          },
+        });
+      }
       })
       .catch((error) => {
         const errorCode = error.code
@@ -71,26 +77,26 @@ const RegistroComponent = () => {
 
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider()
-    signInWithPopup(auth, provider).then((result) => {
-      setEmailGoogle(result.user.email)
+    signInWithPopup(auth, provider).then(async(result) => {
+      console.log("hola" + auth.currentUser)
       const credential = GoogleAuthProvider.credentialFromResult(result)
-      //ACCESSTOKEN
-      const token = credential.accessToken
-      console.log('ACCESSTOKEN:', token)
-      //UID
-      const id = result.user.uid
-      console.log('UID:', id)
-      //EMAIL
-      const mail = result.user.email
-      console.log('EMAIL:', mail)
+    
+      const idToken = await auth.currentUser.getIdToken()
+      console.log(idToken)
+      if (idToken) {
+        fetch("https://c16-backend.onrender.com/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`,
+          },
+        });
+      }
 
       //Lo que se manda al endpoint
       //Devolveria nuevo user solo si no existe en la base de datos
       //Pero si existe, devuelve el user existente
-      // const newUser = {
-      //   id: result.user.uid,
-      //   email: result.user.email,
-      // }
+   
 
       // modifyData(
       //   'https://c16-backend.onrender.com/api/users',
@@ -105,7 +111,8 @@ const RegistroComponent = () => {
       // })
     })
   }
-  //tengo que depurar un poco el codigo por que esto es la validacion del mail y del password
+  //tengo que depurar un poco el codigo por que esto es la validacion del mail y del passworsd
+  
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -163,7 +170,7 @@ const RegistroComponent = () => {
               <div className="register__input__password">
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="3mjxaf2*y"
+                  placeholder="*******"
                   id="password"
                   value={password}
                   onChange={handlePasswordChange}
