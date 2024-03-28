@@ -10,19 +10,19 @@ import { modifyData } from '@/hooks/useModifyData'
 
 const CompleteProfile = () => {
 
-  const newUser = {
-    id: result.user.uid,
-    firstname: result.user.firstname,
-    lastname: result.user.lastname,
-    phone: result.user.phone,
-    rut: result.user.rut,
-    region: result.user.region,
-    gender: result.user.gender,
-    comuna: result.user.comuna,
-    caretaker: result.user.caretaker,
-    birthday: result.user.birthday,
+  // const newUser = {
+  //   id: result.user.uid,
+  //   firstname: result.user.firstname,
+  //   lastname: result.user.lastname,
+  //   phone: result.user.phone,
+  //   rut: result.user.rut,
+  //   region: result.user.region,
+  //   gender: result.user.gender,
+  //   comuna: result.user.comuna,
+  //   caretaker: result.user.caretaker,
+  //   birthday: result.user.birthday,
    
-  }
+  // }
 
 
 
