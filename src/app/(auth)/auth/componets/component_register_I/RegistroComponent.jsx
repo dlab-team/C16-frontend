@@ -41,8 +41,7 @@ const RegistroComponent = () => {
     const numberRegex = /\d/
     setHasNumber(numberRegex.test(newPassword))
   }
-  const router = useRouter()
-
+  
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
   }
@@ -59,13 +58,12 @@ const RegistroComponent = () => {
       const idToken = await userCredential.user.getIdToken();
 
       if (idToken) {
-        fetch("https://c16-backend.onrender.com/api/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${idToken}`,
-          },
-        });
+        const user = await modifyData(
+          "https://c16-backend.onrender.com/api/users",
+          "POST", idToken
+        )
+      console.log(user)
+  
       }
       })
       .catch((error) => {
@@ -93,25 +91,10 @@ const RegistroComponent = () => {
         });
       }
 
-      //Lo que se manda al endpoint
-      //Devolveria nuevo user solo si no existe en la base de datos
-      //Pero si existe, devuelve el user existente
-   
-
-      // modifyData(
-      //   'https://c16-backend.onrender.com/api/users',
-      //   'POST',
-      //   newUser,
-      // ).then((res) => {
-      //   if (res.completed) {
-      //     router.replace('/')
-      //   } else {
-      //     router.replace('/auth/completarPerfil')
-      //   }
-      // })
+     
     })
   }
-  //tengo que depurar un poco el codigo por que esto es la validacion del mail y del passworsd
+ 
   
   const handleSubmit = (e) => {
     e.preventDefault()
