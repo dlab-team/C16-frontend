@@ -7,7 +7,7 @@
     border-radius: 20px;
     overflow: hidden;
     margin-top: 1.2rem;
-    z-index: 2;
+    z-index: 1;
 
     -webkit-box-shadow: 4px 4px 9px -6px rgba(0,0,0,0.54);
     -moz-box-shadow: 4px 4px 9px -6px rgba(0,0,0,0.54);

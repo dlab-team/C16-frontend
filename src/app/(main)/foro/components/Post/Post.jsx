@@ -1,26 +1,31 @@
-import Image from 'next/image'
-
-
+import PostImage from '../PostImage/PostImage'
 import PostToggle from '../PostToggle/PostToggle'
 import styles from './Post.module.css'
 
-
 function Post({ data, type }) {
-    if (!data.imagen) { data.imagen = "/assets/images/foro/noneImage.svg" }
+
+    if (!data.user.photo) { data.user.photo = "/assets/images/foro/noneImage.svg" }
     return (
 
         <div className={styles.postBox} role="listitem">
             <div className={styles.postHeader}>
-                <Image width={100} height={100} className={styles.imageHeader} alt='imagen de usuario' src={data.imagen} onError={"/assets/images/foro/noneImage.svg"}></Image>
+                <PostImage
+                    width={100}
+                    height={100}
+                    className={styles.imageHeader}
+                    src={data.user.photo}
+                    alt='imagen de usuario'
+                />
+
                 <span className={styles.authorInfo}>
-                    <strong className={styles.strong}>{data.nombre + ", "}</strong>
-                    {data.region} - RM
+                    <strong className={styles.strong}>{`${data.user.firstname} ${data.user.lastname} -`}</strong>
+                    {data.user.region} - {data.user.comuna}
                 </span>
             </div>
 
-            <p className={styles.message}>{data.mensaje}</p>
+            <p className={styles.message}>{data.content}</p>
 
-            <PostToggle data={data} type={type}/>
+            <PostToggle data={data} type={type} />
         </div>
 
     )
