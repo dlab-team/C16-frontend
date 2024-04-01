@@ -5,30 +5,91 @@ import "../../../../globals.css";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import regionesData   from "../CompleteProfile/regionesData.json"
+import { modifyData } from '@/hooks/useModifyData'
 
 const CompleteProfile = () => {
 
- 
+  // const newUser = {
+  //   id: result.user.uid,
+  //   firstname: result.user.firstname,
+  //   lastname: result.user.lastname,
+  //   phone: result.user.phone,
+  //   rut: result.user.rut,
+  //   region: result.user.region,
+  //   gender: result.user.gender,
+  //   comuna: result.user.comuna,
+  //   caretaker: result.user.caretaker,
+  //   birthday: result.user.birthday,
+   
+  // }
 
-  const [number, setNumber] = useState("");
+
+
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    modifyData(
+      'https://c16-backend.onrender.com/api/users',
+      'POST',
+      newUser,
+    ).then((res) => {
+      if (res.completed) {
+        router.replace('/')
+      } else {
+        router.replace('/auth/completarPerfil')
+      }
+    })
+    try {
+      const response = await fetch("http://c16-backend.onrender.com/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          { 
+          id, 
+          firstname, 
+          lastname,
+         phone ,
+         rut,
+       
+        }), // Envía el correo electrónico y el ID generado
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al crear la cuenta");
+      }
+
+      // Aquí puedes manejar la respuesta si es necesario
+    } catch (error) {
+      console.error("Error al crear la cuenta:", error);
+      // Manejar el error apropiadamente, ya sea mostrando un mensaje al usuario o realizando alguna otra acción
+    }
+  };
+
+
+
+  const [firstname , setFirstname] = useState('')
+  const [lastname, setLasname] =  useState('')
+  const [phone, setPhone] = useState("");
   const [rut, setRut] = useState("");
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [region, setRegion] = useState("");
-  const [sexo, setSexo] = useState("");
+  const [gender, setGender] = useState("");
   const [comuna, setComuna] = useState("");
   const [caretaker, setCaretaker] = useState("");
   const [labelColor, setLabelColor] = useState("#E8E8E8");
   const [isChecked, setIsChecked] = useState(false);
-const [startDate, setStartDate] = useState(new Date());
+const [birthday, setBirthday] = useState(new Date());
 
 
 
  
 
   
-  const changeColor = (selectedSexo) => {
-    switch (selectedSexo) {
+  const changeColor = (selectedgender) => {
+    switch (selectedgender) {
       case "mujer":
         setLabelColor("#06786D");
         break;
@@ -44,21 +105,42 @@ const [startDate, setStartDate] = useState(new Date());
     }
   };
 
-  const handleSexoChange = (e) => {
-    const selectedSexo = e.target.value;
-    setSexo(selectedSexo);
-    changeColor(selectedSexo);
+  const handlegenderChange = (e) => {
+    const selectedgender = e.target.value;
+    setGender(selectedgender);
+    changeColor(selectedgender);
   };
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked); // Invertimos el valor actual del estado
   };
 
+  const jsonData = {
+    regionesData 
+  };
+  const handleRegionChange = (e) => {
+    const selectedRegion = e.target.value;
+    setRegion(selectedRegion);
+
+    // Buscar las comunas correspondientes a la región seleccionada
+    const regionData = jsonData.regionesData .find(
+      (regionData) => regionData.region === selectedRegion
+    );
+    if (regionData) {
+      setComunasPorRegion(regionData.comunas);
+      setComuna("none"); // Reiniciar la selección de comuna
+    } else {
+      setComunasPorRegion([]);
+      setComuna("none");
+    }
+  };
+
   return (
     <div>
       <div className="register__descktop">
         <button className="button__back"></button>
-        <form >
+ 
+        <form onSubmit={handleSubmit}>
           <div className="register">
             <h2>Completa tu Perfil</h2>
             
@@ -71,8 +153,8 @@ const [startDate, setStartDate] = useState(new Date());
                   placeholder="Pedro"
                   id="name"
                   autoFocus
-                  value={number}
-                  onChange={(e) => setNumber(e.target.value)}
+                  value={firstname }
+                  onChange={(e) => setFirstname (e.target.value)}
                 />
               </div>
 
@@ -83,21 +165,21 @@ const [startDate, setStartDate] = useState(new Date());
                   placeholder="Apellido"
                   id="name"
                   autoFocus
-                  value={number}
-                  onChange={(e) => setNumber(e.target.value)}
+                  value={lastname}
+                  onChange={(e) => setLasname(e.target.value)}
                 />
               </div>
               <div className="register__input">
                 <label htmlFor="numero de telefono">Numero de telefono</label>
                 <div className="register__phone">
-                <div className="register__phone__number" ><p>+56</p></div>
+                <div className="register__phone__phone" ><p>+56</p></div>
                 <input
                   type="text"
                   placeholder="9 12345678"
                   id="name"
                   autoFocus
-                  value={number}
-                  onChange={(e) => setNumber(e.target.value)}
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                 />
                 </div>
               </div>
@@ -118,11 +200,11 @@ const [startDate, setStartDate] = useState(new Date());
                 <div className="register__input__button__img">
                  
                 <DatePicker
-                 selected={startDate}
-                 onChange={(date) => setStartDate(date)}
+                 selected={birthday}
+                 onChange={(date) => setBirthday(date)}
                  showYearDropdown
                  dateFormatCalendar="MMMM"
-                 yearDropdownItemNumber={100}
+                 yearDropdownItemphone={100}
                  scrollableYearDropdown
            maxDate={new Date()}
            showIcon
@@ -135,15 +217,15 @@ const [startDate, setStartDate] = useState(new Date());
               <div className="register__input__toogle">
                 <div className="register__toogles__buttons">
                   <input
-                    name="sexo"
+                    name="gender"
                     className="toogle"
                     type="radio"
                     placeholder="mujer"
                     id="register_woman"
                     value="mujer"
                     onChange={(e) => {
-                      setSexo(e.target.value);
-                      handleSexoChange(e); // Cambio aquí
+                      setGender(e.target.value);
+                      handlegenderChange(e); // Cambio aquí
                     }}
                   />
 
@@ -151,7 +233,7 @@ const [startDate, setStartDate] = useState(new Date());
                     className="switch"
                     htmlFor="register_woman"
                     style={{
-                      background: sexo === "mujer" ? "#06786D" : "#E8E8E8",
+                      background: gender === "mujer" ? "#06786D" : "#E8E8E8",
                     }}
                   >
                     <span className="slider round"> Mujer</span>
@@ -159,21 +241,21 @@ const [startDate, setStartDate] = useState(new Date());
                 </div>
                 <div className="register__toogles__buttons">
                   <input
-                    name="sexo"
+                    name="gender"
                     className="toogle"
                     type="radio"
                     id="register_man"
                     value="hombre"
                     onChange={(e) => {
-                      setSexo(e.target.value);
-                      handleSexoChange;
+                      setGender(e.target.value);
+                      handlegenderChange;
                     }}
                   />
                   <label
                     className="switch"
                     htmlFor="register_man"
                     style={{
-                      background: sexo === "hombre" ? "#06786D" : "#E8E8E8",
+                      background: gender === "hombre" ? "#06786D" : "#E8E8E8",
                     }}
                   >
                     <span className="slider round"> Hombre</span>
@@ -181,15 +263,15 @@ const [startDate, setStartDate] = useState(new Date());
                 </div>
                 <div className="register__toogles__buttons">
                   <input
-                    name="sexo"
+                    name="gender"
                     className="toogle"
                     type="radio"
                     placeholder="mujer"
                     id="register_sinespecificar"
                     value="Sin especificar"
                     onChange={(e) => {
-                      setSexo(e.target.value);
-                      handleSexoChange;
+                      setGender(e.target.value);
+                      handlegenderChange;
                     }}
                   />
                   <label
@@ -197,7 +279,7 @@ const [startDate, setStartDate] = useState(new Date());
                     htmlFor="register_sinespecificar"
                     style={{
                       background:
-                        sexo === "Sin especificar" ? "#06786D" : "#E8E8E8",
+                        gender === "Sin especificar" ? "#06786D" : "#E8E8E8",
                     }}
                   >
                     <span className="slider round">Sin especificar</span>
@@ -209,19 +291,22 @@ const [startDate, setStartDate] = useState(new Date());
                 <label htmlFor="region">Regíon</label>
 
                 <div className="register__input__button">
-                  <select
-                    name="region"
-                    id="region"
-                    onChange={(e) => {
-                      setRegion(e.target.value);
-                    }}
-                  >
-                    <option value="none">selecciona</option>
-                    <option value="value1">Value 1</option>
-                    <option value="value2">Value 2</option>
-                    <option value="value3">Value 3</option>
-                  </select>
-
+                <select
+            name="region"
+            id="region"
+            value={region}
+            onChange={(e) => {
+              setRegion(e.target.value);
+              setComuna('none'); // Reinicia la comuna cuando cambia la región
+            }}
+          >
+            <option value="none">Selecciona</option>
+            {regionesData.regiones.map((region, index) => (
+              <option key={index} value={region.region}>
+                {region.region}
+              </option>
+            ))}
+          </select>
                   <div className="register__input__button__img"></div>
                 </div>
               </div>
@@ -229,18 +314,23 @@ const [startDate, setStartDate] = useState(new Date());
                 <label htmlFor="Comuna">Comuna</label>
 
                 <div className="register__input__button">
-                  <select
-                    name="comuna"
-                    id="comuna"
-                    onChange={(e) => {
-                      setComuna(e.target.value);
-                    }}
-                  >
-                    <option value="none">selecciona</option>
-                    <option value="value1">Value 1</option>
-                    <option value="value2">Value 2</option>
-                    <option value="value3">Value 3</option>
-                  </select>
+                <select
+            name="comuna"
+            id="comuna"
+            value={comuna}
+            onChange={(e) => {
+              setComuna(e.target.value);
+            }}
+            disabled={region === 'none'}
+          >
+            <option value="none">Selecciona</option>
+            {regionesData.regiones
+              .find((r) => r.region === region)?.comunas.map((comuna, index) => (
+                <option key={index} value={comuna}>
+                  {comuna}
+                </option>
+              ))}
+          </select>
 
                   <div className="register__input__button__img"></div>
                 </div>
