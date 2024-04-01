@@ -4,16 +4,22 @@ import SearchBar from "../components/SearchBar/SearchBar"
 
 import styles from './busqueda.module.css'
 
-// Simula los datos
-const posts = [
-    { id:1, nombre: "barbara gutierrez", region: "Venezuela", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" },
-    { id:2, nombre: "paula Mendez", region: "colombia", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" },
-    { id:3, nombre: "Macarena Ramdorh", region: "cHilE", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" },
-    { id:4,nombre: "Ingrid morales", region: "chile", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" },
-    { id:5, nombre: "sebasTian güiza", region: "colombia", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" },
-]
+const searchPosts = async (resouce) =>{
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts?search=${resouce}`)
 
-function Busqueda() {
+    /* if(!response.ok){
+        throw new Error("Error al obtener la publicación, puede que haya sido eliminado")
+    } */
+
+    const info = await response.json()
+
+    return info
+}
+
+
+async function Busqueda({ searchParams }) {
+
+    const {data, pagination} =  await searchPosts(searchParams.search)
     return (
         <>
         <section className={styles.busquedaContainer}>
@@ -25,7 +31,12 @@ function Busqueda() {
         <section className={styles.listContainer}>
 
             <div className={styles.resultList} role="list">
-                {posts.map((post)=> <Post key={post.id} data={post} type="publications"/> )}
+                {
+                    pagination.totalItems==0?
+                    <p>No hay resultados con respecto a los datos enviados</p>
+                    :
+                    data.map((post)=> <Post key={post.id} data={post} type="publications"/> )
+                }
             </div>
 
 
