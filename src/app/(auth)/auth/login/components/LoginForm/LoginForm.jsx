@@ -30,6 +30,9 @@ function LoginForm() {
         const idToken = await userCredential.user.getIdToken();
         console.log(idToken);
 
+      // if (idToken) {
+        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
+
         const user = fetch("https://c16-backend.onrender.com/api/users", {
           method: "POST",
           headers: {
@@ -44,8 +47,8 @@ function LoginForm() {
             console.log(data);
             console.log(data.message);
 
-            if (data.message.includes("needs to be completed")) {
-              console.log("********", data.message);
+            if (data.completed === false) {
+              console.log("********", data.completed);
               window.location.href = '../auth/completarPerfil'
             } else {
               // Indica inicio de sesión exitoso
@@ -70,6 +73,7 @@ function LoginForm() {
             console.log('Ocurrió un error al iniciar sesión:', errorMessage);
         }
       });
+    
   };
 
   // Sign In con cuenta Google 
@@ -99,8 +103,8 @@ function LoginForm() {
             console.log(data);
             console.log(data.message);
 
-            if (data.message.includes("needs to be completed")) {
-              console.log("********", data.message);
+            if (data.completed === false) {
+              console.log("********", data.completed);
               window.location.href = '../auth/completarPerfil'
             } else {
               // Indica inicio de sesión exitoso
