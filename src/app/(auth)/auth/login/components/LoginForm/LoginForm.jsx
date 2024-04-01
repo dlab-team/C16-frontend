@@ -3,13 +3,14 @@ import { useState } from 'react';
 import styles from '../../styles/LoginForm.module.css';
 import { CheckIcon, EyeIcon, HiddenEyeIcon } from './icons';
 import { Buttons } from './components';
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
-import {auth} from '@/services/firebaseConfig'
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from '@/services/firebaseConfig'
+import Link from 'next/link';
 
 
 function LoginForm() {
 
-  const [email, setEmail] = useState('');  
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
@@ -19,56 +20,101 @@ function LoginForm() {
     setShowPassword(!showPassword);
   }
 
+
+  // Sign In sin cuenta Google 
+
   const signIn = (e) => {
+
     e.preventDefault();
+
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        //ACCESSTOKEN
-        const token = userCredential.user.accessToken;
-        console.log("ACCESSTOKEN:", token);
-        //UID
-        const id = userCredential.user.uid;
-        console.log("UID:", id);
-        //EMAIL
-        const mail = userCredential.user.email;
-        console.log("EMAIL:", mail);
+      .then(async (userCredential) => {
+        const idToken = await userCredential.user.getIdToken();
+        console.log(idToken);
+
+        const user = fetch("https://c16-backend.onrender.com/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${idToken}`,
+          }
+        })
+          .then(res => res.json())
+          .then(data => {
+
+            // Verifica la respuesta del servidor
+            console.log(data);
+            console.log(data.message);
+
+            if (data.message.includes("needs to be completed")) {
+              console.log("********", data.message);
+              window.location.href = '../auth/completarPerfil'
+            } else {
+              // Indica inicio de sesión exitoso
+              console.log('Inicio de sesión exitoso');
+            }
+          })
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+
+        // Manejo de diferentes errores
+        switch (errorCode) {
+          case 'auth/user-not-found':
+            console.log('El correo o la contraseña son incorrectos.');
+            break;
+          case 'auth/wrong-password':
+            console.log('El correo o la contraseña son incorrectos.');
+            break;
+          default:
+            console.log('Ocurrió un error al iniciar sesión:', errorMessage);
+        }
       });
   };
 
-  const signInWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then((result) => {
-      setEmailGoogle(result.user.email);
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      //ACCESSTOKEN
-      const token = credential.accessToken;
-      console.log("ACCESSTOKEN:", token);
-      //UID
-      const id = result.user.uid;
-      console.log("UID:", id);
-      //EMAIL
-      const mail = result.user.email;
-      console.log("EMAIL:", mail);
+  // Sign In con cuenta Google 
 
-      //Lo que se manda al endpoint
-      //Devolveria nuevo user solo si no existe en la base de datos
-      //Pero si existe, devuelve el user existente
-      const newUser = {
-        userId: result.user.uid,
-        email: result.user.email,
-        userCompleted: false,
-      };
-      console.log(newUser);
-    });
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider()
+    signInWithPopup(auth, provider).then(async (result) => {
+      console.log("Google *******" + auth.currentUser);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+
+      const idToken = await auth.currentUser.getIdToken()
+      console.log(idToken)
+      if (idToken) {
+        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
+
+        fetch("https://c16-backend.onrender.com/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${idToken}`,
+          },
+        })
+        .then(res => res.json())
+          .then(data => {
+
+            // Verifica la respuesta del servidor
+            console.log(data);
+            console.log(data.message);
+
+            if (data.message.includes("needs to be completed")) {
+              console.log("********", data.message);
+              window.location.href = '../auth/completarPerfil'
+            } else {
+              // Indica inicio de sesión exitoso
+              console.log('Inicio de sesión exitoso');
+            }
+          })
+      }
+    })
   };
 
   return (
-    <form className={styles.inputsContainer}>
+    <form className={styles.inputsContainer} onSubmit={signIn}>
       <p className={styles.p}>
         Podrás dejar tus comentarios y conectar de más cerca con otros
         cuidadores

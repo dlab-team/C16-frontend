@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const CompleteProfile = () => {
 
- 
+
 
   const [number, setNumber] = useState("");
   const [rut, setRut] = useState("");
@@ -20,13 +20,13 @@ const CompleteProfile = () => {
   const [caretaker, setCaretaker] = useState("");
   const [labelColor, setLabelColor] = useState("#E8E8E8");
   const [isChecked, setIsChecked] = useState(false);
-const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
 
 
 
- 
 
-  
+
+
   const changeColor = (selectedSexo) => {
     switch (selectedSexo) {
       case "mujer":
@@ -61,10 +61,10 @@ const [startDate, setStartDate] = useState(new Date());
         <form >
           <div className="register">
             <h2>Completa tu Perfil</h2>
-            
+
             <div className="register__inputgroup">
 
-            <div className="register__input">
+              <div className="register__input">
                 <label htmlFor="">Nombre completo</label>
                 <input
                   type="text"
@@ -90,15 +90,15 @@ const [startDate, setStartDate] = useState(new Date());
               <div className="register__input">
                 <label htmlFor="numero de telefono">Numero de telefono</label>
                 <div className="register__phone">
-                <div className="register__phone__number" ><p>+56</p></div>
-                <input
-                  type="text"
-                  placeholder="9 12345678"
-                  id="name"
-                  autoFocus
-                  value={number}
-                  onChange={(e) => setNumber(e.target.value)}
-                />
+                  <div className="register__phone__number" ><p>+56</p></div>
+                  <input
+                    type="text"
+                    placeholder="9 12345678"
+                    id="name"
+                    autoFocus
+                    value={number}
+                    onChange={(e) => setNumber(e.target.value)}
+                  />
                 </div>
               </div>
               <div className="register__input">
@@ -116,19 +116,19 @@ const [startDate, setStartDate] = useState(new Date());
                 <label htmlFor=""> Fecha de nacimiento</label>
 
                 <div className="register__input__button__img">
-                 
-                <DatePicker
-                 selected={startDate}
-                 onChange={(date) => setStartDate(date)}
-                 showYearDropdown
-                 dateFormatCalendar="MMMM"
-                 yearDropdownItemNumber={100}
-                 scrollableYearDropdown
-           maxDate={new Date()}
-           showIcon
-                    />
-                 
-              
+
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    showYearDropdown
+                    dateFormatCalendar="MMMM"
+                    yearDropdownItemNumber={100}
+                    scrollableYearDropdown
+                    maxDate={new Date()}
+                    showIcon
+                  />
+
+
                 </div>
               </div>
 

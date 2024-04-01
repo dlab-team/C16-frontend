@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import styles from '../../../styles/Buttons.module.css';
 import { GoogleIcon, GoogleIconForDesktop } from '../icons';
+import {signIn, signInWithGoogle} from '../LoginForm';
 
 function Buttons() {
+  
   return (
     <>
       <div className={styles.hrContainer}>
@@ -10,14 +12,11 @@ function Buttons() {
         o
         <hr className={styles.hr} />
       </div>
-      <input
-        type="button"
-        value="Ingresar"
-        name="ingresar"
-        className={styles.loginButton}
-      />
-      <button className={styles.socialNetworkButton}>
-        Conectar con Google
+      <button className={styles.loginButton} onClick={()=>signIn}>
+        Ingresar
+      </button>
+      <button className={styles.socialNetworkButton} onClick={()=> signInWithGoogle}>
+        Continuar con Google
         <i className={styles.googleIconForMobile}>
           <GoogleIcon />
         </i>
