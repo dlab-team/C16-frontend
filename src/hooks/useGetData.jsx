@@ -1,38 +1,16 @@
-import { useState, useEffect } from 'react'
-
-/**
- * Fetches data from a specified URL.
- * @param {string} url - The API endpoint URL.
- */
-const useGetData = (url) => {
-  const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [hasError, setHasError] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true)
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}${url}`,
-        )
-        const result = await response.json()
-        if (response.ok) {
-          setData(result)
-        } else {
-          setHasError(true)
-          setErrorMessage(result)
-        }
-      } catch (err) {
-        setHasError(true)
-        setErrorMessage(err.message)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    fetchData()
-  }, [url])
-  return { data, isLoading, hasError, errorMessage }
+export const getData = async (url, data={})=>{
+  const response = await fetch(url, {
+    mode: "cors", // no-cors, *cors, same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: "follow", // manual, *follow, error
+    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data), // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+  
 }
-export default useGetData
