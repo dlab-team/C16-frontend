@@ -5,8 +5,6 @@ import { CheckIcon, EyeIcon, HiddenEyeIcon } from './icons';
 import { Buttons } from './components';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from '@/services/firebaseConfig'
-import Link from 'next/link';
-
 
 function LoginForm() {
 
