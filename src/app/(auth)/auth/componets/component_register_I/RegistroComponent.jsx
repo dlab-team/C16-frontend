@@ -24,6 +24,7 @@ const RegistroComponent = () => {
   const [validLength, setValidLength] = useState(false)
   const [hasSpecialChar, setHasSpecialChar] = useState(false)
   const [hasNumber, setHasNumber] = useState(false)
+  const [emailValid, setEmailValid] = useState(true)
 
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value
@@ -46,6 +47,8 @@ const RegistroComponent = () => {
     setShowPassword(!showPassword)
   }
 
+
+
   const isEmailValid = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return re.test(String(email).toLowerCase())
@@ -58,20 +61,23 @@ const RegistroComponent = () => {
       const idToken = await userCredential.user.getIdToken();
 
       if (idToken) {
+        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
+
         const user = await modifyData(
           "https://c16-backend.onrender.com/api/users",
           "POST", idToken
         )
-      console.log(user)
+        console.log(user)
   
       }
-      })
-      .catch((error) => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        console.log(errorCode, errorMessage)
-      })
+    })
+    .catch((error) => {
+      const errorCode = error.code
+      const errorMessage = error.message
+      console.log(errorCode, errorMessage)
+    })
   }
+
 
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider()
@@ -82,6 +88,8 @@ const RegistroComponent = () => {
       const idToken = await auth.currentUser.getIdToken()
       console.log(idToken)
       if (idToken) {
+        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
+
         fetch("https://c16-backend.onrender.com/api/users", {
           method: "POST",
           headers: {
@@ -90,8 +98,6 @@ const RegistroComponent = () => {
           },
         });
       }
-
-     
     })
   }
  
@@ -100,11 +106,13 @@ const RegistroComponent = () => {
     e.preventDefault()
 
     if (!isEmailValid(email)) {
+      
       console.log('Correo electrónico no válido')
       return
     }
 
     if (!password) {
+      
       console.log('La contraseña no puede estar vacía')
       return
     }
@@ -147,7 +155,7 @@ const RegistroComponent = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-
+            
             <div className="register__input">
               <label htmlFor="contraseña">Contraseña</label>
               <div className="register__input__password">

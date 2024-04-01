@@ -87,6 +87,8 @@ input:focus {
     align-items: center;
 
 }
+
+
 .register__button {
   display: flex;
   flex-direction: column;
@@ -94,7 +96,7 @@ input:focus {
   align-items: center;
   justify-content: space-evenly;
   width: 70%;
-  margin-top: 10%;
+  margin-top: 20%;
 }
 .register__button button {
   width: 100%;

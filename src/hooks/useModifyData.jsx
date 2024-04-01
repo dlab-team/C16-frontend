@@ -7,4 +7,4 @@ export const modifyData =  async (url, method, data) => {
     },
   });
   return response.json();
-} 
+}   
