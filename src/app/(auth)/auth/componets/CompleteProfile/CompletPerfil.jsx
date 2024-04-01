@@ -28,46 +28,46 @@ const CompleteProfile = () => {
 
 
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    modifyData(
-      'https://c16-backend.onrender.com/api/users',
-      'POST',
-      newUser,
-    ).then((res) => {
-      if (res.completed) {
-        router.replace('/')
-      } else {
-        router.replace('/auth/completarPerfil')
-      }
-    })
-    try {
-      const response = await fetch("http://c16-backend.onrender.com/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          { 
-          id, 
-          firstname, 
-          lastname,
-         phone ,
-         rut,
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   modifyData(
+  //     'https://c16-backend.onrender.com/api/users',
+  //     'POST',
+  //     newUser,
+  //   ).then((res) => {
+  //     if (res.completed) {
+  //       router.replace('/')
+  //     } else {
+  //       router.replace('/auth/completarPerfil')
+  //     }
+  //   })
+  //   try {
+  //     const response = await fetch("http://c16-backend.onrender.com/api/users", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(
+  //         { 
+  //         id, 
+  //         firstname, 
+  //         lastname,
+  //        phone ,
+  //        rut,
        
-        }), // Envía el correo electrónico y el ID generado
-      });
+  //       }), // Envía el correo electrónico y el ID generado
+  //     });
 
-      if (!response.ok) {
-        throw new Error("Error al crear la cuenta");
-      }
+  //     if (!response.ok) {
+  //       throw new Error("Error al crear la cuenta");
+  //     }
 
-      // Aquí puedes manejar la respuesta si es necesario
-    } catch (error) {
-      console.error("Error al crear la cuenta:", error);
-      // Manejar el error apropiadamente, ya sea mostrando un mensaje al usuario o realizando alguna otra acción
-    }
-  };
+  //     // Aquí puedes manejar la respuesta si es necesario
+  //   } catch (error) {
+  //     console.error("Error al crear la cuenta:", error);
+  //     // Manejar el error apropiadamente, ya sea mostrando un mensaje al usuario o realizando alguna otra acción
+  //   }
+  // };
 
 
 
@@ -140,7 +140,7 @@ const [birthday, setBirthday] = useState(new Date());
       <div className="register__descktop">
         <button className="button__back"></button>
  
-        <form onSubmit={handleSubmit}>
+        <form >
           <div className="register">
             <h2>Completa tu Perfil</h2>
             

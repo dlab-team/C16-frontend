@@ -17,6 +17,11 @@ import { auth } from '../../../../../services/firebaseConfig'
 import { modifyData } from '@/hooks/useModifyData'
 
 const RegistroComponent = () => {
+  const router = useRouter()
+ 
+
+
+  
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [emailGoogle, setEmailGoogle] = useState('')
@@ -198,7 +203,7 @@ const RegistroComponent = () => {
             </div>
 
             <div className="register__button">
-              <button className="register__buttons__pink" type="submit">
+              <button className="register__buttons__pink" type="submit" onClick={() => router.push('/auth/completarPerfil')}>
                 Crear cuenta
               </button>
               <button
