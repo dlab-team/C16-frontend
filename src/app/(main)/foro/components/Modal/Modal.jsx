@@ -1,7 +1,7 @@
 
 import styles from './Modal.module.css'
 
-const Modal = ({ isOpen, onClose, children, onConfirm }) => {
+const Modal = ({ isOpen, onClose, onConfirm }) => {
     if (!isOpen) return null;
 
     return (

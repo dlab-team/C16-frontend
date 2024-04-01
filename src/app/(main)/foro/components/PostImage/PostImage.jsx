@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 // URL de la imagen por defecto
 const defaultImage = "/assets/images/foro/noneImage.svg"
 
-function PostImage({ src=defaultImage, alt, ...props }) {
+function PostImage({ src = defaultImage, alt, ...props }) {
     // Estado para manejar la URL de la imagen
     const [imgSrc, setImgSrc] = useState(src)
 

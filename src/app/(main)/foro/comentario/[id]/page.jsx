@@ -6,22 +6,20 @@ import CommentListContainer from "./components/CommentListContainer/CommentListC
 const getPostById = async (id) =>{
     const response = await fetch(`https://c16-backend.onrender.com/api/posts/${id}`)
 
-    if(!response.ok){
-        throw new Error("Error al obtener el post, puede que haya sido eliminado")
-    }
+    /* if(!response.ok){
+        throw new Error("Error al obtener la publicación, puede que haya sido eliminado")
+    } */
 
     const info = await response.json()
 
-    console.log(info) 
-
-    return info
+    return info.data
 }
 
 async function Comment({params}) {
     const {id}= params
 
     const post = await getPostById(id)
-    
+
     return (
         <main className={styles.main}>
             <section className={styles.container}>
@@ -34,7 +32,7 @@ async function Comment({params}) {
                 <Post data={post} type='detail' />
             </section>
 
-            <CommentListContainer />
+            <CommentListContainer data={post} />
         </main>
     )
 }

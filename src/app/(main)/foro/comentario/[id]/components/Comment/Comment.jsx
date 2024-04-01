@@ -1,21 +1,25 @@
 
-import Image from 'next/image'
 import styles from './Comment.module.css'
 import PostToggle from '@/app/(main)/foro/components/PostToggle/PostToggle'
+import PostImage from '@/app/(main)/foro/components/PostImage/PostImage'
 
 function Comment({data}) {
-    if (!data.imagen) { data.imagen = "/assets/images/foro/noneImage.svg" }
     return (
         <div className={styles.postBox}>
             <div className={styles.postHeader}>
-                <Image width={100} height={100} className={styles.imageHeader} alt='imagen de usuario' src={data.imagen} onError={"/assets/images/foro/noneImage.svg"}></Image>
+                <PostImage 
+                width={100} height={100} 
+                className={styles.imageHeader} 
+                alt='imagen de usuario' 
+                src={data.user.photo || "https://firebasestorage.googleapis.com/v0/b/dropbox-clone-736fa.appspot.com/o/users%2Fuser_2aNC9F2HWDn5x5KjMBi9Y9ywEQX%2Ffiles%2Fdefaultprofile.png?alt=media"}
+                />
                 <span className={styles.authorInfo}>
-                    <strong className={styles.strong}>{data.nombre + ", "}</strong>
-                    {data.region} - RM
+                    <strong className={styles.strong}>{`${data.user.firstname} ${data.user.lastname} -`}</strong>
+                    {data.region}
                 </span>
             </div>
 
-            <p className={styles.message}>{data.mensaje}</p>
+            <p className={styles.message}>{data.content}</p>
 
             <PostToggle data={data} type={'publications'} />
         </div>
