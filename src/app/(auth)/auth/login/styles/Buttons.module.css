@@ -1,0 +1,162 @@
+/* mobile styles */
+.hrContainer {
+  display: none;
+}
+
+.loginButton {
+  font-family: var(--ff-one);
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3.5rem;
+  border: none;
+  align-self: center;
+  border-radius: 0.6rem;
+  background-color: var(--clr-primary-1);
+  color: var(--clr-primary-2);
+  font-size: var(--tx-mobile-one);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.socialNetworkButton {
+  font-family: var(--ff-one);
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.3rem;
+  background-color: transparent;
+  border: 2px solid var(--clr-primary-2);
+  border-radius: 0.6rem;
+  color: var(--clr-primary-2);
+  font-size: var(--tx-mobile-one);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.googleIconForMobile {
+  display: flex;
+}
+
+.googleIconForDesktop {
+  display: none;
+}
+
+.forgotMyPassword {
+  font-family: var(--ff-one);
+  font-size: var(--tx-mobile-one);
+  font-weight: 600;
+  color: var(--clr-primary-2);
+  text-decoration: none;
+  margin-top: 3rem;
+}
+
+.p {
+  font-family: var(--ff-one);
+  width: 60%;
+  display: block;
+  font-size: var(--p);
+  font-weight: 400;
+  color: #787575;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.link {
+  font-weight: 600;
+  color: var(--clr-primary-2);
+  text-decoration: none;
+}
+
+/* Tablet Styles */
+
+@media (width >=768px) {
+  .loginButton {
+    width: 60%;
+  }
+
+  .socialNetworkButton {
+    width: 60%;
+  }
+}
+
+/* desktop styles */
+@media (width > 1000px) {
+  .hrContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    align-self: flex-start;
+    color: var(--clr-primary-2);
+  }
+
+  .hr {
+    width: 41%;
+    margin: 0.9rem 0 0.9rem 0;
+    background-color: var(--clr-primary-2);
+    border: 0.002rem solid var(--clr-primary-2);
+  }
+
+  .loginButton {
+    align-self: flex-start;
+    height: 3rem;
+    margin-top: 0.5rem;
+    width: 80%;
+  }
+
+  .socialNetworkButton {
+    height: 3rem;
+    margin-top: 1.5rem;
+    font-size: var(--label);
+    font-weight: 700;
+    color: var(--clr-primary-2);
+    width: 80%;
+  }
+
+  .googleIconForMobile {
+    display: none;
+  }
+
+  .googleIconForDesktop {
+    display: flex;
+  }
+
+  .forgotMyPassword {
+    width: 80%;
+    align-self: flex-start;
+    margin-top: 0.9rem;
+  }
+
+  .p {
+    width: 80%;
+  }
+}
+
+@media (width > 1500px) {
+
+  .hrContainer {
+    width: 70%;
+  }
+
+  .p {
+    width: 70%;
+  }
+
+  .loginButton {
+    width: 70%;
+  }
+
+  .socialNetworkButton {
+    width: 70%;
+  }
+
+  .forgotMyPassword {
+    width: 70%;
+  }
+}

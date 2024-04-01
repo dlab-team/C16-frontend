@@ -1,0 +1,185 @@
+/* mobile styles */
+.inputsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 83%;
+}
+
+.p {
+  display: none;
+  font: var(--tx-desktop-two);
+  text-align: left;
+}
+
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: center;
+  color: #333;
+  line-height: var(--lh-p);
+  gap: 0.2rem;
+  margin: 0 0 0.8rem 0.5rem;
+  font: var(--tx-mobile-one);
+}
+
+.input {
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  border: none;
+  border-bottom: 1px solid var(--clr-primary-2);
+  font-family: var(--ff-one);
+  outline: none;
+  padding: 0 0.5rem;
+  margin-left: -0.5rem;
+}
+
+.input::placeholder {
+  color: #6f6f6f;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.eyeButton {
+  position: absolute;
+  right: 1rem;
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
+}
+
+.rememberInput {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  color: var(--clr-primary-2);
+  font-size: var(--label);
+  font-weight: 500;
+  line-height: var(--lh-label);
+  font-family: var(--ff-one);
+}
+
+.checkboxContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkboxRound {
+  width: 1.1rem;
+  height: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid var(--clr-primary-2);
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: all ease-in 175ms;
+}
+
+.span {
+  position: absolute;
+  display: none;
+  margin-top: 0.4rem;
+}
+
+.checkboxRound:checked {
+  background-color: var(--clr-primary-2);
+}
+
+.checkboxRound:checked+span {
+  display: block;
+}
+
+/* Tablet Styles */
+
+@media (width >=768px) {
+  .inputWrapper {
+    width: 60%;
+  }
+
+  .rememberInput {
+    width: 60%;
+  }
+}
+
+/* Desktop Styles */
+@media (width > 1000px) {
+  .inputsContainer {
+    align-items: flex-start;
+    align-self: flex-start;
+  }
+
+  .p {
+    display: block;
+    width: 80%;
+    font-size: var(--p);
+    font-weight: 400;
+    line-height: var(--lh-p);
+    color: #454444;
+    margin-bottom: 1rem;
+  }
+
+  .inputWrapper {
+    align-self: flex-start;
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+    margin: 0 0 1.2rem 0;
+    width: 80%;
+  }
+
+  .wrapper {
+    height: 3rem;
+  }
+
+  .input {
+    height: 3rem;
+  }
+
+  .inputsContainer {
+    width: 100%;
+    margin-left: 8%;
+  }
+
+  .rememberInput {
+    width: 80%;
+  }
+}
+
+@media (width > 1500px) {
+  .p {
+    width: 70%;
+  }
+
+  .inputWrapper {
+    width: 70%;
+  }
+
+  .rememberInput {
+    width: 70%;
+  }
+}
