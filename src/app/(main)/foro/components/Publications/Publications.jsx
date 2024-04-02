@@ -3,6 +3,7 @@ import styles from './Publications.module.css'
 import CategoryLinks from '../CategoryLinks/CategoryLinks'
 import PostList from '../PostList/PostList'
 import SearchBar from '../SearchBar/SearchBar'
+import PostForm from '../PostForm/PostForm'
 
 function Publications({category}) {
 
@@ -15,10 +16,7 @@ function Publications({category}) {
             </div>
 
             <div className={styles.inputContainer}>
-                <form className={styles.inputBox}>
-                    <input className={styles.commentInput} type="text" placeholder='Escribe tu comentario' />
-                    <button className={styles.sendIcon}></button>
-                </form>
+                <PostForm />
             </div>
             <SearchBar />
 

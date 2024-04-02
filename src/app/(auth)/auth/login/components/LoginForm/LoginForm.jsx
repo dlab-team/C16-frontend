@@ -51,6 +51,7 @@ function LoginForm() {
             } else {
               // Indica inicio de sesión exitoso
               console.log('Inicio de sesión exitoso');
+              window.location.href = '/'
             }
           })
         }
@@ -109,6 +110,7 @@ function LoginForm() {
             } else {
               // Indica inicio de sesión exitoso
               console.log('Inicio de sesión exitoso');
+              window.location.href = '/'
             }
           })
       }

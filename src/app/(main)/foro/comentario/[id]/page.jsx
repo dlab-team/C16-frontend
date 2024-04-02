@@ -1,14 +1,24 @@
 import Post from "../../components/Post/Post"
 import styles from "./commentPage.module.css"
-
 import Breadcumbs from "./components/Breadcumbs/Breadcumbs"
 import CommentListContainer from "./components/CommentListContainer/CommentListContainer"
 
-const data = { id:0, nombre: "Diego Fernández", region: "costa Rica", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" }
+const getPostById = async (id) =>{
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts/${id}`)
 
-function Comment({params}) {
+    /* if(!response.ok){
+        throw new Error("Error al obtener la publicación, puede que haya sido eliminado")
+    } */
+
+    const info = await response.json()
+
+    return info.data
+}
+
+async function Comment({params}) {
     const {id}= params
-    data.id = id
+
+    const post = await getPostById(id)
 
     return (
         <main className={styles.main}>
@@ -19,10 +29,10 @@ function Comment({params}) {
             </section>
 
             <section className={styles.postBox}>
-                <Post data={data} type='detail' />
+                <Post data={post} type='detail' />
             </section>
 
-            <CommentListContainer />
+            <CommentListContainer data={post} />
         </main>
     )
 }

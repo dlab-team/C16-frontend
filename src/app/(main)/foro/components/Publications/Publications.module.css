@@ -35,37 +35,7 @@
     margin-bottom: 2rem;
     border-radius: 10px;
 }
-.inputBox{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(1,1fr);
-    align-items: center;
 
-    height: 80px;
-    border-radius: 5px;
-    overflow: hidden;
-}
-.commentInput{
-    grid-column: 1/6;
-    grid-row: 1;
-
-    height: 100%;
-    border: 2px solid var(--clr-two-100);
-    text-indent: 1rem;
-}
-.sendIcon{
-    grid-column: 5/6;
-    grid-row: 1;
-
-
-    width: 35px;
-    height: 35px;
-    background-color: transparent;
-    border: none;
-
-    background-image: url('/assets/images/foro/sendIcon.svg');
-    background-size: contain;
-}
 
 
 .subTitle{
@@ -101,15 +71,6 @@
         padding: 25px;
     }
 
-    .inputBox{
-        grid-template-columns: repeat(12, 1fr);
-    }
-    .commentInput{
-        grid-column: 1/-1;
-    }
-    .sendIcon{
-        grid-column: 12/13;
-    }
 
     .subTitle{
         grid-column: 3/-1;
@@ -122,9 +83,3 @@
         grid-column: 3/-3;
     }
 } 
-
-@media (min-width: 992px) {
-    .inputBox{
-        height: 100px;
-    }
-} /* pantalla grande */
