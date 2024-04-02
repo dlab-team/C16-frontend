@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { dateSince } from '../../utils/dateSince';
 import { dateFormat } from '../../utils/dateFormat';
 import ModalPortal from '../ModalPortal/ModalPortal';
+import ReplyPost from '../ReplyPost/ReplyPost';
 
 // recibe por parámetros la información del comentario y el tipo
 // type="detail" si es para la vista detalle del comentario
@@ -104,10 +105,7 @@ function PostToggle({ data, type = "detail" }) {
 
             {
                 isVisible && (
-                    <form className={styles.inputCommentBox}>
-                        <input className={styles.commentInput} type="text" placeholder='Escribe tu comentario' />
-                        <button className={styles.sendBtn}></button>
-                    </form>
+                    <ReplyPost parentId={data.id}/>
                 )
             }
 

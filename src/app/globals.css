@@ -147,3 +147,10 @@
 } /* pantalla grande */
 @media (min-width: 1400px) {
 } /* pantalla extra grande */
+
+
+
+/* No borrar este selector porque es importante */
+#dropdown_menu_ul{
+  list-style-type: none;
+}
