@@ -30,7 +30,7 @@ function LoginForm() {
         const idToken = await userCredential.user.getIdToken();
         console.log(idToken);
 
-      // if (idToken) {
+      if (idToken) {
         localStorage.setItem('token', idToken); // Almacenar el token en el local storage
 
         const user = fetch("https://c16-backend.onrender.com/api/users", {
@@ -55,6 +55,7 @@ function LoginForm() {
               console.log('Inicio de sesión exitoso');
             }
           })
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -79,6 +80,9 @@ function LoginForm() {
   // Sign In con cuenta Google 
 
   const signInWithGoogle = () => {
+
+    e.preventDefault();
+
     const provider = new GoogleAuthProvider()
     signInWithPopup(auth, provider).then(async (result) => {
       console.log("Google *******" + auth.currentUser);
@@ -86,6 +90,7 @@ function LoginForm() {
 
       const idToken = await auth.currentUser.getIdToken()
       console.log(idToken)
+      
       if (idToken) {
         localStorage.setItem('token', idToken); // Almacenar el token en el local storage
 
@@ -116,6 +121,8 @@ function LoginForm() {
   };
 
   return (
+    // <form className={styles.inputsContainer}>
+
     <form className={styles.inputsContainer} onSubmit={signIn}>
       <p className={styles.p}>
         Podrás dejar tus comentarios y conectar de más cerca con otros

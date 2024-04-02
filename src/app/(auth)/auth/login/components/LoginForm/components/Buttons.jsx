@@ -12,7 +12,7 @@ function Buttons() {
         o
         <hr className={styles.hr} />
       </div>
-      <button className={styles.loginButton} onClick={()=>signIn}>
+      <button className={styles.loginButton}>
         Ingresar
       </button>
       <button className={styles.socialNetworkButton} onClick={()=> signInWithGoogle}>
