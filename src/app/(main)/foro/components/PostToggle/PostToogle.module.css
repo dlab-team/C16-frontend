@@ -56,38 +56,7 @@
 .hideInput{
     display: none;
 }
-.inputCommentBox{
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: 1;
-    align-items: center;
 
-    margin-top: 0.5rem;
-    width: 100%;
-}
-.commentInput{
-    grid-column: 1/-1;
-    grid-row: 1;
-
-    height: 40px;
-    border-radius: 7px;
-    border: 0.5px solid var(--clr-two-100);
-    text-indent: 1rem;
-
-}
-.sendBtn{
-    grid-column: 8/-1;
-    grid-row: 1;
-    
-    width: 25px;
-    height: 25px;
-    background-image: url('/assets/images/foro/sendIcon.svg');
-    background-size: cover;
-    background-position: center;
-    background-color: transparent;
-
-    border: none;
-}
 
 @media (min-width: 576px) {
     .actionsBox{
@@ -109,21 +78,5 @@
         color: var(--clr-primary-2);
         font-weight: 200;
         font-size: 0.9rem;
-    }
-
-    .inputCommentBox{
-        grid-template-columns: repeat(20, 1fr);
-        border-radius: 10px;
-    }
-    .commentInput{
-        grid-column: 2/-2;
-        height: 50px;
-    }
-    .sendBtn{
-        grid-column: 18/-2;
-        grid-row: 1;
-
-        width: 35px;
-        height: 35px;
     }
 }

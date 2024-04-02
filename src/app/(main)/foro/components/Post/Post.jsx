@@ -1,26 +1,31 @@
-import Image from 'next/image'
-
-
+import MoreDropdown from '../MoreDropdown/MoreDropdown'
+import PostImage from '../PostImage/PostImage'
 import PostToggle from '../PostToggle/PostToggle'
 import styles from './Post.module.css'
 
-
-function Post({ data, type }) {
-    if (!data.imagen) { data.imagen = "/assets/images/foro/noneImage.svg" }
+async function Post({ data, type }) {
     return (
 
         <div className={styles.postBox} role="listitem">
             <div className={styles.postHeader}>
-                <Image width={100} height={100} className={styles.imageHeader} alt='imagen de usuario' src={data.imagen} onError={"/assets/images/foro/noneImage.svg"}></Image>
+                <PostImage
+                    width={100}
+                    height={100}
+                    className={styles.imageHeader}
+                    src={data.user.photo || "https://firebasestorage.googleapis.com/v0/b/dropbox-clone-736fa.appspot.com/o/users%2Fuser_2aNC9F2HWDn5x5KjMBi9Y9ywEQX%2Ffiles%2Fdefaultprofile.png?alt=media"}
+                    alt='imagen de usuario'
+                />
+
                 <span className={styles.authorInfo}>
-                    <strong className={styles.strong}>{data.nombre + ", "}</strong>
-                    {data.region} - RM
+                    <strong className={styles.strong}>{`${data.user.firstname} ${data.user.lastname} -`}</strong>
+                    {data.user.region} - {data.user.comuna}
                 </span>
+                <MoreDropdown />
             </div>
 
-            <p className={styles.message}>{data.mensaje}</p>
+            <p className={styles.message}>{data.content}</p>
 
-            <PostToggle data={data} type={type}/>
+            <PostToggle data={data} type={type} />
         </div>
 
     )

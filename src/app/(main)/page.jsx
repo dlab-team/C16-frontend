@@ -65,7 +65,7 @@ export default function Home() {
         </div>
 
         <div className={styles.foro}>
-          <Link href='/foro' className={styles.link}>
+          <Link href='/foro/recientes' className={styles.link}>
             <span className={styles.text_link}>Foro</span>
             <button className={styles.arrow_btn}>
               <IoIosArrowForward className={styles.arrow_btn} />

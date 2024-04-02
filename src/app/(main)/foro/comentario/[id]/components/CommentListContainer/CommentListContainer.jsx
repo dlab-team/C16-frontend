@@ -1,16 +1,11 @@
-
 import CommentContainer from '../CommentContainer/CommentContainer'
 import styles from './CommentListContainer.module.css'
 
-const data = { id:0, nombre: "Diego Fernández", region: "costa Rica", fecha: "2/2/2024", mensaje: "¿Cómo puedo tramitar el Carné de Cuidador? Gracias", imagen: "" }
-
-function CommentListContainer() {
+async function CommentListContainer({data}) {
     return (
         <section className={styles.commentListContainer}>
             <div className={styles.commentList} role='list'>
-                <CommentContainer data={data}/>
-                <CommentContainer data={data}/>
-                <CommentContainer data={data}/>
+                {data.replies.map((comment) => <CommentContainer key={comment.id} data={comment}/>)}
             </div>
 
             <div className={styles.pagination}>
