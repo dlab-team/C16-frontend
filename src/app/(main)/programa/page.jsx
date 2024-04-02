@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-=======
 import DinamicBanner from "../components/DinamicBanner/DinamicBanner"
->>>>>>> main
 
 function Programa() {
     return (
         <div>
-<<<<<<< HEAD
             <h1 style={{textAlign: "center", padding:"20px"}}>Programa page</h1>
-        </div>
-=======
             <h1 style={{textAlign: "center", padding:"20px"}}></h1>
             <DinamicBanner
                 imageSrc='/assets/images/banner/banner_img.png'
@@ -19,7 +13,6 @@ function Programa() {
             />
         </div>
         
->>>>>>> main
     )
 }
 
