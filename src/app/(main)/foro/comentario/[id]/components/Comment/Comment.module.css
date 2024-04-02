@@ -25,6 +25,7 @@
     width: 30px;
     height: 30px;
     object-fit: contain;
+    border-radius: 28px;
 }
 .authorInfo{
     font-family: var(--ff-one);
@@ -46,6 +47,8 @@
     font-size: 0.8rem;
     color: var(--clr-secondary-2);
     border: 1px solid var(--clr-one-200);
+    max-height: 98px;
+    overflow-y: scroll;
 }
 
 @media (min-width: 576px) {

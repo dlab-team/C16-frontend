@@ -16,7 +16,7 @@
 .postHeader{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     padding-bottom: 0.5rem;
 }
@@ -24,12 +24,29 @@
     width: 40px;
     height: 40px;
     object-fit: contain;
+    border-radius: 28px;
+    margin-right: auto;
+    gap: 5px;
 }
 .authorInfo{
     font-family: var(--ff-one);
     color: var(--clr-primary-2);
     font-size: 0.7rem;
     text-transform: capitalize;
+    margin-left: 5px;
+}
+.moreBtn{
+    width: 20px;
+    height: 20px;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    background-image: url("/assets/images/foro/more.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
 }
 .stromg{
     font-weight: 500;
@@ -43,6 +60,8 @@
     font-weight: 200;
     color: var(--clr-secondary-2);
     border: 1px solid var(--clr-one-200);
+    max-height: 98px;
+    overflow-y: scroll;
 }
 
 @media (min-width: 576px) {
