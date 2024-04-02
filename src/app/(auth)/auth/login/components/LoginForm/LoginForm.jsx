@@ -3,8 +3,13 @@ import { useState } from 'react';
 import styles from '../../styles/LoginForm.module.css';
 import { CheckIcon, EyeIcon, HiddenEyeIcon } from './icons';
 import { Buttons } from './components';
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from '@/services/firebaseConfig'
+
 
 function LoginForm() {
+
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
@@ -14,7 +19,106 @@ function LoginForm() {
     setShowPassword(!showPassword);
   }
 
+  // SignIn sin Google 
+
+  const signIn = () => {
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => {
+        const idToken = await userCredential.user.getIdToken();
+        console.log(idToken);
+
+      if (idToken) {
+        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
+
+        const user = fetch("https://c16-backend.onrender.com/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${idToken}`,
+          }
+        })
+          .then(res => res.json())
+          .then(data => {
+
+            // Verifica la respuesta del servidor
+            console.log(data);
+            console.log(data.message);
+
+            if (data.completed === false) {
+              console.log("********", data.completed);
+              window.location.href = '../auth/completarPerfil'
+            } else {
+              // Indica inicio de sesión exitoso
+              console.log('Inicio de sesión exitoso');
+            }
+          })
+        }
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+
+        // Manejo de diferentes errores
+        switch (errorCode) {
+          case 'auth/user-not-found':
+            console.log('El correo o la contraseña son incorrectos.');
+            break;
+          case 'auth/wrong-password':
+            console.log('El correo o la contraseña son incorrectos.');
+            break;
+          default:
+            console.log('Ocurrió un error al iniciar sesión:', errorMessage);
+        }
+      });
+  };
+
+  // SignIn con Google 
+
+  const signInWithGoogle = () => {
+
+    const provider = new GoogleAuthProvider()
+    signInWithPopup(auth, provider).then(async (result) => {
+      console.log("Google *******" + auth.currentUser);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+
+      const idToken = await auth.currentUser.getIdToken()
+      console.log(idToken)
+      
+      if (idToken) {
+        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
+
+        fetch("https://c16-backend.onrender.com/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${idToken}`,
+          },
+        })
+        .then(res => res.json())
+          .then(data => {
+
+            // Verifica la respuesta del servidor
+            console.log(data);
+            console.log(data.message);
+
+            if (data.completed === false) {
+              console.log("********", data.completed);
+              window.location.href = '../auth/completarPerfil'
+            } else {
+              // Indica inicio de sesión exitoso
+              console.log('Inicio de sesión exitoso');
+            }
+          })
+      }
+    })
+  };
+
+  const methods = {signIn, signInWithGoogle};
+
   return (
+
     <form className={styles.inputsContainer}>
       <p className={styles.p}>
         Podrás dejar tus comentarios y conectar de más cerca con otros
@@ -29,6 +133,8 @@ function LoginForm() {
             type="email"
             placeholder="correo@electronico.com"
             className={styles.input}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
       </label>
@@ -66,7 +172,7 @@ function LoginForm() {
         </div>
         Recordar
       </label>
-      <Buttons />
+      <Buttons methods = {methods}/>
     </form>
   );
 }
