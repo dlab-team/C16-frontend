@@ -29,7 +29,7 @@ const RegistroComponent = () => {
   const [validLength, setValidLength] = useState(false)
   const [hasSpecialChar, setHasSpecialChar] = useState(false)
   const [hasNumber, setHasNumber] = useState(false)
-  const [emailValid, setEmailValid] = useState(true)
+
 
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value
@@ -81,6 +81,7 @@ const RegistroComponent = () => {
       const errorMessage = error.message
       console.log(errorCode, errorMessage)
     })
+    
   }
 
 
@@ -134,7 +135,7 @@ const RegistroComponent = () => {
       }
       return
     }
-
+    router.push('/auth/completarPerfil')
     // Aquí se envía el formulario
     signUp(e)
   }
@@ -203,7 +204,7 @@ const RegistroComponent = () => {
             </div>
 
             <div className="register__button">
-              <button className="register__buttons__pink" type="submit" onClick={() => router.push('/auth/completarPerfil')}>
+              <button className="register__buttons__pink" type="submit">
                 Crear cuenta
               </button>
               <button

@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import regionesData   from "../CompleteProfile/regionesData.json"
 import { modifyData } from '@/hooks/useModifyData'
+import { useRouter } from 'next/navigation'
 
 const CompleteProfile = () => {
 
@@ -69,7 +70,7 @@ const CompleteProfile = () => {
   //   }
   // };
 
-
+  const router = useRouter()
 
   const [firstname , setFirstname] = useState('')
   const [lastname, setLasname] =  useState('')
@@ -84,10 +85,7 @@ const CompleteProfile = () => {
 const [birthday, setBirthday] = useState(new Date());
 
 
-
  
-
-  
   const changeColor = (selectedgender) => {
     switch (selectedgender) {
       case "mujer":
@@ -379,7 +377,7 @@ const [birthday, setBirthday] = useState(new Date());
               </div>
 
               <div className="register__refer">
-                <button className="register__buttons__pink" type="submit">
+                <button className="register__buttons__pink" type="submit" onClick={() => router.push('/')} >
                   Crear cuenta
                 </button>
               </div>
