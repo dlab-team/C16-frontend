@@ -38,7 +38,7 @@ function Buttons({ methods }) {
       </Link>
       <p className={styles.p}>
         ¿No tienes cuenta?{' '}
-        <Link href="#" className={styles.link}>
+        <Link href="/auth/register" className={styles.link}>
           Regístrate
         </Link>
       </p>
