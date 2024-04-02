@@ -141,10 +141,10 @@ const [birthday, setBirthday] = useState(new Date());
         <form >
           <div className="register">
             <h2>Completa tu Perfil</h2>
-            
+
             <div className="register__inputgroup">
 
-            <div className="register__input">
+              <div className="register__input">
                 <label htmlFor="">Nombre completo</label>
                 <input
                   type="text"
