@@ -17,6 +17,11 @@ import { auth } from '../../../../../services/firebaseConfig'
 import { modifyData } from '@/hooks/useModifyData'
 
 const RegistroComponent = () => {
+  const router = useRouter()
+ 
+
+
+  
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [emailGoogle, setEmailGoogle] = useState('')
@@ -24,7 +29,7 @@ const RegistroComponent = () => {
   const [validLength, setValidLength] = useState(false)
   const [hasSpecialChar, setHasSpecialChar] = useState(false)
   const [hasNumber, setHasNumber] = useState(false)
-  const [emailValid, setEmailValid] = useState(true)
+
 
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value
@@ -76,6 +81,7 @@ const RegistroComponent = () => {
       const errorMessage = error.message
       console.log(errorCode, errorMessage)
     })
+    
   }
 
 
@@ -129,7 +135,7 @@ const RegistroComponent = () => {
       }
       return
     }
-
+    router.push('/auth/completarPerfil')
     // Aquí se envía el formulario
     signUp(e)
   }
