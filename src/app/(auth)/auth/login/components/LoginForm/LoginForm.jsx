@@ -6,6 +6,7 @@ import { Buttons } from './components';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from '@/services/firebaseConfig'
 
+
 function LoginForm() {
 
   const [email, setEmail] = useState('');
@@ -18,12 +19,9 @@ function LoginForm() {
     setShowPassword(!showPassword);
   }
 
+  // SignIn sin Google 
 
-  // Sign In sin cuenta Google 
-
-  const signIn = (e) => {
-
-    e.preventDefault();
+  const signIn = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
@@ -74,14 +72,11 @@ function LoginForm() {
             console.log('Ocurrió un error al iniciar sesión:', errorMessage);
         }
       });
-    
   };
 
-  // Sign In con cuenta Google 
+  // SignIn con Google 
 
   const signInWithGoogle = () => {
-
-    e.preventDefault();
 
     const provider = new GoogleAuthProvider()
     signInWithPopup(auth, provider).then(async (result) => {
@@ -120,10 +115,11 @@ function LoginForm() {
     })
   };
 
-  return (
-    // <form className={styles.inputsContainer}>
+  const methods = {signIn, signInWithGoogle};
 
-    <form className={styles.inputsContainer} onSubmit={signIn}>
+  return (
+
+    <form className={styles.inputsContainer}>
       <p className={styles.p}>
         Podrás dejar tus comentarios y conectar de más cerca con otros
         cuidadores
@@ -176,7 +172,7 @@ function LoginForm() {
         </div>
         Recordar
       </label>
-      <Buttons />
+      <Buttons methods = {methods}/>
     </form>
   );
 }
