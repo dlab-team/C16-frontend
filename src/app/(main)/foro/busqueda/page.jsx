@@ -5,7 +5,7 @@ import SearchBar from "../components/SearchBar/SearchBar"
 import styles from './busqueda.module.css'
 
 const searchPosts = async (resouce) =>{
-    const response = await fetch(`https://c16-backend.onrender.com/api/posts?search=${resouce}`)
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts?search=${resouce}`, {cache:"no-store"})
 
     /* if(!response.ok){
         throw new Error("Error al obtener la publicación, puede que haya sido eliminado")
