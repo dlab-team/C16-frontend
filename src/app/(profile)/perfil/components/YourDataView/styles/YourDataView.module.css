@@ -1,0 +1,24 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: var(--ff-one);
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--clr-primary-2);
+}
+
+.inputsContainer {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.3rem;
+}

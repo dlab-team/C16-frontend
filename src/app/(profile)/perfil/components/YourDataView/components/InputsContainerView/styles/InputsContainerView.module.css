@@ -1,0 +1,31 @@
+.label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.3rem;
+  font-size: var(--fs-text);
+  font-weight: 500;
+  color: var(--clr-secondary-2);
+  margin-left: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: var(--clr-primary-2);
+  font-size: var(--fs-text);
+  font-weight: 400;
+  color: #4a4a4a;
+  padding: 0.3rem 0.5rem;
+  outline: none;
+  margin-left: -0.5rem;
+}
+
+.inputDisabled {
+  color: #aaa1a1;
+  border-color: #aaa1a1;
+}
