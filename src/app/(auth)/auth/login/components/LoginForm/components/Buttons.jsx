@@ -1,8 +1,19 @@
+'use client';
 import Link from 'next/link';
 import styles from '../../../styles/Buttons.module.css';
 import { GoogleIcon, GoogleIconForDesktop } from '../icons';
 
-function Buttons() {
+function Buttons({ methods }) {
+  const { signIn, signInWithGoogle } = methods
+
+  const handleSignIn = () => {
+    signIn();
+  }
+
+  const handleGoogle = () => {
+    signInWithGoogle();
+  }
+
   return (
     <>
       <div className={styles.hrContainer}>
@@ -10,14 +21,11 @@ function Buttons() {
         o
         <hr className={styles.hr} />
       </div>
-      <input
-        type="button"
-        value="Ingresar"
-        name="ingresar"
-        className={styles.loginButton}
-      />
-      <button className={styles.socialNetworkButton}>
-        Conectar con Google
+      <button className={styles.loginButton} type="button" onClick={() => handleSignIn()}>
+        Ingresar
+      </button>
+      <button className={styles.socialNetworkButton} type="button" onClick={() => handleGoogle()}>
+        Continuar con Google
         <i className={styles.googleIconForMobile}>
           <GoogleIcon />
         </i>
@@ -30,7 +38,7 @@ function Buttons() {
       </Link>
       <p className={styles.p}>
         ¿No tienes cuenta?{' '}
-        <Link href="#" className={styles.link}>
+        <Link href="/auth/register" className={styles.link}>
           Regístrate
         </Link>
       </p>

@@ -4,6 +4,10 @@ import { useEffect, useState } from 'react';
 import styles from './PostToogle.module.css'
 import Modal from '../Modal/Modal';
 import Link from 'next/link';
+import { dateSince } from '../../utils/dateSince';
+import { dateFormat } from '../../utils/dateFormat';
+import ModalPortal from '../ModalPortal/ModalPortal';
+import ReplyPost from '../ReplyPost/ReplyPost';
 
 // recibe por parámetros la información del comentario y el tipo
 // type="detail" si es para la vista detalle del comentario
@@ -28,7 +32,6 @@ function PostToggle({ data, type = "detail" }) {
     useEffect(() => {
         if (type == 'detail') {
             setIsVisible(true)
-            console.log(type)
         }
     }, []);
 
@@ -60,8 +63,8 @@ function PostToggle({ data, type = "detail" }) {
         <>
             <div className={styles.postFooter}>
                 <div className={styles.timeBox}>
-                    <span className={styles.time}>Hace 1 hora</span>
-                    <span className={styles.date}>{data.fecha}</span>
+                    <span className={styles.time}>{"hace "+dateSince(data.createdAt)}</span>
+                    <span className={styles.date}>{dateFormat(data.createdAt)}</span>
                 </div>
 
                 <div className={styles.actionsBox}>
@@ -94,17 +97,15 @@ function PostToggle({ data, type = "detail" }) {
                 </div>
             </div>
 
-            <Modal isOpen={isModalOpen} onClose={closeModal} onConfirm={reportPost} />
 
-
+            <ModalPortal>
+                <Modal isOpen={isModalOpen} onClose={closeModal} onConfirm={reportPost} />
+            </ModalPortal>
 
 
             {
                 isVisible && (
-                    <form className={styles.inputCommentBox}>
-                        <input className={styles.commentInput} type="text" placeholder='Escribe tu comentario' />
-                        <button className={styles.sendBtn}></button>
-                    </form>
+                    <ReplyPost parentId={data.id}/>
                 )
             }
 

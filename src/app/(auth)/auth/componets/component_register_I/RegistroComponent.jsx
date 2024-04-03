@@ -1,19 +1,144 @@
-"use client";
-import React from "react";
-import "./Style.css";
-import { AiOutlineLeft } from "react-icons/ai";
-import { LuEye } from "react-icons/lu";
-import "../../../../globals.css";
+'use client'
 
-import { useState } from "react";
+import './Style.css'
+import { AiOutlineLeft } from 'react-icons/ai'
+import { LuEye, LuEyeOff } from 'react-icons/lu'
+import '../../../../globals.css'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth'
+
+import { auth } from '../../../../../services/firebaseConfig'
+
+import { modifyData } from '@/hooks/useModifyData'
 
 const RegistroComponent = () => {
-  const [name, setName] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [mail, setMail] = useState("");
-  const [password, setPassword] = useState("");
+  const router = useRouter()
+ 
+
 
   
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [emailGoogle, setEmailGoogle] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [validLength, setValidLength] = useState(false)
+  const [hasSpecialChar, setHasSpecialChar] = useState(false)
+  const [hasNumber, setHasNumber] = useState(false)
+
+
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value
+
+    setPassword(newPassword)
+
+    // Validar longitud
+    setValidLength(newPassword.length >= 8)
+
+    // Validar caracter especial
+    const specialCharRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+    setHasSpecialChar(specialCharRegex.test(newPassword))
+
+    // Validar número
+    const numberRegex = /\d/
+    setHasNumber(numberRegex.test(newPassword))
+  }
+  
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
+
+
+
+  const isEmailValid = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return re.test(String(email).toLowerCase())
+  }
+  const signUp = (e) => {
+    e.preventDefault()
+
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(async (userCredential) => {
+      const idToken = await userCredential.user.getIdToken();
+
+      if (idToken) {
+        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
+
+        const user = await modifyData(
+          "https://c16-backend.onrender.com/api/users",
+          "POST", idToken
+        )
+        console.log(user)
+  
+      }
+    })
+    .catch((error) => {
+      const errorCode = error.code
+      const errorMessage = error.message
+      console.log(errorCode, errorMessage)
+    })
+    
+  }
+
+
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider()
+    signInWithPopup(auth, provider).then(async(result) => {
+      console.log("hola" + auth.currentUser)
+      const credential = GoogleAuthProvider.credentialFromResult(result)
+    
+      const idToken = await auth.currentUser.getIdToken()
+      console.log(idToken)
+      if (idToken) {
+        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
+
+        fetch("https://c16-backend.onrender.com/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`,
+          },
+        });
+      }
+    })
+  }
+ 
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if (!isEmailValid(email)) {
+      
+      console.log('Correo electrónico no válido')
+      return
+    }
+
+    if (!password) {
+      
+      console.log('La contraseña no puede estar vacía')
+      return
+    }
+
+    if (!validLength || !hasSpecialChar || !hasNumber) {
+      if (!validLength) {
+        console.log('Faltan letras')
+      }
+      if (!hasSpecialChar) {
+        console.log('Faltan caracteres especiales')
+      }
+      if (!hasNumber) {
+        console.log('Faltan números')
+      }
+      return
+    }
+    router.push('/auth/completarPerfil')
+    // Aquí se envía el formulario
+    signUp(e)
+  }
   return (
     <div>
       <div className="register__descktop">
@@ -24,30 +149,7 @@ const RegistroComponent = () => {
         <div className="register">
           <h2>Registrate</h2>
 
-          <form  className="register__inputgroup">
-            <div className="register__input">
-              <label htmlFor="nombre"> Nombre</label>
-              <input
-                type="text"
-                placeholder="Pedro"
-                id="name"
-                autoFocus
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div className="register__input">
-              <label htmlFor="Apellido">Apellido</label>
-
-              <input
-                type="text"
-                placeholder="Perez"
-                id="apellido"
-                autoFocus
-                value={lastname}
-                onChange={(e) => setLastname(e.target.value)}
-              />
-            </div>
+          <form className="register__inputgroup" onSubmit={handleSubmit}>
             <div className="register__input">
               <label htmlFor="Correo">Correo</label>
 
@@ -55,32 +157,61 @@ const RegistroComponent = () => {
                 type="text"
                 placeholder="correo@electronico.com"
                 id="correo"
-                value={mail}
-                onChange={(e) => setMail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-
+            
             <div className="register__input">
               <label htmlFor="contraseña">Contraseña</label>
-
               <div className="register__input__password">
                 <input
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   placeholder="*******"
                   id="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={handlePasswordChange}
                 />
-                <div className="register__input__password__img">
-                  <LuEye />
+                <div
+                  className="register__input__password__img"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <LuEye /> : <LuEyeOff />}
+                </div>
+              </div>
+              <div>
+                <div className="register__password_property">
+                  <div className="register__password__text">
+                    <input type="radio" checked={validLength} readOnly />
+                    <div className="password__text">
+                      <p>Debe contener mínimo 8 dígitos</p>
+                    </div>
+                  </div>
+                  <div className="register__password__text">
+                    <input type="radio" checked={hasSpecialChar} readOnly />
+                    <div className="password__text">
+                      <p>Un caracter especial</p>
+                    </div>
+                  </div>
+                  <div className="register__password__text">
+                    <input type="radio" checked={hasNumber} readOnly />
+                    <div className="password__text">
+                      <p>Un número</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div className="register__button">
-              <button className="register__buttons__pink">Crear cuenta</button>
-              <button className="register__buttons__outline">
-                Ingresar con Google
+              <button className="register__buttons__pink" type="submit">
+                Crear cuenta
+              </button>
+              <button
+                className="register__buttons__outline"
+                onClick={() => signInWithGoogle()}
+              >
+                Ingresar con Google {emailGoogle}
                 <svg
                   width="29"
                   height="28"
@@ -121,7 +252,7 @@ const RegistroComponent = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RegistroComponent;
+export default RegistroComponent

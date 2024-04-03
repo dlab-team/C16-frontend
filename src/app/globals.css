@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap'); /* por eliminar */
-
 @font-face {
   font-family: 'Montserrat';
   src: url('/assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf')
@@ -39,14 +37,6 @@
 }
 
 :root {
-
-  --titulos: #271d24; /* por eliminar */
-  --principal: #d6006e; /* por eliminar */
-  --secundario: #ffc5e4; /* por eliminar */
-
-  /* 200, 300, 400, 500, 600, 700 */
-  --font: 'Montserrat', sans-serif; /* por eliminar */
-  
   /* Colores = clr */
 
   --clr-primary-1: #FEBD94;
@@ -55,17 +45,21 @@
   --clr-secondary-2: #1D1D1B;
   --clr-secondary-3: #FCEBE666;
 
+  --clr-grey-1: #686868;
+  --clr-grey-2: #979797;
+  --clr-grey-3: #4A4A4A;
+
   --clr-one-50: #FDF5F3;
   --clr-one-100: #FCEBE6;
-  --clr-one-200: #FAD8CE;
-  --clr-one-300: #F5BDAC;
-  --clr-one-400: #ED967C;
-  --clr-one-500: #E17252;
+  --clr-one-200: #FAE7DA;
+  --clr-one-300: #FFD8BF;
+  --clr-one-400: #FEBD94;
+  /* --clr-one-500: #E17252;
   --clr-one-600: #CE5734;
   --clr-one-700: #AD4628;
   --clr-one-800: #8F3D25;
   --clr-one-900: #773825;
-  --clr-one-1000: #401A0F;
+  --clr-one-1000: #401A0F; */
 
   --clr-two-50: #e6ebef;
   --clr-two-100: #b1c1cd;
@@ -153,3 +147,10 @@
 } /* pantalla grande */
 @media (min-width: 1400px) {
 } /* pantalla extra grande */
+
+
+
+/* No borrar este selector porque es importante */
+#dropdown_menu_ul{
+  list-style-type: none;
+}

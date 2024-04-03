@@ -1,7 +1,7 @@
-/* mobile styles */
+/* Mobile Styles */
 .container {
   width: 100%;
-  height: 100dvh;
+  height: 600px;
 }
 
 .wrapper {
@@ -14,30 +14,255 @@
 }
 
 .title {
-  font-size: var(--h5);
-  font-weight: 600;
+  font: var(--t-mobile-one);
   line-height: var(--lh-h5);
-  color: var(--principal);
-  margin-bottom: 4.3rem;
+  color: var(--clr-primary-2);
+  margin-bottom: 0;
 }
 
-/* desktop styles */
-@media (width > 920px) {
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-secondary-3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.modal {
+  padding: 50px 40px;
+  border-radius: 30px;
+  width: 100%;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
+
+.closeButtonBack {
+  border: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--clr-primary-2);
+  grid-column: 1/2;
+  grid-row: 3/3;
+  display: grid;
+}
+
+.backButton {
+  width: 28px;
+  height: 28px;
+  border: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--clr-primary-2);
+}
+
+.closeButtonX {
+  display: none;
+}
+
+.image {
+  display: none;
+}
+
+/* Tablet Styles */
+
+@media (width >=550px) {
+
+  .modal {
+    grid-column: 2/5;
+  }
+}
+
+/* Desktop Styles */
+@media (width > 1000px) {
+  .modalOverlay {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+
+  .modal {
+    background-color: transparent;
+    margin: 0px;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-column: 2/-2;
+  }
+
+  .closeButtonX {
+    border: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 13px 0 0 25px;
+    display: grid;
+    grid-column: 8/-1;
+    grid-row: 1/2;
+    z-index: 1;
+  }
+
+  .xButton {
+    width: 50px;
+    height: 50px;
+    border: inherit;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .closeButtonBack {
+    display: none;
+  }
+
+  .modalContainer {
+    border-radius: 30px;
+    background-color: white;
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+  }
+
   .container {
-    display: flex;
+    display: grid;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 4.5rem;
+    border-radius: 30px;
+    width: 100%;
+    grid-row: 1/-1;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(10, 1fr);
   }
 
   .wrapper {
-    width: 50%;
-    align-items: flex-start;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 150px;
+    grid-column: 5/-1;
+    grid-row: 2/-1;
   }
 
   .title {
-    margin-bottom: 1.2rem;
-    text-align: center;
+    grid-column: 5/-1;
+    grid-row: 1/2;
+    margin-top: 40px;
+    margin-bottom: 5px;
+  }
+
+  .image {
+    display: block;
+    grid-column: 1/5;
+    grid-row: 1/6;
+    max-width: 100%;
+    margin: 50px 50px 0px 50px;
+  }
+}
+
+@media (width > 1200px) {
+  .modalOverlay {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .modal {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .closeButtonX {
+    padding: 10px 0 0 30px;
+    grid-column: 10/11;
+    grid-row: 3/4;
+  }
+
+  .modalContainer {
+    grid-column: 1/-1;
+    grid-row: 3/-3;
+  }
+
+  .container {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .wrapper {
+    grid-column: 6/-1;
+    padding-bottom: 30px;
+  }
+
+  .title {
+    grid-column: 7/-2;
+    grid-row: 1/2;
+    margin-bottom: 5px;
+  }
+
+  .image {
+    grid-column: 1/6;
+    grid-row: 1/6;
+    margin-top: 90px;
+  }
+}
+
+@media (width > 1290px) {
+
+  .modalOverlay {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .modal {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .closeButtonX {
+    padding-left: 25px;
+    grid-column: 11/12;
+    grid-row: 1/2;
+  }
+
+  .modalContainer {
+    grid-column: 2/-2;
+    grid-row: 1/-1;
+  }
+
+  .container {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .wrapper {
+    grid-column: 7/-1;
+  }
+
+  .title {
+    grid-column: 8/-2;
+  }
+
+  .image {
+    grid-column: 1/7;
+    grid-row: 1/6;
+  }
+}
+
+@media (width > 1500px) {
+
+  .closeButtonX {
+    padding-left: 50px;
+    grid-column: 10/11;
+  }
+
+  .modalContainer {
+    grid-column: 3/-3;
+  }
+
+  .title {
+    grid-column: 7/-2;
+  }
+
+  .image {
+    margin-left: 70px;
   }
 }
