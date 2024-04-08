@@ -25,8 +25,8 @@ export const ROUTES_INFO = [
   },
   {
     id: 5,
-    pathname: '/recursosdeapoyo',
-    title: 'Recursos de apoyo',
+    pathname: '/apoyoalcuidado',
+    title: 'Apoyo al Cuidado',
   },
   {
     id: 6,
