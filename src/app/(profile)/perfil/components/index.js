@@ -1,2 +1,6 @@
+export { default as SaveButton } from './SaveButton/SaveButton'
 export { default as UserImageView } from './UserImageView/UserImageView'
 export { default as YourDataView } from './YourDataView/YourDataView'
+export { default as GoBackButton } from './GoBackButton/GoBackButton'
+export { default as ChangePasswordView } from './ChangePasswordView/ChangePasswordView'
+export { default as NotificationsView } from './NotificationsView/NotificationsView'
