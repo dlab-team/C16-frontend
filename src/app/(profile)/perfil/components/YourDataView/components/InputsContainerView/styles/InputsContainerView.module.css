@@ -1,3 +1,4 @@
+/* mobile styles */
 .label {
   width: 100%;
   display: flex;
@@ -9,6 +10,7 @@
   font-weight: 500;
   color: var(--clr-secondary-2);
   margin-left: 0.5rem;
+  overflow-x: hidden;
 }
 
 .input {
@@ -25,7 +27,20 @@
   margin-left: -0.5rem;
 }
 
+.input::placeholder {
+  font-size: 14px;
+  font-weight: 300;
+}
+
 .inputDisabled {
   color: #aaa1a1;
   border-color: #aaa1a1;
+  user-select: none;
+}
+
+/* PC styles */
+@media (width > 919px) {
+  .label {
+    font-weight: 600;
+  }
 }
