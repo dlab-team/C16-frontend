@@ -107,9 +107,15 @@ input:focus {
   font: var(--ff-one);
 }
 .register__buttons__pink {
-  background-color: var(--clr-primary-1);
-  color: #fff;
+  background-color: var(--clr-one-300);
+  color: var(--clr-two-500);
   border: none;
+  width: 20.25rem;
+  height: 54px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: large;
 }
 .register__buttons__outline {
   border: 1px solid var(--clr-primary-2);
@@ -119,6 +125,8 @@ input:focus {
   justify-content: center;
   align-items: center;
   gap: 2%;
+  width: 20.25rem;
+  height: 54px;
 }
 
 .register__footer {
