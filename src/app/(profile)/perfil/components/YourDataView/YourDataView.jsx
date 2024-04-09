@@ -1,7 +1,9 @@
+import { SaveButton } from '..'
 import {
   CustomCalendarView,
   GenderChoiceView,
   InputsContainerView,
+  SelectOptionsView,
 } from './components'
 import styles from './styles/YourDataView.module.css'
 
@@ -13,6 +15,10 @@ const YourDataView = () => {
         <InputsContainerView />
         <CustomCalendarView />
         <GenderChoiceView />
+        <SelectOptionsView />
+      </div>
+      <div className={styles.buttonContainer}>
+        <SaveButton />
       </div>
     </div>
   )

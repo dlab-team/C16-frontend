@@ -1,19 +1,23 @@
 'use client'
 import styles from './styles/Page.module.css'
-import { useProfile } from './hooks'
-import { UserImageView } from './components'
+import { useProfile, useWindowDimensions } from './hooks'
+import { GoBackButton, UserImageView } from './components'
 
 const perfil = () => {
+  const { width } = useWindowDimensions()
   const {
     BUTTONS_NAMES,
     handleSelectComponentId,
     renderRightComponent,
     showMainMenu,
+    handleGoBack,
+    optionSelected,
   } = useProfile()
 
   return (
     <main className={styles.container}>
       <div className={styles.wrapper}>
+        {!showMainMenu && <GoBackButton handleGoBack={handleGoBack} />}
         <UserImageView />
         {showMainMenu && (
           <div className={styles.buttonsContainer}>
@@ -24,7 +28,7 @@ const perfil = () => {
             {BUTTONS_NAMES?.map((button) => (
               <button
                 key={button?.id}
-                className={styles.mainButtons}
+                className={`${styles.mainButtons} ${optionSelected === button?.id && styles.buttonSelected}`}
                 onClick={() => handleSelectComponentId(button?.id)}
               >
                 {button.icon}
@@ -34,7 +38,11 @@ const perfil = () => {
           </div>
         )}
       </div>
-      <aside className={styles.aside}>{renderRightComponent()}</aside>
+      {!showMainMenu || width >= 920 ? (
+        <aside className={styles.aside}>{renderRightComponent()}</aside>
+      ) : (
+        <></>
+      )}
     </main>
   )
 }

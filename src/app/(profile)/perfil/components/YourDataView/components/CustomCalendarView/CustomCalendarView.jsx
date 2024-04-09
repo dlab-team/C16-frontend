@@ -61,8 +61,8 @@ const CustomCalendarView = () => {
             </button>
           </div>
         )}
-        ren
         dateFormat="dd/MM/yyyy"
+        maxDate={new Date()}
         closeOnScroll={true}
         selected={startDate}
         onChange={(date) => setStartDate(date)}
