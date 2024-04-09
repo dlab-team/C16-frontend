@@ -67,8 +67,10 @@
 
 .aside {
   display: flex;
-  width: 70%;
+  width: 95%;
   height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 /* tablet styles */
@@ -80,12 +82,17 @@
   .mainButtons {
     width: 35%;
   }
+
+  .aside {
+    width: 70%;
+  }
 }
 
 /* PC Styles */
 @media (width >= 920px) {
   .container {
     flex-direction: row;
+    padding-top: 3.5rem;
   }
 
   .wrapper {
@@ -102,15 +109,30 @@
   }
 
   .mainButtons {
-    width: 61%;
+    width: 81%;
     padding: 0.5rem 0.8rem;
     font-size: 18px;
-    background-color: bisque;
+  }
+
+  .buttonSelected {
+    background-color: var(--clr-primary-1);
+    color: var(--clr-primary-2);
+    font-weight: 600;
   }
 
   .aside {
     display: flex;
     width: 70%;
     height: 100%;
+    border: none;
+    border-left: 1px solid #45444477;
+    padding-inline: 2.5rem;
+  }
+}
+
+/* longScreens styles */
+@media (width > 1240px) {
+  .mainButtons {
+    width: 61%;
   }
 }
