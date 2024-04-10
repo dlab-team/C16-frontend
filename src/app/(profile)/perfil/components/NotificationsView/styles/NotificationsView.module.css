@@ -1,0 +1,33 @@
+/* mobile styles */
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-one);
+  gap: 1.3rem;
+}
+
+.dateView {
+  font-size: var(--fs-text);
+  font-weight: 600;
+  color: var(--clr-primary-2);
+  align-self: flex-start;
+  margin-bottom: 0.2rem;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background-color: #d9d9d9;
+}
+
+/* PC styles */
+@media (width > 919px) {
+  .wrapper {
+    max-width: 63rem;
+    align-self: flex-start;
+  }
+}
