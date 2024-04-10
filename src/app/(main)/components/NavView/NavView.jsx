@@ -14,10 +14,10 @@ const NavView = () => {
     <header className={styles.navContainer}>
       <Link href='/' className={styles.logoContainer}>
         <Image
-          src='https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2Ficonomov-rnc.png?alt=media&token=890c66ed-e3d7-441b-8c73-40366555e6bc'
+          src="https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FRNC_Horizontal_Color.png?alt=media&token=7d7203c1-39ce-4e3f-b560-e7194ea0f8ac"
           alt='logo Ronda'
-          width={53}
-          height={53}
+          width={188}
+          height={108}
           loading='lazy'
           className={styles.logo}
         />

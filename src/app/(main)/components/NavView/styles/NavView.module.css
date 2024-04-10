@@ -7,7 +7,7 @@
   height: 6.3rem;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   padding: 0 1rem 0.5rem 1rem; /*ToDo: fix padding horizontal with the all page */
   background-color: var(--clr-secondary-1);
@@ -18,9 +18,9 @@
 }
 
 .logoContainer {
-  width: auto;
-  height: auto;
-  border-radius: 50%;
+ display: flex;
+ align-items: center;
+ height: 100%;
   background-color: transparent;
   cursor: pointer;
   /* z-index: 120; */
@@ -29,8 +29,10 @@
 /* class for logo img */
 .logo {
   display: flex;
-  object-fit: cover;
-  border-radius: 50%;
+  object-fit: contain;
+  height: 108px !important;
+  width: 188px !important;
+
 }
 
 .navWrapper {
@@ -74,7 +76,7 @@
 }
 
 .link:hover {
-  color: var(--clr-primary-2);
+  color: var(--clr-two-50);
   transition-duration: 300ms;
   text-decoration: none;
 }

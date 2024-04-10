@@ -89,7 +89,7 @@ const [birthday, setBirthday] = useState(new Date());
   const changeColor = (selectedgender) => {
     switch (selectedgender) {
       case "mujer":
-        setLabelColor("#06786D");
+        setLabelColor("#35607F");
         break;
       case "hombre":
         setLabelColor("#E8E8E8");
@@ -113,26 +113,7 @@ const [birthday, setBirthday] = useState(new Date());
     setIsChecked(!isChecked); // Invertimos el valor actual del estado
   };
 
-  const jsonData = {
-    regionesData 
-  };
-  const handleRegionChange = (e) => {
-    const selectedRegion = e.target.value;
-    setRegion(selectedRegion);
-
-    // Buscar las comunas correspondientes a la región seleccionada
-    const regionData = jsonData.regionesData .find(
-      (regionData) => regionData.region === selectedRegion
-    );
-    if (regionData) {
-      setComunasPorRegion(regionData.comunas);
-      setComuna("none"); // Reiniciar la selección de comuna
-    } else {
-      setComunasPorRegion([]);
-      setComuna("none");
-    }
-  };
-
+  
   return (
     <div>
       <div className="register__descktop">
@@ -231,7 +212,7 @@ const [birthday, setBirthday] = useState(new Date());
                     className="switch"
                     htmlFor="register_woman"
                     style={{
-                      background: gender === "mujer" ? "#06786D" : "#E8E8E8",
+                      background: gender === "mujer" ? "#35607F" : "#E8E8E8",
                     }}
                   >
                     <span className="slider round"> Mujer</span>
@@ -253,7 +234,7 @@ const [birthday, setBirthday] = useState(new Date());
                     className="switch"
                     htmlFor="register_man"
                     style={{
-                      background: gender === "hombre" ? "#06786D" : "#E8E8E8",
+                      background: gender === "hombre" ? "#35607F" : "#E8E8E8",
                     }}
                   >
                     <span className="slider round"> Hombre</span>
@@ -277,7 +258,7 @@ const [birthday, setBirthday] = useState(new Date());
                     htmlFor="register_sinespecificar"
                     style={{
                       background:
-                        gender === "Sin especificar" ? "#06786D" : "#E8E8E8",
+                        gender === "Sin especificar" ? "#35607F" : "#E8E8E8",
                     }}
                   >
                     <span className="slider round">Sin especificar</span>

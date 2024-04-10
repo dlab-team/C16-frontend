@@ -18,7 +18,7 @@
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  background-color: var(--clr-secondary-1);
+  background-color: var(--clr-one-400);
 
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
@@ -60,6 +60,7 @@
 .title_cuidadores {
   font: var(--t-mobile-two);
   color: var(--clr-primary-2);
+  font-weight: bolder;
 }
 
 .detail_banner {
@@ -124,8 +125,8 @@
   padding: 15px 23px;
   border-radius: 30px;
   grid-column: 1/5;
-  border: 2px solid var(--clr-secondary-3);
-  background-color: var(--clr-secondary-3);
+  border: 2px solid var(--clr-one-400);
+  background-color: var(--clr-one-400);
 }
 
 .foro {
@@ -196,14 +197,14 @@
     border-radius: 30px;
     margin-bottom: 30px;
     background-color: #fff;
-    border: 2px solid var(--clr-secondary-1);
+    border: 2px solid var(--clr-one-400);
   }
 
   .foro {
     padding: 30px 37px;
     border-radius: 30px;
-    border: 2px solid var(--clr-secondary-3);
-    background-color: var(--clr-secondary-3);
+    border: 2px solid var(--clr-one-400);
+    background-color: var(--clr-one-400);
   }
 
   .arrow_btn {
@@ -260,8 +261,8 @@
     flex-direction: column;
     padding: 10px 17px;
     background-color: #fff;
-    border: 2px solid var(--clr-secondary-3);
-    background-color: var(--clr-secondary-3);
+    border: 2px solid var(--clr-one-400);
+    background-color: var(--clr-one-400);
   }
 
   .foro {

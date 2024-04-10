@@ -1,0 +1,27 @@
+/* mobile styles */
+.button {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
+  align-self: flex-start;
+  margin-left: 0.8rem;
+  color: var(--clr-primary-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* tablet styles */
+@media (width >= 768px) {
+  .button {
+    margin-left: 9%;
+  }
+}
+
+/* PC styles */
+@media (width > 919px) {
+  .button {
+    display: none;
+  }
+}
