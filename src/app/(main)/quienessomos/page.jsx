@@ -2,45 +2,24 @@
 
 import React, { useState, useEffect } from "react";
 import DinamicBanner from "../components/DinamicBanner/DinamicBanner";
-import PruebasBanner from "../components/DinamicBanner/PruebasBanner";
+import styles from "../components/DinamicBanner/DinamicBanner.module.css";
 
-
-function QuienesSomos() {
-    const [data, setData] = useState({
-        text: "Este es un banner para la página Quiénes somos",
-        mobile: false,
-        button: true,
-    });
-
-    useEffect(() => {
-        // Obtiene la ruta a la imagen
-        const fetchImage = async () => {
-            const imgSrc = await fetch("/assets/images/banner/prueba1.jpeg"); 
-            setData({ ...data, imgSrc });
-        };
-
-        fetchImage();
-    }, []);
-
-    return (
-        <div>
-            <h1 style={{ textAlign: "center", padding: "20px" }}></h1>
+    function QuienesSomos() {
+        return (
             <DinamicBanner
-                imageSrc="/assets/images/banner/quienessomosbanner.png"
-                title="Sobre Nosotros"
-                message="Revisa todo el material que tenemos para ti"
+                imageSrc='/assets/images/banner/quienessomosbanner.png'
+                title='Sobre Nosotros'
+                message= ''
                 customStyles={{
-                    banner: "somos-banner",
-                    bannerImg: "somos-img",
-                    bannerTextBox: "somos-textbox",
-                    bannerTitle: "somos-title",
-                    bannerMessage: "somos-message",
+                    desktopContainer: styles.quienesSomosDesktopContainer,
+                    bannerImg: styles.quienesSomosBannerImg,
+                    bannerTextBox: styles.quienesSomosBannerTextBox,
+                    bannerTitle: styles.quienesSomosBannerTitle,
+                    bannerMessage: styles.quienesSomosBannerMessage
                 }}
             />
-            <PruebasBanner data={data} />
-            
-        </div>
-    );
-}
+        );
+    }
 
-export default QuienesSomos;
+    export default QuienesSomos;
+
