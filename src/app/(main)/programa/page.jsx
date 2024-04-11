@@ -1,17 +1,22 @@
-import DinamicBanner from "../components/DinamicBanner/DinamicBanner"
+import React from "react";
+import DinamicBanner from "../components/DinamicBanner/DinamicBanner";
+import styles from "../components/DinamicBanner/DinamicBanner.module.css";
 
 function Programa() {
     return (
-        <div>
-            <DinamicBanner
-                imageSrc='/assets/images/banner/banner_img.png'
-                title='Conoce nuestro Programa'
-                message='Distintas modalidades para ayudarte'
-                customStyles={{ banner: 'programa-banner', bannerImg: 'programa-img', bannerTextBox: 'programa-textbox', bannerTitle: 'programa-title', bannerMessage: 'programa-message' }}
-            />
-        </div>
-        
-    )
+        <DinamicBanner
+            imageSrc='/assets/images/banner/programa.jpeg' // Cambia esto por la ruta de tu imagen
+            title='Nuestro Programa' // Cambia esto por el título que desees
+            message='' // Aquí puedes agregar un mensaje si lo deseas
+            customStyles={{
+                desktopContainer: styles.programaDesktopContainer,
+                bannerImg: styles.programaBannerImg,
+                bannerTextBox: styles.programaBannerTextBox,
+                bannerTitle: styles.programaBannerTitle,
+                bannerMessage: styles.programaBannerMessage
+            }}
+        />
+    );
 }
 
-export default Programa
+export default Programa;
