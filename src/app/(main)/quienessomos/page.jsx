@@ -1,16 +1,25 @@
-import DinamicBanner from "../components/DinamicBanner/DinamicBanner"
+'use client';
 
-function QuienesSomos() {
-    return (
-        <div>
+import React, { useState, useEffect } from "react";
+import DinamicBanner from "../components/DinamicBanner/DinamicBanner";
+import styles from "../components/DinamicBanner/DinamicBanner.module.css";
+
+    function QuienesSomos() {
+        return (
             <DinamicBanner
                 imageSrc='/assets/images/banner/quienessomosbanner.png'
                 title='Sobre Nosotros'
-                message='Revisa todo el material que tenemos para ti'
-                customStyles={{ banner: 'somos-banner', bannerImg: 'somos-img', bannerTextBox: 'somos-textbox', bannerTitle: 'somos-title', bannerMessage: 'somos-message' }}
+                message= ''
+                customStyles={{
+                    desktopContainer: styles.quienesSomosDesktopContainer,
+                    bannerImg: styles.quienesSomosBannerImg,
+                    bannerTextBox: styles.quienesSomosBannerTextBox,
+                    bannerTitle: styles.quienesSomosBannerTitle,
+                    bannerMessage: styles.quienesSomosBannerMessage
+                }}
             />
-        </div>
-    )
-}
+        );
+    }
 
-export default QuienesSomos
+    export default QuienesSomos;
+
