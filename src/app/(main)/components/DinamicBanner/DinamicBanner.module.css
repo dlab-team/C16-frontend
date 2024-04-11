@@ -28,6 +28,10 @@
     font-family: var(--ff-one);
 }
 
+
+
+/* Estilos para la vista QuienesSomos */
+
 .quienessomosDesktopContainer {
     display: none; 
 }
@@ -113,10 +117,12 @@
     }
 }
 
-/* Estilos para la vista QuienesSomos */
+/* Estilos para la vista Inicio */
 
 
-/* Estislos para la vista Programa */
+
+
+/* Estilos para la vista Programa */
 
 .programaDesktopContainer {
     display: none;
@@ -187,3 +193,9 @@
 
     }
 }
+
+/* Estilos para la vista Academia */
+
+/* Estilos para la vista Apoyo al cuidad */
+
+/* Estilos para la vista Foro */
