@@ -1,22 +1,20 @@
-
 import Post from "../Post/Post"
 import styles from './PostList.module.css'
-
 
 // Simula la llamada a una API -- Actualizar
 const llamadaAPI = async (categoria) =>{
     let response = {}
     let posts = {}
     if(categoria == "actividad"){
-        response = await fetch("https://c16-backend.onrender.com/api/posts")
+        response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
         posts = await response.json()
         return posts.data
     }else if(categoria == "populares"){
-        response = await fetch("https://c16-backend.onrender.com/api/posts")
+        response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
         posts = await response.json()
         return posts.data
     }
-    response = await fetch("https://c16-backend.onrender.com/api/posts")
+    response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
     posts = await response.json()
     return posts.data
 }
