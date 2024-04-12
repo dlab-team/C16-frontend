@@ -1,0 +1,30 @@
+/* Nosotros.module.css */
+
+.container {
+    max-width: 1086px;
+    margin: 0 auto;
+    padding: 20px;
+   
+}
+
+.heading {
+font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 65px;
+    text-align: left;
+    color: #02385F;
+    margin-bottom: 65px;
+    border-bottom: 3px solid #02385F;
+    
+}
+
+.paragraph {
+font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 32.5px;
+  text-align: justify;
+  color: #1D1D1B;
+  margin-bottom: 50px;
+}
