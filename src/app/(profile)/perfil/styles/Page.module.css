@@ -1,0 +1,138 @@
+/* styles mobile */
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 1.5rem 1.2rem;
+  font-family: var(--ff-one);
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-top: 2.5rem;
+}
+
+.buttonsContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.userInfoContainer {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  color: var(--clr-secondary-2);
+}
+
+.userName {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.userEmail {
+  font-size: var(--fs-text);
+  font-weight: 400;
+  color: #6f6f6e;
+}
+
+.mainButtons {
+  width: 70%;
+  height: fit-content;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.9rem;
+  border-radius: 0.6rem;
+  border: none;
+  background-color: transparent;
+  font-size: var(--fs-text);
+  font-weight: 400;
+  color: var(--clr-secondary-2);
+  cursor: pointer;
+}
+
+.aside {
+  display: flex;
+  width: 95%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+/* tablet styles */
+@media (width >= 768px) {
+  .buttonsContainer {
+    margin-top: 4.5rem;
+  }
+
+  .mainButtons {
+    width: 35%;
+  }
+
+  .aside {
+    width: 70%;
+  }
+}
+
+/* PC Styles */
+@media (width >= 920px) {
+  .container {
+    flex-direction: row;
+    padding-top: 3.5rem;
+  }
+
+  .wrapper {
+    width: 30%;
+  }
+
+  .buttonsContainer {
+    width: 100%;
+    margin-top: 2.8rem;
+  }
+
+  .userInfoContainer {
+    display: none;
+  }
+
+  .mainButtons {
+    width: 81%;
+    padding: 0.5rem 0.8rem;
+    font-size: 18px;
+  }
+
+  .buttonSelected {
+    background-color: var(--clr-primary-1);
+    color: var(--clr-primary-2);
+    font-weight: 600;
+  }
+
+  .aside {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    border: none;
+    border-left: 1px solid #45444477;
+    padding-inline: 2.5rem;
+  }
+}
+
+/* longScreens styles */
+@media (width > 1240px) {
+  .mainButtons {
+    width: 61%;
+  }
+}

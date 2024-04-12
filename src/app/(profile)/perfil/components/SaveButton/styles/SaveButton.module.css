@@ -1,0 +1,31 @@
+/* mobile styles */
+.buttonContainer {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saveButton {
+  width: 100%;
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.6rem;
+  border: none;
+  background-color: var(--clr-primary-1);
+  color: var(--clr-primary-2);
+  font-family: var(--ff-one);
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 2.5rem;
+  user-select: none;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+.saveButton:hover {
+  opacity: 0.9;
+}

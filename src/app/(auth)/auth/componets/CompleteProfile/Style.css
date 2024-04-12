@@ -99,9 +99,15 @@ select:focus {
   cursor: pointer;
 }
 .register__buttons__pink {
-  background-color: var(--clr-primary-1);
-  color: #fff;
+  background-color: var(--clr-one-300);
+  color: var(--clr-two-500);
   border: none;
+  width: 20.25rem;
+  height: 54px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: large;
 }
 .register__buttons__outline {
   border: 1px solid var(--clr-primary-2);
@@ -181,7 +187,7 @@ select:focus {
   height: 100%;
 }
 
-.register__buttons__pink {
+/* .register__buttons__pink {
   background-color: var(--clr-primary-1);
   color: #fff;
   border: none;
@@ -190,7 +196,7 @@ select:focus {
   border-radius: 8px;
   font-weight: 700;
   cursor: pointer;
-}
+} */
 
 .register__remenber {
   display: flex;
@@ -211,7 +217,7 @@ select:focus {
   width: 24px;
   height: 24px;
   border-radius: 50%; /* Hace que el checkbox sea redondo */
-  border: 2px solid #06786d; /* Color del borde del checkbox */
+  border: 2px solid var(--clr-two-500); /* Color del borde del checkbox */
   background-color: #fff; /* Color de fondo del checkbox */
   outline: none;
   cursor: pointer;
@@ -219,7 +225,7 @@ select:focus {
 }
 .custom-checkbox:checked {
   background: #fff;
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2Fcheck.svg?alt=media&token=cd538443-229c-4ca6-ae57-9d4961e90e04');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FVector.png?alt=media&token=14ca8682-c338-446b-ad51-ab8dc9673dbb');
   background-size: cover;
   background-position: center;
 }
