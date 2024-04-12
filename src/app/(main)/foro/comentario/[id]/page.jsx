@@ -4,7 +4,7 @@ import Breadcumbs from "./components/Breadcumbs/Breadcumbs"
 import CommentListContainer from "./components/CommentListContainer/CommentListContainer"
 
 const getPostById = async (id) =>{
-    const response = await fetch(`https://c16-backend.onrender.com/api/posts/${id}`)
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts/${id}`, {cache:"no-store"})
 
     /* if(!response.ok){
         throw new Error("Error al obtener la publicación, puede que haya sido eliminado")

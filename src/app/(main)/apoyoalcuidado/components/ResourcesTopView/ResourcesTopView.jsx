@@ -27,7 +27,7 @@ const ResourcesTopView = () => {
         />
         <div className={styles.textContainer}>
           <h1 className={styles.desktopTitle}>
-            Recursos de <span className={styles.span}>Apoyo</span>
+            Apoyo <span className={styles.span}>al Ciudado</span>
           </h1>
           <h4 className={styles.subtitle}>
             Revisa todo el material que tenemos disponible para ti
