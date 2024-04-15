@@ -5,6 +5,7 @@ import { CheckIcon, EyeIcon, HiddenEyeIcon } from './icons';
 import { Buttons } from './components';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from '@/services/firebaseConfig'
+import { useRouter } from 'next/router';
 
 
 function LoginForm() {
@@ -51,7 +52,7 @@ function LoginForm() {
             } else {
               // Indica inicio de sesión exitoso
               console.log('Inicio de sesión exitoso');
-              window.location.href = '/'
+              router.push('/');
             }
           })
         }
@@ -110,7 +111,7 @@ function LoginForm() {
             } else {
               // Indica inicio de sesión exitoso
               console.log('Inicio de sesión exitoso');
-              window.location.href = '/'
+              router.push('/');
             }
           })
       }
