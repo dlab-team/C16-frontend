@@ -1,0 +1,8 @@
+.goBackButton {
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  border: none;
+  align-self: flex-start;
+  cursor: pointer;
+}
