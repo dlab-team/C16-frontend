@@ -4,23 +4,16 @@ import './Style.css'
 import { AiOutlineLeft } from 'react-icons/ai'
 import { LuEye, LuEyeOff } from 'react-icons/lu'
 import '../../../../globals.css'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import {
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from 'firebase/auth'
 
-import { auth } from '../../../../../services/firebaseConfig'
-
-import { modifyData } from '@/hooks/useModifyData'
+import { authGoogle, logOut, registerEmailAndPassword } from '@/services/user.fire.service'
+import { createUser } from '@/services/api/api.user.service'
+import { UserContext } from '@/components/context/userContext'
 
 const RegistroComponent = () => {
   const router = useRouter()
- 
-
-
+  const { updateUserContext, deleteUser } = useContext(UserContext)
   
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -29,20 +22,20 @@ const RegistroComponent = () => {
   const [validLength, setValidLength] = useState(false)
   const [hasSpecialChar, setHasSpecialChar] = useState(false)
   const [hasNumber, setHasNumber] = useState(false)
-
-
+  
+  
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value
-
+    
     setPassword(newPassword)
-
+    
     // Validar longitud
     setValidLength(newPassword.length >= 8)
-
+    
     // Validar caracter especial
     const specialCharRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
     setHasSpecialChar(specialCharRegex.test(newPassword))
-
+    
     // Validar número
     const numberRegex = /\d/
     setHasNumber(numberRegex.test(newPassword))
@@ -51,78 +44,58 @@ const RegistroComponent = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
   }
-
-
-
+  
+  const handleLogout = ()=>{
+    deleteUser()
+    logOut()
+  }
+  
   const isEmailValid = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return re.test(String(email).toLowerCase())
   }
-  const signUp = (e) => {
+
+
+  const signUp = async (e) => {
     e.preventDefault()
+    const idToken = await registerEmailAndPassword(email, password)
+    const user = await createUser(idToken) 
+    updateUserContext(user, idToken)
+    alert('Usuario completado')
+    router.push("/auth/completarPerfil")
+    
+  }
 
-    createUserWithEmailAndPassword(auth, email, password)
-    .then(async (userCredential) => {
-      const idToken = await userCredential.user.getIdToken();
-
-      if (idToken) {
-        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
-
-        const user = await modifyData(
-          "https://c16-backend.onrender.com/api/users",
-          "POST", idToken
-        )
-        console.log(user)
   
-      }
-    })
-    .catch((error) => {
-      const errorCode = error.code
-      const errorMessage = error.message
-      console.log(errorCode, errorMessage)
-    })
-    
-  }
-
-
-  const signInWithGoogle = () => {
-    const provider = new GoogleAuthProvider()
-    signInWithPopup(auth, provider).then(async(result) => {
-      console.log("hola" + auth.currentUser)
-      const credential = GoogleAuthProvider.credentialFromResult(result)
-    
-      const idToken = await auth.currentUser.getIdToken()
-      console.log(idToken)
+  const handleAuthGoogle = async ()=>{
+    try {
+      const idToken = await authGoogle()
       if (idToken) {
-        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
-
-        fetch("https://c16-backend.onrender.com/api/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${idToken}`,
-          },
-        });
+        const user = await createUser(idToken) 
+        updateUserContext(user, idToken)
+        if(user.completed){
+          router.push("/")
+        }else{
+          router.push("/auth/completarPerfil")
+        }
       }
-    })
+    } catch (error) {
+      console.error(error)
+    }
   }
- 
   
   const handleSubmit = (e) => {
     e.preventDefault()
-
     if (!isEmailValid(email)) {
-      
       console.log('Correo electrónico no válido')
       return
     }
-
+    
     if (!password) {
-      
       console.log('La contraseña no puede estar vacía')
       return
     }
-
+    
     if (!validLength || !hasSpecialChar || !hasNumber) {
       if (!validLength) {
         console.log('Faltan letras')
@@ -159,7 +132,7 @@ const RegistroComponent = () => {
                 id="correo"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-              />
+                />
             </div>
             
             <div className="register__input">
@@ -209,7 +182,8 @@ const RegistroComponent = () => {
               </button>
               <button
                 className="register__buttons__outline"
-                onClick={() => signInWithGoogle()}
+                onClick={() => handleAuthGoogle()}
+                type='button'
               >
                 Ingresar con Google {emailGoogle}
                 <svg
@@ -251,6 +225,9 @@ const RegistroComponent = () => {
           </div>
         </div>
       </div>
+      <button onClick={handleLogout} type='button'>
+        logout
+      </button>
     </div>
   )
 }

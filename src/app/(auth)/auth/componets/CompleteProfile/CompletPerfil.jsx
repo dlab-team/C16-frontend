@@ -6,8 +6,10 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import regionesData   from "../CompleteProfile/regionesData.json"
-import { modifyData } from '@/hooks/useModifyData'
 import { useRouter } from 'next/navigation'
+import { updateUser } from "@/services/api/api.user.service";
+import { UserContext } from "@/components/context/userContext";
+import { useContext } from "react";
 
 const CompleteProfile = () => {
 
@@ -70,6 +72,7 @@ const CompleteProfile = () => {
   //   }
   // };
 
+  const {user, updateUserContext} = useContext(UserContext)
   const router = useRouter()
 
   const [firstname , setFirstname] = useState('')
@@ -84,8 +87,30 @@ const CompleteProfile = () => {
   const [isChecked, setIsChecked] = useState(false);
 const [birthday, setBirthday] = useState(new Date());
 
+  const handleSubmit= async (event)=>{
+    event.preventDefault()
 
- 
+    const newFields = {
+      firstname,
+      lastname,
+      phone,
+      rut,
+      region,
+      gender,
+      comuna,
+      birthday:"1994-05-10",
+      completed:true,
+      photo:"https://firebasestorage.googleapis.com/v0/b/dropbox-clone-736fa.appspot.com/o/users%2Fuser_2aNC9F2HWDn5x5KjMBi9Y9ywEQX%2Ffiles%2Fdefaultprofile.png?alt=media",
+    }
+    const response = await updateUser(user.data.id, newFields, user.token)
+
+    if(response){
+      updateUserContext(response, user.token)
+      alert('usuario completado')
+    }
+    router.push('/')
+  }
+
   const changeColor = (selectedgender) => {
     switch (selectedgender) {
       case "mujer":
@@ -119,14 +144,14 @@ const [birthday, setBirthday] = useState(new Date());
       <div className="register__descktop">
         <button className="button__back"></button>
  
-        <form >
+        <form onSubmit={handleSubmit}>
           <div className="register">
             <h2>Completa tu Perfil</h2>
 
             <div className="register__inputgroup">
 
               <div className="register__input">
-                <label htmlFor="">Nombre completo</label>
+                <label htmlFor="">Nombre</label>
                 <input
                   type="text"
                   placeholder="Pedro"
@@ -134,6 +159,7 @@ const [birthday, setBirthday] = useState(new Date());
                   autoFocus
                   value={firstname }
                   onChange={(e) => setFirstname (e.target.value)}
+                  required
                 />
               </div>
 
@@ -146,6 +172,7 @@ const [birthday, setBirthday] = useState(new Date());
                   autoFocus
                   value={lastname}
                   onChange={(e) => setLasname(e.target.value)}
+                  required
                 />
               </div>
               <div className="register__input">
@@ -159,6 +186,7 @@ const [birthday, setBirthday] = useState(new Date());
                   autoFocus
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required
                 />
                 </div>
               </div>
@@ -171,6 +199,7 @@ const [birthday, setBirthday] = useState(new Date());
                   autoFocus
                   value={rut}
                   onChange={(e) => setRut(e.target.value)}
+                  required
                 />
               </div>
               <div className="register__input">
@@ -187,6 +216,7 @@ const [birthday, setBirthday] = useState(new Date());
                  scrollableYearDropdown
            maxDate={new Date()}
            showIcon
+           required
                     />
                  
               
@@ -206,6 +236,7 @@ const [birthday, setBirthday] = useState(new Date());
                       setGender(e.target.value);
                       handlegenderChange(e); // Cambio aquí
                     }}
+                    required
                   />
 
                   <label
@@ -229,6 +260,7 @@ const [birthday, setBirthday] = useState(new Date());
                       setGender(e.target.value);
                       handlegenderChange;
                     }}
+                    required
                   />
                   <label
                     className="switch"
@@ -252,6 +284,7 @@ const [birthday, setBirthday] = useState(new Date());
                       setGender(e.target.value);
                       handlegenderChange;
                     }}
+                    required
                   />
                   <label
                     className="switch"
@@ -278,6 +311,7 @@ const [birthday, setBirthday] = useState(new Date());
               setRegion(e.target.value);
               setComuna('none'); // Reinicia la comuna cuando cambia la región
             }}
+            required
           >
             <option value="none">Selecciona</option>
             {regionesData.regiones.map((region, index) => (
@@ -301,6 +335,7 @@ const [birthday, setBirthday] = useState(new Date());
               setComuna(e.target.value);
             }}
             disabled={region === 'none'}
+            required
           >
             <option value="none">Selecciona</option>
             {regionesData.regiones
@@ -315,9 +350,9 @@ const [birthday, setBirthday] = useState(new Date());
                 </div>
               </div>
               <div className="register__input">
-                <label htmlFor="cuidador">A quien Cuida</label>
+                {/*<label htmlFor="cuidador">A quien Cuida</label>
 
-                <div className="register__input__button">
+                 <div className="register__input__button">
                   <select
                     name="region"
                     id="region"
@@ -339,7 +374,7 @@ const [birthday, setBirthday] = useState(new Date());
                       Amigo/Conocido con enfermedad
                     </option>
                   </select>
-                </div>
+                </div> */}
               </div>
 
               <div className="register__remenber">
@@ -358,7 +393,7 @@ const [birthday, setBirthday] = useState(new Date());
               </div>
 
               <div className="register__refer">
-                <button className="register__buttons__pink" type="submit" onClick={() => router.push('/')} >
+                <button className="register__buttons__pink" type="submit" >
                   Crear cuenta
                 </button>
               </div>
