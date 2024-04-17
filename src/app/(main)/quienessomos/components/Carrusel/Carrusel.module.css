@@ -1,0 +1,28 @@
+.titulo-carrusel {
+    text-align: center;
+    margin-bottom: 20px;
+    /* Asegúrate de que el título sea responsivo */
+    font-size: 2rem;
+    /* Tamaño de fuente responsivo */
+}
+
+.carruselUno {
+    height: 100px;
+}
+
+.carrusel-item {
+    /* Añade estilos para el contenedor de cada imagen si es necesario */
+}
+
+.imagenCarrusel {
+    max-width: 50%;
+    /* Esto hará que la imagen sea responsiva */
+    height: auto;
+    /* Esto mantendrá la proporción de la imagen */
+    /* Ajusta el tamaño máximo según lo que necesites */
+}
+
+.descripcionCarrusel {
+    text-align: center;
+    /* Centra la descripción debajo de la imagen */
+}

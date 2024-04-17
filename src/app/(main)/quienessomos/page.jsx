@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react";
 import DinamicBanner from "../components/DinamicBanner/DinamicBanner";
 import styles from "../components/DinamicBanner/DinamicBanner.module.css";
 import Nosotros from '../quienessomos/components/Nosotros/Nosotros'; 
+import Carrusel, { imagenesDeEjemplo } from '../quienessomos/components/Carrusel/Carrusel';
+
+
 
     function QuienesSomos() {
         return (
@@ -21,6 +24,7 @@ import Nosotros from '../quienessomos/components/Nosotros/Nosotros';
                     }}
                 />
                 <Nosotros /> 
+                <Carrusel imagenes={imagenesDeEjemplo} /> 
             </div>
         );
     }
