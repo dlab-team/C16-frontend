@@ -1,0 +1,90 @@
+/* PC styles */
+.container {
+  position: relative;
+  width: 83%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-inline: 4%;
+  padding-top: 4%;
+}
+
+.wrapper {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.description {
+  width: 21rem;
+  height: 3rem;
+  overflow: scroll;
+  background-color: #fff;
+  font-size: var(--fs-text);
+  font-weight: 400;
+  color: var(--clr-secondary-2);
+  border: none;
+  outline: none;
+  scrollbar-gutter: stable;
+  resize: none;
+  scrollbar-width: none;
+}
+
+.input {
+  background-color: #fff;
+  font-size: var(--fs-text);
+  font-weight: 400;
+  color: var(--clr-secondary-2);
+  border: none;
+  outline: none;
+  width: 7rem;
+}
+
+.link {
+  background-color: #fff;
+  font-size: var(--fs-text);
+  font-weight: 400;
+  color: var(--clr-secondary-2);
+  border: none;
+  outline: none;
+  width: 4rem;
+  overflow-x: scroll;
+  scrollbar-gutter: stable;
+  resize: none;
+  scrollbar-width: none;
+}
+
+.link::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
+.link::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.description::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
+.description::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.buttonContainer {
+  position: absolute;
+  bottom: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* long screen styles */
+@media (width > 1700px) {
+  .container {
+    max-width: 55%;
+    margin-inline: auto;
+  }
+}
