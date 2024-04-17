@@ -1,0 +1,57 @@
+/* PC styles */
+.container {
+  width: 83%;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-inline: 4%;
+  padding-top: 4%;
+}
+
+.wrapper {
+  width: 60%;
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1.3rem;
+  border-radius: 0.8rem;
+  border: 1px solid #e6ebef;
+  margin-top: 1.5rem;
+  font-family: var(--ff-one);
+}
+
+.image {
+  border-radius: 0.8rem;
+  object-fit: cover;
+  margin-bottom: 0.8rem;
+}
+
+.title {
+  font-size: var(--fs-text);
+  font-weight: 500;
+  color: var(--clr-secondary-2);
+  align-self: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.textArea {
+  width: 100%;
+  font-size: var(--fs-text);
+  font-weight: 300;
+  color: #4a4a4a;
+  resize: none;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--clr-primary-2);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.saveButtonContainer {
+  margin-top: 5%;
+  margin-bottom: 2rem;
+}
