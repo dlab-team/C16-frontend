@@ -20,7 +20,7 @@ import Nosotros from '../quienessomos/components/Nosotros/Nosotros';
                         bannerMessage: styles.quienesSomosBannerMessage,
                     }}
                 />
-                <Nosotros /> {/* Agrega el componente Nosotros aquí */}
+                <Nosotros /> 
             </div>
         );
     }
