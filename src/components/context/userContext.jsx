@@ -13,12 +13,14 @@ export function UserProvider({ children }) {
         logged: false,
         token: null,
     })
+    
+    const [loading, setLoading] = useState(true)
 
     const updateUserContext = (newUserData, idToken) => {
         setUser(prevUser => ({
             ...prevUser,
             data: newUserData,
-            token:idToken
+            token: idToken
         }))
     }
 
@@ -26,41 +28,33 @@ export function UserProvider({ children }) {
         setUser({
             data: {},
             token: null,
-            logged:false,
+            logged: false,
         })
     }
 
-    useEffect(()=>{
-        if(!user.logged){
-            auth.onAuthStateChanged(async (currentUser) => {
-                if(currentUser){
-                    try {
-                        const idToken = await currentUser.getIdToken()
-                        let uid
-                        if(currentUser.uid){
-                            uid = currentUser.uid
-                        }else{
-                            uid = currentUser.user.uid
-                        }
-                        const result = await getUser(uid)
-                        setUser({
-                            data: result,
-                            logged: true,
-                            token: idToken,
-                        })
-                    } catch (error) {
-                        console.error(error)
-                    }
+    useEffect(() => {
+        auth.onAuthStateChanged(async (currentUser) => {
+            if (currentUser) {
+                try {
+                    const idToken = await currentUser.getIdToken()
+                    const uid = currentUser.uid ? currentUser.uid : currentUser.user.uid;
+                    const result = await getUser(uid);
+                    setUser({
+                        data: result,
+                        logged: true,
+                        token: idToken,
+                    });
+                } catch (error) {
+                    console.error(error)
                 }
-            })
-        }
-    },[user])
+            }
+            setLoading(false)  // Actualiza el estado de carga una vez completadas las operaciones
+        })
+    }, [])
 
     return (
-        <UserContext.Provider
-            value={{ user, updateUserContext, deleteUser }}>
+        <UserContext.Provider value={{ user, loading, updateUserContext, deleteUser }}>
             {children}
         </UserContext.Provider>
     )
 }
-
