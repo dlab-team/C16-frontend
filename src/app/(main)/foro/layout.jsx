@@ -4,13 +4,10 @@ import styles from './Foro.module.css'
 
 function layout({ children }) {
     return (
-        <>
-            <main className={styles.main}>
-                <Banner />
-                <>{children}</>
-            </main>
-        </>
-
+        <main className={styles.main}>
+            <Banner />
+            <>{children}</>
+        </main>
     )
 }
 
