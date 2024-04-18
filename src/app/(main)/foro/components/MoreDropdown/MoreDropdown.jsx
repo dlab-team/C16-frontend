@@ -52,7 +52,7 @@ function MoreDropdown({data}) {
             </ModalPortal>
 
             <ModalPortal>
-                <EditModal isOpen={modalEdit} onClose={closeEditModal} onConfirm={editMessage}  userImage={data.user.id} message={data.content}/>
+                <EditModal isOpen={modalEdit} onClose={closeEditModal} onConfirm={editMessage} userImage={data.user.photo} message={data.content}/>
             </ModalPortal>
         </>
     )

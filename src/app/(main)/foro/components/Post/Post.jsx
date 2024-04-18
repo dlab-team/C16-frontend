@@ -17,8 +17,8 @@ async function Post({ data, type }) {
                 />
 
                 <span className={styles.authorInfo}>
-                    <strong className={styles.strong}>{`${data.user.firstname} ${data.user.lastname} -`}</strong>
-                    {data.user.region} - {data.user.comuna}
+                    <strong className={styles.strong}>{`${data.user.firstname} ${data.user.lastname} - `}</strong>
+                    {data.user.comuna} - {data.user.region}
                 </span>
                 <MoreDropdown data={data} />
             </div>
