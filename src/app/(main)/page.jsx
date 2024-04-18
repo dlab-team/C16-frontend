@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import styles from './page.module.css';
 import { IoIosArrowForward } from "react-icons/io";
-import Modal from '../(auth)/auth/login/LoginDesktop/LoginDesktop';
+import Modal from '../(auth)/auth/login/ModalLogin/ModalLogin';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);

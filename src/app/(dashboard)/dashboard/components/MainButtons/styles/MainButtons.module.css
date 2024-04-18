@@ -12,6 +12,7 @@
 
 .mainButtonsContainer {
   width: 17%;
+  min-width: 17%;
   min-height: 100dvh;
   display: flex;
   align-items: center;

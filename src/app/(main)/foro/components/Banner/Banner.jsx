@@ -4,7 +4,7 @@ import styles from './Banner.module.css'
 function Banner() {
     return (
         <section className={styles.banner} role='banner'>
-            <Image width={100} height={100} alt='banner image' src='/assets/images/foro/banner_img.png' className={styles.bannerImg}/>
+            <Image width={100} height={100} priority={true} alt='banner image' src='/assets/images/foro/banner_img.png' className={styles.bannerImg}/>
             <div className={styles.bannerTextBox}>
                 <div className={styles.textBox}>
                     <h1 className={styles.bannerTitle}>Participa en nuestro <strong className={styles.titleStrong}>Foro</strong></h1>

@@ -4,24 +4,15 @@ import styles from '../../../styles/Buttons.module.css';
 import { GoogleIcon, GoogleIconForDesktop } from '../icons';
 
 function Buttons({ methods }) {
-  const { signIn, signInWithGoogle } = methods
-
-  const handleSignIn = () => {
-    signIn();
-  }
+  const { handleAuthGoogle } = methods
 
   const handleGoogle = () => {
-    signInWithGoogle();
+    handleAuthGoogle();
   }
 
   return (
     <>
-      <div className={styles.hrContainer}>
-        <hr className={styles.hr} />
-        o
-        <hr className={styles.hr} />
-      </div>
-      <button className={styles.loginButton} type="button" onClick={() => handleSignIn()}>
+      <button className={styles.loginButton} type="submit">
         Ingresar
       </button>
       <button className={styles.socialNetworkButton} type="button" onClick={() => handleGoogle()}>

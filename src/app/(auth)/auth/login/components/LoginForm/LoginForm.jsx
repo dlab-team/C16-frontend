@@ -1,11 +1,15 @@
 'use client';
-import { useState } from 'react';
-import styles from '../../styles/LoginForm.module.css';
-import { CheckIcon, EyeIcon, HiddenEyeIcon } from './icons';
-import { Buttons } from './components';
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from '@/services/firebaseConfig'
 
+import { useState, useContext } from 'react';
+import styles from '../../styles/LoginForm.module.css';
+import { CheckIcon } from './icons';
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { Buttons } from './components';
+
+import { authGoogle, loginEmailAndPassword } from '@/services/user.fire.service';
+import { createUser, getUser } from '@/services/api/api.user.service';
+import { UserContext } from '@/components/context/userContext';
+import { useRouter } from 'next/navigation'
 
 function LoginForm() {
 
@@ -13,150 +17,104 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+  const [error, setError] = useState('');
+
+  const { updateUserContext } = useContext(UserContext)
+  const router = useRouter()
+
   function handleShowPassword(e) {
     e.preventDefault();
 
     setShowPassword(!showPassword);
   }
 
-  // SignIn sin Google 
+  // SignIn Con Google 
 
-  const signIn = () => {
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then(async (userCredential) => {
-        const idToken = await userCredential.user.getIdToken();
-        console.log(idToken);
-
+  const handleAuthGoogle = async () => {
+    try {
+      const idToken = await authGoogle()
       if (idToken) {
-        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
-
-        const user = fetch("https://c16-backend.onrender.com/api/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${idToken}`,
-          }
-        })
-          .then(res => res.json())
-          .then(data => {
-
-            // Verifica la respuesta del servidor
-            console.log(data);
-            console.log(data.message);
-
-            if (data.completed === false) {
-              console.log("********", data.completed);
-              window.location.href = '../auth/completarPerfil'
-            } else {
-              // Indica inicio de sesión exitoso
-              console.log('Inicio de sesión exitoso');
-              window.location.href = '/'
-            }
-          })
+        const user = await createUser(idToken)
+        updateUserContext(user, idToken)
+        if (user.completed) {
+          alert(`Bienvenido ${user.firstname}`)
+          router.push("/")
+        } else {
+          router.push("/auth/completarPerfil")
         }
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-
-        // Manejo de diferentes errores
-        switch (errorCode) {
-          case 'auth/user-not-found':
-            console.log('El correo o la contraseña son incorrectos.');
-            break;
-          case 'auth/wrong-password':
-            console.log('El correo o la contraseña son incorrectos.');
-            break;
-          default:
-            console.log('Ocurrió un error al iniciar sesión:', errorMessage);
-        }
-      });
-  };
-
-  // SignIn con Google 
-
-  const signInWithGoogle = () => {
-
-    const provider = new GoogleAuthProvider()
-    signInWithPopup(auth, provider).then(async (result) => {
-      console.log("Google *******" + auth.currentUser);
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-
-      const idToken = await auth.currentUser.getIdToken()
-      console.log(idToken)
-      
-      if (idToken) {
-        localStorage.setItem('token', idToken); // Almacenar el token en el local storage
-
-        fetch("https://c16-backend.onrender.com/api/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${idToken}`,
-          },
-        })
-        .then(res => res.json())
-          .then(data => {
-
-            // Verifica la respuesta del servidor
-            console.log(data);
-            console.log(data.message);
-
-            if (data.completed === false) {
-              console.log("********", data.completed);
-              window.location.href = '../auth/completarPerfil'
-            } else {
-              // Indica inicio de sesión exitoso
-              console.log('Inicio de sesión exitoso');
-              window.location.href = '/'
-            }
-          })
       }
-    })
-  };
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
-  const methods = {signIn, signInWithGoogle};
+  // SignIn Con Email 
+
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    try {
+      console.log(email, password)
+      const { idToken, uid } = await loginEmailAndPassword(email, password)
+      const user = await getUser(uid)
+      updateUserContext(user, idToken)
+      if (user.completed) {
+        alert(`Bienvenido ${user.firstname}`)
+        router.push("/")
+      } else {
+        router.push("/auth/completarPerfil")
+      }
+    } catch (error) {
+      console.error(error)
+
+      // Manejo de diferentes errores
+      setError('Dirección de email o contraseña no coinciden');
+    }
+  }
+
+  const methods = { handleAuthGoogle };
 
   return (
 
-    <form className={styles.inputsContainer}>
-      <p className={styles.p}>
-        Podrás dejar tus comentarios y conectar de más cerca con otros
-        cuidadores
+    <form className={styles.inputsContainer} onSubmit={handleLogin}>
+      <p className={`${styles.p} ${error ? styles.errorText : ''}`}>
+        {error || 'Podrás dejar tus comentarios y conectar de más cerca con otros cuidadores'}
       </p>
-      <label htmlFor="email" className={styles.inputWrapper}>
+
+      <label htmlFor="email" className={`${styles.inputWrapper} ${error ? styles.errorLabel : ''}`}>
         Correo electrónico
         <div className={styles.wrapper}>
           <input
             id="email"
             name="email"
             type="email"
+            className={`${styles.input} ${error ? styles.errorInput : ''}`}
             placeholder="correo@electronico.com"
-            className={styles.input}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
       </label>
-      <label htmlFor="password" className={styles.inputWrapper}>
+
+      <label htmlFor="password" className={`${styles.inputWrapper} ${error ? styles.errorLabel : ''}`}>
         Contraseña
         <div className={styles.wrapper}>
           <input
             type={showPassword ? 'text' : 'password'}
             id="password"
             name="password"
+            className={`${styles.input} ${error ? styles.errorInput : ''}`}
             placeholder="********"
-            className={styles.input}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <button
             onClick={(e) => handleShowPassword(e)}
-            className={styles.eyeButton}
+            className={`${styles.eyeButton} ${error ? styles.errorEyeButton : ''}`}
+            type='button'
           >
-            {showPassword ? <EyeIcon /> : <HiddenEyeIcon />}
+            {showPassword ? <AiOutlineEye className={`${styles.eyeButton} ${error ? styles.errorEyeButton : ''}`} /> : <AiOutlineEyeInvisible className={`${styles.eyeButton} ${error ? styles.errorEyeButton : ''}`} />}
           </button>
         </div>
       </label>
@@ -174,9 +132,8 @@ function LoginForm() {
         </div>
         Recordar
       </label>
-      <Buttons methods = {methods}/>
+      <Buttons methods={methods} />
     </form>
   );
 }
-
 export default LoginForm;
