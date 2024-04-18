@@ -1,5 +1,7 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { UserContext } from '@/components/context/userContext'
+
 import { PaginationView } from '../components'
 import { AcademyCard, SearchBar } from './components'
 import styles from './styles/Page.module.css'
@@ -15,6 +17,8 @@ const CARDS_ARRAY = [
 ] //ToDo: remove array (only for dev mode)
 
 function Academia() {
+  const { user } = useContext(UserContext)
+
   const [paginationItems, setPaginationItems] = useState([])
 
   function getTotalPages() {
@@ -42,19 +46,25 @@ function Academia() {
 
   return (
     <main className={styles.container}>
-      <AcademyTopView />
-      <SearchBar />
-      <div className={styles.cardWrapper}>
-        {CARDS_ARRAY.map((item) => (
-          <AcademyCard key={item.id} />
-        ))}
-      </div>
-      <PaginationView
-        paginationOptions={paginationItems}
-        currentPage={1}
-        handlePageChange={handlePageChange}
-        getTotalPages={getTotalPages}
-      />
+      { !user.logged ? <h1>Loading...</h1> : 
+
+        <>
+          <AcademyTopView />
+          <SearchBar />
+          <div className={styles.cardWrapper}>
+            {CARDS_ARRAY.map((item) => (
+              <AcademyCard key={item.id} />
+            ))}
+          </div>
+          <PaginationView
+            paginationOptions={paginationItems}
+            currentPage={1}
+            handlePageChange={handlePageChange}
+            getTotalPages={getTotalPages}
+          />
+        </>
+
+      }
     </main>
   )
 }

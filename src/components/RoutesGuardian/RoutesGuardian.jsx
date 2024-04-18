@@ -1,7 +1,10 @@
 'use client'
-import {useContext} from 'react'
+import { useState, useContext, useEffect} from 'react'
 import { UserContext } from '../context/userContext'
 import { useRouter, usePathname } from 'next/navigation'
+
+import { auth } from "@/services/firebaseConfig"
+import { getUser } from "@/services/api/api.user.service"
 
 const protectedRoutes=[
     '/academia',
@@ -20,21 +23,43 @@ const pathIsProtected = (pathname)=> {
 }
 
 function RoutesGuardian({children}) {
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
     const router = useRouter()
     const pathname = usePathname()
 
-    if(pathIsProtected(pathname)){
-        if(!user.logged){
-            router.push("/auth/login")
-            return null
-            
-        }else if(!user.data.completed){
-            console.log(user.data)
-            router.push("/auth/completarPerfil")
-            return null
-        }
-    }
+   useEffect(()=>{
+        auth.onAuthStateChanged(async (currentUser) => {
+            if(currentUser){
+                try {
+                    const idToken = await currentUser.getIdToken()
+                    let uid
+                    if(currentUser.uid){
+                        uid = currentUser.uid
+                    }else{
+                        uid = currentUser.user.uid
+                    }
+                    const result = await getUser(uid)
+                    setUser({
+                        data: result,
+                        logged: true,
+                        token: idToken,
+                    })
+
+                    if(pathIsProtected(pathname) && !user.data.completed) {
+                        router.push("/auth/completarPerfil")
+                        return null
+                    }
+                } catch (error) {
+                    console.error(error)
+                }
+            } else {
+              if(pathIsProtected(pathname)) {
+                router.push("/auth/login")
+                return
+              } 
+            }
+        })
+    },[pathname])
 
     return (
         <>
