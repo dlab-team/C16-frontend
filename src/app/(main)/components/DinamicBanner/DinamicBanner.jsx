@@ -5,18 +5,19 @@ function DinamicBanner({ imageSrc, title, message, customStyles }) {
     return (
         <div className={`${styles.desktopContainer} ${customStyles.desktopContainer}`}>
             <section className={`${styles.banner} ${customStyles.banner}`} role='banner'>
+                {/* La clase bannerImgMobile se aplicará solo en vistas de celular */}
                 <Image
-                 width={150}
-                  height={150} 
-                  alt='banner image'
-                   src={imageSrc} className={`${styles.bannerImg} ${customStyles.bannerImg}`} />
+                    width={150}
+                    height={150}
+                    alt='banner image'
+                    src={imageSrc}
+                    className={`${styles.bannerImg} ${customStyles.bannerImg} ${styles.bannerImgMobile}`}
+                />
             </section>
 
             <div className={`${styles.bannerTextBox} ${customStyles.bannerTextBox}`}>
-   
-                    <h1 className={`${styles.bannerTitle} ${customStyles.bannerTitle}`}>{title}</h1>
-                    <span className={`${styles.bannerMessage} ${customStyles.bannerMessage}`}>{message}</span>
-               
+                <h1 className={`${styles.bannerTitle} ${customStyles.bannerTitle}`}>{title}</h1>
+                <span className={`${styles.bannerMessage} ${customStyles.bannerMessage}`}>{message}</span>
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 /* mobile styles */
 
 .mobileContainer {
-    width: 100%;
+    width: 50%;
     padding-inline: 1rem;
     display: flex;
     align-items: center;
@@ -28,6 +28,15 @@
     font-family: var(--ff-one);
 }
 
+/* Estilos comunes para ocultar imágenes en vistas de celular */
+@media (max-width: 640px) {
+
+    /* Ajusta el 640px según tu punto de ruptura para móviles */
+    .bannerImgMobile {
+        display: none;
+    }
+}
+
 
 
 /* Estilos para la vista QuienesSomos */
@@ -38,7 +47,7 @@
 
 /* desktop styles */
 @media (min-width: 820px) {
-    .mobileContainer {
+    .mobileContainer *:not(.title) {
         display: none;
     }
 
