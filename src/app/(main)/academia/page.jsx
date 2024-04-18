@@ -16,8 +16,6 @@ const CARDS_ARRAY = [
 
 function Academia() {
   const [paginationItems, setPaginationItems] = useState([])
-  const { user, loading } = useAuth(); 
-  const router = useRouter();
 
   function getTotalPages() {
     return 1
