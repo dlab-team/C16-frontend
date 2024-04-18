@@ -20,7 +20,7 @@ async function Post({ data, type }) {
                     <strong className={styles.strong}>{`${data.user.firstname} ${data.user.lastname} -`}</strong>
                     {data.user.region} - {data.user.comuna}
                 </span>
-                <MoreDropdown data={data.id} />
+                <MoreDropdown data={data} />
             </div>
 
             <p className={styles.message}>{data.content}</p>

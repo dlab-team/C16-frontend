@@ -3,6 +3,11 @@ import styles from './DeleteModal.module.css'
 const DeleteModal = ({ isOpen, onClose, onConfirm }) => {
     if (!isOpen) return null
 
+    const handleDelete = () =>{
+        onConfirm()
+        onClose()
+    }
+
     return (
         <div className={styles.modalOverlay} onClick={onClose}>
             <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -17,7 +22,7 @@ const DeleteModal = ({ isOpen, onClose, onConfirm }) => {
 
                 <div className={styles.modalActions}>
                     <button className={styles.closeButton} onClick={onClose}>Cancelar</button>
-                    <button className={styles.reportButton} onClick={onConfirm}>Eliminar</button>
+                    <button className={styles.reportButton} onClick={handleDelete}>Eliminar</button>
                 </div>
             </div>
         </div>

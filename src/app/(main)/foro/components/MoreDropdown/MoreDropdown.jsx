@@ -4,16 +4,25 @@ import styles from './MoreDropdown.module.css'
 import { useState } from "react";
 import ModalPortal from "../ModalPortal/ModalPortal";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import EditModal from "../EditModal/EditModal";
 
 function MoreDropdown({data}) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false) // modal delete
+
+    const [modalEdit, setIsModalEdit] = useState(false) // modal edit
     
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
+
+    const openEditModal = () => setIsModalEdit(true);
+    const closeEditModal = () => setIsModalEdit(false);
     
     const deletePost=()=>{
-
-        alert(`el comentario ${data} ha sido eliminado`)
+        alert(`el comentario ${data.id} ha sido eliminado`)
+    }
+    const editMessage=(newText)=>{
+        alert(`el comentario ${data.id} ha sido editado`)
+        console.log(newText)
     }
 
     return (
@@ -26,7 +35,7 @@ function MoreDropdown({data}) {
                         />
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Static Actions" className={styles.menu} id="dropdown_menu_ul">
-                    <DropdownItem key="edit" className={styles.dropOption}>
+                    <DropdownItem key="edit" className={styles.dropOption} onClick={openEditModal}>
                         <div className={styles.penIcon}></div>
                         <span className={styles.optionText}>Editar comentario</span>
                     </DropdownItem>
@@ -40,6 +49,10 @@ function MoreDropdown({data}) {
 
             <ModalPortal>
                 <DeleteModal isOpen={isModalOpen} onClose={closeModal} onConfirm={deletePost}/>
+            </ModalPortal>
+
+            <ModalPortal>
+                <EditModal isOpen={modalEdit} onClose={closeEditModal} onConfirm={editMessage}  userImage={data.user.id} message={data.content}/>
             </ModalPortal>
         </>
     )
