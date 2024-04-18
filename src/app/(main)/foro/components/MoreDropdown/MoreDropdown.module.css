@@ -20,7 +20,9 @@
 }
 
 .dropOption {
-    margin: 3px 0px;
+    margin: 5px 0px;
+    color: var(--clr-primary-2);
+    font-family: var(--ff-one);
 }
 
 .dropOption:hover {
@@ -30,7 +32,7 @@
 
 .dropOption>span:nth-child(1) {
     display: flex;
-    gap: 5px;
+    gap: 7px;
 }
 
 .penIcon {
@@ -40,17 +42,26 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    margin-right: 5px;
 }
 
 .closeIcon {
     width: 20px;
     height: 20px;
-    background-image: url("/assets/images/foro/closeIcon.svg");
+    background-image: url("/assets/images/foro/closeIconBlue.svg");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    margin-right: 5px;
 }
 
 .optionText {
     font-size: var(--ff-one);
+}
+@media (min-width: 600px) {
+    .dropOption {
+        margin: 10px 0px;
+        color: var(--clr-primary-2);
+        font-family: var(--ff-one);
+    }
 }
