@@ -1,0 +1,22 @@
+.containerRed{
+    background-color: #fff;
+    height: 100vh;
+overflow-y: scroll;
+    width: 100%;
+}
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font: var(--tx-desktop-three);
+    color: var( --clr-primary-2);
+
+   
+}
+.seccionCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
