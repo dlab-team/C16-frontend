@@ -78,6 +78,7 @@
   font-weight: 500;
   line-height: var(--lh-label);
   font-family: var(--ff-one);
+  margin-bottom: 5px;
 }
 
 .checkboxContainer {

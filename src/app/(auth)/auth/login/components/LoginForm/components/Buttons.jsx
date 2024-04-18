@@ -12,11 +12,6 @@ function Buttons({ methods }) {
 
   return (
     <>
-      <div className={styles.hrContainer}>
-        <hr className={styles.hr} />
-        o
-        <hr className={styles.hr} />
-      </div>
       <button className={styles.loginButton} type="submit">
         Ingresar
       </button>

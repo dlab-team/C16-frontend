@@ -18,8 +18,8 @@
   line-height: var(--lh-h5);
   color: var(--clr-primary-2);
   margin-bottom: 0;
+  text-align: center;
 }
-
 
 .modalOverlay {
   position: fixed;
@@ -261,7 +261,7 @@
   .title {
     grid-column: 7/-2;
   }
-
+  
   .image {
     margin-left: 70px;
   }
