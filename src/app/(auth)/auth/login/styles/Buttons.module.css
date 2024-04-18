@@ -55,7 +55,7 @@
 
 .p {
   font-family: var(--ff-one);
-  width: 60%;
+  width: 80%;
   display: block;
   font-size: var(--p);
   font-weight: 400;
@@ -113,10 +113,6 @@
     width: 80%;
     align-self: flex-start;
     margin-top: 0.9rem;
-  }
-
-  .p {
-    width: 80%;
   }
 }
 
