@@ -1,0 +1,14 @@
+.container {
+  width: 16.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.6rem;
+  background-color: var(--clr-primary-1);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--clr-primary-2);
+  border: none;
+  cursor: pointer;
+}

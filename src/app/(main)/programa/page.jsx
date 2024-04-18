@@ -1,4 +1,5 @@
 import React from "react";
+
 import DinamicBanner from "../components/DinamicBanner/DinamicBanner";
 import styles from "../components/DinamicBanner/DinamicBanner.module.css";
 
