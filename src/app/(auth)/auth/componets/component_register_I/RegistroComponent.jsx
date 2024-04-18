@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import { authGoogle, logOut, registerEmailAndPassword } from '@/services/user.fire.service'
 import { createUser } from '@/services/api/api.user.service'
 import { UserContext } from '@/components/context/userContext'
+import Link from 'next/link'
 
 const RegistroComponent = () => {
   const router = useRouter()
@@ -115,9 +116,11 @@ const RegistroComponent = () => {
   return (
     <div>
       <div className="register__descktop">
+      <Link href='/'>
         <button className="button__back">
           <AiOutlineLeft />
         </button>
+      </Link>
 
         <div className="register">
           <h2>Registrate</h2>
@@ -220,7 +223,7 @@ const RegistroComponent = () => {
               <p>¿Ya tiene una cuenta?</p>
             </div>
             <div className="register__refer">
-              <a href="">Inicia sesión</a>
+              <a href="./login">Inicia sesión</a>
             </div>
           </div>
         </div>

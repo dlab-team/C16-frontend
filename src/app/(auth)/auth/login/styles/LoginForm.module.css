@@ -11,7 +11,7 @@
 .p {
   display: none;
   font: var(--tx-desktop-two);
-  text-align: left;
+  text-align: center;
 }
 
 .inputWrapper {
@@ -26,6 +26,7 @@
   gap: 0.2rem;
   margin: 0 0 0.8rem 0.5rem;
   font: var(--tx-mobile-one);
+  color: var(--clr-primary-2);
 }
 
 .input {
@@ -56,11 +57,14 @@
 
 .eyeButton {
   position: absolute;
-  right: 1rem;
-  width: fit-content;
-  height: fit-content;
+  right: 0.5rem;
+  width: 20px;
+  height: 20px;
   border: none;
+  margin-top: 0px;
+  margin-bottom: 10px;
   background-color: transparent;
+  color: var(--clr-primary-2);
 }
 
 .rememberInput {
@@ -75,6 +79,7 @@
   font-weight: 500;
   line-height: var(--lh-label);
   font-family: var(--ff-one);
+  margin-bottom: 5px;
 }
 
 .checkboxContainer {
@@ -115,6 +120,40 @@
   display: block;
 }
 
+.errorInput {
+  color: red;
+  border-bottom-color: red;
+}
+
+.errorInput::placeholder {
+  color: red;
+}
+
+.errorLabel {
+  color: red;
+}
+
+.errorText {
+  font: var(--tx-mobile-two);
+  color: red;
+  display: block;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.errorEyeButton {
+  position: absolute;
+  position: absolute;
+  right: 0.5rem;
+  width: 20px;
+  height: 20px;
+  border: none;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  background-color: transparent;
+  color: red;
+}
+
 /* Tablet Styles */
 
 @media (width >=768px) {
@@ -123,6 +162,10 @@
   }
 
   .rememberInput {
+    width: 60%;
+  }
+
+  .errorText {
     width: 60%;
   }
 }
@@ -142,6 +185,7 @@
     line-height: var(--lh-p);
     color: #454444;
     margin-bottom: 1rem;
+    text-align: left;
   }
 
   .inputWrapper {
@@ -166,6 +210,13 @@
   }
 
   .rememberInput {
+    width: 80%;
+  }
+
+  .errorText {
+    color: red;
+    padding-bottom: 0px;
+    margin-bottom: 1rem;
     width: 80%;
   }
 }

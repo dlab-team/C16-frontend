@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from '../styles/Login.module.css';
 import { LoginForm} from '../components';
-import { IoIosArrowBack } from 'react-icons/io';
-import { IoIosClose } from 'react-icons/io';
+import { IoIosArrowBack, IoIosClose } from 'react-icons/io';
 
 const Modal = ({ isOpen, onClose}) => {
 
