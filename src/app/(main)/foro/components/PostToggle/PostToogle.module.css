@@ -12,8 +12,10 @@
     justify-content: center;
     flex-wrap: wrap;
 
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--clr-secondary-2);
+    font-family: var(--ff-one);
+    font-weight: 200;
 }
 .actionsBox{
     display: flex;
@@ -78,5 +80,8 @@
         color: var(--clr-primary-2);
         font-weight: 200;
         font-size: 0.9rem;
+    }
+    .timeBox{
+        font-size: 1rem;
     }
 }

@@ -14,17 +14,12 @@
 .modalContent {
     position: relative;
     margin: auto;
-    background: white;
-    padding: 20px;
+    background-color: var(--clr-one-100);
+    padding: 15px 20px;
     width: 80%;
     max-width: 270px;
-    border-radius: 5px;
+    border-radius: 16px;
     z-index: 99;
-}
-
-.header{
-    display: flex;
-    justify-content: flex-end;
 }
 .closeBtn{
     width: 25px;
@@ -35,25 +30,31 @@
     background-color: transparent;
     border: none;
 }
-.closeBtn:hover{
-    cursor: pointer;
+.headerEdit{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
 }
-.modalInfo{
-    font-family: var(--ff-one);
-    color: var(--clr-secondary-2);
-    margin: 1rem 0;
+.imageHeader{
+    aspect-ratio: 1/1;
+    width: 40px;
+    height: 40px;
+    margin-right: auto;
+    border-radius: 50%;
 }
-.title{
-    color: var(--clr-primary-2);
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.message{
+.textArea{
     font-weight: 200;
     font-size: 0.9rem;
+    width: 100%;
+    height: 100px;
+    margin: 15px 0px;
+    padding: 10px;
+    overflow-y: scroll;
+    border: solid 1px var(--clr-one-200);
+    border-radius: 10px;
+    resize: none;
+    font-family: var(--ff-one);
+    color: var(--clr-secondary-2);
 }
 
 .modalActions{
@@ -62,7 +63,7 @@
     gap: 10px;
 }
 .closeButton{
-    background-color: transparent;
+    background-color: white;
     border: .5px solid var(--clr-primary-1);
     color: var(--clr-primary-2);
     padding: 7px;
@@ -84,23 +85,21 @@
 
 @media (min-width: 576px) {
     .modalContent {
-        max-width: 500px;
+        max-width: 838px;
     }
-    .title{
-        text-align: left;
+    .closeBtn:hover{
+        cursor: pointer;
     }
-    .modalInfo{
-        margin: 0 0 1rem 0;
-    }
-    .modalActions{
-        flex-direction: row;
-        justify-content: flex-end;
-    }
+
     .closeButton{
         padding: 7px 15px;
     }
     .reportButton{
         padding: 7px 15px;
+    }
+    .modalActions{
+        flex-direction: row;
+        justify-content: flex-end;
     }
     
 } /* pantalla mediana */

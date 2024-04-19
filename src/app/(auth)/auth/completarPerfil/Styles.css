@@ -1,34 +1,20 @@
-.img__l,
-.img__xl {
-  display: none;
 
-  width: 100%;
-}
 @media (min-width: 992px) {
   .background {
-    position: absolute;
-    z-index: -1;
-    background-color: #fad8ce6e;
-  }
-  .img__xl {
-    display: none;
-  }
-  .img__l {
-    display: block;
-    height: 65rem;
-  }
-  .register__componet {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60rem;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fmanos-unidas-registro-l.png?alt=media&token=c591bc19-5a3c-4824-a274-382c35009adc');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    place-items: center;
+    overflow-y: scroll;
   }
 }
 @media (min-width: 1400px) {
-  .img__xl {
-    display: block;
-  }
-  .img__l {
-    display: none;
+  .background {
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fmanos-unidas-registro-lI.png?alt=media&token=4d8e1556-4037-46f3-89a0-e93de34aa788');
   }
 }

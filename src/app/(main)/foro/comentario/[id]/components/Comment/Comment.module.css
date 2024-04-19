@@ -26,8 +26,8 @@
 .imageHeader {
     width: 30px;
     height: 30px;
-    object-fit: contain;
-    border-radius: 28px;
+    object-fit: cover;
+    border-radius: 50%;
     margin-right: auto;
     gap: 5px;
 }
