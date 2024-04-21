@@ -1,18 +1,18 @@
-import Link from 'next/link';
-import styles from './CategoryLinks.module.css';
+import Link from 'next/link'
+import styles from './CategoryLinks.module.css'
 
-const categoryList = ["recientes", "populares", "actividad"];
+const categoryList = ["recientes", "comuna", "actividad"];
 const categoryNames = {
     recientes: "Más recientes",
-    populares: "Populares",
-    actividad: "Tu actividad"
-};
+    comuna: "Mi comuna",
+    actividad: "Mi actividad"
+}
 
 function CategoryLinks({ category }) {
     
     // Verificar si la categoría está dentro de categoryList, si no, asignar "recientes"
     if (!categoryList.includes(category)) {
-        category = "recientes";
+        category = "recientes"
     }
 
     return (
@@ -28,8 +28,8 @@ function CategoryLinks({ category }) {
                 </Link>
             ))}
         </nav>
-    );
+    )
 }
 
-export default CategoryLinks;
+export default CategoryLinks
 

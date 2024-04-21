@@ -1,3 +1,4 @@
+import ComunaFilters from "../ComunaFilters/ComunaFilters"
 import Post from "../Post/Post"
 import styles from './PostList.module.css'
 
@@ -6,15 +7,18 @@ const llamadaAPI = async (categoria) =>{
     let response = {}
     let posts = {}
     if(categoria == "actividad"){
-        response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
+        //response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
+        response = await fetch("https://c16-backend.onrender.com/api/posts")
         posts = await response.json()
         return posts.data
-    }else if(categoria == "populares"){
-        response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
+    }else if(categoria == "comuna"){
+        //response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
+        response = await fetch("https://c16-backend.onrender.com/api/posts")
         posts = await response.json()
         return posts.data
     }
-    response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
+    //response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
+    response = await fetch("https://c16-backend.onrender.com/api/posts")
     posts = await response.json()
     return posts.data
 }
@@ -22,9 +26,12 @@ const llamadaAPI = async (categoria) =>{
 async function PostList({category}) {
     const publications = await llamadaAPI(category)
 
-
     return (
         <>
+            {category =='comuna'
+            &&
+            <ComunaFilters />
+            }
             <div role="list" className={styles.postList}>
                 {publications.map((post)=> <Post key={post.id} data={post} type="publications"/> )}
             </div>
