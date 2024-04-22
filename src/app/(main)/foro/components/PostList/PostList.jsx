@@ -1,26 +1,20 @@
 import ComunaFilters from "../ComunaFilters/ComunaFilters"
 import Post from "../Post/Post"
 import styles from './PostList.module.css'
+import { getAllPosts } from "@/services/api/api.post.service"
 
 // Simula la llamada a una API -- Actualizar
 const llamadaAPI = async (categoria) =>{
     let response = {}
     let posts = {}
     if(categoria == "actividad"){
-        //response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
-        response = await fetch("https://c16-backend.onrender.com/api/posts")
-        posts = await response.json()
-        return posts.data
+        return getAllPosts()
     }else if(categoria == "comuna"){
-        //response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
         response = await fetch("https://c16-backend.onrender.com/api/posts")
         posts = await response.json()
         return posts.data
     }
-    //response = await fetch("https://c16-backend.onrender.com/api/posts", {cache:"no-store"})
-    response = await fetch("https://c16-backend.onrender.com/api/posts")
-    posts = await response.json()
-    return posts.data
+    return getAllPosts()
 }
 
 async function PostList({category}) {

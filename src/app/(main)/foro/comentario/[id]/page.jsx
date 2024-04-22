@@ -2,21 +2,10 @@ import Post from "../../components/Post/Post"
 import styles from "./commentPage.module.css"
 import Breadcumbs from "./components/Breadcumbs/Breadcumbs"
 import CommentListContainer from "./components/CommentListContainer/CommentListContainer"
+import { getPostById } from "@/services/api/api.post.service"
 
-const getPostById = async (id) =>{
-    const response = await fetch(`https://c16-backend.onrender.com/api/posts/${id}`, {cache:"no-store"})
-
-    /* if(!response.ok){
-        throw new Error("Error al obtener la publicación, puede que haya sido eliminado")
-    } */
-
-    const info = await response.json()
-
-    return info.data
-}
-
-async function Comment({params}) {
-    const {id}= params
+async function Comment({ params }) {
+    const { id } = params
 
     const post = await getPostById(id)
 

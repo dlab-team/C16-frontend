@@ -1,34 +1,25 @@
 'use client'
-import { useState } from 'react'
+
+import { useState, useContext } from 'react'
 import styles from './PostForm.module.css'
 import { useRouter } from 'next/navigation';
+import { UserContext } from '@/components/context/userContext';
 
-const sendPost = async ( data = {}) => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/posts/`, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        headers: {
-            "Content-Type": "application/json",
-        },
+import { createPost } from '@/services/api/api.post.service';
 
-        body: JSON.stringify(data), 
-    });
-    return response.json()
-
-}
 
 function PostForm() {
     const [text, setText] = useState('')
     const route = useRouter()
+    const {user} = useContext(UserContext)
     
-
     const formSubmit = (e) => {
         e.preventDefault()
-        sendPost({
-            content:text,
-            userId:'XCZ1234SMASJsP'
-        })
+        createPost(
+            user.token, 
+            {content:text})
         .then(data=>console.log(data))
-        .catch(err=> console.log('++++++++++++++++++++', err))
+        .catch(err=> console.error('++++++++++++++++++++', err))
         .finally(()=> route.refresh())
     }
 
