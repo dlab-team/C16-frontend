@@ -1,10 +1,12 @@
 import ComunaFilters from "../ComunaFilters/ComunaFilters"
+import Pagination from "../Pagination/Pagination"
 import Post from "../Post/Post"
 import styles from './PostList.module.css'
 import { getAllPosts } from "@/services/api/api.post.service"
 
+
 // Simula la llamada a una API -- Actualizar
-const llamadaAPI = async (categoria) =>{
+const llamadaAPI = async (categoria, page) =>{
     let response = {}
     let posts = {}
     if(categoria == "actividad"){
@@ -14,11 +16,12 @@ const llamadaAPI = async (categoria) =>{
         posts = await response.json()
         return posts.data
     }
-    return getAllPosts()
+    return getAllPosts(page)
 }
 
-async function PostList({category}) {
-    const publications = await llamadaAPI(category)
+async function PostList({category, searchParams}) {
+    const {page} = searchParams
+    const publications = await llamadaAPI(category, page)
 
     return (
         <>
@@ -27,22 +30,10 @@ async function PostList({category}) {
             <ComunaFilters />
             }
             <div role="list" className={styles.postList}>
-                {publications.map((post)=> <Post key={post.id} data={post} type="publications"/> )}
+                {publications.data.map((post)=> <Post key={post.id} data={post} type="publications"/> )}
             </div>
 
-            <div className={styles.pagination}>
-                <span>Pag</span>
-
-                <select name="select" id="" className={styles.select}>
-                    <option value="value1">1</option>
-                    <option value="value1">2</option>
-                    <option value="value1">3</option>
-                    <option value="value1">4</option>
-                </select>
-
-                <span>de 10</span>
-
-            </div>
+            <Pagination data={publications.pagination} />
         </>
     )
 }

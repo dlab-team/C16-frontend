@@ -1,8 +1,8 @@
 
-const getAllPosts = async () => {
-    const response = await fetch("https://c16-backend.onrender.com/api/posts")
+const getAllPosts = async (page='1') => {
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts/?page=${page}`)
     const posts = await response.json()
-    return posts.data
+    return posts
 }
 const createPost = async (idToken, data) => {
     const response = await fetch(`https://c16-backend.onrender.com/api/posts/`, {
@@ -40,6 +40,7 @@ const deletePost = async (idToken, pid) => {
     return response
 }
 const reportPost = async (idToken, pid) => {
+    const id = pid.toString()
     const response = await fetch(`https://c16-backend.onrender.com/api/reports/`, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
@@ -47,7 +48,7 @@ const reportPost = async (idToken, pid) => {
             Authorization: `Bearer ${idToken}`,
         },
 
-        body: JSON.stringify({postId:pid}), 
+        body: JSON.stringify({postId:id}), 
     })
     return response.json()
 }

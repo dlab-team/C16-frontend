@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import styles from './PostToogle.module.css'
 import Modal from '../Modal/Modal';
 import Link from 'next/link';
@@ -9,6 +9,8 @@ import { dateFormat } from '../../utils/dateFormat';
 import ModalPortal from '../ModalPortal/ModalPortal';
 import ReplyPost from '../ReplyPost/ReplyPost';
 import { reportPost } from '@/services/api/api.post.service';
+import { UserContext } from '@/components/context/userContext';
+
 
 // recibe por parámetros la información del comentario y el tipo
 // type="detail" si es para la vista detalle del comentario
@@ -16,6 +18,8 @@ import { reportPost } from '@/services/api/api.post.service';
 function PostToggle({ data, type = "detail" }) {
     const [isVisible, setIsVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const { user } = useContext(UserContext)
 
     // Función para cambiar el estado de visibilidad
     const toggleVisibility = () => {
@@ -25,8 +29,8 @@ function PostToggle({ data, type = "detail" }) {
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-    const reportPost = () => {
-        reportPost(data.id)
+    const handleReportPost = () => {
+        reportPost(user.token, data.id)
         alert('Comentario reportado')
         closeModal()
     }
@@ -101,7 +105,7 @@ function PostToggle({ data, type = "detail" }) {
 
 
             <ModalPortal>
-                <Modal isOpen={isModalOpen} onClose={closeModal} onConfirm={reportPost} />
+                <Modal isOpen={isModalOpen} onClose={closeModal} onConfirm={handleReportPost} />
             </ModalPortal>
 
 
