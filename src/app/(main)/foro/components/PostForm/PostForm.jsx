@@ -18,7 +18,6 @@ function PostForm() {
         createPost(
             user.token, 
             {content:text})
-        .then(data=>console.log(data))
         .catch(err=> console.error('++++++++++++++++++++', err))
         .finally(()=> route.refresh())
     }

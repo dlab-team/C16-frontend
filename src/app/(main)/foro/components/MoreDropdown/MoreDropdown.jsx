@@ -1,15 +1,21 @@
 'use client'
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import styles from './MoreDropdown.module.css'
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ModalPortal from "../ModalPortal/ModalPortal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import EditModal from "../EditModal/EditModal";
+import { deletePost, editPost } from "@/services/api/api.post.service";
+import { UserContext } from "@/components/context/userContext";
+import { useRouter } from "next/navigation";
 
 function MoreDropdown({data}) {
     const [isModalOpen, setIsModalOpen] = useState(false) // modal delete
 
     const [modalEdit, setIsModalEdit] = useState(false) // modal edit
+
+    const router = useRouter()
+    const { user } = useContext(UserContext)
     
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
@@ -17,12 +23,17 @@ function MoreDropdown({data}) {
     const openEditModal = () => setIsModalEdit(true);
     const closeEditModal = () => setIsModalEdit(false);
     
-    const deletePost=()=>{
+    const handleDeletePost = async ()=>{
+        await deletePost(user.token, data.id)
+
         alert(`el comentario ${data.id} ha sido eliminado`)
+        router.refresh()
     }
-    const editMessage=(newText)=>{
+    
+    const editMessage = async (newText)=>{
+        await editPost(user.token, newText, data.id)
         alert(`el comentario ${data.id} ha sido editado`)
-        console.log(newText)
+        router.refresh()
     }
 
     return (
@@ -48,7 +59,7 @@ function MoreDropdown({data}) {
             
 
             <ModalPortal>
-                <DeleteModal isOpen={isModalOpen} onClose={closeModal} onConfirm={deletePost}/>
+                <DeleteModal isOpen={isModalOpen} onClose={closeModal} onConfirm={handleDeletePost}/>
             </ModalPortal>
 
             <ModalPortal>

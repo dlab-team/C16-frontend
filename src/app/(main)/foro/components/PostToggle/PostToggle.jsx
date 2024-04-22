@@ -8,6 +8,7 @@ import { dateSince } from '../../utils/dateSince';
 import { dateFormat } from '../../utils/dateFormat';
 import ModalPortal from '../ModalPortal/ModalPortal';
 import ReplyPost from '../ReplyPost/ReplyPost';
+import { reportPost } from '@/services/api/api.post.service';
 
 // recibe por parámetros la información del comentario y el tipo
 // type="detail" si es para la vista detalle del comentario
@@ -25,8 +26,9 @@ function PostToggle({ data, type = "detail" }) {
     const closeModal = () => setIsModalOpen(false);
 
     const reportPost = () => {
+        reportPost(data.id)
         alert('Comentario reportado')
-        closeModal();
+        closeModal()
     }
 
     useEffect(() => {

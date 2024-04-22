@@ -5,8 +5,6 @@ const getAllPosts = async () => {
     return posts.data
 }
 const createPost = async (idToken, data) => {
-    console.log(idToken)
-    console.log(data)
     const response = await fetch(`https://c16-backend.onrender.com/api/posts/`, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
@@ -18,11 +16,40 @@ const createPost = async (idToken, data) => {
     });
     return response.json()
 }
-const editPost = async () => {
+const editPost = async (idToken, data, pid) => {
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts/${pid}`, {
+        method: "PUT", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`,
+        },
+        body: JSON.stringify({content:data}), 
+    })
+
+    return response
 }
-const deletePost = async () => {
+const deletePost = async (idToken, pid) => {
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts/${pid}`, {
+        method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`,
+        },
+    })
+
+    return response
 }
-const reportPost = async () => {
+const reportPost = async (idToken, pid) => {
+    const response = await fetch(`https://c16-backend.onrender.com/api/reports/`, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`,
+        },
+
+        body: JSON.stringify({postId:pid}), 
+    })
+    return response.json()
 }
 
 const getPostById = async (pid) => {
@@ -54,4 +81,7 @@ export {
     getPostById,
     getAllPosts,
     createPost,
+    reportPost,
+    deletePost,
+    editPost,
 }
