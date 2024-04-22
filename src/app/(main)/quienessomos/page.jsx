@@ -25,6 +25,7 @@ import Carrusel, { imagenesDeEjemplo } from '../quienessomos/components/Carrusel
                 />
                 <Nosotros /> 
                 <Carrusel imagenes={imagenesDeEjemplo} /> 
+                
             </div>
         );
     }

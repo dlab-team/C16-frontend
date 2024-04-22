@@ -20,9 +20,21 @@ const Carrusel = ({ imagenes }) => {
     };
 
     return (
-        <div style={{ marginBottom: '500px' }}> 
+        <div style={{ marginBottom: '800px' }}> 
             <h2 className={styles.tituloRed}>Nuestra Red</h2>
             <div className={styles.carruselUno}>
+                <Slider {...settings}>
+                    {imagenes.map((imagen, index) => (
+                        <div key={index} className={styles.carruselItem}>
+                            <a href={imagen.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                                <img src={imagen.src} alt={imagen.alt} className={styles.imagenCarrusel} />
+                                <p className={styles.nombreOrganizacion}>{imagen.nombre}</p>
+                                <p className={styles.descripcionCarrusel}>{imagen.descripcion}</p>
+                            </a>
+                        </div>
+                    ))}
+                </Slider>
+
                 <Slider {...settings}>
                     {imagenes.map((imagen, index) => (
                         <div key={index} className={styles.carruselItem}>

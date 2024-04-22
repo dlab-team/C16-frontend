@@ -15,8 +15,27 @@ font-family: Montserrat, sans-serif;
     text-align: left;
     color: #02385F;
     margin-bottom: 65px;
-    border-bottom: 3px solid #02385F;
+    position: relative;
     
+}
+
+.heading::after {
+  content: '';
+  /* Necesario para generar el pseudo-elemento */
+  display: block;
+  /* Hace que el pseudo-elemento sea como un bloque */
+  height: 3px;
+  /* El grosor de tu línea, igual al border-bottom original */
+  background-color: #02385F;
+  /* El color de tu línea, igual al color del texto */
+  width: 40%;
+  /* El largo del subrayado que desees, ajusta este valor */
+  position: absolute;
+  /* Posicionamiento absoluto respecto al heading */
+  bottom: -20px;
+  /* La distancia entre la línea y el texto, ajusta este valor */
+  left: 0;
+  /* Alineación a la izquierda */
 }
 
 .paragraph {
