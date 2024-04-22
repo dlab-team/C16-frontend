@@ -1,24 +1,31 @@
 'use client'
 import { useState } from 'react';
 import { FiTrash } from 'react-icons/fi';
-import { AiTwotoneEdit } from 'react-icons/ai';
+
 import styles from './styles/cardRed.module.css';
 import Image from 'next/image';
+import { AiOutlineUpload } from 'react-icons/ai';
 import Modal from '../modal/Modal';
 
+const CardPost = ({ name, description,handleDelete ,showModal,handleCloseModal,modalColor}) => {
 
-const CardRed = ({ image, name, description, alt,navigateToNuestraRed, pathname,handleDelete,handleCloseModal,modalColor,showModal}) => {
 
- 
+
+
 
   return (
     <div>
       <div className={styles.card}>
-            
-
-
         <div className={styles.image}>
-          <Image width={177} height={177} src={image} className={styles.profileImage} alt={alt} />
+        
+          <label htmlFor="uploadimage">
+              <Image width={177} height={177} src="https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/adm_image%2FFrame%2039944.png?alt=media&token=6a41f843-37e2-43d7-bd8d-9403619f80c5" className={styles.profileImage}  alt=''/>
+              </label>
+
+          <input type="file" id='uploadimage' className={styles.inpuUpload}/>
+          <div className={styles.iconimage}>
+          <AiOutlineUpload />
+          </div>
         </div>
         <div className={styles.cardBody}>
           <div className={styles.cardContent}>
@@ -35,10 +42,13 @@ const CardRed = ({ image, name, description, alt,navigateToNuestraRed, pathname,
 
             <div className={styles.cardTitle}>
               <div className={styles.cardTextAside}>
-                <p>{name}</p>
+                <input placeholder='Ronda' type="text" value={name} className={styles.inputname}/>
+              
               </div>
               <div className={styles.cardText}>
-                <p className={styles.cardTextDescription}>{description}</p>
+             
+                  <input placeholder='Borem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus' type="text"className={styles.cardTextDescription} value={description}  />
+              
               </div>
             </div>
           </div>
@@ -47,24 +57,20 @@ const CardRed = ({ image, name, description, alt,navigateToNuestraRed, pathname,
           <button className={styles.iconTrash} onClick={handleDelete}>
             <FiTrash />
           </button>
-          <button
-        className={`${styles.iconEdit} ${pathname === '/dashboard/red/postred' && styles.active}`}
-        onClick={navigateToNuestraRed}  >
-            <AiTwotoneEdit />
-          </button>
+          
         </div>
       </div>
 
-      {showModal && (
+      
       <Modal 
         showModal={showModal}
         handleCloseModal={handleCloseModal}
         handleDelete={handleDelete}
         modalColor={modalColor} // Pasa el color del modal como prop
       />
-    )}
+
     </div>
   );
 };
 
-export default CardRed;
+export default CardPost;
