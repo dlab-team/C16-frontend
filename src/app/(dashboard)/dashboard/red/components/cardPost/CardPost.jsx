@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+
 import { FiTrash } from 'react-icons/fi';
 
 import styles from './styles/cardRed.module.css';
@@ -62,12 +62,14 @@ const CardPost = ({ name, description,handleDelete ,showModal,handleCloseModal,m
       </div>
 
       
+      {showModal && (
       <Modal 
         showModal={showModal}
         handleCloseModal={handleCloseModal}
         handleDelete={handleDelete}
         modalColor={modalColor} // Pasa el color del modal como prop
       />
+    )}
 
     </div>
   );
