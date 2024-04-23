@@ -1,0 +1,13 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+.paginationSelect select{
+    height: 48px;
+    width: 70px;
+    border: 2px solid var(--clr-two-500);
+    padding: 15px;
+    border-radius: 8px;
+}
