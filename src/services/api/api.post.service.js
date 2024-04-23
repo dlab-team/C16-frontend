@@ -24,7 +24,7 @@ const createPost = async (idToken, data) => {
 
         body: JSON.stringify(data), 
     });
-    return response.json()
+    return response
 }
 const editPost = async (idToken, data, pid) => {
     const response = await fetch(`https://c16-backend.onrender.com/api/posts/${pid}`, {
