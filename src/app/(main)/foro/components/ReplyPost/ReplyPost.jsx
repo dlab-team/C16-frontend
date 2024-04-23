@@ -4,13 +4,15 @@ import styles from './RepliePost.module.css'
 import { useRouter } from 'next/navigation';
 import { UserContext } from '@/components/context/userContext';
 import { createPost } from '@/services/api/api.post.service';
+import { successMessage, errorMessage } from '@/utils/notify';
+
 
 
 function ReplyPost({parentId}) {
     const [text, setText] = useState('')
     const route = useRouter()
     const { user } = useContext(UserContext)
-    
+
 
     const formSubmit = (e) => {
         e.preventDefault()
@@ -22,12 +24,16 @@ function ReplyPost({parentId}) {
         }
 
         createPost(user.token, body)
-        .then(()=>alert('mensaje enviado'))
-        .catch(err=> console.log('++++++++++++++++++++', err))
-        .finally(()=> {
-            setText('')
-            route.refresh()
+        .then(response=>{
+            if(response.ok){
+                setText('')
+                successMessage('Respuesta publicada con éxito')
+                route.refresh()
+            }else{
+                errorMessage('Hubo un error al publicar tu respuesta, intente más tarde.')
+            }
         })
+        .catch(err=>  errorMessage('Hubo un error al publicar tu comentario, intente más tarde.'))
     }
     return (
         <form className={styles.inputCommentBox} onSubmit={formSubmit}>

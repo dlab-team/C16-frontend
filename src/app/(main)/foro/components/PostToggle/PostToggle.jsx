@@ -10,6 +10,7 @@ import ModalPortal from '../ModalPortal/ModalPortal';
 import ReplyPost from '../ReplyPost/ReplyPost';
 import { reportPost } from '@/services/api/api.post.service';
 import { UserContext } from '@/components/context/userContext';
+import { successMessage } from '@/utils/notify';
 
 
 // recibe por parámetros la información del comentario y el tipo
@@ -31,7 +32,8 @@ function PostToggle({ data, type = "detail" }) {
 
     const handleReportPost = () => {
         reportPost(user.token, data.id)
-        alert('Comentario reportado')
+
+        successMessage('El mensaje ha sido reportado exitosamente!')
         closeModal()
     }
     const sameId = () => {

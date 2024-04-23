@@ -10,6 +10,7 @@ import { authGoogle, loginEmailAndPassword } from '@/services/user.fire.service'
 import { createUser, getUser } from '@/services/api/api.user.service';
 import { UserContext } from '@/components/context/userContext';
 import { useRouter } from 'next/navigation'
+import { errorMessage } from "@/utils/notify";
 
 function LoginForm() {
 
@@ -37,7 +38,6 @@ function LoginForm() {
         const user = await createUser(idToken)
         updateUserContext(user, idToken)
         if (user.completed) {
-          alert(`Bienvenido ${user.firstname}`)
           router.push("/")
         } else {
           router.push("/auth/completarPerfil")
@@ -45,6 +45,7 @@ function LoginForm() {
       }
     } catch (error) {
       console.error(error)
+      errorMessage('El usuario no se pudo crear, inténtelo más tarde.')
     }
   }
 
@@ -58,7 +59,6 @@ function LoginForm() {
       const user = await getUser(uid)
       updateUserContext(user, idToken)
       if (user.completed) {
-        alert(`Bienvenido ${user.firstname}`)
         router.push("/")
       } else {
         router.push("/auth/completarPerfil")

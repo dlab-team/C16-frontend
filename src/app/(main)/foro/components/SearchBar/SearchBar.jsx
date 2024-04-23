@@ -21,7 +21,6 @@ function SearchBar() {
                 placeholder="Buscar"
                 required/>
             <button className={styles.searchIcon}></button>
-            {/* <div className={styles.filterIcon}></div> */}
         </form>
     )
 }

@@ -8,6 +8,7 @@ import EditModal from "../EditModal/EditModal";
 import { deletePost, editPost } from "@/services/api/api.post.service";
 import { UserContext } from "@/components/context/userContext";
 import { useRouter } from "next/navigation";
+import { successMessage, errorMessage } from '@/utils/notify'
 
 function MoreDropdown({data}) {
     const [isModalOpen, setIsModalOpen] = useState(false) // modal delete
@@ -24,17 +25,27 @@ function MoreDropdown({data}) {
     const closeEditModal = () => setIsModalEdit(false);
     
     const handleDeletePost = async ()=>{
-        console.log(1)
-        console.log(data)
         await deletePost(user.token, data.id)
-
-        alert(`el comentario ${data.id} ha sido eliminado`)
+        .then((response)=>{
+            if(response.ok){
+                successMessage('El comentario ha sido eliminado')
+            }else{
+                errorMessage('Hubo un problema al eliminar!')
+            }
+        })
         router.refresh()
     }
     
     const editMessage = async (newText)=>{
         await editPost(user.token, newText, data.id)
-        alert(`el comentario ${data.id} ha sido editado`)
+        .then((response)=>{
+            if(response.ok){
+                successMessage('El comentario ha sido editado correctamente.')
+            }else{
+                errorMessage('Hubo un problema al editar.')
+            }
+        })
+        
         router.refresh()
     }
     const disableDropDown=()=>{

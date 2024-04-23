@@ -4,9 +4,8 @@ import { useState, useContext } from 'react'
 import styles from './PostForm.module.css'
 import { useRouter } from 'next/navigation';
 import { UserContext } from '@/components/context/userContext';
-
 import { createPost } from '@/services/api/api.post.service';
-
+import { successMessage, errorMessage } from '@/utils/notify';
 
 function PostForm() {
     const [text, setText] = useState('')
@@ -18,8 +17,16 @@ function PostForm() {
         createPost(
             user.token, 
             {content:text})
-        .catch(err=> console.error('++++++++++++++++++++', err))
-        .finally(()=> route.refresh())
+        .then(response=>{
+            if(response.ok){
+                setText('')
+                successMessage('Mensaje publicado con éxito')
+                route.refresh()
+            }else{
+                errorMessage('Hubo un error al publicar tu comentario, intente más tarde.')
+            }
+        })
+        .catch(err=> errorMessage('Hubo un error al publicar tu comentario, intente más tarde.'))
     }
 
     return (

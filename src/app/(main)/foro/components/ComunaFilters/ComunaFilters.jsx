@@ -1,7 +1,7 @@
 'use client'
 
 import regionesData from './regionesData.json'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import styles from './ComunaFilters.module.css'
 import { UserContext } from '@/components/context/userContext'
 import { useRouter, usePathname } from 'next/navigation'
@@ -16,17 +16,13 @@ function ComunaFilters({page}) {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
+
         if(pathname == '/foro/comuna'){
             if(region!=='' && comuna !== ''){
                 router.push(`/foro/comuna/?comuna=${comuna}&page=${page}`)
             }
         }
     }
-    /* useEffect(()=>{
-        console.log('lksjfklkfklwefjweklm')
-        router.push(`/foro/comuna/?comuna=${comuna}&page=${page}`)
-        console.log('dos')
-    },[]) */
 
     return (
         <form className={styles.filterForm} onSubmit={handleSubmit}>
@@ -50,7 +46,6 @@ function ComunaFilters({page}) {
                 ))}
             </select>
 
-
             <label htmlFor="selectComuna" className={styles.inputLabel}></label>
             <select
                 type="text"
@@ -61,6 +56,7 @@ function ComunaFilters({page}) {
                     setComuna(e.target.value)
                 }}
                 disabled={region === ''}
+                required
             >
                 <option value="">Comuna</option>
                 {regionesData.regiones

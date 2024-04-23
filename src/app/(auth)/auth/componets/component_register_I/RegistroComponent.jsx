@@ -11,6 +11,7 @@ import { authGoogle, logOut, registerEmailAndPassword } from '@/services/user.fi
 import { createUser } from '@/services/api/api.user.service'
 import { UserContext } from '@/components/context/userContext'
 import Link from 'next/link'
+import { errorMessage } from "@/utils/notify";
 
 const RegistroComponent = () => {
   const router = useRouter()
@@ -62,9 +63,7 @@ const RegistroComponent = () => {
     const idToken = await registerEmailAndPassword(email, password)
     const user = await createUser(idToken) 
     updateUserContext(user, idToken)
-    alert('Usuario completado')
     router.push("/auth/completarPerfil")
-    
   }
 
   
@@ -82,30 +81,31 @@ const RegistroComponent = () => {
       }
     } catch (error) {
       console.error(error)
+      errorMessage('El usuario no se pudo crear, inténtelo más tarde.')
     }
   }
   
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!isEmailValid(email)) {
-      console.log('Correo electrónico no válido')
+      //console.log('Correo electrónico no válido')
       return
     }
     
     if (!password) {
-      console.log('La contraseña no puede estar vacía')
+      //console.log('La contraseña no puede estar vacía')
       return
     }
     
     if (!validLength || !hasSpecialChar || !hasNumber) {
       if (!validLength) {
-        console.log('Faltan letras')
+        //console.log('Faltan letras')
       }
       if (!hasSpecialChar) {
-        console.log('Faltan caracteres especiales')
+        //console.log('Faltan caracteres especiales')
       }
       if (!hasNumber) {
-        console.log('Faltan números')
+        //console.log('Faltan números')
       }
       return
     }
