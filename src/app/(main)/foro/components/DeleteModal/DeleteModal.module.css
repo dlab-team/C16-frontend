@@ -38,6 +38,7 @@
 .closeBtn:hover{
     cursor: pointer;
 }
+
 .modalInfo{
     font-family: var(--ff-one);
     color: var(--clr-secondary-2);
@@ -96,6 +97,7 @@
         flex-direction: row;
         justify-content: flex-end;
     }
+
     .closeButton{
         padding: 7px 15px;
     }

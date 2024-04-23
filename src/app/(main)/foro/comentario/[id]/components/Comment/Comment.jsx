@@ -16,11 +16,11 @@ function Comment({data}) {
                 />
 
                 <span className={styles.authorInfo}>
-                    <strong className={styles.strong}>{`${data.user.firstname} ${data.user.lastname} -`}</strong>
-                    {data.user.region} - {data.user.comuna}
+                    <strong className={styles.strong}>{`${data.user.firstname} ${data.user.lastname} - `}</strong>
+                    {data.user.comuna} - {data.user.region}
                 </span>
 
-                <MoreDropdown />
+                <MoreDropdown data={data}/>
             </div>
 
             <p className={styles.message}>{data.content}</p>
