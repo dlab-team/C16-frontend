@@ -1,7 +1,6 @@
 "use client";
 
 import "./Style.css";
-import "../../../../globals.css";
 import { useState } from "react";
 import DatePicker, { setDefaultLocale, registerLocale } from "react-datepicker";
 import { es } from 'date-fns/locale/es';
@@ -12,6 +11,8 @@ import { useRouter } from 'next/navigation'
 import { updateUser } from "@/services/api/api.user.service";
 import { UserContext } from "@/components/context/userContext";
 import { useContext } from "react";
+
+import { successMessage } from "@/utils/notify";
 
 const minDate=()=>{
   const today = new Date()
@@ -70,7 +71,7 @@ const CompleteProfile = () => {
 
     if (response) {
       updateUserContext(response, user.token)
-      alert('usuario completado')
+      successMessage('Usuario completado exitosamente!')
     }
     router.push('/')
   }

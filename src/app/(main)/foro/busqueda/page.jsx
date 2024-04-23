@@ -2,23 +2,12 @@ import Breadcumbs from "../comentario/[id]/components/Breadcumbs/Breadcumbs"
 import Post from "../components/Post/Post"
 import SearchBar from "../components/SearchBar/SearchBar"
 import styles from './busqueda.module.css'
-
-const searchPosts = async (resouce) =>{
-    const response = await fetch(`https://c16-backend.onrender.com/api/posts?search=${resouce}`, {cache:"no-store"})
-
-    /* if(!response.ok){
-        throw new Error("Error al obtener la publicación, puede que haya sido eliminado")
-    } */
-
-    const info = await response.json()
-
-    return info
-}
+import { searchByKeyword } from "@/services/api/api.post.service"
 
 
 async function Busqueda({ searchParams }) {
 
-    const {data, pagination} =  await searchPosts(searchParams.search)
+    const {data, pagination} =  await searchByKeyword(searchParams.search)
     return (
         <>
         <section className={styles.busquedaContainer}>

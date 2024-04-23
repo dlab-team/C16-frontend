@@ -5,7 +5,7 @@ import PostList from '../PostList/PostList'
 import SearchBar from '../SearchBar/SearchBar'
 import PostForm from '../PostForm/PostForm'
 
-function Publications({category}) {
+function Publications({category, searchParams}) {
 
     return (
         <section className={styles.publications}>
@@ -25,7 +25,7 @@ function Publications({category}) {
             <CategoryLinks category={category}/>
 
             <section className={styles.boxPublications}>
-                <PostList category={category}/>
+                <PostList category={category} searchParams={searchParams}/>
             </section>
         </section>
     )

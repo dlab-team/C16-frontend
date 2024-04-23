@@ -1,0 +1,17 @@
+.body{
+    display: grid;
+    place-items: center;
+    gap: 20px;
+}
+.loading{
+    width: 500px;
+    height: 500px;
+    background-image: url(/assets/img/loadingSpinnerImage.gif);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.title{
+    font-family: var(--ff-one);
+    text-align: center;
+}

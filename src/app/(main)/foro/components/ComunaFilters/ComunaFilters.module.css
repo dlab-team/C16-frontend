@@ -1,0 +1,118 @@
+.filterForm {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+
+    margin-top: 20px;
+}
+.inputLabel {
+    visibility: hidden;
+}
+
+.selectRegion {
+    grid-column: 1/-1;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    background-image: url("/assets/images/foro/arrowDown.svg");
+    background-repeat: no-repeat;
+    background-position-x: 94%;
+    background-position-y: 7px;
+    border: 1px solid var(--clr-primary-2);
+    border-radius: 10px;
+    height: 43px;
+    padding: 4px;
+    font-family: var(--ff-one);
+    font-size: 1.3rem;
+    font-weight: 200;
+    text-indent: 5px;
+}
+.selectComuna {
+    grid-column: 1/-1;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    background-image: url("/assets/images/foro/arrowDown.svg");
+    background-repeat: no-repeat;
+    background-position-x: 94%;
+    background-position-y: 7px;
+    border: 1px solid var(--clr-primary-2);
+    border-radius: 10px;
+    height: 43px;
+    padding: 4px;
+    font-family: var(--ff-one);
+    font-size: 1.3rem;
+    font-weight: 200;
+    text-indent: 5px;
+}
+
+.buttonBox{
+    grid-column: 1/-1;
+
+    display: flex;
+    justify-content: center;
+}
+.searchBtn{
+    color: var(--clr-primary-2);
+    background-color: var(--clr-primary-1);
+    font-family: var(--ff-one);
+    border-color: transparent;
+    border-radius: 5px;
+    padding: 7px 30px;
+    font-size: 16px;
+    font-weight: 500px;
+    margin-top: 6px;
+
+}
+.searchBtn:hover{
+    transform: scale(0.95);
+}
+
+@media (min-width: 576px) {
+    .filterForm {
+        gap: 10px;
+        margin-top: 26px;
+    }
+    .filterForm{
+        grid-template-columns: repeat(12, 1fr);
+    }
+    .selectRegion{
+        grid-column: 1/7;
+        grid-row: 1;
+    }
+    .selectComuna{
+        grid-column: 7/13;
+        grid-row: 1;
+    }
+    .buttonBox{
+        grid-column: 1/13;
+    
+        display: flex;
+        justify-content: flex-end;
+    }
+    .searchBtn{
+        margin-top: 0;
+    }
+} /* pantalla mediana */
+
+@media (min-width: 992px) {
+    .filterForm {
+        gap: 12px;
+    }
+    .filterForm{
+        grid-template-columns: repeat(12, 1fr);
+    }
+    .selectRegion{
+        grid-column: 3/7;
+        grid-row: 1;
+    }
+    .selectComuna{
+        grid-column: 7/11;
+        grid-row: 1;
+    }
+    .buttonBox{
+        grid-column: 1/11;
+    }
+} /* pantalla grande */
