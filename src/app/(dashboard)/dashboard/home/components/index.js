@@ -1,1 +1,1 @@
-// componentes de la pagina de inicio
+export { default as UsersTable } from './UsersTable/UsersTable'
