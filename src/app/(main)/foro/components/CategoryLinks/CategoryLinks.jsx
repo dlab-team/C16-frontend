@@ -29,6 +29,27 @@ function CategoryLinks({ category }) {
             ))}
         </nav>
     )
+   /*  return (
+        <>
+        {category=='comuna'?
+
+        :
+        <nav className={styles.categoryContainer}>
+            {categoryList.map((item) => (
+                <Link
+                    key={item}
+                    href={`/foro/${item}`}
+                    className={category === item ? styles.itemSelected : styles.itemNav} // Aplica el className directamente aquí
+                    passHref // Se asegura de que el enlace sea accesible y funcione correctamente
+                >
+                    {categoryNames[item]}
+                </Link>
+            ))}
+        </nav>
+        }
+        </>
+        
+    ) */
 }
 
 export default CategoryLinks

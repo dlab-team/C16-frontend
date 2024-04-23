@@ -1,25 +1,17 @@
 'use client'
-
-import {useContext, useEffect, useState } from 'react'
-import styles from './Pagination.module.css'
+import { useEffect, useState } from 'react'
+import styles from './PaginationComuna.module.css'
 import { usePathname } from "next/navigation"
-import { useRouter, useSearchParams } from 'next/navigation'
-import { UserContext } from '@/components/context/userContext'
+import { useRouter } from 'next/navigation'
 
-
-function Pagination({ data, comuna }) {
-    const searchParams = useSearchParams()
-    const search = searchParams.get('comuna')
-
-    const {user} = useContext(UserContext)
-
-
-    const pathname = usePathname()
-    const { currentPage, totalPages } = data
+function PaginationComuna({ data, comuna }) {
+    console.log(data)
+    const currentPage = data.currentPage
+    const totalPages = data.totalPages
 
     const [value, setValue] = useState(currentPage)
     const router = useRouter()
-    
+
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
@@ -28,15 +20,6 @@ function Pagination({ data, comuna }) {
         const newValue = parseInt(event.target.value)
         setValue(newValue)
     }
-
-    useEffect(()=>{
-
-        if(pathname=='/foro/comuna'){
-            router.push(`${pathname}/?page=${value}&comuna=${user.data.comuna}`)
-        }else{
-            router.push(`${pathname}/?page=${value}`)
-        }
-    }, [value])
 
     return (
         <>
@@ -60,4 +43,4 @@ function Pagination({ data, comuna }) {
     )
 }
 
-export default Pagination
+export default PaginationComuna

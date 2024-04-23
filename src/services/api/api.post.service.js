@@ -1,6 +1,11 @@
 
 const getAllPosts = async (page='1') => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/posts/?page=${page}`)
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts/?page=${page}`, {cache: "no-store"})
+    const posts = await response.json()
+    return posts
+}
+const getByComuna = async (page='1', comuna) => {
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts/?comuna=${comuna}&page=${page}`,{cache: "no-store"})
     const posts = await response.json()
     return posts
 }
@@ -16,6 +21,7 @@ const createPost = async (idToken, data) => {
     });
     return response.json()
 }
+
 const editPost = async (idToken, data, pid) => {
     const response = await fetch(`https://c16-backend.onrender.com/api/posts/${pid}`, {
         method: "PUT", // *GET, POST, PUT, DELETE, etc.
@@ -85,4 +91,5 @@ export {
     reportPost,
     deletePost,
     editPost,
+    getByComuna,
 }
