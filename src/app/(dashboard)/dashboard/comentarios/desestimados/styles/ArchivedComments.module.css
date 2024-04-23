@@ -1,0 +1,28 @@
+/* PC styles */
+.container {
+  width: 83%;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-inline: 4%;
+  padding-top: 4%;
+  background-color: #fff;
+  font-family: var(--ff-one);
+}
+
+.titleWrapper {
+  width: 100%;
+  margin-left: 9rem;
+  margin-top: -1.7rem;
+  margin-bottom: 0.5rem;
+}
+
+/* long screen styles */
+@media (width > 1700px) {
+  .container {
+    max-width: 55%;
+    margin-inline: auto;
+  }
+}
