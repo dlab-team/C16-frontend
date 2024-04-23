@@ -1,4 +1,4 @@
-import { getAllPosts, getByComuna } from "@/services/api/api.post.service"
+import { getAllPosts, getByComuna, getPostActividad } from "@/services/api/api.post.service"
 
 import ComunaFilters from "../ComunaFilters/ComunaFilters"
 import Pagination from "../Pagination/Pagination"
@@ -6,11 +6,11 @@ import Post from "../Post/Post"
 import styles from './PostList.module.css'
 
 async function PostList({category, searchParams}) {
-    const {page, comuna} = searchParams
+    const {page, comuna, userId} = searchParams
     let publications = {}
 
     if(category == "actividad"){
-        publications =  await getAllPosts(page)
+        publications =  await getPostActividad(userId, page)
     }else if(category == "comuna"){
         publications = await getByComuna(page, comuna)
     }else{
@@ -28,12 +28,6 @@ async function PostList({category, searchParams}) {
             </div>
 
             <Pagination data={publications.pagination} />
-            {/* {category =='comuna'?
-            <PaginationComuna data={publications.pagination} comuna={comuna}/>
-            :
-            <Pagination data={publications.pagination}/>
-            } */}
-
         </>
     )
 }

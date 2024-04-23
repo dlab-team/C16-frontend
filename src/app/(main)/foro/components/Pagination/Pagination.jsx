@@ -3,16 +3,12 @@
 import {useContext, useEffect, useState } from 'react'
 import styles from './Pagination.module.css'
 import { usePathname } from "next/navigation"
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { UserContext } from '@/components/context/userContext'
 
 
-function Pagination({ data, comuna }) {
-    const searchParams = useSearchParams()
-    const search = searchParams.get('comuna')
-
+function Pagination({ data }) {
     const {user} = useContext(UserContext)
-
 
     const pathname = usePathname()
     const { currentPage, totalPages } = data
@@ -30,12 +26,18 @@ function Pagination({ data, comuna }) {
     }
 
     useEffect(()=>{
-
-        if(pathname=='/foro/comuna'){
-            router.push(`${pathname}/?page=${value}&comuna=${user.data.comuna}`)
-        }else{
-            router.push(`${pathname}/?page=${value}`)
+        switch (pathname) {
+            case '/foro/comuna':
+                router.push(`${pathname}/?page=${value}&comuna=${user.data.comuna}`)
+                break;
+            case '/foro/actividad':
+                router.push(`/foro/actividad?page=${value}&userId=${user.data.id}`)
+                break;
+            default:
+                router.push(`/foro/recientes/?page=${value}`)
+                break;
         }
+
     }, [value])
 
     return (
@@ -53,7 +55,6 @@ function Pagination({ data, comuna }) {
                 </select>
 
                 <span>de {totalPages}</span>
-
             </div>
 
         </>

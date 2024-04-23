@@ -4,19 +4,22 @@ import regionesData from './regionesData.json'
 import { useState, useContext, useEffect } from 'react'
 import styles from './ComunaFilters.module.css'
 import { UserContext } from '@/components/context/userContext'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 
 function ComunaFilters({page}) {
     const router = useRouter()
     const { user } = useContext(UserContext)
+    const pathname = usePathname()
 
     const [region, setRegion] = useState(user.data.region)
     const [comuna, setComuna] = useState(user.data.comuna)
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        if(region!=='' && comuna !== ''){
-            router.push(`/foro/comuna/?comuna=${comuna}&page=${page}`)
+        if(pathname == '/foro/comuna'){
+            if(region!=='' && comuna !== ''){
+                router.push(`/foro/comuna/?comuna=${comuna}&page=${page}`)
+            }
         }
     }
     /* useEffect(()=>{
