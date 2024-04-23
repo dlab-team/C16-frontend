@@ -1,35 +1,28 @@
 'use client'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styles from './RepliePost.module.css'
 import { useRouter } from 'next/navigation';
-
-const sendPost = async ( data = {}) => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/posts/`, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        headers: {
-            "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify(data), 
-    });
-    return response.json()
-
-}
+import { UserContext } from '@/components/context/userContext';
+import { createPost } from '@/services/api/api.post.service';
 
 
 function ReplyPost({parentId}) {
     const [text, setText] = useState('')
     const route = useRouter()
+    const { user } = useContext(UserContext)
     
 
     const formSubmit = (e) => {
         e.preventDefault()
-        sendPost({
+
+        const body={
             content:text,
-            userId:'XCZ1234SMASJsP',
+            userId:user.data.id,
             parentId:parentId
-        })
-        .then(data=>console.log(data))
+        }
+
+        createPost(user.token, body)
+        .then(()=>alert('mensaje enviado'))
         .catch(err=> console.log('++++++++++++++++++++', err))
         .finally(()=> {
             setText('')

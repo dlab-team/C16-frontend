@@ -24,6 +24,8 @@ function MoreDropdown({data}) {
     const closeEditModal = () => setIsModalEdit(false);
     
     const handleDeletePost = async ()=>{
+        console.log(1)
+        console.log(data)
         await deletePost(user.token, data.id)
 
         alert(`el comentario ${data.id} ha sido eliminado`)
@@ -35,10 +37,13 @@ function MoreDropdown({data}) {
         alert(`el comentario ${data.id} ha sido editado`)
         router.refresh()
     }
+    const disableDropDown=()=>{
+        return data.userId!==user.data.id
+    }
 
     return (
         <>
-            <Dropdown>
+            <Dropdown isDisabled={disableDropDown()}>
                 <DropdownTrigger>
                     <Button
                         variant="bordered"
@@ -46,7 +51,7 @@ function MoreDropdown({data}) {
                         />
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Static Actions" className={styles.menu} id="dropdown_menu_ul">
-                    <DropdownItem key="edit" className={styles.dropOption} onClick={openEditModal}>
+                    <DropdownItem key="edit" className={styles.dropOption} onClick={openEditModal} >
                         <div className={styles.penIcon}></div>
                         <span className={styles.optionText}>Editar comentario</span>
                     </DropdownItem>

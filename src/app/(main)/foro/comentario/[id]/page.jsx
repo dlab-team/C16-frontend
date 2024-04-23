@@ -4,10 +4,11 @@ import Breadcumbs from "./components/Breadcumbs/Breadcumbs"
 import CommentListContainer from "./components/CommentListContainer/CommentListContainer"
 import { getPostById } from "@/services/api/api.post.service"
 
-async function Comment({ params }) {
+async function Comment({ params, searchParams }) {
     const { id } = params
+    const { page } = searchParams
 
-    const post = await getPostById(id)
+    const response = await getPostById(id, page)
 
     return (
         <main className={styles.main}>
@@ -18,10 +19,10 @@ async function Comment({ params }) {
             </section>
 
             <section className={styles.postBox}>
-                <Post data={post} type='detail' />
+                <Post data={response.data} type='detail' />
             </section>
 
-            <CommentListContainer data={post} />
+            <CommentListContainer data={response.data} pagination={response.pagination} postId={id}/>
         </main>
     )
 }

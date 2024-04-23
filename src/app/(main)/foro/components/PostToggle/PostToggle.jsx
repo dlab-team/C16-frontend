@@ -34,6 +34,9 @@ function PostToggle({ data, type = "detail" }) {
         alert('Comentario reportado')
         closeModal()
     }
+    const sameId = () => {
+        return user.data.id === data.userId ? true : false
+    }
 
     useEffect(() => {
         if (type == 'detail') {
@@ -41,35 +44,11 @@ function PostToggle({ data, type = "detail" }) {
         }
     }, []);
 
-    /* // Función para reportar el post
-    const reportPost = () => {
-        // Aquí se realizaría el llamado a la API para reportar el post
-        // Sustituye la URL y el método según tu implementación específica.
-        fetch(`/api/report/${data.id}`, { method: 'POST' })
-            .then((response) => {
-                if (response.ok) {
-                    // Procesa la respuesta satisfactoria
-                    alert('El post ha sido reportado.');
-                } else {
-                    // Maneja una respuesta no satisfactoria
-                    alert('Ocurrió un error al intentar reportar el post.');
-                }
-            })
-            .catch((error) => {
-                // Maneja errores de red o desconocidos
-                console.error('Error al reportar el post:', error);
-            })
-            .finally(() => {
-                // Cierra el modal independientemente del resultado
-                closeModal();
-            });
-    }; */
-
     return (
         <>
             <div className={styles.postFooter}>
                 <div className={styles.timeBox}>
-                    <span className={styles.time}>{"hace "+dateSince(data.createdAt)}</span>
+                    <span className={styles.time}>{"hace " + dateSince(data.createdAt)}</span>
                     <span className={styles.date}>{dateFormat(data.createdAt)}</span>
                 </div>
 
@@ -93,9 +72,7 @@ function PostToggle({ data, type = "detail" }) {
                             </Link>
                     }
 
-
-
-                    <button onClick={openModal} className={styles.action}>
+                    <button onClick={openModal} className={sameId() ? styles.actionDisable : styles.action} disabled={sameId()}>
                         <div className={styles.reportIcon}></div>
                         <span className={styles.actionText}>Reportar</span>
                     </button>
@@ -111,7 +88,7 @@ function PostToggle({ data, type = "detail" }) {
 
             {
                 isVisible && (
-                    <ReplyPost parentId={data.id}/>
+                    <ReplyPost parentId={data.id} />
                 )
             }
 

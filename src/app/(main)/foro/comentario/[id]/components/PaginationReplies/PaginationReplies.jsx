@@ -1,11 +1,10 @@
 'use client'
+
 import { useEffect, useState } from 'react'
-import styles from './PaginationComuna.module.css'
-import { usePathname } from "next/navigation"
+import styles from './PaginationReplies.module.css'
 import { useRouter } from 'next/navigation'
 
-function PaginationComuna({ data, comuna }) {
-    console.log(data)
+function PaginationReplies({ data, postId }) {
     const currentPage = data.currentPage
     const totalPages = data.totalPages
 
@@ -20,6 +19,11 @@ function PaginationComuna({ data, comuna }) {
         const newValue = parseInt(event.target.value)
         setValue(newValue)
     }
+
+    useEffect(()=>{
+        router.push(`/foro/comentario/${postId}/?page=${value}`)
+    }, [value])
+
 
     return (
         <>
@@ -43,4 +47,4 @@ function PaginationComuna({ data, comuna }) {
     )
 }
 
-export default PaginationComuna
+export default PaginationReplies

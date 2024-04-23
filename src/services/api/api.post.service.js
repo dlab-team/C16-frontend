@@ -26,7 +26,6 @@ const createPost = async (idToken, data) => {
     });
     return response.json()
 }
-
 const editPost = async (idToken, data, pid) => {
     const response = await fetch(`https://c16-backend.onrender.com/api/posts/${pid}`, {
         method: "PUT", // *GET, POST, PUT, DELETE, etc.
@@ -64,8 +63,9 @@ const reportPost = async (idToken, pid) => {
     return response.json()
 }
 
-const getPostById = async (pid) => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/posts/${pid}`, { cache: "no-store" })
+
+const getPostById = async (pid, page='1') => {
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts/${pid}/?page=${page}`, { cache: "no-store" })
 
     /* if(!response.ok){
         throw new Error("Error al obtener la publicación, puede que haya sido eliminado")
@@ -73,7 +73,7 @@ const getPostById = async (pid) => {
 
     const info = await response.json()
 
-    return info.data
+    return info
 }
 
 const searchByKeyword = async (keyword) => {
