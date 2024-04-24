@@ -1,0 +1,111 @@
+.formred{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 40vw;
+}
+.formtitle{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    font: var(--tx-desktop-three);
+    color: var(--clr-primary-2);
+    align-self: flex-start;
+    flex-direction: column;
+
+}
+
+.formtitlebutton{
+    border: none;
+    background-color: transparent;
+    font-size: 35px;
+    color: var(--clr-primary-2);
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    align-items: center;
+}
+.formborder{
+    border: 1px solid var(--clr-two-50);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    width: 70%;
+    margin-bottom: 5%;
+    padding: 2%;
+    align-items: center;
+}
+.formimage{
+    display: flex;
+    flex-direction: column;
+}
+.iconimage{
+    position: absolute;
+    top: 31%;
+    left: 57%;
+    background: #E6EBEF;
+    height: 35px;
+    font-size: 27px;
+    width: 35px;
+    text-align: center;
+    border-radius: 100%;
+
+}
+.inpuUpload{
+    display: none;
+}
+
+.redinput{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    height: 55px;
+    border-bottom: 1px solid var(--clr-two-400);
+    justify-content: space-around;
+    margin-bottom: 2%;
+    
+}
+.redinput input{
+    border: none;
+}
+.redDescription{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    height: 100px;
+    border-bottom: 1px solid var(--clr-two-400);
+    justify-content: space-around;
+}
+
+.redDescription input{
+    border: none;
+    width: 100%;
+    height: 80px;
+}
+
+
+
+
+
+.buttonsave{
+    width: 324px;
+    height: 55px;
+color:var( --clr-two-500);
+border-radius: 10px;
+background-color: var(--clr-one-400);
+font: var( --t-desktop-one);
+font-size: 24px;
+border: none;
+
+}
+.titleAcademia{
+    display: flex;
+}
+.titlephilosofer{
+font: var(--t-desktop-two);
+
+}
