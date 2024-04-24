@@ -75,6 +75,9 @@ const ResourceView = () => {
         <DeleteResourceModal
           dialogIsOpen={dialogIsOpen}
           setDialogIsOpen={setDialogIsOpen}
+          message="¿Estás seguro que deseas eliminar este recurso?"
+          okButtontext="Eliminar"
+          cancelButtonText="Cancelar"
         />
       )}
     </>
