@@ -4,12 +4,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './Carrusel.module.css';
 
-// Asegúrate de tener la fuente Montserrat importada en tu proyecto
-// Puedes agregarla en tu archivo HTML o CSS
 
 const Carrusel = ({ imagenes }) => {
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 2000,
         slidesToShow: 5,
@@ -17,6 +15,14 @@ const Carrusel = ({ imagenes }) => {
         autoplay: true,
         autoplaySpeed: 1000,
         pauseOnHover: true,
+        responsive: [
+            {
+                breakpoint: 1024, 
+                settings: {
+                    slidesToShow: 3,
+                },
+            },
+        ],
     };
 
     return (

@@ -18,6 +18,8 @@
 .carruselUno {
     height: 100px;
     margin-bottom: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
     
 }
 
@@ -27,11 +29,10 @@
 
 .imagenCarrusel {
     max-width: 50%;
-    /* Esto hará que la imagen sea responsiva */
+
     height: auto;
     padding-bottom: 0px;
-    /* Esto mantendrá la proporción de la imagen */
-    /* Ajusta el tamaño máximo según lo que necesites */
+
 }
 
 .nombreOrganizacion {
@@ -54,23 +55,36 @@
 }
 
 /* Estilos para pantallas de hasta 480px de ancho (móviles) */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .nombreOrganizacion {
-        font-size: 18px;
-        line-height: 23px;
-        
+        font-size: 12px;
+        /* Tamaño de texto más pequeño para móviles */
+       text-align: center;
     }
+
+    .descripcionCarrusel {
+        font-size: 1px;
+        /* Tamaño de texto más pequeño para móviles */
+        padding: 8px;
+            
+        /* Padding ajustado para móviles */
+    }
+
+    /* Ajusta el tamaño de la imagen para móviles si es necesario */
+    .imagenCarrusel {
+        max-width: 100%;
+        /* Ajusta el ancho al 100% para que sea responsivo */
+        height: auto;
+        /* Mantiene la proporción de la imagen */
+    }
+        .carruselUno {
+            height: 0px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-bottom: 50px;
+
+        }
 }
-
-@media (width >=1440px) {
-  
-    }
-
-
-@media (width > 2000px) {
-   
-    }
-
 
 
 /* desktop styles */
