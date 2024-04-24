@@ -2,6 +2,7 @@
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../context/userContext'
 import { useRouter, usePathname } from 'next/navigation'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const protectedRoutes = [
     '/academia',
@@ -36,7 +37,7 @@ function RoutesGuardian({ children }) {
         }
     }, [loading, user.logged, user.data.completed, pathname])  // Dependencias actualizadas para reaccionar a cambios
 
-    if (loading) return <body><div>Cargando...</div></body>  // Mostrar un indicador de carga mientras se verifica el usuario
+    if (loading) return <LoadingSpinner />  // Mostrar un indicador de carga mientras se verifica el usuario
 
     return (
         <>

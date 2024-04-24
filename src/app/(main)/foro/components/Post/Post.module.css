@@ -25,8 +25,8 @@
 .imageHeader {
     width: 40px;
     height: 40px;
-    object-fit: contain;
-    border-radius: 28px;
+    object-fit: cover;
+    border-radius: 50%;
     margin-right: auto;
     gap: 5px;
 }
@@ -34,7 +34,7 @@
 .authorInfo {
     font-family: var(--ff-one);
     color: var(--clr-primary-2);
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     text-transform: capitalize;
     margin-left: 5px;
 }
@@ -70,7 +70,11 @@
 }
 
 @media (min-width: 992px) {
+    .authorInfo {
+        font-size: 1rem;
+    }
     .message {
         padding: 25px;
+        font-size: 1.1rem;
     }
 }
