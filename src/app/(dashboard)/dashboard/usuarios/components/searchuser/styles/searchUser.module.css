@@ -1,0 +1,32 @@
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+}
+.searchSeccion{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    border: 2px solid var(--clr-two-500);
+    color: var(--clr-two-500);
+    width: 79%;
+    padding: 2%;
+    align-items: center;
+    border-radius: 10px;
+}
+.searchInput input{
+    border: none;
+    width: 690px;
+    padding: 2%;
+   
+}
+.search:active{
+    border: none;
+}
+.searchButton button{
+    border: none;
+    background: none;
+    font-size: 22px;
+    color: var(--clr-two-500);
+}
