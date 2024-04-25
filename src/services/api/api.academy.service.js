@@ -1,10 +1,9 @@
-const getAllVideos = async (page='1', title='')=>{
+const getAllVideos = async (page='1', search='')=>{
     let response
-    if(title==''){
+    if(search==''){
         response = await fetch(`https://c16-backend.onrender.com/api/materials?page=${page}`)
     } else{
-        console.log(1)
-        response = await fetch(`https://c16-backend.onrender.com/api/materials?page=${page}&title=${title}`, {cache: "no-store"})
+        response = await fetch(`https://c16-backend.onrender.com/api/materials?page=${page}&search=${search}`, {cache: "no-store"})
     }
     return response
 }
