@@ -30,7 +30,8 @@
     margin-left: 4%;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    padding: 0% 3%;
+    width: 50vw;
     justify-content: space-between;
 
 }
@@ -101,4 +102,18 @@ background-color: var(--clr-two-50);
     text-align: center;
     border-radius: 100%;
 
+}
+.textacademia{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 60vw;
+}
+
+.academiainput * {
+    border: none;
+    height: 5vw;
+    width: 135px;
+    
 }
