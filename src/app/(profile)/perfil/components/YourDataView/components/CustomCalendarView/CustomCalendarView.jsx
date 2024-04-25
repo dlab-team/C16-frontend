@@ -12,7 +12,7 @@ import './styles/ReactCalendar.styles.css'
 import inputStyles from '../InputsContainerView/styles/InputsContainerView.module.css'
 import styles from './styles/CustomCalendarView.module.css'
 
-const CustomCalendarView = () => {
+const CustomCalendarView = ({ inputsDisabled = false }) => {
   const [startDate, setStartDate] = useState(new Date())
   registerLocale('es', es)
 
@@ -26,7 +26,10 @@ const CustomCalendarView = () => {
   ))
 
   return (
-    <label htmlFor="calendar" className={inputStyles.label}>
+    <label
+      htmlFor="calendar"
+      className={`${inputStyles.label} ${inputsDisabled && inputStyles.labelDisabled}`}
+    >
       Fecha de nacimiento
       <DatePicker
         renderCustomHeader={({
@@ -69,6 +72,7 @@ const CustomCalendarView = () => {
         customInput={<CustomInput />}
         calendarClassName={styles.calendar}
         locale="es"
+        disabled={inputsDisabled}
       />
     </label>
   )
