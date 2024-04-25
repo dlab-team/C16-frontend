@@ -1,6 +1,12 @@
 import styles from './styles/DeleteResource.module.css'
 
-const DeleteResourceModal = ({ dialogIsOpen, setDialogIsOpen }) => {
+const DeleteResourceModal = ({
+  dialogIsOpen,
+  setDialogIsOpen,
+  message,
+  cancelButtonText,
+  okButtontext,
+}) => {
   return (
     <dialog id="deleteResource" className={styles.container}>
       <div className={styles.wrapper}>
@@ -11,17 +17,15 @@ const DeleteResourceModal = ({ dialogIsOpen, setDialogIsOpen }) => {
         >
           X
         </button>
-        <h5 className={styles.message}>
-          ¿Estás seguro que deseas eliminar este recurso?
-        </h5>
+        <h5 className={styles.message}>{message}</h5>
         <div className={styles.buttonsContainer}>
           <button
             onClick={() => setDialogIsOpen(!dialogIsOpen)}
             className={styles.cancelButton}
           >
-            Cancelar
+            {cancelButtonText}
           </button>
-          <button className={styles.deleteButton}>Eliminar</button>
+          <button className={styles.deleteButton}>{okButtontext}</button>
         </div>
       </div>
     </dialog>
