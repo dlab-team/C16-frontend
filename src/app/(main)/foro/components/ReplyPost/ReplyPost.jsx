@@ -1,40 +1,39 @@
 'use client'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styles from './RepliePost.module.css'
 import { useRouter } from 'next/navigation';
+import { UserContext } from '@/components/context/userContext';
+import { createPost } from '@/services/api/api.post.service';
+import { successMessage, errorMessage } from '@/utils/notify';
 
-const sendPost = async ( data = {}) => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/posts/`, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        headers: {
-            "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify(data), 
-    });
-    return response.json()
-
-}
 
 
 function ReplyPost({parentId}) {
     const [text, setText] = useState('')
     const route = useRouter()
-    
+    const { user } = useContext(UserContext)
+
 
     const formSubmit = (e) => {
         e.preventDefault()
-        sendPost({
+
+        const body={
             content:text,
-            userId:'XCZ1234SMASJsP',
+            userId:user.data.id,
             parentId:parentId
+        }
+
+        createPost(user.token, body)
+        .then(response=>{
+            if(response.ok){
+                setText('')
+                successMessage('Respuesta publicada con éxito')
+                route.refresh()
+            }else{
+                errorMessage('Hubo un error al publicar tu respuesta, intente más tarde.')
+            }
         })
-        .then(data=>console.log(data))
-        .catch(err=> console.log('++++++++++++++++++++', err))
-        .finally(()=> {
-            setText('')
-            route.refresh()
-        })
+        .catch(err=>  errorMessage('Hubo un error al publicar tu comentario, intente más tarde.'))
     }
     return (
         <form className={styles.inputCommentBox} onSubmit={formSubmit}>

@@ -1,4 +1,4 @@
-.postFooter{
+.postFooter {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,7 +6,8 @@
     margin-top: 1rem;
     width: 100%;
 }
-.timeBox{
+
+.timeBox {
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -17,63 +18,94 @@
     font-family: var(--ff-one);
     font-weight: 200;
 }
-.actionsBox{
+
+.actionsBox {
     display: flex;
     gap: 5px;
 }
-.likeIcon{
+
+.likeIcon {
     background-image: url('/assets/images/foro/likeIcon.svg');
     background-position: center;
     background-size: contain;
     width: 30px;
     height: 30px;
 }
-.commentIcon{
+
+.commentIcon {
     background-image: url('/assets/images/foro/commentIcon.svg');
     background-position: center;
     background-size: contain;
     width: 30px;
     height: 30px;
 }
-.reportIcon{
+
+.reportIcon {
     background-image: url('/assets/images/foro/reportIcon.svg');
     background-position: center;
     background-size: contain;
     width: 30px;
     height: 30px;
 }
+
 .actionText {
     display: none;
 }
-.action{
+
+.action {
     background-color: transparent;
     border: none;
 }
-.action:hover{
+
+.actionDisable {
+    background-color: transparent;
+    border: none;
+}
+
+.actionDisable:hover {
+    cursor: inherit;
+}
+
+.actionDisable .reportIcon {
+    opacity: 25%;
+}
+
+.actionDisable .actionText {
+    opacity: 25%;
+}
+
+.action:hover {
     cursor: pointer;
 }
-.linkComment{
+
+.linkComment {
     text-decoration: none;
 }
-.hideInput{
+
+.hideInput {
     display: none;
 }
 
 
 @media (min-width: 576px) {
-    .actionsBox{
+    .actionsBox {
         gap: 10px;
     }
-
-    
 }
 
 @media (min-width: 992px) {
-    .action{
+    .action {
         display: flex;
         align-items: center;
         gap: 3px;
     }
+
+    .actionDisable {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+
     .actionText {
         display: unset;
         font-family: var(--ff-one);
@@ -81,7 +113,8 @@
         font-weight: 200;
         font-size: 0.9rem;
     }
-    .timeBox{
+
+    .timeBox {
         font-size: 1rem;
     }
 }

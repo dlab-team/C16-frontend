@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import styles from './PostToogle.module.css'
 import Modal from '../Modal/Modal';
 import Link from 'next/link';
@@ -8,6 +8,10 @@ import { dateSince } from '../../utils/dateSince';
 import { dateFormat } from '../../utils/dateFormat';
 import ModalPortal from '../ModalPortal/ModalPortal';
 import ReplyPost from '../ReplyPost/ReplyPost';
+import { reportPost } from '@/services/api/api.post.service';
+import { UserContext } from '@/components/context/userContext';
+import { successMessage } from '@/utils/notify';
+
 
 // recibe por parámetros la información del comentario y el tipo
 // type="detail" si es para la vista detalle del comentario
@@ -15,6 +19,8 @@ import ReplyPost from '../ReplyPost/ReplyPost';
 function PostToggle({ data, type = "detail" }) {
     const [isVisible, setIsVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const { user } = useContext(UserContext)
 
     // Función para cambiar el estado de visibilidad
     const toggleVisibility = () => {
@@ -24,9 +30,14 @@ function PostToggle({ data, type = "detail" }) {
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-    const reportPost = () => {
-        alert('Comentario reportado')
-        closeModal();
+    const handleReportPost = () => {
+        reportPost(user.token, data.id)
+
+        successMessage('El mensaje ha sido reportado exitosamente!')
+        closeModal()
+    }
+    const sameId = () => {
+        return user.data.id === data.userId ? true : false
     }
 
     useEffect(() => {
@@ -35,35 +46,11 @@ function PostToggle({ data, type = "detail" }) {
         }
     }, []);
 
-    /* // Función para reportar el post
-    const reportPost = () => {
-        // Aquí se realizaría el llamado a la API para reportar el post
-        // Sustituye la URL y el método según tu implementación específica.
-        fetch(`/api/report/${data.id}`, { method: 'POST' })
-            .then((response) => {
-                if (response.ok) {
-                    // Procesa la respuesta satisfactoria
-                    alert('El post ha sido reportado.');
-                } else {
-                    // Maneja una respuesta no satisfactoria
-                    alert('Ocurrió un error al intentar reportar el post.');
-                }
-            })
-            .catch((error) => {
-                // Maneja errores de red o desconocidos
-                console.error('Error al reportar el post:', error);
-            })
-            .finally(() => {
-                // Cierra el modal independientemente del resultado
-                closeModal();
-            });
-    }; */
-
     return (
         <>
             <div className={styles.postFooter}>
                 <div className={styles.timeBox}>
-                    <span className={styles.time}>{"hace "+dateSince(data.createdAt)}</span>
+                    <span className={styles.time}>{"hace " + dateSince(data.createdAt)}</span>
                     <span className={styles.date}>{dateFormat(data.createdAt)}</span>
                 </div>
 
@@ -87,9 +74,7 @@ function PostToggle({ data, type = "detail" }) {
                             </Link>
                     }
 
-
-
-                    <button onClick={openModal} className={styles.action}>
+                    <button onClick={openModal} className={sameId() ? styles.actionDisable : styles.action} disabled={sameId()}>
                         <div className={styles.reportIcon}></div>
                         <span className={styles.actionText}>Reportar</span>
                     </button>
@@ -99,13 +84,13 @@ function PostToggle({ data, type = "detail" }) {
 
 
             <ModalPortal>
-                <Modal isOpen={isModalOpen} onClose={closeModal} onConfirm={reportPost} />
+                <Modal isOpen={isModalOpen} onClose={closeModal} onConfirm={handleReportPost} />
             </ModalPortal>
 
 
             {
                 isVisible && (
-                    <ReplyPost parentId={data.id}/>
+                    <ReplyPost parentId={data.id} />
                 )
             }
 
