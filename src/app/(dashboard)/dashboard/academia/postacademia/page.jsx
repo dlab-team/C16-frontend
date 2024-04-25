@@ -1,15 +1,23 @@
 
 "use client"
 
-import { AiOutlineUpload, AiTwotoneEdit } from 'react-icons/ai'
+import { AiOutlineUpload } from 'react-icons/ai'
 
-import CardPost from '../components/cardPost/CardPost';
-import styles from "./styles/postred.module.css"
+import EditPost from '../components/cardPost/EditPost';
+import styles from "./styles/postacademia.module.css"
 import { useState } from 'react';
 
+import { useRouter } from 'next/navigation';
 
 const postred = () => {
 
+  const router = useRouter();
+  const pathname = router.pathname;
+
+
+  const navigateToFormAcademia= () => {
+    router.push('/dashboard/academia/formacademia'); // Ajusta la ruta según sea necesario
+  };
   const [showModal, setShowModal] = useState(false);
 
   const [modalColor, setModalColor] = useState('#ffffff'); // Color inicial del modal
@@ -28,19 +36,24 @@ const postred = () => {
 
   return (
     <div className={styles.containerRed}>
-      {showModal && (
+     {showModal && (
         <div className={styles.modalBackground} onClick={handleCloseModal} style={{ backgroundColor: modalColor }} />
       )}
-      <div className={styles.title}>
-        <h1>Nuestra Red </h1>
-        <AiOutlineUpload />
-      </div>
+
+<div className={styles.title}>
+      <h1>Recursos de Academia</h1>
+      <button className={`${styles.iconform} ${pathname === '/dashboard/academia/formacademia' && styles.active}`} onClick={navigateToFormAcademia}>
+        <AiOutlineUpload/>
+      </button>
+    </div>
+
       <div className={styles.seccionCard}>
-     <CardPost
+     <EditPost 
      showModal={showModal}
      handleDelete={handleDelete}
      handleCloseModal={handleCloseModal}
      modalColor={modalColor}
+
      />
      </div>
       <div >
