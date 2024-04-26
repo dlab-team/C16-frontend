@@ -1,8 +1,18 @@
+'use client'
 import styles from './styles/usuarios.module.css'
 import { AiOutlineUpload } from 'react-icons/ai'
 import SearchUser from './components/searchuser/searchuser'
+import { useRouter } from 'next/navigation';
+
 
 const DashboardUsers = () => {
+  const router = useRouter();
+  const pathname = router.pathname;
+
+  const navigateEditUser = () => {
+    router.push('/dashboard/usuarios/{userId}'); // Ajusta la ruta según sea necesario
+  };
+
   const pruebatabla = [
     {
       id: 1,
@@ -75,7 +85,8 @@ const DashboardUsers = () => {
                 <td>{prueba.mail}</td>
                 <td>{prueba.phone}</td>
                 <td>
-                  <button className={styles.buttondetails}>
+                <button className={`${styles.buttondetails} ${pathname === '/dashboard/red/formred' && styles.active}`} onClick={navigateEditUser}>
+
                     {' '}
                     Ver detalles
                   </button>

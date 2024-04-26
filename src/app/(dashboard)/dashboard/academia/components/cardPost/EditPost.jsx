@@ -17,6 +17,9 @@ const EditPost = ({
   return (
     <div>
       <div className={styles.card}>
+
+        {/* para editar imagen
+        
         <div className={styles.image}>
           <label htmlFor="uploadimage">
             <Image
@@ -28,10 +31,13 @@ const EditPost = ({
           </label>
 
           <input type="file" id="uploadimage" className={styles.inpuUpload} />
+
           <div className={styles.iconimage}>
             <AiOutlineUpload />
           </div>
-        </div>
+
+        </div> */}
+
         <div className={styles.cardBody}>
           <div className={styles.cardContent}>
             <div className={styles.textacademia}>
