@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -12,10 +13,12 @@ import {
   AiOutlineLogout,
 } from 'react-icons/ai'
 import styles from './styles/MainButtons.module.css'
+import { DeleteResourceModal } from '..'
 
 const MainButtons = () => {
   const pathname = usePathname()
   const router = useRouter()
+  const [dialogIsOpen, setDialogIsOpen] = useState(false)
 
   return (
     <section className={styles.mainButtonsContainer}>
@@ -72,11 +75,23 @@ const MainButtons = () => {
           <AiOutlineTeam />
           Nuestra Red
         </button>
-        <button className={styles.button}>
+        <button
+          className={styles.button}
+          onClick={() => setDialogIsOpen(!dialogIsOpen)}
+        >
           <AiOutlineLogout />
           Cerrar Sesión
         </button>
       </div>
+      {dialogIsOpen && (
+        <DeleteResourceModal
+          dialogIsOpen={dialogIsOpen}
+          setDialogIsOpen={setDialogIsOpen}
+          message="¿Estás seguro que deseas Cerrar Sesión?"
+          cancelButtonText="Cancelar"
+          okButtontext="Cerrar"
+        />
+      )}
     </section>
   )
 }

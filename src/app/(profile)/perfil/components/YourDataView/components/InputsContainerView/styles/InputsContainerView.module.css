@@ -13,6 +13,10 @@
   overflow-x: hidden;
 }
 
+.labelDisabled {
+  color: #aaa1a1;
+}
+
 .input {
   width: 100%;
   border: none;

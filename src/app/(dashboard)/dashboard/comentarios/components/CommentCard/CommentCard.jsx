@@ -6,6 +6,7 @@ import { DeleteResourceModal } from '../../../components'
 
 const CommentCard = () => {
   const [dialogIsOpen, setDialogIsOpen] = useState(false)
+  const [showDialogModal, setShowDialogModal] = useState(false)
 
   return (
     <div className={styles.container}>
@@ -37,7 +38,7 @@ const CommentCard = () => {
           </button>
           <button
             className={styles.button}
-            onClick={() => setDialogIsOpen(!dialogIsOpen)}
+            onClick={() => setShowDialogModal(!showDialogModal)}
           >
             <AiOutlineEye size={24} />
           </button>
@@ -48,6 +49,18 @@ const CommentCard = () => {
         <DeleteResourceModal
           dialogIsOpen={dialogIsOpen}
           setDialogIsOpen={setDialogIsOpen}
+          message="¿Estás seguro que deseas desestimar este comentario?"
+          cancelButtonText="Cancelar"
+          okButtontext="Desestimar"
+        />
+      )}
+      {showDialogModal && (
+        <DeleteResourceModal
+          dialogIsOpen={showDialogModal}
+          setDialogIsOpen={setShowDialogModal}
+          message="¿Estás seguro que deseas ocultar este comentario?"
+          cancelButtonText="Cancelar"
+          okButtontext="Ocultar"
         />
       )}
     </div>
