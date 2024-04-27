@@ -1,17 +1,41 @@
-.body{
+.body {
     display: grid;
     place-items: center;
     gap: 20px;
+    height: 100vh;
+    background-color: var(--clr-two-400);
 }
-.loading{
-    width: 500px;
-    height: 500px;
-    background-image: url(/assets/img/loadingSpinnerImage.gif);
+
+.box {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loading {
+    aspect-ratio: 1;
+    width: 40px;
+    background-image: url(/assets/img/spinner.gif);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
 }
-.title{
+
+.title {
     font-family: var(--ff-one);
+    font-weight: 300;
     text-align: center;
+    color: #FF6656;
+    font-size: 1.5rem;
+}
+
+@media (min-width: 600px) {
+    .loading {
+        width: 60px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
 }
