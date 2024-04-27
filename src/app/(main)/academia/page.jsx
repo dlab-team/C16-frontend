@@ -1,10 +1,16 @@
 
 import { AcademyCard, SearchBar } from './components'
 import styles from './styles/Page.module.css'
-import AcademyTopView from './components/AcademyTopView/AcademyTopView'
 import { getAllVideos } from '@/services/api/api.academy.service'
 import Pagination from './components/Pagination/Pagination'
+import GenericBanner from '../components/GenericBanner/GenericBanner'
 
+const dataBanner = {
+  imgUrl:"/assets/banner/academia.png",
+  titleMessage:'', //mensaje que va en el titulo
+  titleEmphasis:'Academia', // el enfasis del texto que va color azul
+  message:'Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit', //mensaje del banner
+}
 
 async function Academia ({searchParams}) {
   const {page, search} = searchParams
@@ -25,7 +31,7 @@ async function Academia ({searchParams}) {
 
   return (
       <main className={styles.container}>
-        <AcademyTopView />
+        <GenericBanner resource={dataBanner}/>
         <SearchBar />
         <div className={styles.cardWrapper}>
           {videos.map((item) => (

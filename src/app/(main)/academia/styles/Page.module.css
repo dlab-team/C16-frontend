@@ -17,6 +17,7 @@
 @media (min-width: 576px) {
   .container {
     margin: auto;
+    padding: 0rem 0rem 1.5rem 0rem;
   }
   .cardWrapper {
     grid-template-columns: repeat(12, 1fr);

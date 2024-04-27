@@ -1,23 +1,19 @@
-'use client';
+import GenericBanner from "../components/GenericBanner/GenericBanner";
 
-import React, { useState, useEffect } from "react";
-import DinamicBanner from "../components/DinamicBanner/DinamicBanner";
-import styles from "../components/DinamicBanner/DinamicBanner.module.css";
+const dataBanner = {
+    imgUrl:"/assets/banner/quienesSomos.png",
+    titleMessage:'', //mensaje que va en el titulo
+    titleEmphasis:'Sobre Nosotros', // el enfasis del texto que va color azul
+    message:'Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit', //mensaje del banner
+}
 
     function QuienesSomos() {
         return (
-            <DinamicBanner
-                imageSrc='/assets/images/banner/quienessomosbanner.png'
-                title='Sobre Nosotros'
-                message= ''
-                customStyles={{
-                    desktopContainer: styles.quienesSomosDesktopContainer,
-                    bannerImg: styles.quienesSomosBannerImg,
-                    bannerTextBox: styles.quienesSomosBannerTextBox,
-                    bannerTitle: styles.quienesSomosBannerTitle,
-                    bannerMessage: styles.quienesSomosBannerMessage
-                }}
-            />
+            <>
+                <main style={{maxWidth: "1290px", margin:"0 auto"}}>
+                    <GenericBanner resource={dataBanner}/>
+                </main>
+            </>
         );
     }
 
