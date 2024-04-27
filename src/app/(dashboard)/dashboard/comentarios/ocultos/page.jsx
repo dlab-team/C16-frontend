@@ -1,19 +1,37 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { GoBackButton, TitleView } from '../../components'
 import { CommentsDataTable } from '../components'
 import styles from './styles/HiddenComments.module.css'
 import { PaginationView } from '@/app/(main)/components'
+import { getReports } from '@/services/api/api.report.service'
 
 const HiddenComments = () => {
-  const [paginationItems, setPaginationItems] = useState([])
+  const [hiddenReports, setHiddenReports] = useState([])
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
 
-  function getTotalPages() {
-    return 1
+  useEffect(() => {
+    fetchReports(page)
+  }, [page])
+
+  const fetchReports = (pageNum) => {
+    getReports(true, pageNum)
+      .then((data) => {
+        const { data: reportsData, pagination } = data
+        setHiddenReports(reportsData)
+        setTotalPages(pagination.totalPages)
+
+        if (reportsData.length === 0 && pageNum > 1) {
+          setPage(pageNum - 1)
+        }
+      })
+      .catch(() => {
+        setHiddenReports([])
+      })
   }
 
-  function paginationOptions() {
-    const totalPages = getTotalPages()
+  const paginationOptions = useMemo(() => {
     const options = []
     for (let i = 1; i <= totalPages; i++) {
       options.push(
@@ -22,35 +40,42 @@ const HiddenComments = () => {
         </option>,
       )
     }
-    setPaginationItems(options)
+    return options
+  }, [totalPages])
+
+  function handlePageChange(event) {
+    const selectedPage = parseInt(event.target.value)
+    setPage(selectedPage)
   }
 
-  useEffect(() => {
-    paginationOptions()
-  }, [])
-
-  function handlePageChange() {}
-
+  const renderHiddenReports = () => {
+    if (hiddenReports?.length > 0) {
+      return (
+        <CommentsDataTable
+          reports={hiddenReports}
+          refetchData={() => fetchReports(page)}
+          tipo="ocultos"
+        />
+      )
+    } else {
+      return <p>No hay reportes aceptados</p>
+    }
+  }
   return (
     <section className={styles.container}>
       <GoBackButton />
       <div className={styles.titleWrapper}>
         <TitleView title="Ocultos" italicTitle="" showIcons={false} />
       </div>
-      <CommentsDataTable
-        comment="Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-  vulputate libero et velit interdum, ac aliquet odio mattis."
-        author="Juan Perez"
-        adminName="Paola Gomez"
-        date="2023/05/05"
-        cellTitle="Fecha"
-      />
-      <PaginationView
-        paginationOptions={paginationItems}
-        currentPage={1}
-        handlePageChange={handlePageChange}
-        getTotalPages={getTotalPages}
-      />
+      {renderHiddenReports()}
+      {totalPages > 1 && (
+        <PaginationView
+          paginationOptions={paginationOptions}
+          currentPage={page}
+          handlePageChange={handlePageChange}
+          getTotalPages={() => totalPages}
+        />
+      )}
     </section>
   )
 }
