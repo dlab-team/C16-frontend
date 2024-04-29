@@ -47,7 +47,6 @@ function HomeBanner() {
                             Inscríbete
                         </button>
                     }
-
                 </div>
             </section>
             <Modal isOpen={isOpen} onClose={closeModal} />
