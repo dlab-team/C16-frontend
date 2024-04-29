@@ -11,10 +11,7 @@ import { authGoogle, logOut, registerEmailAndPassword } from '@/services/user.fi
 import { createUser } from '@/services/api/api.user.service'
 import { UserContext } from '@/components/context/userContext'
 import Link from 'next/link'
-<<<<<<< HEAD
-=======
 import { errorMessage } from "@/utils/notify";
->>>>>>> develop
 
 const RegistroComponent = () => {
   const router = useRouter()

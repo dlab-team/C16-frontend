@@ -8,13 +8,12 @@ export const UserContext = createContext()
 export const useUserContext = () => useContext(UserContext)
 
 export function UserProvider({ children }) {
-
     const [user, setUser] = useState({
         data: {},
         logged: false,
         token: null,
     })
-
+    
     const [loading, setLoading] = useState(true)
 
     const updateUserContext = (newUserData, idToken) => {
@@ -22,7 +21,7 @@ export function UserProvider({ children }) {
             ...prevUser,
             data: newUserData,
             token: idToken
-        }));
+        }))
     }
 
     const deleteUser = () => {
@@ -30,7 +29,7 @@ export function UserProvider({ children }) {
             data: {},
             token: null,
             logged: false,
-        });
+        })
     }
 
     useEffect(() => {
@@ -40,26 +39,21 @@ export function UserProvider({ children }) {
                     const idToken = await currentUser.getIdToken()
                     const uid = currentUser.uid ? currentUser.uid : currentUser.user.uid;
                     const result = await getUser(uid);
-
                     setUser({
                         data: result,
-                        logged: false,
+                        logged: true,
                         token: idToken,
                     });
-
                 } catch (error) {
                     console.error(error)
                 }
-            } else {
-                deleteUser(); 
             }
+            setLoading(false)  // Actualiza el estado de carga una vez completadas las operaciones
         })
     }, [])
 
     return (
-        <UserContext.Provider value={{ user, loading, updateUserContext, deleteUser}}>
-            {children}
-        {/* <UserContext.Provider value={{ user, loading, updateUserContext, deleteUser }}> */}
+        <UserContext.Provider value={{ user, loading, updateUserContext, deleteUser }}>
             {children}
         </UserContext.Provider>
     )

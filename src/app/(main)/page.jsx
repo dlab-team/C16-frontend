@@ -5,14 +5,8 @@ import styles from './page.module.css';
 import { IoIosArrowForward } from "react-icons/io";
 import Modal from '../(auth)/auth/login/ModalLogin/ModalLogin';
 
-import { useUserContext } from '@/components/context/userContext';  // Importa el contexto de usuario
-
-
 export default function Home() {
 
-  const { user } = useUserContext(); // Obtiene el usuario del contexto
-
-  const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
 
   return (
@@ -35,16 +29,12 @@ export default function Home() {
                 Únete a la red más grande de apoyo para cuidadores
               </p>
             </div>
-            {user.logged ? null : ( // Verifica si el usuario está loggeado
-              <>
-                <Modal isOpen={isOpen} onClose={closeModal} />
-                <button onClick={() => setIsOpen(true)} id={styles.modal_button}>
-                  {' '}
-                  Inscríbete
-                  {' '}
-                </button>
-              </>
-            )}
+            <Modal isOpen={isOpen} onClose={closeModal} />
+            <button onClick={() => setIsOpen(true)} id={styles.modal_button}>
+              {' '}
+              Inscríbete
+              {' '}
+            </button>
           </div>
         </section>
 
