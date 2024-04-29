@@ -28,6 +28,7 @@ function HomeBanner() {
                 titleAccent: 'Cuidados',
                 message: 'Únete a la red más grande de apoyo para cuidadores',
             })
+            setIsOpen(false)
         }
     }, [user])
 
@@ -46,7 +47,6 @@ function HomeBanner() {
                             Inscríbete
                         </button>
                     }
-
                 </div>
             </section>
             <Modal isOpen={isOpen} onClose={closeModal} />
