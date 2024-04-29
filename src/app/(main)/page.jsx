@@ -4,11 +4,19 @@ import Link from 'next/link';
 import styles from './page.module.css';
 import { IoIosArrowForward } from "react-icons/io";
 import Modal from '../(auth)/auth/login/ModalLogin/ModalLogin';
+import { useUserContext } from '@/components/context/userContext';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
+  const { loading, logged, setLogged } = useUserContext();
+
+  useEffect(() => {
+    // Actualiza el estado local cuando `logged` cambia
+    if (logged) {
+        setIsOpen(false); // Cierra el modal
+    }
+}, [logged]);
 
   return (
     <main className={styles.main}>
@@ -30,12 +38,16 @@ export default function Home() {
                 Únete a la red más grande de apoyo para cuidadores
               </p>
             </div>
-              <button onClick={() => setIsOpen(true)} id={styles.modal_button}>
-                {' '}
-                Inscríbete
-                {' '}
-              </button>
-            <Modal isOpen={isOpen} onClose={closeModal} />
+            {!logged && (
+              <>
+                <Modal isOpen={isOpen} onClose={closeModal} />
+                <button onClick={() => setIsOpen(true)} id={styles.modal_button}>
+                  {' '}
+                  Inscríbete
+                  {' '}
+                </button>
+              </>
+            )}
           </div>
         </section>
 
