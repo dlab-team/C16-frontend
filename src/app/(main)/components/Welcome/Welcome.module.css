@@ -1,0 +1,29 @@
+.welcome_title {
+    text-align: center;
+    font: var(--t-mobile-three);
+    color: var(--clr-primary-2);
+    letter-spacing: 4px;
+    margin-bottom: 14px;
+}
+
+@media (min-width: 576px) {
+    .welcome_title {
+        grid-column: 2/-2;
+        text-align: center;
+
+        font: var(--t-mobile-seven);
+        color: var(--clr-primary-2);
+    }
+}
+
+@media (min-width: 760px) {
+    .welcome_title {
+        font: var(--t-desktop-five);
+    }
+}
+
+@media (min-width: 992px) {
+    .welcome_title {
+        font: var(--t-desktop-six);
+    }
+}

@@ -117,9 +117,7 @@
 }
 
 @media (min-width: 992px) {
-    .section_banner {
-        max-height: 411.6px;
-    }
+
     .infoBanner{
         padding: 0.8rem 1rem;
     }
@@ -142,6 +140,12 @@
 }
 
 @media (min-width: 670px) {
+    .section_banner {
+        border-radius: 20px;
+    }
+    .infoBanner{
+        border-radius: 17px;
+    }
     .title{
         font-size: clamp(1.8rem, 4vw, 3.2rem);
         margin-bottom: 8px;
@@ -153,53 +157,9 @@
         max-width: clamp(273px, 35vw, 420px);
     }
 }
-@media (min-width: 1200px) {
 
-    /* ------------------- Banner Section */
-
-    /* .text_banner {
-        padding-left: 30px;
-        margin-top: 20px;
-        text-align: left;
+@media (min-width: 1400px) {
+    .section_banner {
+        min-height: 441.46px;
     }
-
-    .title_uniendo {
-        font: var(--t-desktop-four);
-        letter-spacing: 4px;
-    }
-
-    .title_cuidadores {
-        font: var(--t-desktop-five);
-        letter-spacing: 4px;
-    }
-
-    .detail_banner {
-        margin-left: 0px;
-    } */
-
-}
-
-@media (min-width: 1290px) {
-
-    /* ------------------- Banner Section */
-
-    /* .title_uniendo {
-        font: var(--t-desktop-one);
-    }
-
-    .title_cuidadores {
-        font: var(--t-desktop-two);
-    }
-
-    .detail_banner {
-        font: var(--tx-desktop-four);
-    }
-
-    #modal_button {
-        font: var(--tx-desktop-two);
-    }
-
-    #modal_button:hover {
-        font: var(--tx-desktop-two);
-    } */
-}
+} /* pantalla extra grande */

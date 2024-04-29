@@ -14,14 +14,6 @@
 
 /* ------------------- Welcome Section */
 
-.welcome_title {
-  text-align: center;
-  font: var(--t-mobile-three);
-  color: var(--clr-primary-2);
-  letter-spacing: 4px;
-  margin-bottom: 14px;
-}
-
 .welcome_p {
   text-align: center;
   font: var(--tx-mobile-one);
@@ -156,15 +148,6 @@
 
     margin-top: 50px;
   }
-
-  .welcome_title {
-    grid-column: 2/-2;
-    text-align: center;
-
-    font: var(--t-mobile-seven);
-    color: var(--clr-primary-2);
-  }
-
   .welcome_p {
     grid-column: 2/-2;
     font: var(--tx-desktop-one);
@@ -205,11 +188,6 @@
   .section {
     margin: 30px;
   }
-
-  /* ------------------- Welcome Section */
-  .welcome_title {
-    font: var(--t-desktop-five);
-  }
 }
 
 /* ------------------- Pantalla Grande */
@@ -222,11 +200,6 @@
   }
 
   /* ------------------- Welcome Section */
-
-  .welcome_title {
-    font: var(--t-desktop-six);
-  }
-
   .welcome_p {
     font: var(--tx-desktop-three);
   }

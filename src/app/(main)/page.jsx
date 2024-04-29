@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styles from './page.module.css';
 import { IoIosArrowForward } from "react-icons/io";
 import HomeBanner from './components/HomeBanner/HomeBanner';
+import Welcome from './components/Welcome/Welcome';
 
 export default function Home() {
 
@@ -12,7 +13,7 @@ export default function Home() {
         {/* ----- Welcome Section ----- */}
 
         <section className={styles.welcome_section}>
-          <h1 className={styles.welcome_title}>Bienvenid@</h1>
+          <Welcome />
           <p className={styles.welcome_p}>
             Sabemos lo desafiante que puede ser asumir este rol, por eso estamos para ayudarte en cada paso del camino.
           </p>

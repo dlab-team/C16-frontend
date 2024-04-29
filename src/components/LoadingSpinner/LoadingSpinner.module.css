@@ -3,39 +3,44 @@
     place-items: center;
     gap: 20px;
     height: 100vh;
-    background-color: var(--clr-two-400);
 }
-
 .box {
     width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+@keyframes fadeInOut {
+    0% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .loading {
     aspect-ratio: 1;
-    width: 40px;
-    background-image: url(/assets/img/spinner.gif);
+    width: 120px;
+    background-image: url(/assets/img/logo.svg);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    animation: fadeInOut 1.2s infinite alternate;
 }
-
 .title {
     font-family: var(--ff-one);
-    font-weight: 300;
+    font-weight: 600;
     text-align: center;
-    color: #FF6656;
+    color: var(--clr-primary-2);
     font-size: 1.5rem;
 }
 
 @media (min-width: 600px) {
     .loading {
-        width: 60px;
+        width: 150px;
     }
 
     .title {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 }
