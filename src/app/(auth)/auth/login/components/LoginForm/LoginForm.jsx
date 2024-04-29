@@ -38,7 +38,6 @@ function LoginForm() {
         const user = await createUser(idToken)
         updateUserContext(user, idToken)
         if (user.completed) {
-          alert(`Bienvenido ${user.firstname}`)
           router.push("/")
         } else {
           router.push("/auth/completarPerfil")
@@ -60,7 +59,6 @@ function LoginForm() {
       const user = await getUser(uid)
       updateUserContext(user, idToken)
       if (user.completed) {
-        alert(`Bienvenido ${user.firstname}`)
         router.push("/")
       } else {
         router.push("/auth/completarPerfil")
