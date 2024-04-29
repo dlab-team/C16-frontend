@@ -1,8 +1,18 @@
-import React from 'react'
+'use client'
 import styles from './styles/notfound.module.css'
 import Image from 'next/image'
 
+import { useRouter } from 'next/navigation';
+
 const Notfound = () => {
+
+  const router = useRouter();
+  const pathname = router.pathname;
+
+
+  const comebackhome = () => {
+    router.push('/'); // Ajusta la ruta según sea necesario
+  };
   return (
     <div className={styles.Notfound}>
  <Image
@@ -15,6 +25,8 @@ const Notfound = () => {
           <div className={styles.textcontainer} >
             <h1 className={styles.title}> ERROR 404</h1>
             <p className={styles.text}> Página no <br /> encontrada!</p>
+            <button  className={`${styles.buttonback} ${pathname === '/' && styles.active}`}
+            onClick={comebackhome}>Volver a Home</button>
           </div>
     </div>
   )
