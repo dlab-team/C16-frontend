@@ -9,8 +9,6 @@ export const useUserContext = () => useContext(UserContext)
 
 export function UserProvider({ children }) {
 
-    const [showModalButton, setShowModalButton] = useState(true);
-
     const [user, setUser] = useState({
         data: {},
         logged: false,
@@ -19,16 +17,12 @@ export function UserProvider({ children }) {
 
     const [loading, setLoading] = useState(true)
 
-    const [logged, setLogged] = useState(false); // Nuevo estado
-
     const updateUserContext = (newUserData, idToken) => {
         setUser(prevUser => ({
             ...prevUser,
             data: newUserData,
             token: idToken
         }));
-
-        setLogged(true); // Actualiza el estado logged
     }
 
     const deleteUser = () => {
@@ -37,8 +31,6 @@ export function UserProvider({ children }) {
             token: null,
             logged: false,
         });
-
-        setLogged(false); // Actualiza el estado logged
     }
 
     useEffect(() => {
@@ -49,13 +41,11 @@ export function UserProvider({ children }) {
                     const uid = currentUser.uid ? currentUser.uid : currentUser.user.uid;
                     const result = await getUser(uid);
 
-                    // setUser({
-                    //     data: result,
-                    //     logged: false,
-                    //     token: idToken,
-                    // });
-
-                    updateUserContext(result, idToken); // Actualiza el contexto con los datos del usuario
+                    setUser({
+                        data: result,
+                        logged: false,
+                        token: idToken,
+                    });
 
                 } catch (error) {
                     console.error(error)
@@ -63,12 +53,11 @@ export function UserProvider({ children }) {
             } else {
                 deleteUser(); 
             }
-            setLoading(false)  // Actualiza el estado de carga una vez completadas las operaciones
         })
     }, [])
 
     return (
-        <UserContext.Provider value={{ user, loading, updateUserContext, deleteUser, logged, setLogged }}>
+        <UserContext.Provider value={{ user, loading, updateUserContext, deleteUser}}>
             {children}
         {/* <UserContext.Provider value={{ user, loading, updateUserContext, deleteUser }}> */}
             {children}

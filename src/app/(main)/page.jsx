@@ -4,19 +4,16 @@ import Link from 'next/link';
 import styles from './page.module.css';
 import { IoIosArrowForward } from "react-icons/io";
 import Modal from '../(auth)/auth/login/ModalLogin/ModalLogin';
-import { useUserContext } from '@/components/context/userContext';
+
+import { useUserContext } from '@/components/context/userContext';  // Importa el contexto de usuario
+
 
 export default function Home() {
+
+  const { user } = useUserContext(); // Obtiene el usuario del contexto
+
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
-  const { loading, logged, setLogged } = useUserContext();
-
-  useEffect(() => {
-    // Actualiza el estado local cuando `logged` cambia
-    if (logged) {
-        setIsOpen(false); // Cierra el modal
-    }
-}, [logged]);
 
   return (
     <main className={styles.main}>
@@ -38,7 +35,7 @@ export default function Home() {
                 Únete a la red más grande de apoyo para cuidadores
               </p>
             </div>
-            {!logged && (
+            {user.logged ? null : ( // Verifica si el usuario está loggeado
               <>
                 <Modal isOpen={isOpen} onClose={closeModal} />
                 <button onClick={() => setIsOpen(true)} id={styles.modal_button}>
