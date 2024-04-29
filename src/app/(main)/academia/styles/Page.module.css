@@ -7,15 +7,41 @@
 
 .cardWrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.7rem;
+  grid-template-columns: repeat(1, 1fr);
   margin-top: 1.7rem;
+  gap: 35px;
   align-items: center;
   justify-content: center;
 }
 
+@media (min-width: 576px) {
+  .container {
+    margin: auto;
+  }
+  .cardWrapper {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+    padding-inline: 30px;
+  }
+} /* pantalla mediana */
+
+@media (min-width: 992px) {
+  .cardWrapper {
+    gap: 2rem;
+    padding-inline: 100px;
+  }
+} /* pantalla grande */
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1290px;
+    margin: 0 auto;
+  }
+} /* pantalla extra grande */
+
+
 /* PC styles */
-@media (width > 920px) {
+/* @media (width > 920px) {
   .container {
     width: 80%;
     margin: auto;
@@ -25,12 +51,12 @@
     grid-template-columns: repeat(2, 23rem);
     gap: 4rem;
   }
-}
+} */
 
 /* long screens */
-@media (width > 1200px) {
+/* @media (width > 1200px) {
   .cardWrapper {
     grid-template-columns: repeat(2, 25rem);
     gap: 6rem;
   }
-}
+} */

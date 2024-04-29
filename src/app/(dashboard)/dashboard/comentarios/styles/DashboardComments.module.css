@@ -1,0 +1,65 @@
+/* PC styles */
+.container {
+  width: 83%;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-inline: 4%;
+  padding-top: 4%;
+  background-color: #fff;
+  font-family: var(--ff-one);
+}
+
+.linksContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0.8rem;
+  align-self: flex-end;
+  margin-bottom: 2.2rem;
+  margin-top: 0.9rem;
+}
+
+.link {
+  font-size: var(--fs-text);
+  font-weight: 500;
+  line-height: 1.6rem;
+  user-select: none;
+  text-decoration: none;
+  color: var(--clr-grey-2);
+  transition: color 250ms ease-in-out;
+}
+
+.hr {
+  height: 1px;
+  border: none;
+  width: 100%;
+  background-color: var(--clr-grey-2);
+}
+
+.link:active {
+  color: var(--clr-primary-2);
+}
+
+.link:active .hr {
+  background-color: var(--clr-primary-2);
+}
+
+.link:hover {
+  color: var(--clr-primary-2);
+}
+
+.link:hover .hr {
+  background-color: var(--clr-primary-2);
+}
+
+/* long screen styles */
+@media (width > 1700px) {
+  .container {
+    max-width: 55%;
+    margin-inline: auto;
+  }
+}

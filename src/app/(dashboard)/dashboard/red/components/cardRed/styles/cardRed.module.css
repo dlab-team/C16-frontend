@@ -1,0 +1,78 @@
+.card{
+    display: flex;
+    margin: 2% 0%;
+    border-top: 3px solid var(--clr-two-200);
+    border-radius: 4px 4px 0px 0px;
+    padding: 3% 0%;
+    background-color: #f3f1f1;
+
+}
+.cardBody{
+    display: flex;
+   align-items: center;
+    height: 12vw;
+
+}
+
+.cardTitle{
+    display: flex;
+    justify-content: space-around;
+}
+.cardTextAside{
+    width: 150px;
+    align-self: center;
+}
+.cardText {
+    width: 448px;
+
+}
+.cardContent{
+    margin-left: 4%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.cardTextAsideTitle{
+    color: var(--clr-two-500);
+    font: var(--tx-desktop-three);
+    font-size: 20px;
+}
+.icon{
+    display: flex;
+    flex-direction: column;
+    gap: 7%;
+    justify-content: flex-start;
+    
+}
+.iconTrash{
+    border: none;
+    width: 90px;
+    height: 50px;
+    color: red;
+    border-radius: 5px;
+    font-size: 25px;
+}
+.iconEdit{
+    border: none;
+    width: 90px;
+    height: 50px;
+    color: black;
+    border-radius: 5px;
+    font-size: 25px;
+}
+.iconEdit:hover, .iconTrash:hover{
+box-shadow: 1px 1px 4px var(--clr-two-300);
+background-color: var(--clr-two-50);
+}
+.cardTextTop{
+    display: flex;
+    color: var(--clr-two-500);
+    font:var(--tx-desktop-three);
+    font-size: 20px;
+    font-weight: bolder;
+}
+.cardTextDescription{
+    width: 80%;
+}
