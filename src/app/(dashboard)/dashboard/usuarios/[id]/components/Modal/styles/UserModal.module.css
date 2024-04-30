@@ -1,0 +1,91 @@
+.container {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    z-index: 100;
+  }
+  
+  .wrapper {
+    width: 22rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 0.8rem;
+    padding: 0.9rem 1.5rem;
+    font-family: var(--ff-one);
+    position: relative; 
+  }
+  
+  .closeButton {
+    position: absolute; 
+    top: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    background-color: transparent;
+    margin: 0.8rem;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--clr-primary-2);
+    cursor: pointer;
+    z-index: 1; 
+  }
+  
+    .message {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--clr-secondary-2);
+      margin-bottom: 1.1rem;
+      user-select: none;
+    }
+  
+    .buttonsContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      gap: 0.5rem;
+      align-self: flex-end;
+    }
+  
+    .cancelButton {
+      width: 6.2rem;
+      height: 2rem;
+      border-radius: 0.6rem;
+      border: 1px solid var(--clr-primary-1);
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--clr-primary-2);
+      user-select: none;
+      cursor: pointer;
+    }
+  
+    .deleteButton {
+      width: 6.2rem;
+      height: 2rem;
+      border-radius: 0.6rem;
+      border: none;
+      background-color: var(--clr-primary-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--clr-primary-2);
+      user-select: none;
+      cursor: pointer;
+    }

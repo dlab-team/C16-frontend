@@ -56,68 +56,6 @@
   font-weight: 400;
 }
 
-.buttonsContainer {
-  width: 100%;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: var(--clr-primary-2);
-  padding: 0.3rem 0.5rem;
-  margin-left: -0.5rem;
-  overflow-x: scroll;
-  scrollbar-gutter: stable;
-  scrollbar-width: none;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: row;
-  gap: 0.5rem;
-}
-
-.buttonsContainer::-webkit-scrollbar-thumb {
-  background-color: transparent;
-}
-
-.buttonsContainer::-webkit-scrollbar {
-  width: 0;
-}
-
-.genderButton {
-  min-width: 7rem;
-  width: 7rem;
-  height: 1.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
-  background-color: #e8e8e8;
-  border: none;
-  color: var(--clr-secondary-2);
-  font-family: var(--ff-one);
-  font-size: 12px;
-  font-weight: 600;
-  transition: all 350ms ease-in;
-  cursor: pointer;
-  user-select: none;
-}
-
-.genderButton:hover {
-  background-color: var(--clr-primary-2);
-  color: #fff;
-}
-
-.genderButton:disabled {
-  cursor: default;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -webkit-user-modify: read-only;
-  opacity: 0.6;
-}
-
-.genderButton:disabled .genderButton:hover {
-  background-color: #e8e8e8;
-  color: var(--clr-secondary-2);
-}
 
 .selectContainer {
   width: 100%;
@@ -162,4 +100,153 @@
   position: absolute;
   right: 1rem;
   color: var(--clr-primary-2);
+}
+
+/* mobile styles */
+.buttonContainer {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saveButton {
+  width: 100%;
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.6rem;
+  border: none;
+  background-color: var(--clr-primary-1);
+  color: var(--clr-primary-2);
+  font-family: var(--ff-one);
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 2.5rem;
+  user-select: none;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+.saveButton:hover {
+  opacity: 0.9;
+}
+
+.buttonsContainer {
+  width: 100%;
+  border-bottom: 1px solid var(--clr-primary-2);
+  padding: 0.3rem 0.5rem;
+  margin-left: -0.5rem;
+  overflow-x: auto;
+  white-space: nowrap; 
+  display: flex;
+  align-items: center;
+}
+
+.toogle {
+  display: none;
+}
+
+.register__input__toogle {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 15%;
+}
+
+.register__toogles__buttons {
+  background-color: #e8e8e8;
+  height: 35px;
+  border-radius: 20px;
+  color: #fff;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.slider.round {
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 25px;
+  width: 25px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(55px);
+  -ms-transform: translateX(55px);
+  transform: translateX(55px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.genderButton {
+  min-width: 7rem;
+  width: 7rem;
+  height: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: #e8e8e8;
+  border: none;
+  color: var(--clr-secondary-2);
+  font-family: var(--ff-one);
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 350ms ease-in;
+  cursor: pointer;
+  user-select: none;
 }

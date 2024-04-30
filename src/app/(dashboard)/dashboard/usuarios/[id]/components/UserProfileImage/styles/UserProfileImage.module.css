@@ -64,3 +64,9 @@
 .deleteButton {
   color: #f03131;
 }
+
+/*arreglar esto */
+.inputFile{
+  color:transparent;
+  transform: translateY(70px) translateX(-70px);
+}
