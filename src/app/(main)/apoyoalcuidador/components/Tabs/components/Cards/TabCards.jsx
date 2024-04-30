@@ -25,13 +25,15 @@ function TabCards() {
             loading="lazy"
             className={styles.cardImage}
           />
-          <h6 className={styles.communityName}>Comuna: Santiago Centro</h6>
           <div className={styles.textContainer}>
             <h3 className={styles.title}>{item?.title}</h3>
             <p className={styles.p}>{item?.content}</p>
-            <Link href="#" target="_blank" className={styles.link}>
-              https://www.youtube.com/watch?v=EDQ3kDQGgys&pp=ygUHbWlkdWRldg%3D%3D
-            </Link>
+            <div className={styles.dateWrapper}>
+              <small className={styles.dateText}>{item?.createdAt}</small>
+              <Link href="#" className={styles.link}>
+                Leer más
+              </Link>
+            </div>
           </div>
         </div>
       ))}
