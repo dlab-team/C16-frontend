@@ -52,6 +52,15 @@
     color: var(--clr-two-600);
     font-weight: bold;
     font-size: 16px;
-    font-style: italic;
-  text-decoration: underline;
+    cursor: pointer;
+}
+
+.noUsers{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.downloadIcon{
+    cursor: pointer;
 }

@@ -1,18 +1,38 @@
 'use client'
-import { useState } from 'react'
-import { DeleteResourceModal, GoBackButton } from '../../components'
+
+import { GoBackButton } from '../../components'
 import { UserDataView, UserProfileImage } from './components'
 import styles from './styles/DashboardUserById.module.css'
-import { SaveButton } from '@/app/(profile)/perfil/components'
+import { useParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { getUser } from '@/services/api/api.user.service.js'
+import UserModal from './components/Modal/UserModal'
 
 const DashboardUserById = () => {
   const [inputsDisabled, setInputsDisabled] = useState(true)
   const [dialogIsOpen, setDialogIsOpen] = useState(false)
   const [showAlertMessage, setShowAlertMessage] = useState(false)
+  const { id } = useParams()
+  const [userProfile, setUserProfile] = useState({})
+
+  useEffect(() => {
+    fetchUser(id)
+  }, [])
+
+  const fetchUser = (id) => {
+    getUser(id)
+      .then((data) => {
+        setUserProfile(data)
+      })
+      .catch(() => {
+        setUserProfile({})
+      })
+  }
 
   return (
     <section className={styles.container}>
       <GoBackButton />
+
       <UserProfileImage
         inputsDisabled={inputsDisabled}
         setInputsDisabled={setInputsDisabled}
@@ -20,31 +40,29 @@ const DashboardUserById = () => {
         setDialogIsOpen={setDialogIsOpen}
         showAlertMessage={showAlertMessage}
         setShowAlertMessage={setShowAlertMessage}
+        userProfile={userProfile}
+        userPhotoUrl={userProfile?.photo}
       />
-      <UserDataView inputsDisabled={inputsDisabled} />
-      {!inputsDisabled && (
-        <div className={styles.wrapper}>
-          <div className={styles.saveButtonContainer}>
-            <SaveButton />
-          </div>
-        </div>
-      )}
+
+      <UserDataView inputsDisabled={inputsDisabled} userProfile={userProfile} />
       {dialogIsOpen && (
-        <DeleteResourceModal
+        <UserModal
+          userId={id}
           dialogIsOpen={dialogIsOpen}
           setDialogIsOpen={setDialogIsOpen}
-          message="¿Estás seguro que deseas bloquear este usuario?"
-          cancelButtonText="Cancelar"
-          okButtontext="Bloquear"
+          actionType="disable"
+          enabled={userProfile?.enabled}
+          refetchUser={() => fetchUser(id)}
         />
       )}
       {showAlertMessage && (
-        <DeleteResourceModal
+        <UserModal
+          userId={id}
           dialogIsOpen={showAlertMessage}
           setDialogIsOpen={setShowAlertMessage}
-          message="¿Estás seguro que deseas eliminar este usuario?"
-          cancelButtonText="Cancelar"
-          okButtontext="Eliminar"
+          actionType="delete"
+          enabled={userProfile?.enabled}
+          refetchUser={() => fetchUser(id)}
         />
       )}
     </section>
