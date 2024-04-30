@@ -11,7 +11,7 @@ const dataBanner = {
     'Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit', //mensaje del banner
 }
 
-// Datos de ejemplo para las imágenes del carrusel
+// Datos de ejemplo para las imágenes del carrusel //ToDo: ToDo: cambiar por datos reales
 export const imagenesDeEjemplo = [
   {
     id: 1,
