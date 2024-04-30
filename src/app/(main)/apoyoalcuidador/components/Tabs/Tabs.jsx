@@ -1,5 +1,4 @@
-import { FiltersView } from '..'
-import { LeadingResourceCard, TabCards } from './components'
+import { FiltersView, LeadingResourceCard, TabCards } from './components'
 import styles from './styles/Tabs.module.css'
 
 const Tabs = () => {
