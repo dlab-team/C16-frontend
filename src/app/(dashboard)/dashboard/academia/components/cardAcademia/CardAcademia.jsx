@@ -23,6 +23,8 @@ const CardAcademia = ({
   return (
     <div>
       <div className={styles.card}>
+        {/* imagen 
+        
         <div className={styles.image}>
           <Image
             width={177}
@@ -31,7 +33,7 @@ const CardAcademia = ({
             className={styles.profileImage}
             alt={alt}
           />
-        </div>
+        </div> */}
         <div className={styles.cardBody}>
           <div className={styles.cardContent}>
             <div className={styles.textacademia}>

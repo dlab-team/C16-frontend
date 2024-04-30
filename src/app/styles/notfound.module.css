@@ -1,0 +1,74 @@
+.Notfound{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+}
+.NotfoundImage{
+    width: 267px;
+    height: 233px;
+}
+.textcontainer{
+    display: flex;
+    flex-direction: column;
+    height: 30vw;
+    justify-content: space-around;
+}
+.title{
+    font: var(--t-mobile-one);
+    font-weight: 700;
+    font-size: 30px;
+}
+.text {
+    font: var(--t-mobile-six);
+    color: var(--clr-two-500);
+    margin-bottom: 10%;
+    text-align: center;
+
+}
+.buttonback{
+        width: 324px;
+        height: 55px;
+    color:var( --clr-two-500);
+    border-radius: 10px;
+    background-color: var(--clr-one-400);
+    font: var( --t-desktop-one);
+    font-size: 24px;
+    border: none;
+}
+
+
+@media (min-width: 576px) {
+    .textcontainer{
+        height: 25vw;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .Notfound{
+      
+        flex-direction:  row-reverse;
+        gap: 10%;
+        justify-content: center;
+        margin-top: 5%;
+    }
+
+    .NotfoundImage{
+        width: 521px;
+        height: 456px;
+    }
+
+.textcontainer{
+    height: 20vw;
+
+}
+.title{
+    font-size: 50px;
+}
+
+.text {
+    font-size: 45px;
+}
+
+}

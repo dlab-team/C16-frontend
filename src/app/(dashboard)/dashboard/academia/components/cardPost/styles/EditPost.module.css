@@ -4,7 +4,7 @@
     border-top: 3px solid var(--clr-two-200);
     border-radius: 4px 4px 0px 0px;
     padding: 3% 0%;
-    background-color: #f3f1f1;
+    background-color: #ebebeb;
 
 }
 .cardBody{
@@ -31,7 +31,7 @@
     height: 100%;
     display: flex;
     padding: 0% 3%;
-    width: 50vw;
+    width: 60vw;
     justify-content: space-between;
 
 }
@@ -95,7 +95,7 @@ background-color: var(--clr-two-50);
     position: absolute;
     top: 31%;
     left: 32%;
-    background: #E6EBEF;
+    background: #9b9fa1;
     height: 35px;
     font-size: 27px;
     width: 35px;

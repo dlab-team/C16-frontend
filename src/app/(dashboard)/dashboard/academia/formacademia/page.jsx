@@ -30,6 +30,11 @@ const Formacademia = () => {
         </div>
         <form action="" className={styles.form}>
           <div className={styles.formborder}>
+
+            {/*
+            para subir imagen 
+            
+            
             <div className={styles.image}>
               <label htmlFor="uploadimage">
                 <Image
@@ -49,7 +54,7 @@ const Formacademia = () => {
               <div className={styles.iconimage}>
                 <AiOutlineUpload />
               </div>
-            </div>
+            </div> */}
 
             <div className={styles.redinput}>
               <label htmlFor="nombreOrganizacion">
