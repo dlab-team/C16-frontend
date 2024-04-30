@@ -1,23 +1,19 @@
-'use client';
+import GenericBanner from "../components/GenericBanner/GenericBanner";
 
-import React, { useState, useEffect } from "react";
-import DinamicBanner from "../components/DinamicBanner/DinamicBanner";
-import styles from "../components/DinamicBanner/DinamicBanner.module.css";
+const dataBanner = {
+    imgUrl:"https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FimgAboutus.png?alt=media&token=b9f7b84d-7e6c-4718-a417-1fa2aadca7d5",
+    titleMessage:'', //mensaje que va en el titulo
+    titleEmphasis:'Sobre Nosotros', // el enfasis del texto que va color azul
+    message:'Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit', //mensaje del banner
+}
 
     function QuienesSomos() {
         return (
-            <DinamicBanner
-                imageSrc='/assets/images/banner/quienessomosbanner.png'
-                title='Sobre Nosotros'
-                message= ''
-                customStyles={{
-                    desktopContainer: styles.quienesSomosDesktopContainer,
-                    bannerImg: styles.quienesSomosBannerImg,
-                    bannerTextBox: styles.quienesSomosBannerTextBox,
-                    bannerTitle: styles.quienesSomosBannerTitle,
-                    bannerMessage: styles.quienesSomosBannerMessage
-                }}
-            />
+            <>
+                <main style={{maxWidth: "1290px", margin:"0 auto"}}>
+                    <GenericBanner resource={dataBanner}/>
+                </main>
+            </>
         );
     }
 
