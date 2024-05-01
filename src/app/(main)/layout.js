@@ -1,3 +1,4 @@
+import { ToastContainer } from 'react-toastify';
 
 import Footer from './components/FooterComponet/Footer';
 import NavView from './components/NavView/NavView';
@@ -17,6 +18,7 @@ export default function layout({ children }) {
             <>{children}</>
 
             <Footer />
+            <ToastContainer />
         </body>
     );
 }

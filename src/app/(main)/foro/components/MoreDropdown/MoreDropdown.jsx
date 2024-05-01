@@ -2,13 +2,14 @@
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import styles from './MoreDropdown.module.css'
 import { useState, useContext } from "react";
-import ModalPortal from "../ModalPortal/ModalPortal";
+
 import DeleteModal from "../DeleteModal/DeleteModal";
 import EditModal from "../EditModal/EditModal";
 import { deletePost, editPost } from "@/services/api/api.post.service";
 import { UserContext } from "@/components/context/userContext";
 import { useRouter } from "next/navigation";
 import { successMessage, errorMessage } from '@/utils/notify'
+import ModalPortal from "../ModalPortal/ModalPortal";
 
 function MoreDropdown({data}) {
     const [isModalOpen, setIsModalOpen] = useState(false) // modal delete
