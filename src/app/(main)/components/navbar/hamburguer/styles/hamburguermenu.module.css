@@ -1,0 +1,47 @@
+.drawer{
+    position: relative;
+
+}
+.menu{
+    overflow-y: scroll;
+}
+.pages{
+    background-color: white;
+    width: 50VW;
+    height: 100vh;
+    position: absolute;
+    z-index: 1;
+    list-style: none;
+    right: 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5%;
+    overflow-y: scroll;
+ 
+}
+.pages *{ 
+      font: var(--t-mobile-one);
+      font-size: 16px;
+}
+.pages button{ 
+   border: none;
+   background-color: transparent;
+   color: #1D1D1B;
+
+}
+.topmenu{
+    background-color: var( --clr-one-300);
+    height: 20%;
+    text-align: center;
+    padding: 5%;
+}
+.toggle{
+    border: none;
+    font-size: 35px;
+    background-color: transparent;
+}
+.pages button:hover{
+    color: blue;
+}
