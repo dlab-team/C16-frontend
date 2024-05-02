@@ -1,14 +1,25 @@
-import { RiEqualizerFill } from 'react-icons/ri'
-import { AiOutlineSearch } from 'react-icons/ai'
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import styles from './styles/SearchBar.module.css'
 
 const SearchBar = () => {
+  const router = useRouter()
+  const [value, setValue] = useState('')
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    
+    router.push(`/academia/?page=1&search=${value}`)
+    setValue('')
+  }
+
   return (
-    <div className={styles.container}>
-      <AiOutlineSearch className={styles.leftIcon} size={22} />
-      <input type="search" placeholder="Buscar tema" className={styles.input} />
-      <RiEqualizerFill className={styles.rightIcon} size={22} />
-    </div>
+    <form className={styles.form} onSubmit={handleSubmit} >
+        <input type="search" placeholder="Buscar tema" className={styles.inputTwo} required onChange={(e) => setValue(e.target.value)}/>
+        <button className={styles.searchIcon}></button>
+    </form>
   )
 }
 

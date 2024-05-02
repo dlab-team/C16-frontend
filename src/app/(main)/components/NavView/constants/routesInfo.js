@@ -13,11 +13,11 @@ export const ROUTES_INFO = [
     pathname: '/quienessomos',
     title: 'Quienes Somos',
   },
-  {
+/*   {
     id: 3,
     pathname: '/programa',
     title: 'Programa',
-  },
+  }, */
   {
     id: 4,
     pathname: '/academia',
@@ -25,8 +25,8 @@ export const ROUTES_INFO = [
   },
   {
     id: 5,
-    pathname: '/apoyoalcuidado',
-    title: 'Apoyo al Cuidado',
+    pathname: '/apoyoalcuidador',
+    title: 'Apoyo al Cuidador',
   },
   {
     id: 6,

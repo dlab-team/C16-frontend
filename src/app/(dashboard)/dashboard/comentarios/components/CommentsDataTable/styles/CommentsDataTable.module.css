@@ -54,3 +54,25 @@
   border-bottom: 1px solid var(--clr-grey-3);
   padding: 1rem 0;
 }
+
+.button {
+  width: 3.7rem;
+  height: 2.3rem;
+  border: none;
+  border-radius: 0.6rem;
+  background-color: #e8e8e8;
+  color: var(--clr-secondary-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  cursor: pointer;
+  user-select: none;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}

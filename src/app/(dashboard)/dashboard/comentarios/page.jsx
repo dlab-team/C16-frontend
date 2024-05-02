@@ -1,20 +1,41 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useContext } from 'react'
 import Link from 'next/link'
 import { TitleView } from '../components'
 import styles from './styles/DashboardComments.module.css'
 import { CommentCard } from './components'
 import { PaginationView } from '@/app/(main)/components'
+import { getReports } from '@/services/api/api.report.service'
+import { UserContext } from '@/components/context/userContext'
 
 const DashboardComments = () => {
-  const [paginationItems, setPaginationItems] = useState([])
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
+  const [reports, setReports] = useState([])
+  const { user } = useContext(UserContext)
+  const idToken = user?.token
 
-  function getTotalPages() {
-    return 1
+  useEffect(() => {
+    fetchReports(page)
+  }, [page])
+
+  const fetchReports = (pageNum) => {
+    getReports('', pageNum, idToken)
+      .then((data) => {
+        const { data: reportsData, pagination } = data
+        setReports(reportsData)
+        setTotalPages(pagination.totalPages)
+
+        if (reportsData.length === 0 && pageNum > 1) {
+          setPage(pageNum - 1)
+        }
+      })
+      .catch(() => {
+        setReports([])
+      })
   }
 
-  function paginationOptions() {
-    const totalPages = getTotalPages()
+  const paginationOptions = useMemo(() => {
     const options = []
     for (let i = 1; i <= totalPages; i++) {
       options.push(
@@ -23,14 +44,13 @@ const DashboardComments = () => {
         </option>,
       )
     }
-    setPaginationItems(options)
+    return options
+  }, [totalPages])
+
+  function handlePageChange(event) {
+    const selectedPage = parseInt(event.target.value)
+    setPage(selectedPage)
   }
-
-  useEffect(() => {
-    paginationOptions()
-  }, [])
-
-  function handlePageChange() {}
 
   return (
     <section id="padre" className={styles.container}>
@@ -52,14 +72,27 @@ const DashboardComments = () => {
           <hr className={styles.hr} />
         </Link>
       </div>
-      <CommentCard />
-      <CommentCard />
-      <PaginationView
-        paginationOptions={paginationItems}
-        currentPage={1}
-        handlePageChange={handlePageChange}
-        getTotalPages={getTotalPages}
-      />
+      {reports?.length > 0 &&
+        reports?.map((report) => (
+          <CommentCard
+            key={report.id}
+            id={report.id}
+            comment={report.content}
+            author={report.PostAuthor}
+            reporter={report.ReportAuthor}
+            number={report.quantity}
+            refetchData={() => fetchReports(page)}
+          />
+        ))}
+      {reports?.length === 0 && <p>No hay reportes</p>}
+      {totalPages > 1 && (
+        <PaginationView
+          paginationOptions={paginationOptions}
+          currentPage={page}
+          handlePageChange={handlePageChange}
+          getTotalPages={() => totalPages}
+        />
+      )}
     </section>
   )
 }
