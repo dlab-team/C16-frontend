@@ -1,22 +1,25 @@
 'use client'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useContext } from 'react'
 import { GoBackButton, TitleView } from '../../components'
 import { CommentsDataTable } from '../components'
 import styles from './styles/HiddenComments.module.css'
 import { PaginationView } from '@/app/(main)/components'
 import { getReports } from '@/services/api/api.report.service'
+import { UserContext } from '@/components/context/userContext'
 
 const HiddenComments = () => {
   const [hiddenReports, setHiddenReports] = useState([])
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
+  const { user } = useContext(UserContext)
+  const idToken = user?.token
 
   useEffect(() => {
     fetchReports(page)
   }, [page])
 
   const fetchReports = (pageNum) => {
-    getReports(true, pageNum)
+    getReports(true, pageNum, idToken)
       .then((data) => {
         const { data: reportsData, pagination } = data
         setHiddenReports(reportsData)

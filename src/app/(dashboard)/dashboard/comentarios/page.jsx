@@ -1,23 +1,26 @@
 'use client'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useContext } from 'react'
 import Link from 'next/link'
 import { TitleView } from '../components'
 import styles from './styles/DashboardComments.module.css'
 import { CommentCard } from './components'
 import { PaginationView } from '@/app/(main)/components'
 import { getReports } from '@/services/api/api.report.service'
+import { UserContext } from '@/components/context/userContext'
 
 const DashboardComments = () => {
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
   const [reports, setReports] = useState([])
+  const { user } = useContext(UserContext)
+  const idToken = user?.token
 
   useEffect(() => {
     fetchReports(page)
   }, [page])
 
   const fetchReports = (pageNum) => {
-    getReports('', pageNum)
+    getReports('', pageNum, idToken)
       .then((data) => {
         const { data: reportsData, pagination } = data
         setReports(reportsData)
