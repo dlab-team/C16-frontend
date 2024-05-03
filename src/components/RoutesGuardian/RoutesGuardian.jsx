@@ -1,24 +1,20 @@
 'use client'
+
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../context/userContext'
 import { useRouter, usePathname } from 'next/navigation'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const protectedRoutes = [
-    '/academia',
-    '/foro/*',
     '/perfil',
-];
+    '/academia',
+    '/foro',
+]
 
-const pathIsProtected = (pathname) => {
-    return protectedRoutes.some(protectedPath => {
-        if (protectedPath.endsWith('/*')) {
-            const baseRoute = protectedPath.slice(0, -2)
-            return pathname.startsWith(baseRoute)
-        }
-        return pathname === protectedPath || pathname.startsWith(`${protectedPath}/`)
-    });
-};
+function isProtectedRoute(pathname) {
+    const regex = new RegExp(`^(${protectedRoutes.join('|')})($|/|\\?)`);
+    return regex.test(pathname)
+}
 
 function RoutesGuardian({ children }) {
     const { user, loading } = useContext(UserContext)
@@ -27,7 +23,7 @@ function RoutesGuardian({ children }) {
 
     useEffect(() => {
         if (!loading) {  // Solo ejecuta las comprobaciones una vez que la carga del usuario haya terminado
-            if (pathIsProtected(pathname)) {
+            if (isProtectedRoute(pathname)) {
                 if (!user.logged) {
                     router.push("/auth/login")
                 } else if (!user.data.completed) {
@@ -37,7 +33,8 @@ function RoutesGuardian({ children }) {
         }
     }, [loading, user.logged, user.data.completed, pathname])  // Dependencias actualizadas para reaccionar a cambios
 
-    if (loading) return <LoadingSpinner />  // Mostrar un indicador de carga mientras se verifica el usuario
+
+    if (loading) return  ( <LoadingSpinner /> )
 
     return (
         <>

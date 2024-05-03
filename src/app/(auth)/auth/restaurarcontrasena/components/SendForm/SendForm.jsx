@@ -19,7 +19,7 @@ function SendForm() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await resetPasword()
+        await resetPasword(newPassword)
         .catch((error)=>{
             setmodalInfo({
                 title:'No hemos podido enviar el correo.',
@@ -41,7 +41,12 @@ function SendForm() {
         <div>
             <form onSubmit={(e)=>handleSubmit(e)}>
                 <label className={styles.label} htmlFor='email'>Tu correo electronico</label>
-                <input className={styles.input} type="email" id='email' placeholder='correo@electronico.com'  onChange={(e) => setNewPassword(e.target.value)} required/>
+                <input className={styles.input} 
+                type="email" id='email' 
+                placeholder='correo@electronico.com'  
+                onChange={(e) => setNewPassword(e.target.value)} 
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                required/>
                 <div className={styles.btnBox}>
                     <button className={styles.sendBtn} type='send'>Continuar</button>
                 </div>

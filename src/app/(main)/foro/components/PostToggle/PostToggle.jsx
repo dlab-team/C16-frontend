@@ -32,9 +32,38 @@ function PostToggle({ data, type = "detail" }) {
 
     const handleReportPost = () => {
         reportPost(user.token, data.id)
+        .then(response => {
+            switch (response.status) {
+                case 200:
+                    successMessage('El comentario ha sido reportado correctamente.')
+                    router.refresh()
+                    break;
+                case 400:
+                    errorMessage('Hubo un error al reportar el comentario, intente más tarde.')
+                    deleteUser()
+                    router.push('/auth/login')
+                    break;
+                case 401:
+                    updateToken().then((res)=>{
+                        if (res) {
+                            infoMessage('No se pudo reportar el comentaio, intente nuevamente.')
+                        } else {
+                            router.push('/auth/login')
+                        }
+                    })
+                    break;
+                case 404:
+                    errorMessage('No se pudo encontrar el comentario, Probablemente haya sido eliminado.')
+                    break;
+                default:
+                    throw new Error('Unhandled status code');
+            }
+        })
+        .catch(err => {
+            errorMessage('Hubo un problema al reportar.')
+        })
+        .finally(()=>closeModal())
 
-        successMessage('El mensaje ha sido reportado exitosamente!')
-        closeModal()
     }
     const sameId = () => {
         return user.data.id === data.userId ? true : false

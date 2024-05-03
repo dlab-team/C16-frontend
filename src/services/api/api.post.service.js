@@ -60,7 +60,7 @@ const reportPost = async (idToken, pid) => {
 
         body: JSON.stringify({postId:id}), 
     })
-    return response.json()
+    return response
 }
 
 
