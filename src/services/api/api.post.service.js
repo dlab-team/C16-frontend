@@ -87,6 +87,18 @@ const searchByKeyword = async (keyword) => {
 
     return info
 }
+const like = async (idToken, pid) => {
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts/${pid}/like`, { 
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`,
+        },
+        cache: "no-store" 
+    })
+
+    return response
+}
 
 export {
     searchByKeyword,
@@ -98,4 +110,5 @@ export {
     editPost,
     getByComuna,
     getPostActividad,
+    like,
 }

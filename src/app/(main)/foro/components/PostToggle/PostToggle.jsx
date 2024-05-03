@@ -8,10 +8,11 @@ import { dateSince } from '../../utils/dateSince';
 import { dateFormat } from '../../utils/dateFormat';
 import ModalPortal from '../ModalPortal/ModalPortal';
 import ReplyPost from '../ReplyPost/ReplyPost';
-import { reportPost } from '@/services/api/api.post.service';
+import { reportPost, like } from '@/services/api/api.post.service';
 import { UserContext } from '@/components/context/userContext';
 import { successMessage } from '@/utils/notify';
-
+import formatCount from '../../utils/countFormat';
+import { useRouter } from 'next/navigation';
 
 // recibe por parámetros la información del comentario y el tipo
 // type="detail" si es para la vista detalle del comentario
@@ -21,6 +22,8 @@ function PostToggle({ data, type = "detail" }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const { user } = useContext(UserContext)
+    const router = useRouter()
+
 
     // Función para cambiar el estado de visibilidad
     const toggleVisibility = () => {
@@ -36,7 +39,6 @@ function PostToggle({ data, type = "detail" }) {
             switch (response.status) {
                 case 200:
                     successMessage('El comentario ha sido reportado correctamente.')
-                    router.refresh()
                     break;
                 case 400:
                     errorMessage('Hubo un error al reportar el comentario, intente más tarde.')
@@ -55,8 +57,6 @@ function PostToggle({ data, type = "detail" }) {
                 case 404:
                     errorMessage('No se pudo encontrar el comentario, Probablemente haya sido eliminado.')
                     break;
-                default:
-                    throw new Error('Unhandled status code');
             }
         })
         .catch(err => {
@@ -67,6 +67,13 @@ function PostToggle({ data, type = "detail" }) {
     }
     const sameId = () => {
         return user.data.id === data.userId ? true : false
+    }
+    const handleLike=()=>{
+        like(user.token, data.id).then((res)=>{
+            if(res.ok){
+                router.refresh()
+            }
+        })
     }
 
     useEffect(() => {
@@ -84,19 +91,22 @@ function PostToggle({ data, type = "detail" }) {
                 </div>
 
                 <div className={styles.actionsBox}>
-                    <div className={styles.action}>
+                    <button className={styles.action} onClick={handleLike}>
+                        <span className={styles.counter}>{formatCount(data.likesCount)}</span>
                         <div className={styles.likeIcon}></div>
                         <span className={styles.actionText}>Me Gusta</span>
-                    </div>
+                    </button>
                     {
                         type == "detail" ?
                             <button onClick={toggleVisibility} className={styles.action}>
+                                <span className={styles.counter}>{formatCount(data.repliesCount)}</span>
                                 <div className={styles.commentIcon}></div>
                                 <span className={styles.actionText}>Comentar</span>
                             </button>
                             :
                             <Link href={`/foro/comentario/${data.id}`} className={styles.linkComment}>
                                 <button className={styles.action}>
+                                    <span className={styles.counter}>{formatCount(data.repliesCount)}</span>
                                     <div className={styles.commentIcon}></div>
                                     <span className={styles.actionText}>Comentar</span>
                                 </button>
