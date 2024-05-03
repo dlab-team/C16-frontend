@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../context/userContext'
 import { useRouter, usePathname } from 'next/navigation'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
@@ -18,6 +18,7 @@ function isProtectedRoute(pathname) {
 
 function RoutesGuardian({ children }) {
     const { user, loading } = useContext(UserContext)
+    const [aux, setAux] = useState(false)
     const router = useRouter()
     const pathname = usePathname()
 
@@ -31,8 +32,15 @@ function RoutesGuardian({ children }) {
                 }
             }
         }
-    }, [loading, user.logged, user.data.completed, pathname])  // Dependencias actualizadas para reaccionar a cambios
+    }, [loading, user.logged, user.data.completed, aux, pathname])  // Dependencias actualizadas para reaccionar a cambios
 
+    useEffect(()=>{
+        if(isProtectedRoute(pathname)){
+            setAux(true)
+        }else{
+            setAux(false)
+        }
+    })
 
     if (loading) return  ( <LoadingSpinner /> )
 

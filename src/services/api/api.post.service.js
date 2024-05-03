@@ -76,13 +76,8 @@ const getPostById = async (pid, page='1') => {
     return info
 }
 
-const searchByKeyword = async (keyword) => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/posts?search=${keyword}`, { cache: "no-store" })
-
-    /* if(!response.ok){
-        throw new Error("Error al obtener las publicaciones")
-    } */
-
+const searchByKeyword = async (keyword, page='1') => {
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts?search=${keyword}&page=${page}`, { cache: "no-store" })
     const info = await response.json()
 
     return info

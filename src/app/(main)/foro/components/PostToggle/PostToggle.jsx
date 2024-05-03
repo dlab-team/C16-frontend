@@ -21,7 +21,7 @@ function PostToggle({ data, type = "detail" }) {
     const [isVisible, setIsVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const { user } = useContext(UserContext)
+    const { user, updateToken } = useContext(UserContext)
     const router = useRouter()
 
 
@@ -35,20 +35,60 @@ function PostToggle({ data, type = "detail" }) {
 
     const handleReportPost = () => {
         reportPost(user.token, data.id)
-        .then(response => {
+            .then(response => {
+                switch (response.status) {
+                    case 200:
+                        successMessage('El comentario ha sido reportado correctamente.')
+                        break;
+                    case 400:
+                        errorMessage('Hubo un error al reportar el comentario, intente más tarde.')
+                        deleteUser()
+                        router.push('/auth/login')
+                        break;
+                    case 401:
+                        updateToken().then((res) => {
+                            if (res) {
+                                infoMessage('No se pudo reportar el comentaio, intente nuevamente.')
+                            } else {
+                                router.push('/auth/login')
+                            }
+                        })
+                        break;
+                    case 404:
+                        errorMessage('No se pudo encontrar el comentario, Probablemente haya sido eliminado.')
+                        break;
+                    default:
+                        errorMessage('No se pudo encontrar realizar la operación. Intente más tarde')
+                        deleteUser()
+                        router.push('/')
+                        break;
+                }
+            })
+            .catch(err => {
+                errorMessage('No se pudo encontrar realizar la operación. Intente más tarde')
+                deleteUser()
+                router.push('/')
+            })
+            .finally(() => closeModal())
+
+    }
+    const sameId = () => {
+        return user.data.id === data.userId ? true : false
+    }
+    const handleLike = () => {
+        like(user.token, data.id).then((response) => {
             switch (response.status) {
-                case 200:
-                    successMessage('El comentario ha sido reportado correctamente.')
+                case 204:
+                    router.refresh()
                     break;
                 case 400:
-                    errorMessage('Hubo un error al reportar el comentario, intente más tarde.')
                     deleteUser()
                     router.push('/auth/login')
                     break;
                 case 401:
-                    updateToken().then((res)=>{
+                    updateToken().then((res) => {
                         if (res) {
-                            infoMessage('No se pudo reportar el comentaio, intente nuevamente.')
+                            infoMessage('No se pudo procesar el "me gusta", intente nuevamente.')
                         } else {
                             router.push('/auth/login')
                         }
@@ -57,23 +97,18 @@ function PostToggle({ data, type = "detail" }) {
                 case 404:
                     errorMessage('No se pudo encontrar el comentario, Probablemente haya sido eliminado.')
                     break;
+                default:
+                    errorMessage('No se pudo encontrar realizar la operación. Intente más tarde')
+                    deleteUser()
+                    router.push('/')
+                    break;
             }
         })
-        .catch(err => {
-            errorMessage('Hubo un problema al reportar.')
-        })
-        .finally(()=>closeModal())
-
-    }
-    const sameId = () => {
-        return user.data.id === data.userId ? true : false
-    }
-    const handleLike=()=>{
-        like(user.token, data.id).then((res)=>{
-            if(res.ok){
-                router.refresh()
-            }
-        })
+            .catch(err => {
+                errorMessage('No se pudo encontrar realizar la operación. Intente más tarde')
+                deleteUser()
+                router.push('/')
+            })
     }
 
     useEffect(() => {

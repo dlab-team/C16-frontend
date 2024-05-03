@@ -3,11 +3,13 @@ import Post from "../components/Post/Post"
 import SearchBar from "../components/SearchBar/SearchBar"
 import styles from './busqueda.module.css'
 import { searchByKeyword } from "@/services/api/api.post.service"
+import SearchPagination from "./components/SearchPagination/SearchPagination"
 
 
 async function Busqueda({ searchParams }) {
+    const {search, page} = searchParams
 
-    const {data, pagination} =  await searchByKeyword(searchParams.search)
+    const {data, pagination} =  await searchByKeyword(search, page)
     return (
         <>
         <section className={styles.busquedaContainer}>
@@ -21,7 +23,7 @@ async function Busqueda({ searchParams }) {
             <div className={styles.resultList} role="list">
                 {
                     pagination.totalItems==0?
-                    <p>No hay resultados con respecto a los datos enviados</p>
+                    <p className={styles.noPosts}>No hay resultados con respecto a la información buscada.</p>
                     :
                     data.map((post)=> <Post key={post.id} data={post} type="publications"/> )
                 }
@@ -29,19 +31,7 @@ async function Busqueda({ searchParams }) {
 
 
 
-            <div className={styles.pagination}>
-                <span>Pag</span>
-
-                <select name="select" id="" className={styles.select}>
-                    <option value="value1">1</option>
-                    <option value="value1">2</option>
-                    <option value="value1">3</option>
-                    <option value="value1">4</option>
-                </select>
-
-                <span>de 10</span>
-
-            </div>
+            <SearchPagination data={pagination} search={search} />
         </section>
 
         </>
