@@ -20,6 +20,13 @@
     justify-self: center;
     
 }
+.searchIcon:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.searchIcon:focus{
+    transform: scale(1.1);
+}
 .input{
     grid-column: 1/-1;
     grid-row: 1;

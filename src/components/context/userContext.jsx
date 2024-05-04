@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { auth } from "@/services/firebaseConfig"
 import { getUser } from "@/services/api/api.user.service"
+import { logOut } from "@/services/user.fire.service"
 
 export const UserContext = createContext()
 export const useUserContext = () => useContext(UserContext)
@@ -20,11 +21,29 @@ export function UserProvider({ children }) {
         setUser(prevUser => ({
             ...prevUser,
             data: newUserData,
-            token: idToken
+            token: idToken,
         }))
     }
 
-    const deleteUser = () => {
+    // actualiza el token con uno válido
+    const updateToken = async()=>{
+        try {
+            const currentUser = auth.currentUser;
+            if(!currentUser){ // si no hay un currentUser es porque se ha desloggeado o ha sido eliminado
+                deleteUser()
+                return false
+            }
+            const idToken = await currentUser.getIdToken(true);
+            updateUserContext(user.data, idToken)
+        } catch (error) {
+            deleteUser()
+            return false
+        }
+        return true
+    }
+
+    const deleteUser = async () => {
+        await logOut()
         setUser({
             data: {},
             token: null,
@@ -53,7 +72,7 @@ export function UserProvider({ children }) {
     }, [])
 
     return (
-        <UserContext.Provider value={{ user, loading, updateUserContext, deleteUser }}>
+        <UserContext.Provider value={{ user, loading, updateUserContext, deleteUser, updateToken }}>
             {children}
         </UserContext.Provider>
     )

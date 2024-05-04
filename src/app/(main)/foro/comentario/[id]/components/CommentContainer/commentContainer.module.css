@@ -13,7 +13,12 @@
     right: -11px;
 
     width: 100px;
-    height: auto;
+    height: 141%;
+}
+@media (min-width: 398px) {
+    .commentlineImg{
+        height: 150%;
+    }
 }
 
 @media (min-width: 576px) {
@@ -21,8 +26,14 @@
         grid-column: 1/2;
 
         width: 100px;
-        height: auto;
+        height: 166%;
         bottom: 0;
+    }
+
+}
+@media (min-width: 976px) {
+    .commentlineImg{
+        height: 171%;
     }
 
 }

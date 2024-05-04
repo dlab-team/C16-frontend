@@ -9,10 +9,11 @@ const AcademyCard = ({data}) => {
       width={100} height={100} 
       src={data.materialURL} 
       title="YouTube video player"
-      frameborder="0"
+      frameBorder="0"
       allowFullScreen 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" 
-      referrerpolicy="strict-origin-when-cross-origin">
+      referrerPolicy="no-referrer"
+      >
       </iframe>
 
       <div className={styles.textBox}>
