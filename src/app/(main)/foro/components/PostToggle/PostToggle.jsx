@@ -10,7 +10,7 @@ import ModalPortal from '../ModalPortal/ModalPortal';
 import ReplyPost from '../ReplyPost/ReplyPost';
 import { reportPost, like } from '@/services/api/api.post.service';
 import { UserContext } from '@/components/context/userContext';
-import { successMessage } from '@/utils/notify';
+import { successMessage, errorMessage, infoMessage } from '@/utils/notify';
 import formatCount from '../../utils/countFormat';
 import { useRouter } from 'next/navigation';
 
@@ -21,7 +21,7 @@ function PostToggle({ data, type = "detail" }) {
     const [isVisible, setIsVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const { user, updateToken } = useContext(UserContext)
+    const { user, updateToken, deleteUser } = useContext(UserContext)
     const router = useRouter()
 
 
@@ -78,7 +78,7 @@ function PostToggle({ data, type = "detail" }) {
     const handleLike = () => {
         like(user.token, data.id).then((response) => {
             switch (response.status) {
-                case 204:
+                case 200:
                     router.refresh()
                     break;
                 case 400:

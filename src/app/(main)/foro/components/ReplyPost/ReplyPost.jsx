@@ -14,10 +14,8 @@ function ReplyPost({ parentId }) {
     const route = useRouter()
     const { user, updateToken, deleteUser } = useContext(UserContext)
 
-
-    const formSubmit = (e) => {
-        e.preventDefault()
-
+    const replyPost = () => {
+        if (!text.trim()) return;
         const body = {
             content: text,
             userId: user.data.id,
@@ -38,7 +36,7 @@ function ReplyPost({ parentId }) {
                         route.push('/auth/login')
                         break;
                     case 401:
-                        updateToken().then((res)=>{
+                        updateToken().then((res) => {
                             if (res) {
                                 infoMessage('No se pudo publicar tu respuesta, intente nuevamente.')
                             } else {
@@ -53,15 +51,34 @@ function ReplyPost({ parentId }) {
             .catch(err => {
                 errorMessage('Hubo un error al publicar tu comentario, intente más tarde.')
             })
+    }
+
+    const formSubmit = (e) => {
+        e.preventDefault()
+        replyPost()
+    }
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Previene el comportamiento por defecto para todas las situaciones con la tecla Enter
+            if (event.shiftKey) {
+                // Agrega un salto de línea si se presiona Shift+Enter
+                setText(text => text + '\n');
+            } else {
+                // Envía el formulario solo si es Enter solo
+                replyPost();
+            }
         }
+    };
     return (
         <form className={styles.inputCommentBox} onSubmit={formSubmit}>
-            <input
+            <textarea
                 className={styles.commentInput}
                 type="text"
                 placeholder='Escribe tu comentario'
                 value={text}
-                onChange={(e) => setText(e.target.value)} />
+                onChange={(e) => setText(e.target.value)}
+                onKeyDown={handleKeyDown}
+            />
             <button className={styles.sendBtn}></button>
         </form>
     )

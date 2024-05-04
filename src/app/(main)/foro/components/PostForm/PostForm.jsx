@@ -14,6 +14,8 @@ function PostForm() {
 
     const formSubmit = (e) => {
         e.preventDefault()
+        if (!text.trim()) return;
+
         createPost(
             user.token,
             { content: text })
@@ -50,13 +52,14 @@ function PostForm() {
     return (
         <>
             <form className={styles.inputBox} onSubmit={formSubmit}>
-                <input
+                <textarea
                     className={styles.commentInput}
                     type="text"
                     placeholder='Escribe tu comentario'
                     required
                     value={text}
-                    onChange={(e) => setText(e.target.value)} />
+                    onChange={(e) => setText(e.target.value)}
+                />
 
                 <button className={styles.sendIcon} type='submit'></button>
             </form>
