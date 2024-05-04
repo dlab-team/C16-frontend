@@ -6,10 +6,15 @@ import Welcome from './components/Welcome/Welcome';
 
 export default function Home() {
 
+  const closeModal = () => setIsOpen(false);
+
   return (
     <main className={styles.main}>
       <div className={styles.section}>
+        {/* ----- Banner Section ----- */}
+
         <HomeBanner />
+        
         {/* ----- Welcome Section ----- */}
 
         <section className={styles.welcome_section}>

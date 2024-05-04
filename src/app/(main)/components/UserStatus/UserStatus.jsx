@@ -4,7 +4,10 @@ import { UserContext } from "@/components/context/userContext"
 function UserStatus() {
     const { user, deleteUser } = useContext(UserContext)
     return (
-        <section>
+        <section style={{
+            width: '95vw',  // Ancho del 95% del ancho de la ventana del navegador
+            overflowX: 'scroll', 
+        }}>
             <article>
                 {user.data.completed ?
                     <>

@@ -17,6 +17,8 @@
 .welcome_p {
   text-align: center;
   font: var(--tx-mobile-one);
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 /* ------------------- Home Card Section */
@@ -34,6 +36,7 @@
   border-radius: 30px;
   grid-column: 1/5;
   border: 2px solid var(--clr-one-400);
+  font: var(--tx-mobile-one);
   background-color: var(--clr-one-400);
 }
 
@@ -42,6 +45,7 @@
   border-radius: 30px;
   grid-column: 7/-1;
   background-color: #fff;
+  font: var(--tx-mobile-one);
   border: 2px solid var(--clr-secondary-1);
 }
 

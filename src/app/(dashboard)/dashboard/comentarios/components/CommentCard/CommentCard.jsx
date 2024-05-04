@@ -2,65 +2,71 @@
 import { useState } from 'react'
 import { AiOutlineSave, AiOutlineEye } from 'react-icons/ai'
 import styles from './styles/CommentCard.module.css'
-import { DeleteResourceModal } from '../../../components'
+import ReportModal from '../Modal/ReportModal'
 
-const CommentCard = () => {
-  const [dialogIsOpen, setDialogIsOpen] = useState(false)
-  const [showDialogModal, setShowDialogModal] = useState(false)
+const CommentCard = ({
+  comment,
+  author,
+  reporter,
+  id,
+  number,
+  refetchData,
+}) => {
+  const [dialogRejectIsOpen, setDialogRejectIsOpen] = useState(false)
+  const [dialogAcceptIsOpen, setDialogAcceptIsOpen] = useState(false)
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} key={id}>
       <div className={styles.firstWrapper}>
         <h5 className={styles.title}>Comentario</h5>
-        <span className={styles.comment}>
-          Borem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-          turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
-          fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus
-          elit sed risus
-        </span>
+        <span className={styles.comment}>{comment}</span>
       </div>
       <div className={styles.secondWrapper}>
         <h5 className={styles.title}>Autor</h5>
-        <p className={styles.text}>Sorem ipsum dolor sit amet</p>
+        <p className={styles.text}>
+          {author?.firstname + ' ' + author?.lastname}
+        </p>
       </div>
       <div className={styles.secondWrapper}>
         <h5 className={styles.title}>Quién reporta</h5>
-        <p className={styles.text}>Sorem ipsum dolor sit amet</p>
+        <p className={styles.text}>
+          {reporter?.firstname + ' ' + reporter?.lastname}
+        </p>
       </div>
       <div className={styles.secondWrapper}>
         <h5 className={styles.title}>Acciones</h5>
         <div className={styles.buttonsWrapper}>
           <button
             className={styles.button}
-            onClick={() => setDialogIsOpen(!dialogIsOpen)}
+            onClick={() => setDialogRejectIsOpen(!dialogRejectIsOpen)}
           >
             <AiOutlineSave size={24} />
           </button>
           <button
             className={styles.button}
-            onClick={() => setShowDialogModal(!showDialogModal)}
+            onClick={() => setDialogAcceptIsOpen(!dialogAcceptIsOpen)}
           >
             <AiOutlineEye size={24} />
           </button>
         </div>
-        <p className={styles.text}># de reportes 3</p>
+        <p className={styles.text}># de reportes {number}</p>
       </div>
-      {dialogIsOpen && (
-        <DeleteResourceModal
-          dialogIsOpen={dialogIsOpen}
-          setDialogIsOpen={setDialogIsOpen}
-          message="¿Estás seguro que deseas desestimar este comentario?"
-          cancelButtonText="Cancelar"
-          okButtontext="Desestimar"
+      {dialogRejectIsOpen && (
+        <ReportModal
+          dialogIsOpen={dialogRejectIsOpen}
+          setDialogIsOpen={setDialogRejectIsOpen}
+          reportId={id}
+          refetchData={refetchData}
+          actionType="reject"
         />
       )}
-      {showDialogModal && (
-        <DeleteResourceModal
-          dialogIsOpen={showDialogModal}
-          setDialogIsOpen={setShowDialogModal}
-          message="¿Estás seguro que deseas ocultar este comentario?"
-          cancelButtonText="Cancelar"
-          okButtontext="Ocultar"
+      {dialogAcceptIsOpen && (
+        <ReportModal
+          dialogIsOpen={dialogAcceptIsOpen}
+          setDialogIsOpen={setDialogAcceptIsOpen}
+          reportId={id}
+          refetchData={refetchData}
+          actionType="accept"
         />
       )}
     </div>

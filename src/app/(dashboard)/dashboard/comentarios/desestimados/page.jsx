@@ -1,19 +1,40 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useContext } from 'react'
 import { GoBackButton, TitleView } from '../../components'
 import { CommentsDataTable } from '../components'
 import styles from './styles/ArchivedComments.module.css'
 import { PaginationView } from '@/app/(main)/components'
+import { getReports } from '@/services/api/api.report.service'
+import { UserContext } from '@/components/context/userContext'
 
 const ArchivedComments = () => {
-  const [paginationItems, setPaginationItems] = useState([])
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
+  const [archivedReports, setArchivedReports] = useState([])
+  const { user } = useContext(UserContext)
+  const idToken = user?.token
 
-  function getTotalPages() {
-    return 1
+  useEffect(() => {
+    fetchReports(page)
+  }, [page])
+
+  const fetchReports = (pageNum) => {
+    getReports(false, pageNum, idToken)
+      .then((data) => {
+        const { data: reportsData, pagination } = data
+        setArchivedReports(reportsData)
+        setTotalPages(pagination.totalPages)
+
+        if (reportsData.length === 0 && pageNum > 1) {
+          setPage(pageNum - 1)
+        }
+      })
+      .catch(() => {
+        setArchivedReports([])
+      })
   }
 
-  function paginationOptions() {
-    const totalPages = getTotalPages()
+  const paginationOptions = useMemo(() => {
     const options = []
     for (let i = 1; i <= totalPages; i++) {
       options.push(
@@ -22,14 +43,27 @@ const ArchivedComments = () => {
         </option>,
       )
     }
-    setPaginationItems(options)
+    return options
+  }, [totalPages])
+
+  function handlePageChange(event) {
+    const selectedPage = parseInt(event.target.value)
+    setPage(selectedPage)
   }
 
-  useEffect(() => {
-    paginationOptions()
-  }, [])
-
-  function handlePageChange() {}
+  const renderArchivedReports = () => {
+    if (archivedReports.length > 0) {
+      return (
+        <CommentsDataTable
+          reports={archivedReports}
+          refetchData={() => fetchReports(page)}
+          tipo="desestimados"
+        />
+      )
+    } else {
+      return <p>No hay reportes archivados</p>
+    }
+  }
 
   return (
     <section className={styles.container}>
@@ -37,20 +71,15 @@ const ArchivedComments = () => {
       <div className={styles.titleWrapper}>
         <TitleView title="Desestimados" italicTitle="" showIcons={false} />
       </div>
-      <CommentsDataTable
-        comment="Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-      vulputate libero et velit interdum, ac aliquet odio mattis."
-        author="Juan Perez"
-        adminName="Paola Gomez"
-        date="2023/05/05"
-        cellTitle="Fecha de desestimación"
-      />
-      <PaginationView
-        paginationOptions={paginationItems}
-        currentPage={1}
-        handlePageChange={handlePageChange}
-        getTotalPages={getTotalPages}
-      />
+      {renderArchivedReports()}
+      {totalPages > 1 && (
+        <PaginationView
+          paginationOptions={paginationOptions}
+          currentPage={page}
+          handlePageChange={handlePageChange}
+          getTotalPages={() => totalPages}
+        />
+      )}
     </section>
   )
 }

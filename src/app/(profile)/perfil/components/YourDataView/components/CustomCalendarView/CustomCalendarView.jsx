@@ -12,13 +12,18 @@ import './styles/ReactCalendar.styles.css'
 import inputStyles from '../InputsContainerView/styles/InputsContainerView.module.css'
 import styles from './styles/CustomCalendarView.module.css'
 
-const CustomCalendarView = ({ inputsDisabled = false }) => {
+const CustomCalendarView = ({ inputsDisabled = false, date, onDateChange }) => {
   const [startDate, setStartDate] = useState(new Date())
   registerLocale('es', es)
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <div className={styles.calendarButtonContainer}>
-      <button className={styles.buttonCalendar} onClick={onClick} ref={ref}>
+      <button
+        type="button"
+        className={styles.buttonCalendar}
+        onClick={onClick}
+        ref={ref}
+      >
         {value}
       </button>
       <AiOutlineCalendar className={styles.icon} />
@@ -41,6 +46,7 @@ const CustomCalendarView = ({ inputsDisabled = false }) => {
         }) => (
           <div className={styles.calendarContainer}>
             <button
+              type="button"
               aria-label="Previous Month"
               className={styles.prevButton}
               onClick={decreaseMonth}
@@ -55,6 +61,7 @@ const CustomCalendarView = ({ inputsDisabled = false }) => {
               })}
             </span>
             <button
+              type="button"
               aria-label="Next Month"
               className={styles.prevButton}
               onClick={increaseMonth}
@@ -67,12 +74,13 @@ const CustomCalendarView = ({ inputsDisabled = false }) => {
         dateFormat="dd/MM/yyyy"
         maxDate={new Date()}
         closeOnScroll={true}
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
+        selected={date}
+        onChange={onDateChange}
         customInput={<CustomInput />}
         calendarClassName={styles.calendar}
         locale="es"
         disabled={inputsDisabled}
+        value={date}
       />
     </label>
   )

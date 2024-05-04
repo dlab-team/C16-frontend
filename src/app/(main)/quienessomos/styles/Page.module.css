@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  font-family: var(--ff-one);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--clr-primary-2);
+  margin-bottom: 1.2rem;
+}
+
+/* tablet styles */
+@media (width > 767px) {
+  .title {
+    font-size: 35px;
+    margin-bottom: 1.6rem;
+  }
+
+}
+@media (min-width: 992px) {
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+} /* pantalla grande */
