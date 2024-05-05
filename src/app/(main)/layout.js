@@ -1,6 +1,7 @@
 
 import Footer from './components/FooterComponet/Footer';
-import NavView from './components/NavView/NavView';
+// import NavView from './components/NavView/NavView';
+import Navbar from './components/navbar/navbar';
 
 export const metadata = {
     title: "Ronda",
@@ -11,7 +12,8 @@ export default function layout({ children }) {
     return (
         <body>
             <header>
-                <NavView />
+                {/* <NavView /> */}
+                <Navbar/>
             </header>
 
             <>{children}</>
