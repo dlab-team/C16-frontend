@@ -21,9 +21,17 @@
 
 .actionsBox {
     display: flex;
-    gap: 5px;
+    gap: 7px;
 }
-
+.action{
+    display: flex;
+    align-items: center;
+}
+.counter{
+    font-family: var(--ff-one);
+    color: var(--clr-primary-2);
+    font-size: 11px;
+}
 .likeIcon {
     background-image: url('/assets/images/foro/likeIcon.svg');
     background-position: center;
@@ -80,6 +88,7 @@
 
 .linkComment {
     text-decoration: none;
+    display: block;
 }
 
 .hideInput {
@@ -89,11 +98,17 @@
 
 @media (min-width: 576px) {
     .actionsBox {
-        gap: 10px;
+        gap: 18px;
+    }
+    .counter{
+        font-size: 14px;
     }
 }
 
 @media (min-width: 992px) {
+    .actionsBox {
+        gap: 20px;
+    }
     .action {
         display: flex;
         align-items: center;

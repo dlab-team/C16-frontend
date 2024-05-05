@@ -42,6 +42,7 @@ const Hamburguermenu = ({ toggleMenu, navigateAboutus,  navigateCare,  navigatea
         <li>
           <button className={` ${pathname === '/foro' && styles.active}`} onClick={navigateforo}>Foro</button>
         </li>
+        <button className={` ${pathname === '/foro' && styles.active}`} onClick={navigateforo}>Iniciar secion</button>
           </ul>
         </div>
       )}

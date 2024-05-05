@@ -9,6 +9,7 @@
 
 .listContainer{
     margin: 1rem;
+    min-height: 500px;
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -17,7 +18,15 @@
 .resultList{
     grid-column: 1/-1;
 }
-
+.noPosts{
+    font-family: var(--ff-one);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--clr-primary-2);
+    padding: 1px;
+    text-align: center;
+    margin: 50px 0;
+}
 .pagination{
     grid-column: 1/-1;
     margin-top: 1.5rem;
@@ -38,6 +47,9 @@
 }
 
 @media (min-width: 576px) {
+    .listContainer{
+        min-height: 800px;
+    }
     .busquedaContainer{
         grid-template-columns: repeat(12,1fr);
     }

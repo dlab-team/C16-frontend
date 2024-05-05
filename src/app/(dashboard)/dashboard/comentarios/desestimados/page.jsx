@@ -1,22 +1,25 @@
 'use client'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useContext } from 'react'
 import { GoBackButton, TitleView } from '../../components'
 import { CommentsDataTable } from '../components'
 import styles from './styles/ArchivedComments.module.css'
 import { PaginationView } from '@/app/(main)/components'
 import { getReports } from '@/services/api/api.report.service'
+import { UserContext } from '@/components/context/userContext'
 
 const ArchivedComments = () => {
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
   const [archivedReports, setArchivedReports] = useState([])
+  const { user } = useContext(UserContext)
+  const idToken = user?.token
 
   useEffect(() => {
     fetchReports(page)
   }, [page])
 
   const fetchReports = (pageNum) => {
-    getReports(false, pageNum)
+    getReports(false, pageNum, idToken)
       .then((data) => {
         const { data: reportsData, pagination } = data
         setArchivedReports(reportsData)

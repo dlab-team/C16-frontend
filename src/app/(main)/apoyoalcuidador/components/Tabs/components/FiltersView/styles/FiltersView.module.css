@@ -13,27 +13,52 @@
   position: relative;
   width: 100%;
   height: 2.5rem;
-  border-radius: 0.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.input {
+.selectContainer {
   width: 100%;
   height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2.5rem;
   border-radius: 0.6rem;
-  outline: none;
+  background-color: #fff;
   border: 1px solid var(--clr-primary-2);
-  font-size: 22px;
-  font-weight: 300;
-  color: #787575;
-  padding-inline: 1rem;
+  padding-left: 0.8rem;
+  font-size: var(--fs-text);
+  font-weight: 400;
+  color: #4a4a4a;
+  outline: none;
+  cursor: pointer;
+}
+
+.select::-ms-expand {
+  display: none;
+}
+
+.select:disabled {
+  user-select: none;
+  -webkit-user-modify: read-only;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .icon {
   position: absolute;
-  right: 1.5rem;
+  right: 1rem;
   color: var(--clr-primary-2);
 }
 

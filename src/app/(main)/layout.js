@@ -1,7 +1,13 @@
+import { ToastContainer } from 'react-toastify';
 
 import Footer from './components/FooterComponet/Footer';
+<<<<<<< HEAD
 // import NavView from './components/NavView/NavView';
 import Navbar from './components/navbar/navbar';
+=======
+import NavView from './components/NavView/NavView';
+import UserStatus from './components/UserStatus/UserStatus';
+>>>>>>> 8aff283fe73f58ea5f4ada8b11ce8bb3825e79eb
 
 export const metadata = {
     title: "Ronda",
@@ -19,6 +25,8 @@ export default function layout({ children }) {
             <>{children}</>
 
             <Footer />
+            <ToastContainer />
+            <UserStatus />
         </body>
     );
 }

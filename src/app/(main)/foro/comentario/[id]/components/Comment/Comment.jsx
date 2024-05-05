@@ -5,6 +5,7 @@ import PostImage from '@/app/(main)/foro/components/PostImage/PostImage'
 import MoreDropdown from '@/app/(main)/foro/components/MoreDropdown/MoreDropdown'
 
 function Comment({data}) {
+
     return (
         <div className={styles.postBox}>
             <div className={styles.postHeader}>
@@ -23,7 +24,7 @@ function Comment({data}) {
                 <MoreDropdown data={data}/>
             </div>
 
-            <p className={styles.message}>{data.content}</p>
+            <pre className={styles.message}>{data.content}</pre>
 
             <PostToggle data={data} type={'publications'} />
         </div>

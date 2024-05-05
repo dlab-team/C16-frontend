@@ -1,14 +1,37 @@
 'use client'
+<<<<<<< HEAD
 import { useState } from 'react'
+=======
+import { useState, useContext } from 'react'
+>>>>>>> b0a85c12e63ce6d944df1e2cf4a66d17f5f31e67
 import Image from 'next/image'
 import { FaRegUser } from 'react-icons/fa'
 import styles from './styles/navbar.module.css'
 import { useRouter } from 'next/navigation';
 import Hamburguermenu from './hamburguer/hamburguermenu'
+<<<<<<< HEAD
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
+=======
+import { UserContext } from '@/components/context/userContext'
+import { button } from '@nextui-org/react'
+
+
+const Navbar = () => {
+
+const {user} = useContext(UserContext)
+ 
+
+
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const handleLogout = ()=>{
+  
+    logOut()
+  }
+>>>>>>> b0a85c12e63ce6d944df1e2cf4a66d17f5f31e67
   const toggleMenu = () => {
     console.log('Toggle menu clicked')
     setMenuOpen(!menuOpen)
