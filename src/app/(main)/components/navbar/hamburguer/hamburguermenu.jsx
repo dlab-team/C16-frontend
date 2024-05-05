@@ -25,7 +25,7 @@ const Hamburguermenu = ({ toggleMenu, navigateAboutus,  navigateCare,  navigatea
           <ul className={styles.pages}>
             <li className={styles.topmenu}>
              
-              Para tener una mejor experiencia, <button  className={` ${pathname === '/auth/register' && styles.active}`} onClick={navigateRegister}>regístrate</button> con nosotros.
+              Para tener una mejor experiencia, <button  className={` ${styles.perfiltopmenulink} ${pathname === '/auth/register' && styles.active}`} onClick={navigateRegister}>regístrate</button> con nosotros.
             </li>
             <li>
           <button className={` ${pathname === '/' && styles.active}`} onClick={navigatehome}>Inicio</button>
