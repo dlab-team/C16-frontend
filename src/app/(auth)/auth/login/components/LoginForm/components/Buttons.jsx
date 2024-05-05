@@ -24,7 +24,7 @@ function Buttons({ methods }) {
           <GoogleIconForDesktop />
         </i>
       </button>
-      <Link href="#" className={styles.forgotMyPassword}>
+      <Link href="/auth/restaurarcontrasena" className={styles.forgotMyPassword}>
         Olvidé mi contraseña
       </Link>
       <p className={styles.p}>

@@ -15,7 +15,9 @@ const ModalPortal = ({ children }) => {
 
         // Limpieza: esto se ejecutará cuando el componente se desmonte
         return () => {
-            document.body.removeChild(container);
+            if (document.body.contains(container)) {
+                document.body.removeChild(container);
+            }
         };
     }, []);
 
