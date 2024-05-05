@@ -6,12 +6,14 @@ const DeleteResourceModal = ({
   message,
   cancelButtonText,
   okButtontext,
+  handleDelete,
+  isLoading,
 }) => {
   return (
     <dialog id="deleteResource" className={styles.container}>
       <div className={styles.wrapper}>
         <button
-          autofocus
+          autoFocus
           onClick={() => setDialogIsOpen(!dialogIsOpen)}
           className={styles.closeButton}
         >
@@ -25,7 +27,16 @@ const DeleteResourceModal = ({
           >
             {cancelButtonText}
           </button>
-          <button className={styles.deleteButton}>{okButtontext}</button>
+          <button
+            className={styles.deleteButton}
+            onClick={() => {
+              handleDelete()
+              setDialogIsOpen(!dialogIsOpen)
+            }}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Cargando...' : okButtontext}
+          </button>
         </div>
       </div>
     </dialog>
