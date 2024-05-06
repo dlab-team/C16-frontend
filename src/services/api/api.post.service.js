@@ -60,7 +60,7 @@ const reportPost = async (idToken, pid) => {
 
         body: JSON.stringify({postId:id}), 
     })
-    return response.json()
+    return response
 }
 
 
@@ -76,16 +76,23 @@ const getPostById = async (pid, page='1') => {
     return info
 }
 
-const searchByKeyword = async (keyword) => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/posts?search=${keyword}`, { cache: "no-store" })
-
-    /* if(!response.ok){
-        throw new Error("Error al obtener las publicaciones")
-    } */
-
+const searchByKeyword = async (keyword, page='1') => {
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts?search=${keyword}&page=${page}`, { cache: "no-store" })
     const info = await response.json()
 
     return info
+}
+const like = async (idToken, pid) => {
+    const response = await fetch(`https://c16-backend.onrender.com/api/posts/${pid}/like`, { 
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${idToken}`,
+        },
+        cache: "no-store" 
+    })
+
+    return response
 }
 
 export {
@@ -98,4 +105,5 @@ export {
     editPost,
     getByComuna,
     getPostActividad,
+    like,
 }

@@ -1,0 +1,18 @@
+.backBtn{
+    background-color: transparent;
+    background-image: url("/assets/images/foro/arrowLeftIcon.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 30px;
+    width: 22px;
+    height: 22px;
+    border: none;
+}
+.backBtn:hover{
+    transform: scale(0.9);
+    cursor: pointer;
+}
+.hide{
+    visibility: hidden;
+}

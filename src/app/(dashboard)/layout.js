@@ -1,3 +1,5 @@
+import { ToastContainer } from 'react-toastify'
+
 import { MainButtons } from './dashboard/components'
 import styles from './dashboard/components/MainButtons/styles/MainButtons.module.css'
 
@@ -12,6 +14,7 @@ export default function RootLayout({ children }) {
       <main className={styles.container}>
         <MainButtons />
         {children}
+        <ToastContainer />
       </main>
     </body>
   )
