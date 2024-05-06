@@ -1,31 +1,40 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './styles/LeadingResourceCard.module.css'
+import { useResources } from '@/app/(main)/apoyoalcuidador/hooks'
 
 const LeadingResourceCard = () => {
+  const { leadingResource } = useResources()
+
   return (
-    <div className={styles.container}>
-      <div className={styles.textContainer}>
-        <h6 className={styles.communityName}>Comuna: Santiago Centro</h6>
-        <h4 className={styles.title}>Credencial de Cuidador</h4>
-        <p className={styles.p}>
-          Es un hecho establecido desde hace mucho tiempo que un lector se
-          distraerá con el contenido legible de una página cuando mire su
-          diseño. El objetivo de utilizar Lorem Ipsum es que...
-        </p>
-        <Link href="#" target="_blank" className={styles.link}>
-          https://www.youtube.com/watch?v=EDQ3kDQGgys&pp=ygUHbWlkdWRldg%3D%3D
-        </Link>
-      </div>
-      <Image
-        src="https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg?size=626&ext=jpg"
-        alt="fake image"
-        width={300}
-        height={200}
-        loading="lazy"
-        className={styles.image}
-      />
-    </div>
+    <>
+      {Object.keys(leadingResource)?.length > 0 && (
+        <div className={styles.container}>
+          <div className={styles.textContainer}>
+            <h6 className={styles.communityName}>
+              Comuna: {leadingResource?.comuna}
+            </h6>
+            <h4 className={styles.title}>{leadingResource?.title}</h4>
+            <p className={styles.p}>{leadingResource?.description}</p>
+            <Link
+              href={leadingResource?.url}
+              target="_blank"
+              className={styles.link}
+            >
+              {leadingResource?.url}
+            </Link>
+          </div>
+          <Image
+            src={leadingResource?.image}
+            alt={leadingResource?.description}
+            width={300}
+            height={200}
+            loading="lazy"
+            className={styles.image}
+          />
+        </div>
+      )}
+    </>
   )
 }
 

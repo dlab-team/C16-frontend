@@ -1,12 +1,10 @@
-'use client'
-import { useState } from 'react'
 import { AiOutlineDown } from 'react-icons/ai'
 import regionesData from '../../../../../../(auth)/auth/componets/CompleteProfile/regionesData.json'
 import styles from './styles/FiltersView.module.css'
+import { useResources } from '@/app/(main)/apoyoalcuidador/hooks'
 
 const FiltersView = () => {
-  const [region, setRegion] = useState('')
-  const [comuna, setComuna] = useState('')
+  const { comuna, setComuna, region, setRegion } = useResources()
 
   return (
     <div className={styles.container}>

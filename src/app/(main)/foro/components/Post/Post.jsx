@@ -23,7 +23,7 @@ async function Post({ data, type }) {
                 <MoreDropdown data={data} />
             </div>
 
-            <p className={styles.message}>{data.content}</p>
+            <pre className={styles.message}>{data.content}</pre>
 
             <PostToggle data={data} type={type} />
         </div>

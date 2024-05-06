@@ -24,10 +24,51 @@
   font-family: var(--ff-one);
 }
 
+.imageContainer {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.8rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: transparent;
+}
+
 .image {
   border-radius: 0.8rem;
   object-fit: cover;
+}
+
+.span {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--clr-secondary-1);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-primary-2);
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.inputImage {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  opacity: 0;
   margin-bottom: 0.8rem;
+  cursor: pointer;
 }
 
 .title {

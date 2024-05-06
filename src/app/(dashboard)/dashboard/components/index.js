@@ -1,4 +1,4 @@
-// solo componentes generales de la pagina de inicio
+export { default as Spinner } from './Spinner/Spinner'
 export { default as MainButtons } from './MainButtons/MainButtons'
 export { default as SearchBarView } from './SearchBarView/SearchBarView'
 export { default as TitleView } from './TitleView/TitleView'

@@ -31,7 +31,7 @@
 
 .carouselInner {
   display: flex;
-  animation: scroll 10s linear infinite;
+  animation: scroll 25s linear infinite;
 }
 
 .link {
@@ -47,7 +47,7 @@
 }
 
 .animateRightToRight {
-  animation: slide-right 10s linear infinite;
+  animation: slide-right 25s linear infinite;
 }
 
 @keyframes scroll {
