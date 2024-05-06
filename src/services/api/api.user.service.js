@@ -25,6 +25,7 @@ const getUser = async (uid) => {
     }
 
     return response.json()
+   
 }
 
 // consulto todos los usuarios
