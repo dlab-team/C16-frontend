@@ -6,7 +6,7 @@ import styles from './Breadcumbs.module.css'
 function Breadcumbs({message= "Foro"}) {
     const router = useRouter()
     return (
-        <button className={styles.breadcumbs} onClick={() => router.back()}>
+        <button className={styles.breadcumbs} onClick={() => router.push("/foro/recientes")}>
             <div className={styles.arrowIcon}></div>
             <span className={styles.breadcumbsTitle}>{message}</span>
         </button>

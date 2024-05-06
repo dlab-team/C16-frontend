@@ -88,7 +88,7 @@
   appearance: none;
   -webkit-appearance: none;
   outline: none;
-  cursor: pointer;
+  cursor: none;
   transition: all ease-in 175ms;
 }
 
@@ -122,6 +122,21 @@
   flex-direction: column;
   align-self: flex-start;
   gap: 1rem;
+}
+
+.field {
+  width: 8rem;
+  max-width: 8rem;
+  overflow-x: scroll;
+  scrollbar-gutter: stable;
+}
+
+.field::-webkit-scrollbar {
+  background-color: transparent;
+}
+
+.field::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }
 
 .buttonContainer {
