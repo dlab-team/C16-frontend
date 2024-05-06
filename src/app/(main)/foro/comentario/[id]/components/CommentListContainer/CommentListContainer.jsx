@@ -6,7 +6,7 @@ async function CommentListContainer({data, pagination, postId}) {
     return (
         <section className={styles.commentListContainer}>
             <div className={styles.commentList} role='list'>
-                {data.replies.map((comment) => <CommentContainer key={comment.id} data={comment}/>)}
+                {data?.replies.map((comment) => <CommentContainer key={comment.id} data={comment}/>)}
             </div>
 
             <PaginationReplies data={pagination} postId={postId}/>

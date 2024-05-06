@@ -4,6 +4,9 @@ import {
     signInWithPopup,
     signInWithEmailAndPassword,
     signOut,
+    updatePassword,
+    sendPasswordResetEmail,
+    deleteUser,
 } from "firebase/auth"
 
 import { auth } from "./firebaseConfig"
@@ -48,9 +51,30 @@ const logOut = async () => {
     return response
 }
 
+// Cambiar la contraseña del usuario
+const setPassword = async (newPassword) => {
+    const user = auth.currentUser;
+    const response = await updatePassword(user, newPassword)
+    return response
+}
+// Enviar correo de recuperación de contraseña
+const resetPasword = async (email) => {
+    auth.languageCode = "es";
+    const response = await sendPasswordResetEmail(auth, email)
+    return response
+}
+// Enviar correo de recuperación de contraseña
+const delete_user = async (email) => {
+    const response = await deleteUser(auth.currentUser)
+    return response
+}
+
 export {
     authGoogle,
     loginEmailAndPassword,
     registerEmailAndPassword,
     logOut,
+    setPassword,
+    resetPasword,
+    delete_user,
 }

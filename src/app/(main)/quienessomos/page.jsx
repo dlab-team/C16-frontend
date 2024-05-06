@@ -53,7 +53,9 @@ export const imagenesDeEjemplo = [
 function QuienesSomos() {
   return (
     <main>
-      <GenericBanner resource={dataBanner} />
+      <div  className={containerStyles.wrapper}>
+        <GenericBanner resource={dataBanner} />
+      </div>
       <UsView />
       <section className={containerStyles.container}>
         <h2 className={containerStyles.title}>Nuestra Red</h2>

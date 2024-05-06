@@ -1,8 +1,25 @@
+'use client'
 import Image from 'next/image'
+import { PiUploadSimpleBold } from 'react-icons/pi'
 import { GoBackButton, SaveButton, TitleView } from '../../components'
 import styles from './styles/Page.module.css'
+import { useDashboardResources } from '../hooks'
 
 const CreateResource = () => {
+  const {
+    description,
+    setDescription,
+    comuna,
+    setComuna,
+    url,
+    setUrl,
+    selectedImage,
+    setSelectedImage,
+    isLoading,
+    handleCreateResource,
+    fileInputRef,
+  } = useDashboardResources()
+
   return (
     <section className={styles.container}>
       <GoBackButton />
@@ -13,13 +30,30 @@ const CreateResource = () => {
         redirectTo="/dashboard/recursosdeapoyo/crear"
       />
       <div className={styles.wrapper}>
-        <Image
-          width={130}
-          height={95}
-          src="https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg?size=626&ext=jpg"
-          alt="Resource"
-          className={styles.image}
-        />
+        <div className={styles.imageContainer}>
+          <Image
+            width={130}
+            height={95}
+            src={
+              typeof selectedImage === 'string'
+                ? selectedImage
+                : URL.createObjectURL(selectedImage)
+            }
+            alt="Image selected to upload"
+            className={styles.image}
+          />
+          <span className={styles.span}>
+            <PiUploadSimpleBold size={18} />
+          </span>
+          <input
+            type="file"
+            accept="image/*"
+            className={styles.inputImage}
+            name="uploadImage"
+            ref={fileInputRef}
+            onChange={(e) => setSelectedImage(e.target.files[0])}
+          />
+        </div>
         <h6 className={styles.title}>Descripción</h6>
         <textarea
           name="description"
@@ -28,22 +62,32 @@ const CreateResource = () => {
           cols="30"
           rows="3"
           className={styles.textArea}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <h6 className={styles.title}>Comuna</h6>
         <input
           type="text"
           placeholder="Providencia"
           className={styles.textArea}
+          value={comuna}
+          onChange={(e) => setComuna(e.target.value)}
         />
         <h6 className={styles.title}>Ingrese URL</h6>
         <input
           type="url"
-          placeholder="Providencia"
+          placeholder="https://ejemplo.com"
           className={styles.textArea}
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
         />
       </div>
       <div className={styles.saveButtonContainer}>
-        <SaveButton />
+        <SaveButton
+          title="Guardar cambios"
+          handlePress={handleCreateResource}
+          isLoading={isLoading}
+        />
       </div>
     </section>
   )

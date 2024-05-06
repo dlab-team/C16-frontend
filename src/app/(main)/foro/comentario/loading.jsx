@@ -1,8 +1,8 @@
+import LoadingForo from "../components/LoadingForo/LoadingForo"
+
 function loading() {
     return (
-        <h1>
-            loading .........
-        </h1>
+        <LoadingForo />
     )
 }
 

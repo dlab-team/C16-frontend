@@ -11,11 +11,21 @@
     grid-column: 1/-1;
     grid-row: 1;
 
-    height: 40px;
+    min-height: 45px;
+    max-height: 100px;
     border-radius: 7px;
     border: 0.5px solid var(--clr-two-100);
     text-indent: 1rem;
+    font-family: var(--ff-one);
+    resize: vertical;
 
+
+}
+.commentInput::-webkit-input-placeholder {
+    line-height: 40px;
+}
+.commentInput::-moz-placeholder {
+    line-height: 45px;
 }
 .sendBtn{
     grid-column: 8/-1;
@@ -30,6 +40,13 @@
 
     border: none;
 }
+.sendBtn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.sendBtn:focus{
+    transform: scale(1.1);
+}
 
 
 @media (min-width: 992px) {
@@ -39,7 +56,12 @@
     }
     .commentInput{
         grid-column: 2/-2;
-        height: 50px;
+        min-height: 50px;
+        max-height: 150px;
+        font-size: 1rem;
+    }
+    .commentInput::-webkit-input-placeholder {
+        line-height: 45px;
     }
     .sendBtn{
         grid-column: 18/-2;
