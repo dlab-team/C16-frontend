@@ -25,7 +25,7 @@
 }
 .pages *{ 
       font: var(--t-mobile-one);
-      font-size: 25px;
+      font-size: 15px;
 }
 .pages button{ 
    border: none;
@@ -98,4 +98,10 @@
       transform: translateY(0);
     }
   }
-  
+  @media (min-width: 400px) {
+    .pages *{ 
+        font: var(--t-mobile-one);
+        font-size: 18px;
+  }
+
+  }

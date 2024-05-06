@@ -12,7 +12,7 @@ import { getUser } from '@/services/api/api.user.service';
 
 const Navbar = () => {
 
-  const { user, deleteUser,  setUser } = useContext(UserContext);
+  const { user, deleteUser } = useContext(UserContext);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
@@ -127,8 +127,8 @@ const Navbar = () => {
          <div className={styles.profileWrapper}>
         
          <button onClick={() => setShowDropdown(!showDropdown)}>
-              {userPhoto ? ( // Renderizar la imagen del usuario si está disponible
-                <Image src={userPhoto} alt="User Photo" width={136} height={121} />
+              {user.data.photo ? ( // Renderizar la imagen del usuario si está disponible
+                <Image className={styles.userimage} src={user.data.photo} alt="User Photo" width={100} height={100} />
               ) : (
                 <p>no foto</p>
               )}
@@ -158,8 +158,8 @@ const Navbar = () => {
 
       <div className={styles.menuToggle}>
         <div className={styles.hamburgerMenu}>
-        {userPhoto ? ( // Renderizar la imagen del usuario si está disponible
-                <Image src={userPhoto} alt="User Photo" width={136} height={121} />
+        {user.logged ? ( // Renderizar la imagen del usuario si está disponible
+                <Image src={user.data.photo} alt="User Photo" width={100} height={100} />
               ) : (
                 <FaRegUser />
               )}
@@ -174,7 +174,7 @@ const Navbar = () => {
             navigateRegister={navigateRegister}
             deleteUser ={deleteUser }
             navigatePerfil={navigatePerfil}
-            userPhoto={userPhoto}
+            userPhoto={user.data.photo}
           />
         </div>
       </div>
