@@ -75,7 +75,7 @@ const Hamburguermenu = ({
                   }}
               
                 >
-                  <p className={styles.close}>      <IoIosClose /></p>
+                              <Image src="https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FIcons.png?alt=media&token=f00369d5-5fac-4f36-9a97-7fb0dfb1bad3"alt="User Photo" width={40} height={40} />
             
                 </button>
                 Para tener una mejor experiencia,{' '}
