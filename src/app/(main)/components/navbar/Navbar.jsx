@@ -87,7 +87,7 @@ const Navbar = () => {
         <Image
           src="https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FRNC_Horizontal_Color.png?alt=media&token=7d7203c1-39ce-4e3f-b560-e7194ea0f8ac"
           alt="logo red nacional de cuidadores"
-          width={174}
+          width={200}
           height={80}
           className={styles.logomovil}
         />
@@ -158,6 +158,12 @@ const Navbar = () => {
 
       <div className={styles.menuToggle}>
         <div className={styles.hamburgerMenu}>
+        {userPhoto ? ( // Renderizar la imagen del usuario si está disponible
+                <Image src={userPhoto} alt="User Photo" width={136} height={121} />
+              ) : (
+                <FaRegUser />
+              )}
+     
           <Hamburguermenu
             toggleMenu={toggleMenu}
             navigateAboutus={navigateAboutus}
@@ -166,6 +172,9 @@ const Navbar = () => {
             navigateforo={navigateforo}
             navigatehome={navigatehome}
             navigateRegister={navigateRegister}
+            deleteUser ={deleteUser }
+            navigatePerfil={navigatePerfil}
+            userPhoto={userPhoto}
           />
         </div>
       </div>

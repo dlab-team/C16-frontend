@@ -21,6 +21,7 @@
   align-items: center;
   justify-content: flex-end;
   width: 20vw;
+  animation:  250ms ease-in;
 }
 .perfil {
   font-size: 25px;
@@ -28,6 +29,53 @@
 .perfilWeb {
   display: none;
 }
+
+
+.menuToggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 20vw;
+}
+
+.menuToggle .hamburgerMenu {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 35px;
+  height: 100%;
+  align-items: center;
+}
+
+.menuToggle .pages {
+  display: none;
+}
+
+/* Agrega reglas para cuando el menú está abierto */
+.menuToggle.open .hamburgerMenu {
+  display: none;
+}
+
+.menuToggle.open .pages {
+  display: flex;
+  flex-direction: column;
+  animation: slideDown 250ms ease-in; /* Agrega la animación cuando el menú está abierto */
+}
+
+/* Define la animación para el desplazamiento hacia abajo */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
 
 @media (min-width: 992px) {
   .menuToggle {
