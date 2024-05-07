@@ -51,7 +51,7 @@ const Navbar = () => {
   };
 
   const navigateforo = () => {
-    router.push('/foro');
+    router.push('/foro/recientes');
   };
 
   const navigateCare = () => {
@@ -126,10 +126,10 @@ const Navbar = () => {
         {user.logged ? (
          <div className={styles.profileWrapper}>
         
-         <button onClick={() => setShowDropdown(!showDropdown)}>
+         <button className={styles.userimage} onClick={() => setShowDropdown(!showDropdown)}>
               {user.data.photo ? ( // Renderizar la imagen del usuario si está disponible
                 <Image className={styles.userimage} src={user.data.photo} alt="User Photo" width={100} height={100} />
-              ) : (
+              ) : ( 
                 <p>no foto</p>
               )}
             </button>
@@ -159,7 +159,7 @@ const Navbar = () => {
       <div className={styles.menuToggle}>
         <div className={styles.hamburgerMenu}>
         {user.logged ? ( // Renderizar la imagen del usuario si está disponible
-                <Image src={user.data.photo} alt="User Photo" width={100} height={100} />
+                <Image className={styles.userimage} src={user.data.photo} alt="User Photo" width={100} height={100} />
               ) : (
                 <FaRegUser />
               )}
