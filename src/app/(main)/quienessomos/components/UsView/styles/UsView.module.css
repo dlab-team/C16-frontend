@@ -1,8 +1,8 @@
 /* mobile styles */
 .container {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1rem;
   font-family: var(--ff-one);
 }
 
@@ -45,13 +45,16 @@
   .heading {
     font-size: 35px;
   }
+  /* .container{
+    grid-column: 2/-2;
+  } */
 }
 
 /* PC styles */
 @media (width > 950px) {
-  .container {
+  /* .container {
     width: 70%;
-  }
+  } */
 
   .hr {
     margin-bottom: 2.6rem;
@@ -65,7 +68,22 @@
 
 /* long screen */
 @media (width > 1800px) {
-  .container {
+  /* .container {
     width: 60%;
+  } */
+}
+@media (min-width: 767px) {
+  
+  .container{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+
+    margin: 0 auto;
+    max-width: 1200px;
   }
+  .container > *{
+    grid-column: 2/-2;
+  }
+  
+
 }
