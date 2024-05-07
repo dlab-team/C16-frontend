@@ -1,4 +1,4 @@
-const BASE_URL = 'https://c16-backend.onrender.com/api'
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
 // function to get all resources from API
 export const getAllResources = async (page = '1', idToken) => {

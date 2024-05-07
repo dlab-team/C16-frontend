@@ -1,6 +1,7 @@
 import { ToastContainer } from 'react-toastify'
 
-import { NavView } from '../(main)/components'
+
+import Navbar from '../(main)/components/navbar/Navbar'
 
 export const metadata = {
   title: 'Ronda',
@@ -10,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <body>
-      <NavView />
+      <Navbar />
       {children}
       <ToastContainer />
     </body>
