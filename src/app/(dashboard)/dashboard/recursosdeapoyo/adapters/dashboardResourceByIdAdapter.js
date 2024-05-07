@@ -9,6 +9,7 @@ const resourceByIdAdapter = (data) => {
     image: data?.image,
     createdAt: data?.createdAt,
     updatedAt: data?.updatedAt,
+    title: data?.title,
   }
 }
 

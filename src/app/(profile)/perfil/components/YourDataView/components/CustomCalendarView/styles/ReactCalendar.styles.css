@@ -27,3 +27,19 @@
 .react-datepicker-wrapper {
   width: 100%;
 }
+
+.react-datepicker__input-container > input {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: var(--clr-primary-2);
+  font-size: var(--fs-text);
+  font-weight: 400;
+  color: #4a4a4a;
+  font-family: var(--ff-one);
+  padding-left: 0;
+}
