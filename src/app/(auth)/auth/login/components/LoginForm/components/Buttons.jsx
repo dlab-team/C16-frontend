@@ -2,12 +2,18 @@
 import Link from 'next/link';
 import styles from '../../../styles/Buttons.module.css';
 import { GoogleIcon, GoogleIconForDesktop } from '../icons';
+import { isMobile } from 'react-device-detect';
+import { infoMessage } from '@/utils/notify';
 
 function Buttons({ methods }) {
   const { handleAuthGoogle } = methods
 
   const handleGoogle = () => {
-    handleAuthGoogle();
+    if(isMobile){
+      infoMessage("Método de autenticación NO válida para dispositivos móviles")
+    }else{
+      handleAuthGoogle();
+    }
   }
 
   return (

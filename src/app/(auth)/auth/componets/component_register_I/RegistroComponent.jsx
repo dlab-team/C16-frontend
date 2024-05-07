@@ -12,6 +12,7 @@ import { createUser } from '@/services/api/api.user.service'
 import { UserContext } from '@/components/context/userContext'
 import Link from 'next/link'
 import { errorMessage } from "@/utils/notify";
+import { isMobile } from 'react-device-detect'
 
 const RegistroComponent = () => {
   const router = useRouter()
@@ -47,11 +48,6 @@ const RegistroComponent = () => {
     setShowPassword(!showPassword)
   }
   
-  const handleLogout = ()=>{
-    deleteUser()
-    logOut()
-  }
-  
   const isEmailValid = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return re.test(String(email).toLowerCase())
@@ -68,20 +64,24 @@ const RegistroComponent = () => {
 
   
   const handleAuthGoogle = async ()=>{
-    try {
-      const idToken = await authGoogle()
-      if (idToken) {
-        const user = await createUser(idToken) 
-        updateUserContext(user, idToken)
-        if(user.completed){
-          router.push("/")
-        }else{
-          router.push("/auth/completarPerfil")
+    if(isMobile){
+      infoMessage("Método de autenticación NO válida para dispositivos móviles")
+    }else{
+      try {
+        const idToken = await authGoogle()
+        if (idToken) {
+          const user = await createUser(idToken) 
+          updateUserContext(user, idToken)
+          if(user.completed){
+            router.push("/")
+          }else{
+            router.push("/auth/completarPerfil")
+          }
         }
+      } catch (error) {
+        console.error(error)
+        errorMessage('El usuario no se pudo crear, inténtelo más tarde.')
       }
-    } catch (error) {
-      console.error(error)
-      errorMessage('El usuario no se pudo crear, inténtelo más tarde.')
     }
   }
   
@@ -228,9 +228,6 @@ const RegistroComponent = () => {
           </div>
         </div>
       </div>
-      <button onClick={handleLogout} type='button'>
-        logout
-      </button>
     </div>
   )
 }
