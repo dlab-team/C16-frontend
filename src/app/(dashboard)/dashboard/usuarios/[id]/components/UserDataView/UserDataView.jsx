@@ -23,10 +23,12 @@ const UserDataView = ({
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [rut, setRut] = useState('')
+  const [isAdmin, setIsAdmin] = useState(false)
   const { user } = useContext(UserContext)
   const idToken = user.token
 
   useEffect(() => {
+    setIsAdmin(userProfile?.roleId === 2 ? true : false);
     const stateSetters = {
       region: setRegion,
       comuna: setComuna,
@@ -37,6 +39,7 @@ const UserDataView = ({
       email: setEmail,
       phone: setPhone,
       rut: setRut,
+      isAdmin: setIsAdmin,
     }
 
     Object.entries(userProfile || {}).forEach(([key, value]) => {
@@ -76,7 +79,11 @@ const UserDataView = ({
         region: region,
         comuna: comuna,
         completed: true,
+        roleId: isAdmin ? 2 : 3,
       }
+
+      console.log(updatedData)
+      
       updateUser(userProfile?.id, updatedData, idToken)
         .then(() => {
           handleUpload()
@@ -86,6 +93,7 @@ const UserDataView = ({
           errorMessage('Hubo un error al actualizar la información')
         })
     }
+    
   }
 
   const handleDateChange = (date) => {
@@ -310,6 +318,22 @@ const UserDataView = ({
             <AiOutlineDown className={styles.icon} />
           </div>
         </label>
+        {user.data.roleId === 1 && (
+          <label
+          className={`${styles.label} ${inputsDisabled && styles.labelDisabled}`}
+        >
+          Es administrador
+          <select
+            value={isAdmin ? '2' : '3'} 
+            onChange={(e) => setIsAdmin(e.target.value === '2')} 
+            className={styles.select}
+            disabled={inputsDisabled}
+          >
+            <option value="2">Sí</option>
+            <option value="3">No</option>
+          </select>
+        </label>
+)}
       </div>
       {!inputsDisabled && (
         <div className={styles.saveButtonContainer}>
