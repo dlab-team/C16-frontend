@@ -1,10 +1,9 @@
 'use client'
-
 import { GoBackButton } from '../../components'
 import { UserDataView, UserProfileImage } from './components'
 import styles from './styles/DashboardUserById.module.css'
 import { useParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getUser } from '@/services/api/api.user.service.js'
 import UserModal from './components/Modal/UserModal'
 
@@ -12,8 +11,11 @@ const DashboardUserById = () => {
   const [inputsDisabled, setInputsDisabled] = useState(true)
   const [dialogIsOpen, setDialogIsOpen] = useState(false)
   const [showAlertMessage, setShowAlertMessage] = useState(false)
-  const { id } = useParams()
+  const [selectedFile, setSelectedFile] = useState(null)
   const [userProfile, setUserProfile] = useState({})
+  const [updatedPhoto, setUpdatedPhoto] = useState(userProfile?.photo)
+  const fileInputRef = useRef(null)
+  const { id } = useParams()
 
   useEffect(() => {
     fetchUser(id)
@@ -42,9 +44,17 @@ const DashboardUserById = () => {
         setShowAlertMessage={setShowAlertMessage}
         userProfile={userProfile}
         userPhotoUrl={userProfile?.photo}
+        fileInputRef={fileInputRef}
+        updatedPhoto={updatedPhoto}
+        setSelectedFile={setSelectedFile}
       />
 
-      <UserDataView inputsDisabled={inputsDisabled} userProfile={userProfile} />
+      <UserDataView
+        inputsDisabled={inputsDisabled}
+        userProfile={userProfile}
+        selectedFile={selectedFile}
+        setUpdatedPhoto={setUpdatedPhoto}
+      />
       {dialogIsOpen && (
         <UserModal
           userId={id}
