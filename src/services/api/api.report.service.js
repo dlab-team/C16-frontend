@@ -1,12 +1,10 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL
-
 const getReports = async (active, page = '1', idToken) => {
   const estado = active
   if (!active) {
     active = ''
   }
   const response = await fetch(
-    `${BASE_URL}/reports?active=${estado}&page=${page}`,
+    `https://c16-backend.onrender.com/api/reports?active=${estado}&page=${page}`,
     {
       method: 'GET',
       headers: {
@@ -25,7 +23,7 @@ const getReports = async (active, page = '1', idToken) => {
 const updateReport = async (id, active, idToken) => {
   const estado = active
   const response = await fetch(
-    `${BASE_URL}/reports/${id}`,
+    `https://c16-backend.onrender.com/api/reports/${id}`,
     {
       method: 'PUT',
       headers: {
@@ -45,7 +43,7 @@ const updateReport = async (id, active, idToken) => {
 
 const deleteReport = async (id, idToken) => {
   const response = await fetch(
-    `${BASE_URL}/reports/${id}`,
+    `https://c16-backend.onrender.com/api/reports/${id}`,
     {
       method: 'DELETE',
       headers: {
