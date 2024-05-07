@@ -1,6 +1,6 @@
 .banner{
     display: none;
-    background-color: var(--clr-secondary-1);
+    background-color: var(--clr-primary-1);
 }
 
 @media (min-width: 576px) {
