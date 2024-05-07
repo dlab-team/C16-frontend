@@ -1,8 +1,8 @@
-const BASE_URL = process.env.NEXT_API_URL
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
 const getPartners = async () => {
     try {
-        const response = await fetch(`${BASE_URL}partners/`,{cache:"no-store"});
+        const response = await fetch(`${BASE_URL}/partners/`,{cache:"no-store"});
         if (!response.ok) {
             throw new Error(`Error al obtener los partners: ${response.statusText}`);
         }
@@ -14,7 +14,7 @@ const getPartners = async () => {
     }
 };
 const addPartners = async () => {
-    const response = await fetch(`${BASE_URL}partners/`, {
+    const response = await fetch(`${BASE_URL}/partners/`, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
             "Content-Type": "application/json",
