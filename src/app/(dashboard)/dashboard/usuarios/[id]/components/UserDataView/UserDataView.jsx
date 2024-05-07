@@ -81,8 +81,6 @@ const UserDataView = ({
         completed: true,
         roleId: isAdmin ? 2 : 3,
       }
-
-      console.log(updatedData)
       
       updateUser(userProfile?.id, updatedData, idToken)
         .then(() => {
