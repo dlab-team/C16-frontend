@@ -127,7 +127,7 @@ font:var(--t-desktop-one)
   }
 
   .footer {
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FBackground.png?alt=media&token=67c4d160-8c91-441d-9e18-6728b316c54c');
+    background-image: url('/assets/homeSVG/footerBg.svg');
     height: 23.25rem;
     align-items: center;
     width: 100%;
