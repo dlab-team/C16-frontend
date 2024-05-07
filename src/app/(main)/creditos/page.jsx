@@ -14,7 +14,7 @@ const creditos = () => {
     {
       id: 2,
       nombre: 'Ernesto Lopez',
-      url: '',
+      url: 'https://www.linkedin.com/in/ernesto-lopez-5a21941a1/',
       photo:
         'https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fno%20tocar!%2FRectangle%2015.png?alt=media&token=bfdedaf6-f701-4e09-a272-a806ed592cfe',
     },
@@ -28,7 +28,7 @@ const creditos = () => {
     {
       id: 4,
       nombre: 'Felipe Guzman',
-      url: '',
+      url: ' https://www.linkedin.com/in/felipe-guzman102/',
       photo:
         'https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fno%20tocar!%2FRectangle%2010.png?alt=media&token=f0284169-6059-4d56-8ff6-fda589c14515',
     },
@@ -38,7 +38,7 @@ const creditos = () => {
     {
       id: 1,
       nombre: 'Bárbara Gutierrez',
-      url: '',
+      url: 'https://www.linkedin.com/in/bagutierrezv',
       photo:
         'https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fno%20tocar!%2FRectangle%2013.png?alt=media&token=dd8c8f17-1d02-49a8-8bea-9d05afb898a0',
     },
@@ -61,7 +61,7 @@ const creditos = () => {
     {
       id: 1,
       nombre: 'Sebastian Güiza',
-      url: '',
+      url: 'https://www.linkedin.com/in/sebastian-güiza/',
       photo:
         'https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fno%20tocar!%2FRectangle%2012.png?alt=media&token=325ab9d7-1e75-484b-9156-9ee873b7c653',
     },
