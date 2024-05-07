@@ -1,5 +1,3 @@
-'use client'
-import { forwardRef, useState } from 'react'
 import {
   AiOutlineCalendar,
   AiOutlineLeft,
@@ -13,22 +11,7 @@ import inputStyles from '../InputsContainerView/styles/InputsContainerView.modul
 import styles from './styles/CustomCalendarView.module.css'
 
 const CustomCalendarView = ({ inputsDisabled = false, date, onDateChange }) => {
-  const [startDate, setStartDate] = useState(new Date())
   registerLocale('es', es)
-
-  const CustomInput = forwardRef(({ value, onClick }, ref) => (
-    <div className={styles.calendarButtonContainer}>
-      <button
-        type="button"
-        className={styles.buttonCalendar}
-        onClick={onClick}
-        ref={ref}
-      >
-        {value}
-      </button>
-      <AiOutlineCalendar className={styles.icon} />
-    </div>
-  ))
 
   return (
     <label
@@ -76,7 +59,9 @@ const CustomCalendarView = ({ inputsDisabled = false, date, onDateChange }) => {
         closeOnScroll={true}
         selected={date}
         onChange={onDateChange}
-        customInput={<CustomInput />}
+        toggleCalendarOnIconClick
+        showIcon
+        icon={<AiOutlineCalendar className={styles.icon} />}
         calendarClassName={styles.calendar}
         locale="es"
         disabled={inputsDisabled}

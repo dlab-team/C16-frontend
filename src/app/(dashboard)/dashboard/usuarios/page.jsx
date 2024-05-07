@@ -2,11 +2,11 @@
 import { useEffect, useMemo, useState, useContext } from 'react'
 import styles from './styles/usuarios.module.css'
 import { AiOutlineUpload } from 'react-icons/ai'
-import SearchUser from './components/searchuser/searchuser'
 import { getAllUsers, downloadExcel } from '@/services/api/api.user.service.js'
 import { PaginationView } from '@/app/(main)/components'
 import Link from 'next/link'
 import { UserContext } from '@/components/context/userContext'
+import { SearchBarView } from '../components'
 
 const DashboardUsers = () => {
   const [users, setUsers] = useState([])
@@ -82,8 +82,10 @@ const DashboardUsers = () => {
           <AiOutlineUpload />
         </div>
       </div>
-      <SearchUser setSearchValue={setSearchValue} setPage={setPage} />
       <div className="table">
+        <div className={styles.searchContainer}>
+          <SearchBarView search={searchValue} setSearch={setSearchValue} />
+        </div>
         <table>
           <div className={styles.header}>
             <tr>
