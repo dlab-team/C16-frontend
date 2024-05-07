@@ -18,6 +18,8 @@ const CreateResource = () => {
     isLoading,
     handleCreateResource,
     fileInputRef,
+    title,
+    setTitle,
   } = useDashboardResources()
 
   return (
@@ -54,6 +56,14 @@ const CreateResource = () => {
             onChange={(e) => setSelectedImage(e.target.files[0])}
           />
         </div>
+        <h6 className={styles.title}>Título</h6>
+        <input
+          type="text"
+          placeholder="título del recurso"
+          className={styles.textArea}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
         <h6 className={styles.title}>Descripción</h6>
         <textarea
           name="description"

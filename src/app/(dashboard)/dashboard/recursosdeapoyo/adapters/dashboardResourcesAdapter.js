@@ -10,6 +10,7 @@ const resourcesAdapter = (data) => {
       image: resource?.image,
       createdAt: resource?.createdAt,
       updatedAt: resource?.updatedAt,
+      title: resource?.title,
     }
   })
 

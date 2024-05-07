@@ -34,6 +34,8 @@ const EditResource = () => {
     resourceId,
     handleUpdateResourceById,
     fileInputRef,
+    title,
+    setTitle,
   } = useDashboardResources()
 
   return (
@@ -50,7 +52,7 @@ const EditResource = () => {
       ) : (
         <>
           <div className={mainStyles.wrapper}>
-            <div className={styles.container}>
+            <div className={styles.container} style={{ height: 'auto' }}>
               <div className={styles.leftContainer}>
                 <div className={mainStyles.imageContainer}>
                   <Image
@@ -76,6 +78,14 @@ const EditResource = () => {
                   />
                 </div>
                 <div className={styles.textContainer}>
+                  <h5 className={styles.title}>Título</h5>
+                  <input
+                    type="text"
+                    className={mainStyles.input}
+                    style={{ width: '25rem', marginBottom: '0.8rem' }}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
                   <h5 className={styles.title}>Descripción</h5>
                   <textarea
                     name="description"
