@@ -34,7 +34,7 @@
 .academia {
   padding: 15px 23px;
   border-radius: 30px;
-  grid-column: 1/5;
+  grid-column: 1/6;
   border: 2px solid var(--clr-one-400);
   font: var(--tx-mobile-one);
   background-color: var(--clr-one-400);
@@ -43,7 +43,7 @@
 .foro {
   padding: 15px 23px;
   border-radius: 30px;
-  grid-column: 7/-1;
+  grid-column: 6/-1;
   background-color: #fff;
   font: var(--tx-mobile-one);
   border: 2px solid var(--clr-secondary-1);
@@ -162,6 +162,7 @@
   .academia {
     display: flex;
     flex-direction: column;
+    grid-column: 1/5;
     padding: 10px 17px;
     background-color: #fff;
     border: 2px solid var(--clr-one-400);
@@ -171,6 +172,7 @@
   .foro {
     display: flex;
     flex-direction: column;
+    grid-column: 7/-1;
     padding: 10px 17px;
     border: 2px solid var(--clr-secondary-1);
   }
