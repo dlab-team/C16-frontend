@@ -142,9 +142,8 @@ const DashboardResourcesProvider = ({ children }) => {
 
   function getStateData(resourceDataById) {
     setDescription(resourceDataById?.description)
-    setName(resourceDataById?.comuna)
+    setName(resourceDataById?.name)
     setUrl(resourceDataById?.url)
-    setHighlighted(resourceDataById?.highlighted)
     setImage(resourceDataById?.image)
     setResourceId(resourceDataById?.id)
   }
@@ -269,7 +268,7 @@ const DashboardResourcesProvider = ({ children }) => {
     formData.append('name', data.name)
     formData.append('url', data.url)
 
-    return formData
+    return formData;
   }
 
   const handleDeleteButtonClick = (resourceId) => {
