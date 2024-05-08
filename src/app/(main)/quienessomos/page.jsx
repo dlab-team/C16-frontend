@@ -2,7 +2,7 @@
 import GenericBanner from '../components/GenericBanner/GenericBanner';
 import containerStyles from './styles/Page.module.css';
 import { Carousel, UsView } from './components';
-import { getAllPartners } from '@/services/api/api.partners.service';
+import { getAllPartnersCarusel } from '@/services/api/api.partners.service';
 
 const dataBanner = {
   imgUrl:
@@ -16,10 +16,9 @@ const dataBanner = {
 async function QuienesSomos(params, searchParams) {
   // Desestructura los parámetros
   const { id } = params;
-  const page = searchParams? searchParams.page : 1; 
 
   // Llama a la función para obtener los socios
-  const response = await getAllPartners(id, page);
+  const response = await getAllPartnersCarusel(id);
 
   // Mapea los datos de los socios para extraer solo las URL de las imágenes
   const images = response.data.map(partner => ({

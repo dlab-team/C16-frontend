@@ -163,7 +163,8 @@ const DashboardResourcesProvider = ({ children }) => {
       if (response?.ok) successMessage('Organización eliminada correctamente')
     } catch (error) {
       errorMessage('Ups! algo salio mal, por favor vuelve a intentarlo')
-    } finally {
+    } 
+    finally {
       setIsLoading(false)
     }
   }
@@ -219,9 +220,9 @@ const DashboardResourcesProvider = ({ children }) => {
         return
       }
       successMessage('Organización creada correctamente')
-      resetSate()
+      resetState()
     } catch (error) {
-      errorMessage('Ups! algo salio mal, por favor vuelve a intentarlo')
+      // errorMessage('Ups! algo salio mal, por favor vuelve a intentarlo')
     } finally {
       setIsLoading(false)
     }

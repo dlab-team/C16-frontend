@@ -16,6 +16,22 @@ export const getAllPartners = async (page = '1', idToken) => {
   return response.json()
 }
 
+// Trae todos los Socios de la API
+export const getAllPartnersCarusel = async (idToken) => {
+  const response = await fetch(`${BASE_URL}/partners`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${idToken}`,
+    },
+  })
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`)
+  }
+  return response.json()
+}
+
 // Trae los Socios por ID desde la API
 
 export const getPartnerById = async (partnerId, idToken) => {
