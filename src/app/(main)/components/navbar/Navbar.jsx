@@ -18,25 +18,18 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = router.pathname;
   const [showDropdown, setShowDropdown] = useState(false);
-  const [userPhoto, setUserPhoto] = useState(null);
-
+  // Inicializamos el botón activo como el de Inicio
+  
+  const [activeButton, setActiveButton] = useState('/'); // Inicializa el botón activo como '/'
 
   useEffect(() => {
-    const obtenerFotoUsuario = async () => {
-      try {
-        // Llamamos a la función getUser para obtener la foto del usuario
-        const photo = await getUser(uid); // Asegúrate de tener el uid del usuario disponible
-        setUserPhoto(photo);
-      } catch (error) {
-        console.error('Error al obtener la foto del usuario:', error);
-      }
-    };
+    setActiveButton(router.pathname); // Establece el botón activo según la ruta actual al renderizar el componente
+  }, [router.pathname]);
 
-    obtenerFotoUsuario();
-  }, []); // Asegúrate de pasar las dependencias adecuadas si es necesario
-
-
-
+  const handleButtonClick = (path) => {
+    setActiveButton(path);
+    router.push(path); // Navegar a la ruta correspondiente
+  };
   const toggleMenu = () => {
     console.log('Toggle menu clicked');
     setMenuOpen(!menuOpen);
@@ -95,27 +88,28 @@ const Navbar = () => {
 
       <ul className={styles.pages}>
         <li>
-          <button className={` ${pathname === '/' && styles.active}`} onClick={navigatehome}>
+        <button className={`${activeButton === '/' && styles.active}`}     onClick={() => handleButtonClick('/')}>
             Inicio
           </button>
         </li>
+        
         <li>
-          <button className={` ${pathname === '/quienessomos' && styles.active}`} onClick={navigateAboutus}>
+          <button className={`${activeButton === '/quienessomos' && styles.active}`}  onClick={() => handleButtonClick('/quienessomos')}>
             Quienes Somos
           </button>
         </li>
         <li>
-          <button className={` ${pathname === '/academia' && styles.active}`} onClick={navigateacademy}>
+          <button className={` ${activeButton === '/academia' && styles.active}`}  onClick={() => handleButtonClick('/academia')}>
             Academia
           </button>
         </li>
         <li>
-          <button className={` ${pathname === '/apoyoalcuidador' && styles.active}`} onClick={navigateCare}>
+          <button className={` ${activeButton === '/apoyoalcuidador' && styles.active}`}onClick={() => handleButtonClick('/apoyoalcuidador')}>
             Apoyo al cuidador
           </button>
         </li>
         <li>
-          <button className={` ${pathname === '/foro' && styles.active}`} onClick={navigateforo}>
+          <button className={` ${activeButton === '/foro/recientes' && styles.active}`} onClick={() => handleButtonClick('/foro/recientes')}>
             Foro
           </button>
         </li>

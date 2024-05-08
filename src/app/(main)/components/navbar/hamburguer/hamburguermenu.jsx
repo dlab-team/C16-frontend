@@ -66,8 +66,8 @@ const Hamburguermenu = ({
             
                 </button>
                 <Image width={100} height={100} src={userPhoto} />
-                <p>nombre de usuari</p>
-                <p>mail</p>
+                <p>{user.data.firstname}</p>
+                <p>{user.data.email}</p>
                 <button
                   className={` ${styles.topmenuPerfil} ${pathname === '/perfil' && styles.active}`}
                   onClick={navigatePerfil}
