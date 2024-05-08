@@ -1,8 +1,10 @@
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
 // crea un nuevo usuario en la base de datos (backend) y lo retorna
 // si el usuario yá existe solo lo retorna
 const createUser = async (idToken) => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/users`, {
+    console.log(BASE_URL)
+    const response = await fetch(`${BASE_URL}/users`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -19,7 +21,7 @@ const createUser = async (idToken) => {
 
 // consulto un usuario por medio de su ID
 const getUser = async (uid) => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/users/${uid}`)
+    const response = await fetch(`${BASE_URL}/users/${uid}`)
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -29,7 +31,7 @@ const getUser = async (uid) => {
 
 // consulto todos los usuarios
 const getAllUsers = async (page = 1, name = "") => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/users?page=${page}&name=${name}`)
+    const response = await fetch(`${BASE_URL}/users?page=${page}&name=${name}`)
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -41,7 +43,7 @@ const getAllUsers = async (page = 1, name = "") => {
 const updateUser = async (uid, newData, idToken) => {
     console.log('new data:, ', newData)
     console.log(uid)
-    const response = await fetch(`https://c16-backend.onrender.com/api/users/${uid}`, {
+    const response = await fetch(`${BASE_URL}/users/${uid}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -59,7 +61,7 @@ const updateUser = async (uid, newData, idToken) => {
 
 const updateUserPhoto = async (uid, formData, idToken) => {
 
-    const response = await fetch(`https://c16-backend.onrender.com/api/users/${uid}/uploadUserImage`, {
+    const response = await fetch(`${BASE_URL}/users/${uid}/uploadUserImage`, {
         method: "PATCH",
         headers: {
             Authorization: `Bearer ${idToken}`,
@@ -78,7 +80,7 @@ const updateUserPhoto = async (uid, formData, idToken) => {
 
 const downloadExcel = async (idToken) => {
     try {
-        const response = await fetch(`https://c16-backend.onrender.com/api/users/downloadExcel`, {
+        const response = await fetch(`${BASE_URL}/users/downloadExcel`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -94,7 +96,7 @@ const downloadExcel = async (idToken) => {
 
 // elimino un usuario por medio de su ID
 const deleteUser = async (uid, idToken) => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/users/${uid}`, {
+    const response = await fetch(`${BASE_URL}/users/${uid}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -110,7 +112,7 @@ const deleteUser = async (uid, idToken) => {
 }
 
 const disableUser = async (uid, idToken, enabled) => {
-    const response = await fetch(`https://c16-backend.onrender.com/api/users/${uid}/toggleEnabled`, {
+    const response = await fetch(`${BASE_URL}/users/${uid}/toggleEnabled`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",

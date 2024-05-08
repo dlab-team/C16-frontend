@@ -43,6 +43,7 @@ const DashboardResourcesProvider = ({ children }) => {
   const [selectedImage, setSelectedImage] = useState(
     'https://th.bing.com/th/id/OIP.qYEC7KeQLQ-i5FCNbWpV7AHaDt?w=335&h=175&c=7&r=0&o=5&pid=1.7',
   )
+  const [title, setTitle] = useState('')
   const fileInputRef = useRef(null)
   const router = useRouter()
   const { id } = useParams()
@@ -93,7 +94,6 @@ const DashboardResourcesProvider = ({ children }) => {
 
   //if a resource is deleted, filter the resources array
   function filterResources() {
-    console.log(resourcesEliminated)
     const filteredResources = allResources.filter(
       (resource) => resource?.id !== resourcesEliminated,
     )
@@ -147,6 +147,7 @@ const DashboardResourcesProvider = ({ children }) => {
     setHighlighted(resourceDataById?.highlighted)
     setImage(resourceDataById?.image)
     setResourceId(resourceDataById?.id)
+    setTitle(resourceDataById?.title)
   }
 
   useEffect(() => {
@@ -155,12 +156,12 @@ const DashboardResourcesProvider = ({ children }) => {
 
   //function to delete a resource by ID from API
   async function handleDeleteResourceById(dataResourceId) {
-    console.log(dataResourceId)
     try {
       setIsLoading(true)
       const response = await deleteResourceById(dataResourceId, idToken)
 
       if (response?.ok) successMessage('Recurso eliminado correctamente')
+      resetSate()
     } catch (error) {
       errorMessage('Ups! algo salio mal, por favor vuelve a intentarlo')
     } finally {
@@ -181,6 +182,7 @@ const DashboardResourcesProvider = ({ children }) => {
       url,
       highlighted,
       image,
+      title,
     }
 
     const formData = handleTransformToFormData(newResourceData)
@@ -206,6 +208,7 @@ const DashboardResourcesProvider = ({ children }) => {
       url,
       highlighted: false,
       image: selectedImage,
+      title,
     }
 
     const formData = handleTransformToFormData(newResourceData)
@@ -240,11 +243,12 @@ const DashboardResourcesProvider = ({ children }) => {
     setSelectedImage(
       'https://th.bing.com/th/id/OIP.qYEC7KeQLQ-i5FCNbWpV7AHaDt?w=335&h=175&c=7&r=0&o=5&pid=1.7',
     )
+    setTitle('')
   }
 
   //validate if the fields are empty
   function validateEmptyFields() {
-    if (description === '' || comuna === '' || url === '') {
+    if (description === '' || comuna === '' || url === '' || title === '') {
       errorMessage('Por favor, complete todos los campos')
       return false
     } else if (description.length > 2000) {
@@ -271,6 +275,7 @@ const DashboardResourcesProvider = ({ children }) => {
     formData.append('comuna', data.comuna)
     formData.append('url', data.url)
     formData.append('highlighted', data.highlighted)
+    formData.append('title', data.title)
 
     return formData
   }
@@ -315,6 +320,8 @@ const DashboardResourcesProvider = ({ children }) => {
         handleDeleteButtonClick,
         setResourceEliminated,
         resourcesEliminated,
+        title,
+        setTitle,
       }}
     >
       {children}

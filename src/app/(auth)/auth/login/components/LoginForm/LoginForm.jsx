@@ -44,7 +44,6 @@ function LoginForm() {
         }
       }
     } catch (error) {
-      console.error(error)
       errorMessage('El usuario no se pudo crear, inténtelo más tarde.')
     }
   }
@@ -54,7 +53,6 @@ function LoginForm() {
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
-      console.log(email, password)
       const { idToken, uid } = await loginEmailAndPassword(email, password)
       const user = await getUser(uid)
       updateUserContext(user, idToken)
@@ -64,9 +62,6 @@ function LoginForm() {
         router.push("/auth/completarPerfil")
       }
     } catch (error) {
-      console.error(error)
-
-      // Manejo de diferentes errores
       setError('Dirección de email o contraseña no coinciden');
     }
   }

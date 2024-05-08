@@ -103,7 +103,10 @@ color: var(--clr-two-700);
   justify-content: center;
   align-items: center;
 }
-
+.footer__footer__logo button{
+  background-color: transparent;
+  border: none;
+}
 @media only screen and (min-width: 775px) {
   .footer {
     background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FBackground.png?alt=media&token=67c4d160-8c91-441d-9e18-6728b316c54c');

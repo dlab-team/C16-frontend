@@ -1,5 +1,7 @@
+'use client'
+
 import './Styles.css'
-import Image from 'next/image'
+
 import {
   AiOutlineEnvironment,
   AiOutlineMail,
@@ -10,7 +12,21 @@ import {
   AiFillYoutube,
 } from 'react-icons/ai'
 
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+
 const Footer = () => {
+
+  const router = useRouter();
+   const pathname = router.pathname;
+
+   const navigateCreditos = () => {
+    router.push('/creditos');
+  };
+
+
+
+
   return (
     <div className="footer">
       <div className="footer__title">
@@ -102,12 +118,13 @@ const Footer = () => {
           </div>
 
           <div className="footer__footer__logo">
-            <a href="">
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FlogoDesafioLatam.png?alt=media&token=bba247fc-7c12-4bf7-b712-e52140c23e5f"
-                alt="desafio latam"
-              />
-            </a>
+          <button className={`${pathname === '/creditos'}`} onClick={navigateCreditos}>
+          <Image 
+          width={98}
+           height={39} 
+           src="https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FlogoDesafioLatam.png?alt=media&token=bba247fc-7c12-4bf7-b712-e52140c23e5f"
+          alt="desafio latam"/>
+          </button>
             <div>
               <p>2024</p>
             </div>
