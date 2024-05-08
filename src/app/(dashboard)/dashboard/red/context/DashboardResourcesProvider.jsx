@@ -196,34 +196,36 @@ const DashboardResourcesProvider = ({ children }) => {
     }
   }
 
+  //function to create a new partner and save in DB
   async function handleCreateResource() {
     const newResourceData = {
       userId: user?.data?.id,
-      name,
       description,
+      name,
       url,
-      image: selectedImage, // Aquí estás pasando la URL de la imagen seleccionada
+      image: selectedImage,
     }
-  
+
+    const formData = handleTransformToFormData(newResourceData)
+
     try {
-      // Validar campos vacíos y otros criterios de validación
-      if (!validateEmptyFields()) return;
-  
-      setIsLoading(true);
-  
-      const response = await createPartner(newResourceData, idToken);
-  
-      if (!response) {
-        errorMessage('Ups! algo salió mal, por favor vuelve a intentarlo');
-      } else {
-        successMessage('Organización creada correctamente');
-        resetState(); // Restablecer el estado del formulario después de la creación exitosa
+      if (!validateEmptyFields()) return
+
+      setIsLoading(true)
+      const response = await createPartner(formData, idToken)
+
+      if (!response?.ok) {
+        errorMessage('Ups! algo salio mal, por favor vuelve a intentarlo')
+        return
       }
+      successMessage('Organización creada correctamente')
+      resetSate()
     } catch (error) {
+      errorMessage('Ups! algo salio mal, por favor vuelve a intentarlo')
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  }  
+  } 
 
   // function to reset the state
   function resetState() {

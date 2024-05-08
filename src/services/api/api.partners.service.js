@@ -1,4 +1,4 @@
-const BASE_URL = 'https://c16-backend.onrender.com/api'
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
 // Trae todos los Socios de la API
 export const getAllPartners = async (page = '1', idToken) => {
@@ -71,18 +71,12 @@ export const createPartner = async (data, idToken) => {
   const response = await fetch(`${BASE_URL}/partners`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
       Authorization: `Bearer ${idToken}`,
     },
-    body: JSON.stringify(data),
-  });
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-
-  return response.json();
-};
+    body: data,
+  })
+  return response
+}
 
 // Trae un Socio por palabra desde la API
 
