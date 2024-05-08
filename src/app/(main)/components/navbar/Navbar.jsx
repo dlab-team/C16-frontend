@@ -87,8 +87,8 @@ const Navbar = () => {
         <Image
           src="https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FRNC_Horizontal_Color.png?alt=media&token=7d7203c1-39ce-4e3f-b560-e7194ea0f8ac"
           alt="logo red nacional de cuidadores"
-          width={200}
-          height={80}
+          width={100}
+          height={100}
           className={styles.logomovil}
         />
       </div>

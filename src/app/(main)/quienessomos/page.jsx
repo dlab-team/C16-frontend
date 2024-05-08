@@ -13,6 +13,7 @@ const dataBanner = {
 }
 
 
+
 async function QuienesSomos() {
   const partners = await getPartners()
 

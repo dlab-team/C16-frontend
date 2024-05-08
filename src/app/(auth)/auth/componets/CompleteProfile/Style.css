@@ -67,9 +67,10 @@ input:focus {
   outline: #787575;
 }
 select {
-  width: 305px;
+  width: 65vw;
+
   border: none;
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/iconos%2FVector.svg?alt=media&token=cd044697-8b70-46e0-b0fa-aafd69945b1d');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FDownOutlined.png?alt=media&token=2de49cf8-fe3f-4559-a4f7-f9c5129f62c6');
   background-position: right center;
   background-repeat: no-repeat;
   appearance: none;
@@ -185,6 +186,7 @@ select:focus {
   align-items: center;
   justify-content: center;
   height: 100%;
+  text-align: center;
 }
 
 /* .register__buttons__pink {
@@ -248,6 +250,28 @@ select:focus {
   }
   input {
     font: var(--tx-desktop-one);
+  }
+  select {
+    width: 23vw;
+
+  }
+}
+@media (min-width: 1400px) {
+  .register {
+    height: 55rem;
+  }
+  .register__descktop {
+    background-color: #fff;
+    width: 30rem;
+    height: 60rem;
+    border-radius: 20px;
+  }
+  input {
+    font: var(--tx-desktop-one);
+  }
+  select {
+    width: 19vw;
+
   }
 }
 
