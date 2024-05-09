@@ -20,7 +20,7 @@ const UserModal = ({
   const handleAction = async () => {
     try {
       if (actionType === 'delete') {
-        await deleteUser(userId, idToken)
+        await deleteUser(userId, idToken);
         router.push('/dashboard/usuarios')
       } else if (actionType === 'disable') {
         await disableUser(userId, idToken, !enabledValue)

@@ -5,12 +5,13 @@ import styles from './BackButton.module.css'
 function BackButton() {
     const router = useRouter()
     return (
-        <button 
-        className={styles.backBtn}
-        onClick={() => router.back()}
-        >
-            <span className={styles.hide}>back</span>
-        </button>
+        <a href="/auth/login">
+            <button 
+            className={styles.backBtn}
+            >
+                <span className={styles.hide}>back</span>
+            </button>
+        </a>
     )
 }
 
