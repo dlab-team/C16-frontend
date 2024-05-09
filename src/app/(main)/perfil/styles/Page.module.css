@@ -86,6 +86,10 @@
   .aside {
     width: 70%;
   }
+
+  .wrapper {
+    margin-top: 0;
+  }
 }
 
 /* PC Styles */

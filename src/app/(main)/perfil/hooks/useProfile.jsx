@@ -1,16 +1,8 @@
-import { useState, useEffect } from 'react'
-import {
-  AiTwotoneEdit,
-  AiOutlineSync,
-  AiTwotoneAlert,
-  AiOutlineLogout,
-} from 'react-icons/ai'
-import {
-  ChangePasswordView,
-  NotificationsView,
-  YourDataView,
-} from '../components'
+import { useEffect, useState } from 'react'
+import { AiOutlineLogout, AiOutlineSync, AiTwotoneAlert, AiTwotoneEdit } from 'react-icons/ai'
+
 import { useWindowDimensions } from '.'
+import { ChangePasswordView, NotificationsView, YourDataView } from '../components'
 
 const useProfile = () => {
   const { width } = useWindowDimensions()
@@ -26,7 +18,7 @@ const useProfile = () => {
       name: 'Editar perfil',
       icon: <AiTwotoneEdit />,
     },
-    {
+   /*  {
       id: 2,
       name: 'Cambiar contraseña',
       icon: <AiOutlineSync />,
@@ -35,7 +27,7 @@ const useProfile = () => {
       id: 3,
       name: 'Notificaciones',
       icon: <AiTwotoneAlert />,
-    },
+    }, */
     {
       id: 4,
       name: 'Cerrar Sesión',

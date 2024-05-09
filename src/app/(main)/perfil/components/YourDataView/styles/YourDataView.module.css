@@ -37,7 +37,7 @@
 /* Tablets styles */
 @media (width >= 768px) {
   .buttonContainer {
-    width: 60%;
+    width: 70%;
   }
 }
 
@@ -57,6 +57,6 @@
   }
 
   .buttonContainer {
-    width: 40%;
+    width: 100%;
   }
 }

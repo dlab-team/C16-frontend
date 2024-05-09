@@ -29,7 +29,11 @@
 .select::-ms-expand {
   display: none;
 }
-
+.inputDisabled {
+  color: #aaa1a1;
+  border-color: #aaa1a1;
+  user-select: none;
+}
 .icon {
   position: absolute;
   right: 1rem;
