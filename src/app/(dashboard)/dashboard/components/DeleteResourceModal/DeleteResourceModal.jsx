@@ -1,8 +1,6 @@
 'use client'
 import styles from './styles/DeleteResource.module.css'
-import { UserContext } from '@/components/context/userContext'
-import { useContext } from 'react'
-import { useRouter } from 'next/navigation'
+
 const DeleteResourceModal = ({
   dialogIsOpen,
   setDialogIsOpen,
@@ -10,14 +8,9 @@ const DeleteResourceModal = ({
   cancelButtonText,
   okButtontext,
   isLoading,
+  handleDelete
 }) => {
-  const {deleteUser} = useContext(UserContext)
-  const router = useRouter()
 
-  const handleDelete =()=>{
-    deleteUser()
-    router.push('/')
-  }
   return (
     <dialog id="deleteResource" className={styles.container}>
       <div className={styles.wrapper}>

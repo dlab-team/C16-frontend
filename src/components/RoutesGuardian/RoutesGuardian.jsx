@@ -9,11 +9,16 @@ const protectedRoutes = [
     '/perfil',
     '/academia',
     '/foro',
+    '/dashboard',
 ]
 
 function isProtectedRoute(pathname) {
     const regex = new RegExp(`^(${protectedRoutes.join('|')})($|/|\\?)`);
     return regex.test(pathname)
+}
+const isDashboard = (pathname) => {
+    const dashboardRegex = /^\/dashboard($|\/|\\?)/;
+    return dashboardRegex.test(pathname);
 }
 
 function RoutesGuardian({ children }) {
@@ -29,6 +34,8 @@ function RoutesGuardian({ children }) {
                     router.push("/auth/login")
                 } else if (!user.data.completed) {
                     router.push("/auth/completarPerfil")
+                }else if(user.data.roleId==3 && isDashboard(pathname)){//solo debe ser role 3 y estar en la ruta dashboard
+                    router.push("/")
                 }
             }
         }

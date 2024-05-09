@@ -54,7 +54,7 @@ const creditos = () => {
       nombre: 'Paula Mendez',
       url: 'https://www.linkedin.com/in/paulamr/',
       photo:
-        'https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fno%20tocar!%2FRectangle%2010.png?alt=media&token=f0284169-6059-4d56-8ff6-fda589c14515',
+        'https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fno%20tocar!%2FRectangle%2018.png?alt=media&token=b25b74fb-6cd8-4553-b6fc-9fd981658273',
     },
   ]
   const frontend = [
@@ -93,7 +93,7 @@ const creditos = () => {
       nombre: 'Daniel García',
       url: '',
       photo:
-        'https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fno%20tocar!%2FRectangle%2018.png?alt=media&token=c0bc3187-ee58-48d1-b9b2-ae72dec4a049',
+        'https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fno%20tocar!%2FRectangle%2019.png?alt=media&token=315c57e2-d84c-408a-8561-60cf73c39231',
     },
   ]
 
@@ -108,7 +108,7 @@ const creditos = () => {
     {
       id: 2,
       nombre: 'Mauricio Santelices',
-      url: '',
+      url: 'https://www.linkedin.com/in/msantelices/',
       photo:
         'https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2Fno%20tocar!%2FRectangle%2017.png?alt=media&token=cd8c69f2-9ddf-43b5-8a49-9d507cf7caf4',
     },
@@ -163,7 +163,7 @@ const creditos = () => {
       </div>
       <div className={styles.team}>
         <h3> Frontend</h3>
-        <div className={styles.seccionfrontend}>
+        <div className={styles.seccionparner}>
           {frontend.map((user) => (
             <div key={user.id} className={styles.parner}>
               <Image
@@ -185,7 +185,7 @@ const creditos = () => {
       </div>
       <div className={styles.team}>
         <h3> Technical Líder - Product Owner</h3>
-        <div className={styles.seccionTLPO}>
+        <div className={styles.seccionparner}>
           {TlPo.map((user) => (
             <div key={user.id} className={styles.parner}>
               <Image

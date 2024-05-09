@@ -50,6 +50,25 @@ export function UserProvider({ children }) {
             logged: false,
         })
     }
+    const refreshUser = async () => {
+        auth.onAuthStateChanged(async (currentUser) => {
+            if (currentUser) {
+                try {
+                    const idToken = await currentUser.getIdToken()
+                    const uid = currentUser.uid ? currentUser.uid : currentUser.user.uid;
+                    const result = await getUser(uid);
+                    setUser({
+                        data: result,
+                        logged: true,
+                        token: idToken,
+                    });
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+        })
+    
+    }
 
     useEffect(() => {
         auth.onAuthStateChanged(async (currentUser) => {
@@ -72,7 +91,7 @@ export function UserProvider({ children }) {
     }, [])
 
     return (
-        <UserContext.Provider value={{ user, loading, updateUserContext, deleteUser, updateToken }}>
+        <UserContext.Provider value={{ user, loading, updateUserContext, deleteUser, updateToken, refreshUser }}>
             {children}
         </UserContext.Provider>
     )

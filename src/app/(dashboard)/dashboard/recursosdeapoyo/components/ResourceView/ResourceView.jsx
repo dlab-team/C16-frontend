@@ -43,12 +43,13 @@ const ResourceView = () => {
                     type="checkbox"
                     defaultChecked={resource?.highlighted}
                     className={styles.checkboxRound}
+                    disabled
                   />
                   <span className={styles.span}>
                     <AiOutlineCheck size={10} />
                   </span>
                 </div>
-                Destacar recurso
+                Destacado
               </label>
             </div>
           </div>
