@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useContext } from 'react'
 import { AiOutlineDown } from 'react-icons/ai'
-import { CustomCalendarView } from '@/app/(profile)/perfil/components/YourDataView/components'
+import CustomCalendarView from '../CustomCalendarView/CustomCalendarView'
 import regionesData from '../../../../../../(auth)/auth/componets/CompleteProfile/regionesData.json'
 import styles from './styles/UserDataView.module.css'
 import { UserContext } from '@/components/context/userContext'
@@ -84,7 +84,6 @@ const UserDataView = ({
       
       updateUser(userProfile?.id, updatedData, idToken)
         .then(() => {
-          handleUpload()
           successMessage('Información actualizada')
         })
         .catch(() => {

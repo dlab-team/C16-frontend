@@ -9,6 +9,8 @@ const protectedRoutes = [
     '/perfil',
     '/academia',
     '/foro',
+    '/dashboard',
+
 ]
 
 function isProtectedRoute(pathname) {
@@ -29,6 +31,8 @@ function RoutesGuardian({ children }) {
                     router.push("/auth/login")
                 } else if (!user.data.completed) {
                     router.push("/auth/completarPerfil")
+                }else if(user.data.roleId == 3){
+                    router.push("/")
                 }
             }
         }

@@ -120,7 +120,7 @@ const Navbar = () => {
         {user.logged ? (
          <div className={styles.profileWrapper}>
         
-         <button className={styles.userimage} onClick={() => setShowDropdown(!showDropdown)}>
+         <button className={styles.btnImage} onClick={() => setShowDropdown(!showDropdown)}>
               {user.data.photo ? ( // Renderizar la imagen del usuario si está disponible
                 <Image className={styles.userimage} src={user.data.photo} alt="User Photo" width={100} height={100} />
               ) : ( 
