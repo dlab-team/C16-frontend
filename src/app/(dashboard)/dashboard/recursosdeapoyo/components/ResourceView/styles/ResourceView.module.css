@@ -88,7 +88,7 @@
   appearance: none;
   -webkit-appearance: none;
   outline: none;
-  cursor: none;
+  cursor: pointer;
   transition: all ease-in 175ms;
 }
 

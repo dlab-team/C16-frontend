@@ -1,9 +1,12 @@
 'use client'
 import Image from 'next/image'
 import { PiUploadSimpleBold } from 'react-icons/pi'
+import { AiOutlineDown } from 'react-icons/ai'
 import { GoBackButton, SaveButton, TitleView } from '../../components'
 import styles from './styles/Page.module.css'
 import { useDashboardResources } from '../hooks'
+import regionesData from '../../../../(auth)/auth/componets/CompleteProfile/regionesData.json'
+import filterStyles from '../../../../(main)/apoyoalcuidador/components/Tabs/components/FiltersView/styles/FiltersView.module.css'
 
 const CreateResource = () => {
   const {
@@ -20,6 +23,8 @@ const CreateResource = () => {
     fileInputRef,
     title,
     setTitle,
+    region,
+    setRegion,
   } = useDashboardResources()
 
   return (
@@ -76,13 +81,55 @@ const CreateResource = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
         <h6 className={styles.title}>Comuna</h6>
-        <input
-          type="text"
-          placeholder="Providencia"
-          className={styles.textArea}
-          value={comuna}
-          onChange={(e) => setComuna(e.target.value)}
-        />
+        <div
+          className={filterStyles.selectContainer}
+          style={{ marginBottom: '0.6rem' }}
+        >
+          <select
+            name="region"
+            id="region"
+            className={filterStyles.select}
+            value={region}
+            onChange={(e) => {
+              setRegion(e.target.value)
+              setComuna('none')
+            }}
+          >
+            <option value="none">Selecciona región</option>
+            {regionesData?.regiones.map((region, index) => (
+              <option key={index} value={region?.region}>
+                {region?.region}
+              </option>
+            ))}
+          </select>
+          <AiOutlineDown className={filterStyles.icon} />
+        </div>
+        <div
+          className={filterStyles.selectContainer}
+          style={{ marginBottom: '1rem' }}
+        >
+          <select
+            name="comuna"
+            id="comuna"
+            value={comuna}
+            onChange={(e) => {
+              setComuna(e.target.value)
+            }}
+            disabled={region === 'none'}
+            className={filterStyles.select}
+            required
+          >
+            <option value="none">Selecciona comuna</option>
+            {regionesData.regiones
+              .find((r) => r?.region === region)
+              ?.comunas?.map((comuna, index) => (
+                <option key={index} value={comuna}>
+                  {comuna}
+                </option>
+              ))}
+          </select>
+          <AiOutlineDown className={filterStyles.icon} />
+        </div>
         <h6 className={styles.title}>Ingrese URL</h6>
         <input
           type="url"
