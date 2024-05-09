@@ -13,7 +13,7 @@ const dataBanner = {
     'Red Nacional de Cuidados', //mensaje del banner
 }
 
-async function QuienesSomos(params, searchParams) {
+async function QuienesSomos(params) {
   // Desestructura los parámetros
   const { id } = params;
 
