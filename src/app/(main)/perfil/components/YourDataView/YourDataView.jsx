@@ -8,10 +8,13 @@ import {
 import styles from './styles/YourDataView.module.css'
 import { UserContext } from '@/components/context/userContext'
 import { useContext, useState } from 'react'
+import { updateUser } from '@/services/api'
+import { successMessage, errorMessage } from '@/utils/notify'
+
 
 
 const YourDataView = () => {
-  const { user } = useContext(UserContext)
+  const { user, refreshUser } = useContext(UserContext)
   const data = user.data
 
   const [values, setValues] = useState({
@@ -23,13 +26,20 @@ const YourDataView = () => {
     region: data.region,
     phone: data.phone,
     birthday: data.birthday,
+    completed: true,
   })
 
 
-  const handlerSubmit = (e) => {
+  const handlerSubmit = async(e) => {
     e.preventDefault()
-    alert('Submit')
-    console.log(values)
+    await updateUser(user.data.id, values, user.token)
+    .then((res)=>{
+      console.log(res.status)
+      if(res.ok){
+        successMessage('Usuario actualizado correctamente!')
+        refreshUser()
+      }
+    }).catch(()=>errorMessage('No se pudo actualizar, verifique los datos enviados o intentelo más tarde.'))
   }
 
 
