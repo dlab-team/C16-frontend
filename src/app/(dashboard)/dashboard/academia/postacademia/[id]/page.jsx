@@ -23,6 +23,7 @@ const postred = () => {
   const [description, setDescription] = useState('')
   const [url, setUrl] = useState('')
   const [duration, setDuration] = useState('')
+  const [author, setAuthor] = useState('')
 
   useEffect(() => {
     fetchVideo()
@@ -34,6 +35,7 @@ const postred = () => {
       setDescription(video.description)
       setUrl(video.materialURL)
       setDuration(video.duration)
+      setAuthor(video.author)
     }
   }, [video])
 
@@ -96,6 +98,17 @@ const postred = () => {
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
                 required
+              />
+            </div>
+
+            <div className={styles.redinput}>
+              <label htmlFor="nombreOrganizacion">Autor</label>
+              <input
+                type="text"
+                placeholder="Yorem ipsum dolor sit amet consectetur"
+                id="nombreOrganizacion"
+                value={author}
+                disabled
               />
             </div>
 

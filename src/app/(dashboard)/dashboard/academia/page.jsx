@@ -87,7 +87,7 @@ const Academia = () => {
             id={video.id}
             title={video.title}
             description={video.description}
-            autor={video.userId}
+            autor={video.author}
             url={video.materialURL}
             duration={video.duration}
             pathname={router.pathname}
