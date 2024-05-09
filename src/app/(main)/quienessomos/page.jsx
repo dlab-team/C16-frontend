@@ -1,7 +1,8 @@
-import GenericBanner from '../components/GenericBanner/GenericBanner'
-import containerStyles from './styles/Page.module.css'
-import { Carousel, UsView } from './components'
-import { getPartners } from '@/services/api/api.patner.service'
+
+import GenericBanner from '../components/GenericBanner/GenericBanner';
+import containerStyles from './styles/Page.module.css';
+import { Carousel, UsView } from './components';
+import { getAllPartners } from '@/services/api/api.partners.service';
 
 const dataBanner = {
   imgUrl:
@@ -12,24 +13,34 @@ const dataBanner = {
     'Red Nacional de Cuidados', //mensaje del banner
 }
 
+async function QuienesSomos(params) {
+  // Desestructura los parámetros
+  const { id } = params;
 
+  // Llama a la función para obtener los socios
+  const response = await getAllPartners(id);
 
-async function QuienesSomos() {
-  const partners = await getPartners()
+  // Mapea los datos de los socios para extraer solo las URL de las imágenes
+  const images = response.data.map(partner => ({
+    src: partner.image, 
+    alt: partner.name,
+    url: partner.url,
+  }));
 
   return (
-    <main className={containerStyles.main}>
-      <div  className={containerStyles.wrapper}>
+    <main>
+      <div className={containerStyles.wrapper}>
         <GenericBanner resource={dataBanner} />
       </div>
       <UsView />
       <section className={containerStyles.container}>
         <h2 className={containerStyles.title}>Nuestra Red</h2>
-        <Carousel networkInfo={partners.data} slideLeft={true} />
-        <Carousel networkInfo={partners.data} slideLeft={false} />
+        {/* Pasamos los datos de los socios al componente del carrusel */}
+        <Carousel networkInfo={images} slideLeft={true} />
+        <Carousel networkInfo={images} slideLeft={false} />
       </section>
     </main>
   )
 }
 
-export default QuienesSomos
+export default QuienesSomos;

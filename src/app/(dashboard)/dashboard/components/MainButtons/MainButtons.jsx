@@ -13,7 +13,7 @@ import {
   AiOutlineLogout,
 } from 'react-icons/ai'
 import styles from './styles/MainButtons.module.css'
-import { DeleteResourceModal } from '..'
+import { DeleteUserModal } from '..'
 
 const MainButtons = () => {
   const pathname = usePathname()
@@ -84,7 +84,7 @@ const MainButtons = () => {
         </button>
       </div>
       {dialogIsOpen && (
-        <DeleteResourceModal
+        <DeleteUserModal
           dialogIsOpen={dialogIsOpen}
           setDialogIsOpen={setDialogIsOpen}
           message="¿Estás seguro que deseas Cerrar Sesión?"
