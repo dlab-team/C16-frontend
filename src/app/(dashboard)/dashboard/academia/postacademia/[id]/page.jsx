@@ -1,25 +1,52 @@
 'use client'
 
+import styles from './styles/postacademia.module.css'
+import { useState, useEffect, useContext } from 'react'
 import { IoIosArrowBack } from 'react-icons/io'
-import styles from './styles/formacademia.module.css'
 import { useRouter } from 'next/navigation'
-import { createVideo } from '@/services/api/api.academy.service.js'
-import { useContext, useState } from 'react'
+import { useParams } from 'next/navigation'
+import {
+  getVideoById,
+  updateVideo,
+} from '@/services/api/api.academy.service.js'
 import { UserContext } from '@/components/context/userContext'
 import { errorMessage, successMessage } from '@/utils/notify'
 
-const Formacademia = () => {
+const postred = () => {
   const router = useRouter()
   const pathname = router.pathname
+  const { id } = useParams()
+  const [video, setVideo] = useState({})
   const { user } = useContext(UserContext)
   const idToken = user.token
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [url, setUrl] = useState('')
   const [duration, setDuration] = useState('')
+  const [author, setAuthor] = useState('')
 
-  const navigateToacademia = () => {
-    router.push('/dashboard/academia') // Ajusta la ruta según sea necesario
+  useEffect(() => {
+    fetchVideo()
+  }, [])
+
+  useEffect(() => {
+    if (video) {
+      setTitle(video.title)
+      setDescription(video.description)
+      setUrl(video.materialURL)
+      setDuration(video.duration)
+      setAuthor(video.author)
+    }
+  }, [video])
+
+  const fetchVideo = async () => {
+    await getVideoById(id, idToken)
+      .then((data) => {
+        setVideo(data)
+      })
+      .catch(() => {
+        setVideo({})
+      })
   }
 
   const handleSubmit = async (event) => {
@@ -30,14 +57,18 @@ const Formacademia = () => {
       materialURL: url,
       duration,
     }
-    await createVideo(data, idToken)
+    await updateVideo(id, data, idToken)
       .then(() => {
-        successMessage('Video creado exitosamente')
+        successMessage('Video editado exitosamente')
         router.push('/dashboard/academia')
       })
       .catch(() => {
-        errorMessage('Error al crear el video')
+        errorMessage('Error al editar el video')
       })
+  }
+
+  const navigateToacademia = () => {
+    router.push('/dashboard/academia') // Ajusta la ruta según sea necesario
   }
 
   return (
@@ -64,8 +95,20 @@ const Formacademia = () => {
                 type="text"
                 placeholder="Yorem ipsum dolor sit amet consectetur"
                 id="nombreOrganizacion"
+                value={title}
                 onChange={(event) => setTitle(event.target.value)}
                 required
+              />
+            </div>
+
+            <div className={styles.redinput}>
+              <label htmlFor="nombreOrganizacion">Autor</label>
+              <input
+                type="text"
+                placeholder="Yorem ipsum dolor sit amet consectetur"
+                id="nombreOrganizacion"
+                value={author}
+                disabled
               />
             </div>
 
@@ -75,16 +118,18 @@ const Formacademia = () => {
                 type="text"
                 id="url"
                 placeholder="http//:"
+                value={url}
                 onChange={(event) => setUrl(event.target.value)}
                 required
               />
             </div>
             <div className={styles.rednumberinput}>
-              <label htmlFor="url">Ingrese Dúracion (Minutos)</label>
+              <label htmlFor="url">Ingrese Duracion (Minutos)</label>
               <input
                 type="number"
                 id="duration"
                 placeholder="1"
+                value={duration}
                 min="1"
                 onChange={(event) => setDuration(event.target.value)}
                 required
@@ -97,13 +142,14 @@ const Formacademia = () => {
                 id="descripcion"
                 placeholder="Descripción corta del video"
                 onChange={(event) => setDescription(event.target.value)}
+                value={description}
                 required
               />
             </div>
           </div>
           <div>
             <button type="submit" className={styles.buttonsave}>
-              Crear Recurso
+              Actualizar Recurso
             </button>
           </div>
         </form>
@@ -112,4 +158,4 @@ const Formacademia = () => {
   )
 }
 
-export default Formacademia
+export default postred

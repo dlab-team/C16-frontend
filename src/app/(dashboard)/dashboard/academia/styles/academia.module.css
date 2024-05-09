@@ -21,13 +21,17 @@ overflow-y: scroll;
 }
 
 .iconform{
-    width: 35px;
-    height: 35px;
     border: none;
-    font-size: 35px;
+    font-size: 50px;
     background-color: transparent;
+    color: var( --clr-primary-2);
+    display: flex;
+    cursor: pointer;
 }
-/* nuestraRed.module.css */
+
+.iconform:hover{
+    opacity: 0.5;
+}
 
   .modalBackground{
     position: absolute;
@@ -37,3 +41,18 @@ overflow-y: scroll;
     width: 100%;
     height: 100%;
   }
+
+
+  .pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+.paginationSelect select{
+    height: 48px;
+    width: 70px;
+    border: 2px solid var(--clr-two-500);
+    padding: 15px;
+    border-radius: 8px;
+}

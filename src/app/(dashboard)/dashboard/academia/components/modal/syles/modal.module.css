@@ -23,7 +23,9 @@ position: relative;
     padding-right: 2%;
     border: none;
     color: var(--clr-two-500);
-    font-size: 30px;}
+    font-size: 25px;
+    cursor: pointer;
+}
 
 .modalButtons{
     align-self: flex-end;
@@ -31,8 +33,9 @@ position: relative;
     gap: 7%;
     padding-right: 5%;
     width: 100%;
-    justify-content: flex-end
-
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 .modalButtonscancel{
     color: var(--clr-two-500);
@@ -42,6 +45,7 @@ position: relative;
     width: 130px;
     height: 40px;
     border-radius: 8px;
+    cursor: pointer;
 }
 .modalButtonsconfirm{
     color: var(--clr-two-500);
@@ -51,4 +55,5 @@ position: relative;
     border-radius: 8px;
     width: 130px;
     height: 40px;
+    cursor: pointer;
 }
