@@ -41,8 +41,6 @@ const getAllUsers = async (page = 1, name = "") => {
 
 // Actualizo un los campos de un usuario por medio de su ID
 const updateUser = async (uid, newData, idToken) => {
-    console.log('new data:, ', newData)
-    console.log(uid)
     const response = await fetch(`${BASE_URL}/users/${uid}`, {
         method: "PATCH",
         headers: {
@@ -52,11 +50,7 @@ const updateUser = async (uid, newData, idToken) => {
         body: JSON.stringify(newData)
     })
 
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    return response.json()
+    return response
 }
 
 const updateUserPhoto = async (uid, formData, idToken) => {

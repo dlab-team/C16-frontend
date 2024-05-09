@@ -1,10 +1,10 @@
 
 
 .container {
-  overflow: hidden;
   width: calc(var(150px) * 3); /* Ajusta según el diseño */
   margin: auto;
-  max-width: 1200px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .carouselContainer {
@@ -58,3 +58,9 @@
     padding: 1rem;
   }
 } /* pantalla mediana */
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 1200px;
+  }
+} /* pantalla grande */
