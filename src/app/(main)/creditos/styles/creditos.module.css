@@ -11,7 +11,7 @@
     justify-items: center;
     font: var(--t-mobile-one);
     color: var(--clr-two-500);
-    margin-top: 5%;
+    margin-top: 10%;
    
 
 }
@@ -20,40 +20,24 @@
 
 }
 .seccionparner{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 25%;
-    height: 70vh;
+    display: grid;
     justify-content: center;
+    grid-template-columns: 1fr 1fr ;
+    justify-items: center;
+    gap: 5% 0%;
 }
-.seccionfrontend{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 25%;
-    height: 90vh;
-    justify-content: center;
-}
-.seccionTLPO{
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 30%;
-    height: 35vh;
-    justify-content: center;
-}
+
 .parner{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 18vw;
-    height: 30vh;
-    justify-content: space-evenly;
+    width: 200px;
+    height: 243px;
     text-align: center;
- 
-
-}
+    justify-content: space-evenly;
+    margin-top: 5%;
+  
+    }
 .link{
     font-size: 60px;
     color: var(--clr-two-500);
@@ -70,20 +54,11 @@
 
 
 @media (min-width: 992px) {
-    .seccionparner{
-        gap: 8%;
-        width: 90vw;
 
+    .team{
+        width: 90%;
+        margin-top: 5%;
     }
-    .seccionfrontend{
-        gap: 8%;
-        height: 92vh;
-        width: 90vw;
-
-    }
-    .seccionTLPO{
-        width: 90vw;
-        margin-bottom: 5%;
-    }
-
+ .seccionparner{
+    grid-template-columns: 1fr 1fr 1fr;}
 }

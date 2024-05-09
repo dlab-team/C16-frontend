@@ -8,7 +8,6 @@ import { AiOutlineUpload } from 'react-icons/ai'
 import Modal from '../modal/Modal'
 
 const EditPost = ({
-
   handleDelete,
   showModal,
   handleCloseModal,
@@ -17,7 +16,6 @@ const EditPost = ({
   return (
     <div>
       <div className={styles.card}>
-
         {/* para editar imagen
         
         <div className={styles.image}>
@@ -46,7 +44,7 @@ const EditPost = ({
               </div>
 
               <div className={styles.academiainput}>
-                <input type="text" placeholder='Sorem ipsum dolor sit amet' />
+                <input type="text" placeholder="Sorem ipsum dolor sit amet" />
               </div>
             </div>
 
@@ -56,7 +54,10 @@ const EditPost = ({
               </div>
 
               <div className={styles.academiainput}>
-                <input type="text" placeholder='Sorem ipsum dolor sit amet, consectetur adipiscing elit.' />
+                <input
+                  type="text"
+                  placeholder="Sorem ipsum dolor sit amet, consectetur adipiscing elit."
+                />
               </div>
             </div>
 
@@ -66,7 +67,7 @@ const EditPost = ({
               </div>
 
               <div className={styles.academiainput}>
-                <input type="text" placeholder='Paola Duarte' />
+                <input type="text" placeholder="Paola Duarte" />
               </div>
             </div>
 
@@ -76,7 +77,7 @@ const EditPost = ({
               </div>
 
               <div className={styles.academiainput}>
-                <input type="text" placeholder='http//: ' />
+                <input type="text" placeholder="http//: " />
               </div>
             </div>
           </div>

@@ -100,10 +100,6 @@ const DashboardResourcesProvider = ({ children }) => {
     setAllResources(filteredResources)
   }
 
-  useEffect(() => {
-    filterResources()
-  }, [resourcesEliminated])
-
   //function to search by term
   async function searchResources() {
     try {
@@ -161,6 +157,7 @@ const DashboardResourcesProvider = ({ children }) => {
       const response = await deleteResourceById(dataResourceId, idToken)
 
       if (response?.ok) successMessage('Recurso eliminado correctamente')
+      filterResources()
       resetSate()
     } catch (error) {
       errorMessage('Ups! algo salio mal, por favor vuelve a intentarlo')
