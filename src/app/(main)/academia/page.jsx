@@ -9,7 +9,7 @@ const dataBanner = {
   imgUrl: "https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FimgAcademia.png?alt=media&token=85960cc2-7829-495c-a502-a38e1e33b5f5",
   titleMessage: '', //mensaje que va en el titulo
   titleEmphasis: 'Academia', // el enfasis del texto que va color azul
-  message: 'Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit', //mensaje del banner
+  message: '  En esta sección encontrarás herramientas y conocimientos para potenciar tu crecimiento tanto profesional como personal.  ', //mensaje del banner
 }
 
 async function Academia({ searchParams }) {
