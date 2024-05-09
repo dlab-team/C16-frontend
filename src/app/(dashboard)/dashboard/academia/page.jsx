@@ -1,146 +1,115 @@
 'use client'
 
-import { AiOutlineUpload } from 'react-icons/ai';
-import SearchAcademia from './components/searchAcademia/searchAcademia';
-import Pagination from './components/pagination/Pagination';
+import { AiOutlineUpload } from 'react-icons/ai'
+import SearchAcademia from './components/searchAcademia/searchAcademia'
 import styles from './styles/academia.module.css'
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import CardAcademia from './components/cardAcademia/CardAcademia';
-
-
-
+import { useRouter } from 'next/navigation'
+import { useEffect, useState, useMemo } from 'react'
+import CardAcademia from './components/cardAcademia/CardAcademia'
+import { getAllVideos } from '@/services/api/api.academy.service.js'
+import { PaginationView } from '@/app/(main)/components'
 const Academia = () => {
+  const [videos, setVideos] = useState([])
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
+  const [searchValue, setSearchValue] = useState('')
 
-  
-  const router = useRouter();
-  const pathname = router.pathname;
+  useEffect(() => {
+    fetchVideos(page, searchValue)
+  }, [page, searchValue])
 
+  const fetchVideos = async (pageNum, searchValue) => {
+    await getAllVideos(pageNum, searchValue)
+      .then((response) => {
+        if (!response.ok) {
+          //alert('posible error')
+        }
+        return response.json()
+      })
+      .then((res) => {
+        setVideos(res.data)
+        setTotalPages(res.pagination.totalPages)
 
-  const navigateToEditAcademia = () => {
-    router.push('/dashboard/academia/postacademia'); // Ajusta la ruta según sea necesario
-  };
-  const navigateToFormAcademia= () => {
-    router.push('/dashboard/academia/formacademia'); // Ajusta la ruta según sea necesario
-  };
+        if (res.data.length === 0 && pageNum > 1) {
+          setPage(pageNum - 1)
+        }
+      })
+      .catch(() => {
+        setVideos([])
+      })
+  }
 
+  const paginationOptions = useMemo(() => {
+    const options = []
+    for (let i = 1; i <= totalPages; i++) {
+      options.push(
+        <option key={i} value={i}>
+          {i}
+        </option>,
+      )
+    }
+    return options
+  }, [totalPages])
 
-  const [showModal, setShowModal] = useState(false);
+  function handlePageChange(event) {
+    const selectedPage = parseInt(event.target.value)
+    setPage(selectedPage)
+  }
 
-  const [modalColor, setModalColor] = useState('#ffffff'); // Color inicial del modal
+  const router = useRouter()
+  const pathname = router.pathname
 
-  const handleDelete = () => {
-    setShowModal(true);
-    setModalColor('#0000'); // Cambiar el color del modal al activar la función
-  };
+  const navigateToEditAcademia = (id) => {
+    router.push(`/dashboard/academia/postacademia/${id}`)
+  }
+  const navigateToFormAcademia = () => {
+    router.push('/dashboard/academia/formacademia') // Ajusta la ruta según sea necesario
+  }
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setModalColor('#ffffff'); // Resetear el color del modal al cerrarlo
-  };
-
-  
-
- const PruebaAcademia= [
-    {
-      id: 1,
-      image:"https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FFrame%2039944.png?alt=media&token=ffb794c8-d454-4de6-a424-c5b7fa43f58b",
-      title: 'Usuarios',
-      description:" Borem ipsum dolor sit amet",
-      autor: "Paola Duarte",
-      url: "http//:",
-      alt:"imagen-ronda"
-    },
-    {
-      id: 2,
-      image:"https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FFrame%2039944.png?alt=media&token=ffb794c8-d454-4de6-a424-c5b7fa43f58b",
-      title: 'Sorem ipsum dolor sit amet',
-      description:" Borem ipsum dolor sit amet",
-      autor: "Paola Duarte",
-      url: "http//:",
-      alt:"imagen-ronda"
-    },
-    {
-      id: 3,
-      image:"https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FFrame%2039944.png?alt=media&token=ffb794c8-d454-4de6-a424-c5b7fa43f58b",
-      title: 'Sorem ipsum dolor sit amet',
-      description:" Borem ipsum dolor sit amet",
-      autor: "Paola Duarte",
-      url: "http//:",
-      alt:"imagen-ronda"
-    },
-    {
-      id: 4,
-      image:"https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FFrame%2039944.png?alt=media&token=ffb794c8-d454-4de6-a424-c5b7fa43f58b",
-      title: 'Sorem ipsum dolor sit amet',
-      description:" Borem ipsum dolor sit amet",
-      autor: "Paola Duarte",
-      url: "http//:",
-      alt:"imagen-ronda"
-    },
-    {
-      id: 5,
-      image:"https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FFrame%2039944.png?alt=media&token=ffb794c8-d454-4de6-a424-c5b7fa43f58b",
-      title: 'Sorem ipsum dolor sit amet',
-      description:" Borem ipsum dolor sit amet",
-      autor: "Paola Duarte",
-      url: "http//:",
-      alt:"imagen-ronda"
-    },
-    {
-      id: 6,
-      image:"https://firebasestorage.googleapis.com/v0/b/c16-ronda.appspot.com/o/imagenes%2FFrame%2039944.png?alt=media&token=ffb794c8-d454-4de6-a424-c5b7fa43f58b",
-      title: 'Sorem ipsum dolor sit amet',
-      description:" Borem ipsum dolor sit amet",
-      autor: "Paola Duarte",
-      url: "http//:",
-      alt:"imagen-ronda"
-    },
-  ];
   return (
     <div className={styles.containerRed}>
-    {showModal && (
-        <div className={styles.modalBackground} onClick={handleCloseModal} style={{ backgroundColor: modalColor }} />
-      )}
+      <div className={styles.title}>
+        <h1>Recursos de Academia</h1>
+        <button
+          className={`${styles.iconform} ${pathname === '/dashboard/academia/formacademia' && styles.active}`}
+          onClick={navigateToFormAcademia}
+        >
+          <AiOutlineUpload />
+        </button>
+      </div>
 
-    
-    <div className={styles.title}>
-      <h1>Recursos de Academia</h1>
-      <button className={`${styles.iconform} ${pathname === '/dashboard/academia/formacademia' && styles.active}`} onClick={navigateToFormAcademia}>
-        <AiOutlineUpload/>
-      </button>
+      <SearchAcademia search={searchValue} setSearch={setSearchValue} />
+
+      <div className={styles.seccionCard}>
+        {videos?.map((video) => (
+          <CardAcademia
+            key={video.id}
+            id={video.id}
+            title={video.title}
+            description={video.description}
+            autor={video.userId}
+            url={video.materialURL}
+            duration={video.duration}
+            pathname={router.pathname}
+            navigateToEditAcademia={navigateToEditAcademia}
+            refetchData={() => fetchVideos(page)}
+          />
+        ))}
+      </div>
+
+      {/* Renderizar el modal */}
+      <div className={styles.pagination}>
+        {videos.length > 0 && totalPages > 1 && (
+          <PaginationView
+            paginationOptions={paginationOptions}
+            currentPage={page}
+            handlePageChange={handlePageChange}
+            getTotalPages={() => totalPages}
+          />
+        )}
+      </div>
     </div>
-    
-    <SearchAcademia/>
-    
-    <div className={styles.seccionCard}>
-      {PruebaAcademia.map((prueba) => (
-        <CardAcademia
-          key={prueba.id}
-          image={prueba.image}
-          title={prueba.title}
-          description={prueba.description}
-          alt={prueba.alt}
-          autor = {prueba.autor}
-          url = {prueba.url}
-          pathname={router.pathname}
-          navigateToEditAcademia={navigateToEditAcademia}
-          showModal={showModal}
-          handleDelete={handleDelete}
-          handleCloseModal={handleCloseModal}
-        />
-      ))}
-    </div>
-    
-    {/* Renderizar el modal */}
-  
+  )
+}
 
-    <div>
-      <Pagination />
-    </div>
-  </div>
-);
-};
-
-
-export default Academia;
+export default Academia

@@ -2,43 +2,41 @@
 import { useState } from 'react'
 import { FiTrash } from 'react-icons/fi'
 import { AiTwotoneEdit } from 'react-icons/ai'
-import styles  from './styles/cardAcademia.module.css'
-import Image from 'next/image'
+import styles from './styles/cardAcademia.module.css'
 import Modal from '../modal/Modal'
 
 const CardAcademia = ({
-  image,
+  id,
   title,
   autor,
   url,
   description,
-  alt,
+  duration,
   navigateToEditAcademia,
   pathname,
-  handleDelete,
-  handleCloseModal,
-  modalColor,
-  showModal,
+  refetchData,
 }) => {
+  const [selectedId, setSelectedId] = useState(null)
+  const [showModal, setShowModal] = useState(false)
+
+  const handleDelete = (id) => {
+    setSelectedId(id)
+    setShowModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+    refetchData()
+  }
+
   return (
     <div>
       <div className={styles.card}>
-        {/* imagen 
-        
-        <div className={styles.image}>
-          <Image
-            width={177}
-            height={177}
-            src={image}
-            className={styles.profileImage}
-            alt={alt}
-          />
-        </div> */}
         <div className={styles.cardBody}>
           <div className={styles.cardContent}>
             <div className={styles.textacademia}>
               <div className={styles.cardTextAsideTitle}>
-                <p>Titulo</p>
+                <p>Título</p>
               </div>
 
               <div>{title}</div>
@@ -46,7 +44,7 @@ const CardAcademia = ({
 
             <div className={styles.textacademia}>
               <div className={styles.cardTextAsideTitle}>
-                <p>descripcion</p>
+                <p>Descripción</p>
               </div>
 
               <div>{description}</div>
@@ -65,19 +63,28 @@ const CardAcademia = ({
                 <p>URL</p>
               </div>
 
-              <div>{url}</div>
+              <div>
+                <a
+                  href={url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className={styles.academialink}
+                >
+                  Ver Video
+                </a>
+              </div>
             </div>
           </div>
         </div>
         <div className={styles.icon}>
-          <button className={styles.iconTrash} onClick={handleDelete}>
-            <FiTrash />
-          </button>
           <button
             className={`${styles.iconEdit} ${pathname === '/dashboard/academia/postacademia' && styles.active}`}
-            onClick={navigateToEditAcademia}
+            onClick={() => navigateToEditAcademia(id)}
           >
             <AiTwotoneEdit />
+          </button>
+          <button className={styles.iconTrash} onClick={() => handleDelete(id)}>
+            <FiTrash />
           </button>
         </div>
       </div>
@@ -87,7 +94,8 @@ const CardAcademia = ({
           showModal={showModal}
           handleCloseModal={handleCloseModal}
           handleDelete={handleDelete}
-          modalColor={modalColor} // Pasa el color del modal como prop
+          modalColor="rgba(255, 0, 0, 0.5)"
+          id={selectedId}
         />
       )}
     </div>
