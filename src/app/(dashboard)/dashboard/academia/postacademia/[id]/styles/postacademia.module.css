@@ -21,6 +21,7 @@
     background-color: transparent;
     font-size: 35px;
     color: var(--clr-primary-2);
+    cursor: pointer;
 }
 .form{
     display: flex;
@@ -114,7 +115,7 @@ background-color: var(--clr-one-400);
 font: var( --t-desktop-one);
 font-size: 24px;
 border: none;
-
+cursor: pointer;
 }
 .titleAcademia{
     display: flex;
