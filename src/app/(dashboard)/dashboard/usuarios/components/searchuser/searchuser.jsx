@@ -2,10 +2,9 @@ import { IoSearchOutline } from 'react-icons/io5'
 import { IoMdOptions } from 'react-icons/io'
 import styles from './styles/searchUser.module.css'
 
-const SearchUser = ({ setSearchValue, setPage }) => {
+const SearchUser = ({ setSearch }) => {
   const handleInputChange = (event) => {
-    setSearchValue(event.target.value)
-    setPage(1)
+    setSearch(event.target.value)
   }
 
   return (
@@ -17,7 +16,11 @@ const SearchUser = ({ setSearchValue, setPage }) => {
           </button>
         </div>
         <div className={styles.searchInput}>
-          <input type="text" placeholder="Ronda" onChange={handleInputChange} />
+          <input
+            type="text"
+            placeholder="Rondaaaa"
+            onChange={handleInputChange}
+          />
         </div>
         <div className={styles.searchButton}>
           <button>

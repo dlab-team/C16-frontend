@@ -54,6 +54,11 @@ const DashboardUsers = () => {
     setPage(selectedPage)
   }
 
+  const handleSearchInputChange = (value) => {
+    setSearchValue(value)
+    setPage(1)
+  }
+
   const handleDownload = async () => {
     try {
       const response = await downloadExcel(idToken)
@@ -84,7 +89,7 @@ const DashboardUsers = () => {
       </div>
       <div className="table">
         <div className={styles.searchContainer}>
-          <SearchBarView search={searchValue} setSearch={setSearchValue} text={'Buscar por nombre o apellido'}/>
+          <SearchBarView setSearch={handleSearchInputChange} text={'Buscar por nombre o apellido'}/>
         </div>
         <table>
           <div className={styles.header}>
