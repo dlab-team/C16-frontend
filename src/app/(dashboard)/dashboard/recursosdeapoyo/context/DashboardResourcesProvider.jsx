@@ -37,6 +37,7 @@ const DashboardResourcesProvider = ({ children }) => {
   const [resourceId, setResourceId] = useState('')
   const [description, setDescription] = useState('')
   const [comuna, setComuna] = useState('')
+  const [region, setRegion] = useState('')
   const [url, setUrl] = useState('')
   const [highlighted, setHighlighted] = useState(false)
   const [image, setImage] = useState('')
@@ -125,6 +126,7 @@ const DashboardResourcesProvider = ({ children }) => {
   //function to get a resource by ID from API
   async function handleGetResourceById() {
     try {
+      setRegion('')
       setIsLoading(true)
       const response = await getResourceById(id, idToken)
       setResourceDataById(dashboardResourceByIdAdapter(response))
@@ -241,6 +243,7 @@ const DashboardResourcesProvider = ({ children }) => {
       'https://th.bing.com/th/id/OIP.qYEC7KeQLQ-i5FCNbWpV7AHaDt?w=335&h=175&c=7&r=0&o=5&pid=1.7',
     )
     setTitle('')
+    setRegion('')
   }
 
   //validate if the fields are empty
@@ -319,6 +322,8 @@ const DashboardResourcesProvider = ({ children }) => {
         resourcesEliminated,
         title,
         setTitle,
+        region,
+        setRegion,
       }}
     >
       {children}
