@@ -10,6 +10,8 @@ overflow-y: scroll;
     justify-content: space-around;
     font: var(--tx-desktop-three);
     color: var( --clr-primary-2);
+    font-style: 35px;
+    font-size: 40px;
 
    
 }
