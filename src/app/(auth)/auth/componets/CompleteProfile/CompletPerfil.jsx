@@ -12,7 +12,7 @@ import { updateUser } from "@/services/api/api.user.service";
 import { UserContext } from "@/components/context/userContext";
 import { useContext } from "react";
 
-import { successMessage } from "@/utils/notify";
+import { infoMessage, successMessage, errorMessage } from "@/utils/notify";
 
 const minDate=()=>{
   const today = new Date()
@@ -69,9 +69,11 @@ const CompleteProfile = () => {
     }
     const response = await updateUser(user.data.id, newFields, user.token)
 
-    if (response) {
+    if (response.ok) {
       updateUserContext(response, user.token)
       successMessage('Usuario completado exitosamente!')
+    }else{
+      errorMessage('Usuario no se pudo completar. Verifique los campos.')
     }
     router.push('/')
   }
@@ -287,6 +289,7 @@ const CompleteProfile = () => {
                     setComuna('')
                   }}
                   title="Selecciona una región de la lista"
+                  className="registerSelect"
                   required
                 >
                   <option value="">Selecciona</option>
@@ -312,6 +315,7 @@ const CompleteProfile = () => {
                   }}
                   disabled={region === 'none'}
                   title="Selecciona una comuna de la lista"
+                  className="registerSelect"
                   required
                 >
                   <option value="">Selecciona</option>
@@ -325,23 +329,6 @@ const CompleteProfile = () => {
 
                 <div className="register__input__button__img"></div>
               </div>
-            </div>
-
-            <div className="register__remenber">
-              <div className="register__remenber__input">
-                <input
-                  type="checkbox"
-                  title="Aprueba el consentimiento de manejo de los datos"
-                  className="custom-checkbox"
-                  checked={isChecked}
-                  onChange={handleCheckboxChange}
-                  required
-                />
-              </div>
-
-              <span>
-                Acepto la política de Tratamiento de datos personales
-              </span>
             </div>
 
             <div className="register__refer">

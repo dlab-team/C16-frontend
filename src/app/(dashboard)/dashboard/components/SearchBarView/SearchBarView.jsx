@@ -1,16 +1,20 @@
 import { AiOutlineSearch } from 'react-icons/ai'
+
 import styles from './styles/SearchBarView.module.css'
 
-const SearchBarView = ({ search, setSearch }) => {
+const SearchBarView = ({ setSearch, text='Buscar tema' }) => {
+
+  const handleInputChange = (event) => {
+    setSearch(event.target.value)
+  }
   return (
     <div className={styles.container}>
       <AiOutlineSearch className={styles.searchIcon} size={22} />
       <input
         type="search"
-        placeholder="Buscar tema"
+        placeholder={text}
         className={styles.input}
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={handleInputChange}
       />
     </div>
   )

@@ -10,6 +10,7 @@ const protectedRoutes = [
     '/academia',
     '/foro',
     '/dashboard',
+    '/apoyoalcuidador',
 ]
 
 function isProtectedRoute(pathname) {
