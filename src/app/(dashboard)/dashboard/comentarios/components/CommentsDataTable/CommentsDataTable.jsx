@@ -65,7 +65,7 @@ const CommentsDataTable = ({ reports, refetchData, tipo }) => {
                     className={styles.button}
                     onClick={() => openModal('delete', report.id)}
                   >
-                    <AiOutlineDelete size={24} />
+                    <AiOutlineDelete color='red' size={24} />
                   </button>
                   {tipo === 'desestimados' && (
                     <button
@@ -80,7 +80,7 @@ const CommentsDataTable = ({ reports, refetchData, tipo }) => {
                       className={styles.button}
                       onClick={() => openModal('reject', report.id)}
                     >
-                      <AiOutlineSave size={24} />
+                      <AiOutlineSave color='green' size={24} />
                     </button>
                   )}
                 </div>

@@ -120,6 +120,9 @@ select:focus {
   gap: 2%;
 }
 
+.registerSelect{
+  background-color: white;
+}
 .register__footer {
   height: 3rem;
   width: 100%;

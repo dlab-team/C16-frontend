@@ -22,7 +22,7 @@ const AcademyCard = ({data}) => {
           {data.description}
         </h6>
         <p className={styles.duration}>
-          Duration: <span className={styles.durationSpan}>{data.duration}</span>
+          Duración: <span className={styles.durationSpan}>{`${data.duration} minutos`}</span>
         </p>
         <p className={styles.date}>{dateFormat(data.createdAt)}</p>
       </div>

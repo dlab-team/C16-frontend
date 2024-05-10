@@ -84,7 +84,7 @@ const DashboardUsers = () => {
       </div>
       <div className="table">
         <div className={styles.searchContainer}>
-          <SearchBarView search={searchValue} setSearch={setSearchValue} />
+          <SearchBarView search={searchValue} setSearch={setSearchValue} text={'Buscar por nombre o apellido'}/>
         </div>
         <table>
           <div className={styles.header}>
