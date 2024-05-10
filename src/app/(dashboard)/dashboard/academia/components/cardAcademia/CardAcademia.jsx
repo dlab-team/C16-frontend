@@ -39,7 +39,7 @@ const CardAcademia = ({
                 <p>Título</p>
               </div>
 
-              <div>{title}</div>
+              <div className={styles.cardtitletext}>{title}</div>
             </div>
 
             <div className={styles.textacademia}>
@@ -47,7 +47,7 @@ const CardAcademia = ({
                 <p>Descripción</p>
               </div>
 
-              <div>{description}</div>
+              <div className={styles.carsdecriptiontext}>{description}</div>
             </div>
 
             <div className={styles.textacademia}>

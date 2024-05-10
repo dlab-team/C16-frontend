@@ -19,7 +19,7 @@ const ResourceView = () => {
     setResourceEliminated,
     resourcesEliminated,
   } = useDashboardResources()
-  console.log(allResources)
+
   return (
     <>
       {allResources?.map((resource) => (
@@ -44,6 +44,7 @@ const ResourceView = () => {
                     defaultChecked={resource?.highlighted}
                     className={styles.checkboxRound}
                     disabled
+                    title="Toca el botón de editar para destacar este recurso"
                   />
                   <span className={styles.span}>
                     <AiOutlineCheck size={10} />
