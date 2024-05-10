@@ -19,7 +19,7 @@ const FiltersView = () => {
             setComuna('none')
           }}
         >
-          <option value="none">Selecciona</option>
+          <option value="none">Región</option>
           {regionesData?.regiones.map((region, index) => (
             <option key={index} value={region?.region}>
               {region?.region}
@@ -40,7 +40,7 @@ const FiltersView = () => {
           className={styles.select}
           required
         >
-          <option value="none">Selecciona</option>
+          <option value="none">Comuna</option>
           {regionesData.regiones
             .find((r) => r?.region === region)
             ?.comunas?.map((comuna, index) => (
