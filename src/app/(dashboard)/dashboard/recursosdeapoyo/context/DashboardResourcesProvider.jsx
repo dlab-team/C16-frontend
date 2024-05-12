@@ -132,7 +132,6 @@ const DashboardResourcesProvider = ({ children }) => {
       setResourceDataById(dashboardResourceByIdAdapter(response))
       getStateData(dashboardResourceByIdAdapter(response))
     } catch (error) {
-      console.log(error)
     } finally {
       setIsLoading(false)
     }

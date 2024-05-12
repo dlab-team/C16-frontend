@@ -27,7 +27,15 @@
   font-weight: bold;
   margin-top: 8px;
 }
-
+.link {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  margin-top: 8px;
+}
+.link img {
+  object-fit: contain;
+}
 .animateLeft {
   animation: scrollLeft 30s linear infinite;
 }

@@ -31,7 +31,6 @@ const Navbar = () => {
     router.push(path); // Navegar a la ruta correspondiente
   };
   const toggleMenu = () => {
-    console.log('Toggle menu clicked');
     setMenuOpen(!menuOpen);
   };
 

@@ -4,6 +4,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL
 export const getAllPartners = async (page = '1', idToken) => {
   const response = await fetch(`${BASE_URL}/partners/?page=${page}`, {
     method: 'GET',
+    cache:'no-store',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${idToken}`,

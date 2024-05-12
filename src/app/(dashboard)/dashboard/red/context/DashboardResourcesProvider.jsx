@@ -93,7 +93,6 @@ const DashboardResourcesProvider = ({ children }) => {
 
   //if a resource is deleted, filter the resources array
   function filterResources() {
-    console.log(resourcesEliminated)
     const filteredResources = allResources.filter(
       (resource) => resource?.id !== resourcesEliminated,
     )
@@ -134,7 +133,6 @@ const DashboardResourcesProvider = ({ children }) => {
       setResourceDataById(dashboardResourceByIdAdapter(response))
       getStateData(dashboardResourceByIdAdapter(response))
     } catch (error) {
-      console.log(error)
     } finally {
       setIsLoading(false)
     }
@@ -154,7 +152,6 @@ const DashboardResourcesProvider = ({ children }) => {
 
   //function to delete a resource by ID from API
   async function handleDeleteResourceById(dataResourceId) {
-    console.log(dataResourceId)
     try {
       setIsLoading(true)
       const response = await deletePartnerById(dataResourceId, idToken)
@@ -205,17 +202,24 @@ const DashboardResourcesProvider = ({ children }) => {
       url,
       image: selectedImage,
     }
-
+    
     const formData = handleTransformToFormData(newResourceData)
-
+    
     try {
       if (!validateEmptyFields()) return
-
+      
       setIsLoading(true)
+
       const response = await createPartner(formData, idToken)
+      const badURL="Url invalida. Incluir http:// o https://"
 
       if (!response?.ok) {
-        errorMessage('Ups! algo salio mal, por favor vuelve a intentarlo')
+        const data = await response.json()
+        if(data.message==badURL){
+          errorMessage('La URL del sitio debe comenzar por http:// o https:// ')
+        }else{
+          errorMessage('Ups! algo salio mal, por favor vuelve a intentarlo')
+        }
         return
       }
       successMessage('Organización creada correctamente')

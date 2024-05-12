@@ -34,7 +34,6 @@ const YourDataView = () => {
     e.preventDefault()
     await updateUser(user.data.id, values, user.token)
     .then((res)=>{
-      console.log(res.status)
       if(res.ok){
         successMessage('Usuario actualizado correctamente!')
         refreshUser()

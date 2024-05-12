@@ -106,7 +106,6 @@ const UserDataView = ({
         setUpdatedPhoto(response?.user?.photo)
       })
       .catch((error) => {
-        console.log(error)
         errorMessage('Error al actualizar imagen')
       })
   }

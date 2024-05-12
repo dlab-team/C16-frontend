@@ -18,13 +18,14 @@
     border: 2px solid var(--clr-two-100);
     text-indent: 1rem;
     font-family: var(--ff-one);
+    padding-top: 5px;
 }
 .commentInput::-webkit-input-placeholder {
-    line-height: 75px;
+    line-height: 68px;
     font-size: 1rem;
 }
 .commentInput::-moz-placeholder {
-    line-height: 75px;
+    line-height: 68px;
 }
 .sendIcon{
     grid-column: 5/6;

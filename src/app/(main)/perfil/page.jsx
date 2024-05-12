@@ -2,6 +2,10 @@
 import styles from './styles/Page.module.css'
 import { useProfile, useWindowDimensions } from './hooks'
 import { GoBackButton, UserImageView } from './components'
+import { AiOutlineLogout } from 'react-icons/ai'
+import { UserContext } from '@/components/context/userContext'
+import { useContext } from 'react'
+import { useRouter } from 'next/navigation'
 
 const perfil = () => {
   const { width } = useWindowDimensions()
@@ -13,6 +17,9 @@ const perfil = () => {
     handleGoBack,
     optionSelected,
   } = useProfile()
+
+  const { deleteUser } = useContext(UserContext)
+  const router = useRouter()
 
   return (
     <main className={styles.container}>
@@ -35,6 +42,17 @@ const perfil = () => {
                 {button.name}
               </button>
             ))}
+
+              <button
+                className={`${styles.mainButtons} ${optionSelected}`}
+                onClick={() => {
+                  deleteUser()
+                  router.refresh()
+                }}
+              >
+                <AiOutlineLogout />
+                Cerrar Sesión
+              </button>
           </div>
         )}
       </div>
