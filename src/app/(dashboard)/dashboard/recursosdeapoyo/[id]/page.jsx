@@ -41,7 +41,6 @@ const EditResource = () => {
     region,
     setRegion,
   } = useDashboardResources()
-  console.log(region)
   return (
     <section className={mainStyles.container}>
       <GoBackButton />

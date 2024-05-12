@@ -37,7 +37,13 @@ const ResourcesProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    if (comuna === '') getResources()
+    if (comuna === '') {
+      getResources()
+    }
+      /* if(region=='todas'){
+        setPage(1)
+        getResources()
+      } */
   }, [page, comuna])
 
   /* function responsible for generating pagination options based on the 
@@ -89,7 +95,9 @@ totalPages value. */
   }
 
   useEffect(() => {
-    if (comuna !== '' && comuna !== 'none') searchResources()
+    if (comuna !== '' && comuna !== 'none') {
+      searchResources()
+    }
   }, [comuna, page])
 
   return (
@@ -98,6 +106,7 @@ totalPages value. */
         allResources,
         paginationOptions,
         page,
+        setPage,
         handlePageChange,
         totalPages,
         leadingResource,

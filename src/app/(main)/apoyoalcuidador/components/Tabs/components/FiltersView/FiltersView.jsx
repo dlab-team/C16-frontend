@@ -3,8 +3,9 @@ import regionesData from '../../../../../../(auth)/auth/componets/CompleteProfil
 import styles from './styles/FiltersView.module.css'
 import { useResources } from '@/app/(main)/apoyoalcuidador/hooks'
 
+
 const FiltersView = () => {
-  const { comuna, setComuna, region, setRegion } = useResources()
+  const { comuna, setComuna, region, setRegion, setPage } = useResources()
 
   return (
     <div className={styles.container}>
@@ -25,6 +26,7 @@ const FiltersView = () => {
               {region?.region}
             </option>
           ))}
+            
         </select>
         <AiOutlineDown className={styles.icon} />
       </div>
@@ -34,6 +36,7 @@ const FiltersView = () => {
           id="comuna"
           value={comuna}
           onChange={(e) => {
+            setPage(1)
             setComuna(e.target.value)
           }}
           disabled={region === 'none'}

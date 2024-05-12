@@ -15,7 +15,6 @@ const useDashboardHome = () => {
       const users = await getAllUsers()
       setTotalUsers(users?.pagination?.totalItems)
     } catch (error) {
-      console.log(error)
     }
   }
 
@@ -29,7 +28,6 @@ const useDashboardHome = () => {
       const response = await getReports('', 1, idToken)
       setTotalReports(response?.pagination?.totalItems)
     } catch (error) {
-      console.log(error)
     }
   }
 

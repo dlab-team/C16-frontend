@@ -3,7 +3,6 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL
 // crea un nuevo usuario en la base de datos (backend) y lo retorna
 // si el usuario yá existe solo lo retorna
 const createUser = async (idToken) => {
-    console.log(BASE_URL)
     const response = await fetch(`${BASE_URL}/users`, {
         method: "POST",
         headers: {

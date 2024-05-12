@@ -19,7 +19,6 @@ const ResourceView = () => {
     setResourceEliminated,
     resourcesEliminated,
   } = useDashboardResources()
-  console.log(allResources)
   return (
     <>
       {allResources?.map((resource) => (

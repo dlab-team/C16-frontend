@@ -28,11 +28,11 @@ const useProfile = () => {
       name: 'Notificaciones',
       icon: <AiTwotoneAlert />,
     }, */
-    {
+    /* {
       id: 4,
       name: 'Cerrar Sesión',
       icon: <AiOutlineLogout />,
-    },
+    }, */
   ]
 
   //Function to toggle the main menu if the selected component is not 0 and the width is less than 920px
